@@ -4,91 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <title>RRP Enterprises | Premium Logistics Solutions</title>
+    <title>RRP Enterprises | Next-Gen Logistics</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav class="glass-nav">
         <div class="nav-container">
             <div class="brand">
-                <img src="assets/logo.png" alt="RRP Logo" class="nav-logo">
-                <span class="brand-name">RRP ENTERPRISES</span>
+                <img src="assets/logo.png" alt="RRP" class="logo-img">
+                <span class="brand-text">RRP ENTERPRISES</span>
             </div>
-            <div class="nav-menu">
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="mailto:contact@rrpenterprises.co.in" class="nav-cta">Contact Us</a>
+            <div class="nav-links">
+                <a href="#services">Network</a>
+                <a href="mailto:contact@rrpenterprises.co.in" class="cta-pill">Get in Touch</a>
             </div>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-container">
-            <div class="booking-card">
-                <div class="card-header">
-                    <h3>Need a full truck?</h3>
-                    <p>Pan-India District & Mandal Search</p>
-                </div>
-                
-                <form action="https://formspree.io/f/mpqwlvba" method="POST" class="truck-form">
-                    <div class="input-section">
-                        <div class="input-row">
-                            <div class="dot-wrapper">
-                                <div class="dot green"><i class="fas fa-arrow-up"></i></div>
-                                <div class="line-path"></div>
-                            </div>
-                            <input type="text" name="Loading_From" list="india-hubs" placeholder="Loading City, Mandal or Pincode" required>
-                        </div>
-
-                        <div class="input-row">
-                            <div class="dot-wrapper">
-                                <div class="dot red"><i class="fas fa-arrow-down"></i></div>
-                            </div>
-                            <input type="text" name="Unloading_To" list="india-hubs" placeholder="Unloading City, Mandal or Pincode" required>
-                        </div>
-                    </div>
-
-                    <div class="contact-row">
-                        <i class="fas fa-phone-alt"></i>
-                        <input type="tel" name="Mobile" placeholder="Enter 10-Digit Mobile Number" pattern="[0-9]{10}" required>
-                    </div>
-
-                    <div class="promo-box">
-                        <div class="promo-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div class="promo-text">
-                            <strong>Safe & Secure</strong>
-                            <span>Real-time Inquiry Generation</span>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Get Price Estimate</button>
-                </form>
-
-                <datalist id="india-hubs">
-                    <option value="Ahmedabad, Gujarat"><option value="Bengaluru, Karnataka">
-                    <option value="Chennai, Tamil Nadu"><option value="Delhi, NCR">
-                    <option value="Hyderabad, Telangana"><option value="Kolkata, West Bengal">
-                    <option value="Mumbai, Maharashtra"><option value="Pune, Maharashtra">
-                    <option value="Visakhapatnam, Andhra Pradesh"><option value="Vijayawada, Andhra Pradesh">
-                </datalist>
+    <main class="hero-deck">
+        <div class="hero-bg"></div>
+        <div class="content-container">
+            <div class="hero-header">
+                <div class="status-chip">COMING SOON</div>
+                <h1>India's Smartest <br><span class="gradient-text">Logistics Ecosystem</span></h1>
+                <p>Connecting every Pincode, Mandal, and Taluk with AI-driven precision.</p>
             </div>
 
-            <div class="hero-content">
-                <h1 class="main-title">India's Leading<br><span>Truck Booking</span> Partner</h1>
-                <p class="sub-text">Connecting every Pincode and Mandal with precision logistics.</p>
-                <div class="hero-footer">
-                    <img src="assets/logo.png" alt="RRP" class="footer-logo">
-                    <div class="badge orange">COMING SOON</div>
-                </div>
+            <div class="booking-deck">
+                <form action="https://formspree.io/f/mpqwlvba" method="POST" class="smart-form">
+                    <div class="form-grid">
+                        <div class="input-wrap">
+                            <label><i class="fas fa-location-dot green-icon"></i> Origin Point</label>
+                            <input type="text" name="From" list="hubs" placeholder="City, Mandal or Pincode" required>
+                        </div>
+                        
+                        <div class="form-connector">
+                            <i class="fas fa-right-left"></i>
+                        </div>
+
+                        <div class="input-wrap">
+                            <label><i class="fas fa-location-crosshairs red-icon"></i> Destination Point</label>
+                            <input type="text" name="To" list="hubs" placeholder="City, Mandal or Pincode" required>
+                        </div>
+
+                        <div class="input-wrap full-width">
+                            <label><i class="fas fa-mobile-screen blue-icon"></i> Connect with you</label>
+                            <input type="tel" name="Mobile" placeholder="+91 Mobile Number" pattern="[0-9]{10}" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="glow-btn">
+                        <span>Generate Instant Inquiry</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
             </div>
         </div>
-    </header>
+    </main>
+
+    <datalist id="hubs">
+        <option value="Ahmedabad, GJ"><option value="Bengaluru, KA">
+        <option value="Delhi, NCR"><option value="Hyderabad, TS">
+        <option value="Mumbai, MH"><option value="Pune, MH">
+        <option value="Visakhapatnam, AP"><option value="Vijayawada, AP">
+    </datalist>
 
     <a href="https://wa.me/919494831803" class="wa-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
-        <span>WhatsApp Support</span>
     </a>
 
     <footer>
