@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <title>RRP Enterprises | India's #1 Truck Booking Platform</title>
+    <title>RRP Enterprises | India's #1 Trucking Ecosystem</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -20,8 +20,9 @@
                 </div>
             </div>
             <div class="nav-links">
-                <a href="#about" class="nav-item">About Us</a>
-                <a href="#services" class="nav-item">Services</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#enquiry">Enquiry</a>
                 <a href="mailto:contact@rrpenterprises.co.in" class="nav-cta">Get in Touch</a>
             </div>
         </div>
@@ -45,7 +46,7 @@
                     <button type="button" class="tab-btn active" onclick="switchTab(this, 'Full Truck (FTL)')">Full Truck (FTL)</button>
                     <button type="button" class="tab-btn" onclick="switchTab(this, 'Part Load (PTL)')">Part Load (PTL)</button>
                 </div>
-                <form action="https://formspree.io/f/mpqwlvba" method="POST" class="booking-form" id="truckForm">
+                <form action="https://formspree.io/f/mpqwlvba" method="POST" class="booking-form">
                     <input type="hidden" name="Inquiry_Type" id="serviceType" value="Full Truck (FTL)">
                     <div class="form-body">
                         <div class="input-field">
@@ -57,62 +58,78 @@
                             <input type="text" name="Destination" placeholder="City, Mandal or Pincode" required>
                         </div>
                         <div class="dual-row">
-                            <div class="input-field">
-                                <label><i class="fas fa-calendar-check"></i> LOADING DATE</label>
-                                <input type="date" name="Date" required>
-                            </div>
-                            <div class="input-field">
-                                <label><i class="fas fa-phone"></i> MOBILE NUMBER</label>
-                                <input type="tel" name="Phone" placeholder="10-Digit Mobile" pattern="[0-9]{10}" required>
-                            </div>
+                            <div class="input-field"><label>DATE</label><input type="date" name="Date" required></div>
+                            <div class="input-field"><label>MOBILE</label><input type="tel" name="Phone" placeholder="10-Digit Number" pattern="[0-9]{10}" required></div>
                         </div>
                         <div class="input-field">
-                            <label><i class="fas fa-box"></i> LOAD DETAILS</label>
-                            <textarea name="Remarks" placeholder="Weight, Cargo type, or instructions..." rows="2"></textarea>
+                            <label>REMARKS</label>
+                            <textarea name="Remarks" placeholder="Weight or Cargo type..." rows="2"></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="primary-btn">
-                        <span>GENERATE INSTANT QUOTE</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
+                    <button type="submit" class="primary-btn">GENERATE INSTANT QUOTE <i class="fas fa-arrow-right"></i></button>
                 </form>
             </div>
         </div>
     </main>
 
     <section id="services" class="service-bar">
-        <div class="bar-item">
-            <i class="fas fa-truck-fast"></i>
-            <span>Full Truck Load</span>
-        </div>
-        <div class="bar-item">
-            <i class="fas fa-warehouse"></i>
-            <span>Contract Logistics</span>
-        </div>
-        <div class="bar-item">
-            <i class="fas fa-plane-departure"></i>
-            <span>Freight Forwarding</span>
-        </div>
+        <div class="bar-item"><i class="fas fa-truck-fast"></i><span>Full Truck Load</span></div>
+        <div class="bar-item"><i class="fas fa-warehouse"></i><span>Contract Logistics</span></div>
+        <div class="bar-item"><i class="fas fa-plane-departure"></i><span>Freight Forwarding</span></div>
     </section>
 
-    <footer class="enterprise-footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="assets/logo.png" alt="RRP" class="footer-logo">
-                <p>Leading the digital transformation of Indian logistics with verified reliability.</p>
-            </div>
-            <div class="footer-quick-links">
-                <h4>QUICK CONTACT</h4>
-                <div class="social-btns">
-                    <a href="https://wa.me/919494831803" class="social-link whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.linkedin.com/in/rrpenterprises" target="_blank" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="mailto:contact@rrpenterprises.co.in" class="social-link mail"><i class="fas fa-envelope"></i></a>
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <h2 class="section-title">About Us</h2>
+            <p>RRP ENTERPRISES is a diversified logistics company in India and a leading player in domestic B2B road transportation segment. We deliver reliable, multimodal logistics solutions designed around our customers’ needs.</p>
+            <div class="vision-mission">
+                <div class="vm-card">
+                    <h3>Our Vision</h3>
+                    <p>To become a most trusted and technology-led logistics partner in India.</p>
+                </div>
+                <div class="vm-card">
+                    <h3>Our Mission</h3>
+                    <p>To deliver safe, timely, and cost-effective logistics solutions.</p>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 RRP Enterprises. All Rights Reserved. Serving 1800+ Cities Pan-India.</p>
+    </section>
+
+    <section id="enquiry" class="enquiry-section">
+        <div class="enquiry-container">
+            <div class="enquiry-box vendor">
+                <h3>VENDOR ENQUIRY</h3>
+                <form action="https://formspree.io/f/mpqwlvba" method="POST">
+                    <input type="text" name="Vendor_Name" placeholder="Vendor name" required>
+                    <div class="dual-row"><input type="email" name="Email" placeholder="Email"><input type="tel" name="Phone" placeholder="Phone"></div>
+                    <button type="submit" class="submit-red">Submit Vendor Request</button>
+                </form>
+            </div>
+            <div class="enquiry-box business">
+                <h3>BUSINESS ENQUIRY</h3>
+                <form action="https://formspree.io/f/mpqwlvba" method="POST">
+                    <input type="text" name="Company" placeholder="Company Name" required>
+                    <div class="dual-row"><input type="tel" name="Phone" placeholder="Phone Number"><input type="email" name="Email" placeholder="Email"></div>
+                    <button type="submit" class="submit-red">Submit Business Enquiry</button>
+                </form>
+            </div>
         </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <img src="assets/logo.png" alt="RRP" class="footer-logo">
+                <p>635, 1st Floor, 21st Cross, Hebbal, Bangalore - 560024</p>
+                <div class="socials"><a href="https://www.linkedin.com/in/rrpenterprises" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></div>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>+91 8152055195</p>
+                <p>support@rrpenterprises.co.in</p>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 RRP Enterprises. All Rights Reserved.</div>
     </footer>
 
     <script>
