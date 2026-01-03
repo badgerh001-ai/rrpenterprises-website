@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <title>RRP Enterprises | India Wide Truck Booking</title>
+    <title>RRP Enterprises | All India Truck Booking</title>
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -29,31 +29,31 @@
         <div class="hero-container">
             <div class="booking-card">
                 <h3>Book a Truck</h3>
-                <form action="https://formspree.io/f/https://formspree.io/f/mpqwlvba" method="POST" class="truck-form">
+                <form action="https://formspree.io/f/mpqwlvba" method="POST" class="truck-form">
                     
                     <div class="input-row">
                         <div class="dot green"><i class="fas fa-map-marker-alt"></i></div>
-                        <input type="text" name="Loading_Location" list="locations" placeholder="From: City or Pincode" required>
+                        <input type="text" name="Loading_From" list="india-locations" placeholder="Loading City or Pincode" required>
                     </div>
 
                     <div class="vertical-line"></div>
 
                     <div class="input-row">
                         <div class="dot red"><i class="fas fa-map-pin"></i></div>
-                        <input type="text" name="Unloading_Location" list="locations" placeholder="To: City or Pincode" required>
+                        <input type="text" name="Unloading_To" list="india-locations" placeholder="Unloading City or Pincode" required>
                     </div>
 
-                    <div class="input-row contact-input">
-                        <div class="dot blue"><i class="fas fa-phone"></i></div>
-                        <input type="tel" name="Phone_Number" placeholder="Your Phone Number" required>
+                    <div class="input-row contact-field">
+                        <div class="dot blue"><i class="fas fa-phone-alt"></i></div>
+                        <input type="tel" name="Customer_Phone" placeholder="Mobile Number" pattern="[0-9]{10}" title="Please enter a 10-digit mobile number" required>
                     </div>
 
-                    <input type="hidden" name="_subject" value="New Truck Inquiry - RRP Enterprises">
+                    <input type="hidden" name="_subject" value="New Truck Booking Inquiry - RRP">
                     
                     <div class="info-banner">
                         <div class="info-content">
-                            <span class="info-title">All India Coverage</span>
-                            <span class="info-sub">28 States & 8 Union Territories</span>
+                            <span class="info-title">Pan India Service</span>
+                            <span class="info-sub">All Cities & Pincodes Covered</span>
                         </div>
                         <i class="fas fa-globe-asia shield-icon"></i>
                     </div>
@@ -61,33 +61,43 @@
                     <button type="submit" class="submit-btn">Generate Inquiry</button>
                 </form>
 
-                <datalist id="locations">
-                    <option value="Mumbai, Maharashtra">
-                    <option value="Delhi, NCR">
-                    <option value="Bengaluru, Karnataka">
-                    <option value="Hyderabad, Telangana">
-                    <option value="Chennai, Tamil Nadu">
-                    <option value="Kolkata, West Bengal">
+                <datalist id="india-locations">
                     <option value="Ahmedabad, Gujarat">
-                    <option value="Pune, Maharashtra">
-                    <option value="Jaipur, Rajasthan">
-                    <option value="Lucknow, Uttar Pradesh">
-                    <option value="Surat, Gujarat">
-                    <option value="Kanpur, Uttar Pradesh">
-                    <option value="Nagpur, Maharashtra">
-                    <option value="Indore, Madhya Pradesh">
-                    <option value="Thane, Maharashtra">
+                    <option value="Bengaluru, Karnataka">
                     <option value="Bhopal, Madhya Pradesh">
-                    <option value="Visakhapatnam, Andhra Pradesh">
-                    <option value="Pimpri-Chinchwad, Maharashtra">
+                    <option value="Bhubaneswar, Odisha">
+                    <option value="Chandigarh, Punjab/Haryana">
+                    <option value="Chennai, Tamil Nadu">
+                    <option value="Coimbatore, Tamil Nadu">
+                    <option value="Delhi, NCR">
+                    <option value="Guwahati, Assam">
+                    <option value="Hyderabad, Telangana">
+                    <option value="Indore, Madhya Pradesh">
+                    <option value="Jaipur, Rajasthan">
+                    <option value="Kanpur, Uttar Pradesh">
+                    <option value="Kochi, Kerala">
+                    <option value="Kolkata, West Bengal">
+                    <option value="Lucknow, Uttar Pradesh">
+                    <option value="Ludhiana, Punjab">
+                    <option value="Mumbai, Maharashtra">
+                    <option value="Nagpur, Maharashtra">
+                    <option value="Nashik, Maharashtra">
                     <option value="Patna, Bihar">
+                    <option value="Pune, Maharashtra">
+                    <option value="Raipur, Chhattisgarh">
+                    <option value="Rajkot, Gujarat">
+                    <option value="Surat, Gujarat">
+                    <option value="Thane, Maharashtra">
                     <option value="Vadodara, Gujarat">
-                    </datalist>
+                    <option value="Varanasi, Uttar Pradesh">
+                    <option value="Vijayawada, Andhra Pradesh">
+                    <option value="Visakhapatnam, Andhra Pradesh">
+                </datalist>
             </div>
 
             <div class="hero-text">
-                <h1>India's Emerging<br>Logistics Network</h1>
-                <p>Reliable Trucking Solutions for every City and Pincode in India.</p>
+                <h1>Reliable Trucking<br>Across India</h1>
+                <p>Simple, precise, and professional logistics for every Pincode.</p>
                 <div class="hero-badge-area">
                      <img src="assets/logo.png" alt="RRP Logo" class="hero-logo-white">
                      <div class="badge orange">COMING SOON</div>
@@ -98,7 +108,7 @@
 
     <a href="https://wa.me/919494831803" class="wa-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
-        <span>WhatsApp Support</span>
+        <span>WhatsApp Us</span>
     </a>
 
     <footer>
