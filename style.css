@@ -1,59 +1,72 @@
+/* Custom Branding Palette */
 :root {
-    --primary-blue: #004a99;
-    --dark-blue: #002b5b;
-    --accent-orange: #f39c12;
-    --bg-light: #f4f7f6;
-    --white: #ffffff;
+    --main-blue: #004a99;
+    --deep-navy: #002b5b;
+    --soft-blue: #e8f1f8;
+    --cta-orange: #f39c12;
+    --pure-white: #ffffff;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-body { color: #333; line-height: 1.6; background-color: var(--white); }
+html { scroll-behavior: smooth; }
 
-/* Navigation */
-.navbar { background: var(--white); padding: 10px 8%; border-bottom: 3px solid var(--primary-blue); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-.nav-container { display: flex; justify-content: space-between; align-items: center; }
-.logo-area { display: flex; align-items: center; gap: 10px; }
-.nav-logo { height: 45px; }
-.logo-text { font-size: 20px; font-weight: 800; color: var(--primary-blue); letter-spacing: 1px; }
-.nav-links a { text-decoration: none; color: #444; font-weight: 600; margin-left: 20px; transition: 0.3s; }
-.contact-nav-btn { background: var(--primary-blue); color: white !important; padding: 8px 15px; border-radius: 4px; }
+/* Navbar Styling */
+.navbar { background: var(--pure-white); padding: 12px 8%; border-bottom: 4px solid var(--main-blue); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.nav-logo { height: 48px; }
+.brand-name { font-size: 20px; font-weight: 800; color: var(--main-blue); letter-spacing: 0.5px; }
+.nav-menu a { text-decoration: none; color: #444; font-weight: 600; margin-left: 25px; transition: 0.3s; }
+.nav-cta { background: var(--main-blue); color: white !important; padding: 10px 20px; border-radius: 5px; }
 
-/* Hero Section */
-.hero { height: 85vh; background: linear-gradient(rgba(0, 43, 91, 0.8), rgba(0, 43, 91, 0.8)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; }
+/* Hero Section Styles */
+.hero { height: 80vh; background: linear-gradient(rgba(0, 43, 91, 0.75), rgba(0, 43, 91, 0.75)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; }
 .hero-overlay { height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px; }
 
-.hero-logo-container { margin-bottom: 20px; }
-.hero-logo { height: 120px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
-.hero-brand { font-size: 28px; font-weight: 800; margin-top: 10px; letter-spacing: 2px; }
+.hero-logo-wrapper { margin-bottom: 25px; }
+.hero-logo-img { height: 130px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.2)); }
+.hero-subheading { font-size: 26px; font-weight: 800; margin-top: 12px; letter-spacing: 2px; }
 
-.hero-content h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; margin-bottom: 10px; }
-.hero-content p { font-size: 20px; opacity: 0.9; margin-bottom: 25px; }
+.hero-main h1 { font-size: clamp(32px, 6vw, 52px); font-weight: 700; margin-bottom: 12px; }
+.hero-main p { font-size: 20px; opacity: 0.9; margin-bottom: 30px; }
 
-.status-badge { background: var(--accent-orange); color: white; padding: 8px 25px; border-radius: 4px; display: inline-block; font-weight: bold; margin-bottom: 30px; }
+.badge-status { background: var(--cta-orange); padding: 8px 28px; border-radius: 4px; display: inline-block; font-weight: 700; margin-bottom: 35px; }
 
-/* Action Buttons */
-.hero-action-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-.btn { text-decoration: none; padding: 15px 35px; border-radius: 50px; font-weight: bold; font-size: 18px; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
-.call-btn { background: #3498db; color: white; }
-.email-btn { background: transparent; border: 2px solid white; color: white; }
-.btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+/* Contact Actions */
+.action-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.action-btn { text-decoration: none; padding: 16px 38px; border-radius: 50px; font-weight: 700; font-size: 18px; transition: 0.4s; display: flex; align-items: center; gap: 12px; }
+.call { background: #2980b9; color: white; box-shadow: 0 4px 15px rgba(41, 128, 185, 0.4); }
+.email { background: transparent; border: 2px solid white; color: white; }
+.action-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
-/* Floating WhatsApp */
-.whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 10px; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+/* Floating Support Button */
+.wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 12px; z-index: 2000; box-shadow: 0 10px 25px rgba(0,0,0,0.25); transition: 0.3s; }
+.wa-float:hover { background: #1ebd5a; transform: scale(1.05); }
 
-/* About & Services */
-.about-section { padding: 80px 10%; background: var(--bg-light); text-align: center; }
-.about-section h2 { color: var(--primary-blue); font-size: 32px; margin-bottom: 20px; }
-.about-section p { max-width: 900px; margin: 0 auto; font-size: 19px; color: #555; }
+/* Content Sections */
+.about-info { padding: 90px 10%; background: var(--soft-blue); text-align: center; }
+.wrapper { max-width: 1000px; margin: 0 auto; }
+.about-info h2 { color: var(--main-blue); font-size: 34px; margin-bottom: 15px; }
+.line { height: 4px; width: 60px; background: var(--main-blue); margin: 0 auto 25px; }
+.about-info p { font-size: 20px; color: #444; line-height: 1.8; }
 
-.expertise { padding: 80px 10%; text-align: center; }
-.expertise h2 { font-size: 32px; margin-bottom: 50px; color: var(--dark-blue); }
-.grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
-.card { background: white; padding: 40px; border-radius: 12px; width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-bottom: 5px solid var(--primary-blue); transition: 0.3s; }
-.card:hover { transform: translateY(-10px); }
-.icon-box { font-size: 50px; color: var(--primary-blue); margin-bottom: 20px; }
-.card h3 { font-size: 22px; color: var(--dark-blue); }
+.services-grid { padding: 90px 10%; text-align: center; background: white; }
+.services-grid h2 { font-size: 34px; margin-bottom: 55px; color: var(--deep-navy); }
+.card-container { display: flex; justify-content: center; gap: 45px; flex-wrap: wrap; }
+.service-card { background: white; padding: 50px 30px; border-radius: 15px; width: 320px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); border-bottom: 6px solid var(--main-blue); transition: 0.4s; }
+.service-card:hover { transform: translateY(-12px); box-shadow: 0 20px 45px rgba(0,0,0,0.1); }
+.icon-circle { font-size: 55px; color: var(--main-blue); margin-bottom: 25px; }
+.service-card h3 { font-size: 24px; color: var(--deep-navy); }
 
-/* Footer */
-footer { background: var(--dark-blue); color: #888; padding: 50px 10%; text-align: center; }
-.footer-contacts { margin-top: 15px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; color: white; }
+/* Footer Styling */
+footer { background: var(--deep-navy); color: #b3c7d6; padding: 60px 10%; text-align: center; }
+.contact-links { margin-top: 25px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.contact-links a { color: white; text-decoration: none; font-weight: 500; font-size: 16px; transition: 0.3s; }
+.contact-links a:hover { color: var(--cta-orange); }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-menu { display: none; }
+    .hero-main h1 { font-size: 34px; }
+    .service-card { width: 100%; }
+}
