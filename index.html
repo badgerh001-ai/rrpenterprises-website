@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <title>RRP Enterprises | Efficient Truck Booking & Logistics</title>
+    <title>RRP Enterprises | India Wide Truck Booking</title>
     
-    <meta name="description" content="RRP Enterprises: Premium Road Logistics and Truck Booking services in India. Reliable, precise, and professional.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -29,33 +28,66 @@
     <header class="hero">
         <div class="hero-container">
             <div class="booking-card">
-                <h3>Need a full truck?</h3>
-                <form class="truck-form">
+                <h3>Book a Truck</h3>
+                <form action="https://formspree.io/f/mqakjzvz" method="POST" class="truck-form">
+                    
                     <div class="input-row">
-                        <div class="dot green"><i class="fas fa-arrow-up"></i></div>
-                        <input type="text" placeholder="Enter loading city">
+                        <div class="dot green"><i class="fas fa-map-marker-alt"></i></div>
+                        <input type="text" name="Loading_Location" list="locations" placeholder="From: City or Pincode" required>
                     </div>
+
                     <div class="vertical-line"></div>
+
                     <div class="input-row">
-                        <div class="dot red"><i class="fas fa-arrow-down"></i></div>
-                        <input type="text" placeholder="Enter unloading city">
+                        <div class="dot red"><i class="fas fa-map-pin"></i></div>
+                        <input type="text" name="Unloading_Location" list="locations" placeholder="To: City or Pincode" required>
                     </div>
+
+                    <div class="input-row contact-input">
+                        <div class="dot blue"><i class="fas fa-phone"></i></div>
+                        <input type="tel" name="Phone_Number" placeholder="Your Phone Number" required>
+                    </div>
+
+                    <input type="hidden" name="_subject" value="New Truck Inquiry - RRP Enterprises">
                     
                     <div class="info-banner">
                         <div class="info-content">
-                            <span class="info-title">Reliable Logistics</span>
-                            <span class="info-sub">Quality Service, Guaranteed</span>
+                            <span class="info-title">All India Coverage</span>
+                            <span class="info-sub">28 States & 8 Union Territories</span>
                         </div>
-                        <i class="fas fa-shield-alt shield-icon"></i>
+                        <i class="fas fa-globe-asia shield-icon"></i>
                     </div>
 
-                    <button type="submit" class="submit-btn">Get price estimate</button>
+                    <button type="submit" class="submit-btn">Generate Inquiry</button>
                 </form>
+
+                <datalist id="locations">
+                    <option value="Mumbai, Maharashtra">
+                    <option value="Delhi, NCR">
+                    <option value="Bengaluru, Karnataka">
+                    <option value="Hyderabad, Telangana">
+                    <option value="Chennai, Tamil Nadu">
+                    <option value="Kolkata, West Bengal">
+                    <option value="Ahmedabad, Gujarat">
+                    <option value="Pune, Maharashtra">
+                    <option value="Jaipur, Rajasthan">
+                    <option value="Lucknow, Uttar Pradesh">
+                    <option value="Surat, Gujarat">
+                    <option value="Kanpur, Uttar Pradesh">
+                    <option value="Nagpur, Maharashtra">
+                    <option value="Indore, Madhya Pradesh">
+                    <option value="Thane, Maharashtra">
+                    <option value="Bhopal, Madhya Pradesh">
+                    <option value="Visakhapatnam, Andhra Pradesh">
+                    <option value="Pimpri-Chinchwad, Maharashtra">
+                    <option value="Patna, Bihar">
+                    <option value="Vadodara, Gujarat">
+                    </datalist>
             </div>
 
             <div class="hero-text">
-                <h1>India's Emerging<br>Truck Booking Partner</h1>
-                <p>Delivering Excellence in Supply Chain & Logistics Across the Nation</p>
+                <h1>India's Emerging<br>Logistics Network</h1>
+                <p>Reliable Trucking Solutions for every City and Pincode in India.</p>
                 <div class="hero-badge-area">
                      <img src="assets/logo.png" alt="RRP Logo" class="hero-logo-white">
                      <div class="badge orange">COMING SOON</div>
@@ -71,7 +103,6 @@
 
     <footer>
         <p>&copy; 2026 RRP Enterprises. All Rights Reserved.</p>
-        <p>Contact: 9494831803 / 9014884668</p>
     </footer>
 
 </body>
