@@ -10,19 +10,20 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
 body { background: var(--deep-bg); color: #fff; overflow-x: hidden; }
 
-/* Navigation */
+/* Refined Nav */
 .cyber-nav { 
     position: fixed; top: 0; width: 100%; z-index: 1000; 
     background: rgba(1, 8, 22, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 18px 8%; max-width: 1400px; margin: 0 auto; }
-.logo-img { height: 42px; margin-right: 15px; }
+.logo-img { height: 40px; margin-right: 15px; background: white; padding: 2px; border-radius: 4px; }
 .brand-text { font-weight: 800; font-size: 20px; letter-spacing: 1.5px; }
-.glass-btn { border: 1px solid rgba(255,255,255,0.3); color: #fff; text-decoration: none; padding: 10px 25px; border-radius: 12px; font-weight: 600; transition: 0.3s; background: var(--glass-white); }
-.glass-btn:hover { background: #fff; color: #000; }
+.nav-link { color: #888; text-decoration: none; font-weight: 600; margin-right: 25px; transition: 0.3s; }
+.nav-link:hover { color: var(--neon-blue); }
+.glass-btn { background: #fff; color: #000; text-decoration: none; padding: 10px 25px; border-radius: 50px; font-weight: 700; transition: 0.3s; }
 
-/* Hero Unit */
-.hero-viewport { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 100px 5% 50px; }
+/* Hero Refinement */
+.hero-viewport { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 120px 5% 50px; }
 .dynamic-bg { 
     position: absolute; top: 0; width: 100%; height: 100%; 
     background: radial-gradient(circle at 80% 20%, rgba(0, 74, 153, 0.3), transparent 40%),
@@ -31,30 +32,31 @@ body { background: var(--deep-bg); color: #fff; overflow-x: hidden; }
 }
 
 .header-unit { text-align: center; margin-bottom: 50px; }
-.neon-badge { background: rgba(0, 242, 255, 0.1); border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 8px 20px; border-radius: 50px; font-size: 13px; font-weight: 800; display: inline-block; margin-bottom: 25px; box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
+.neon-badge { background: rgba(0, 242, 255, 0.1); border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 8px 20px; border-radius: 50px; font-size: 13px; font-weight: 800; display: inline-block; margin-bottom: 25px; }
 h1 { font-size: clamp(40px, 8vw, 75px); line-height: 1.1; font-weight: 800; margin-bottom: 20px; letter-spacing: -2px; }
 .glow-text { color: #fff; text-shadow: 0 0 30px rgba(0, 74, 153, 0.8); }
 
-/* Inquiry Deck */
+/* Refined Inquiry Deck */
 .inquiry-deck { 
     background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 45px; border-radius: 40px; width: 100%; max-width: 850px; box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    padding: 45px; border-radius: 35px; width: 100%; max-width: 850px; box-shadow: 0 40px 100px rgba(0,0,0,0.6);
 }
 .deck-grid { display: grid; grid-template-columns: 1fr 60px 1fr; gap: 20px; align-items: center; }
 .field-box { display: flex; flex-direction: column; gap: 12px; text-align: left; }
-.field-box label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+.field-box label { font-size: 13px; font-weight: 800; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 .field-box input { 
     background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); 
-    padding: 18px; border-radius: 15px; color: #fff; font-size: 16px; outline: none; transition: 0.4s;
+    padding: 20px; border-radius: 18px; color: #fff; font-size: 18px; outline: none; transition: 0.4s;
 }
 .field-box input:focus { border-color: var(--neon-blue); background: rgba(255,255,255,0.08); }
-.origin-dot { color: #2ecc71; }
-.dest-dot { color: #e74c3c; }
-.deck-divider { color: var(--neon-blue); font-size: 22px; text-align: center; padding-top: 25px; }
+
+.origin-dot { color: #2ecc71; margin-right: 8px; }
+.dest-dot { color: #e74c3c; margin-right: 8px; }
+.deck-divider { color: var(--neon-blue); font-size: 24px; text-align: center; padding-top: 25px; }
 .full-span { grid-column: 1 / span 3; margin-top: 15px; }
 
 .action-trigger { 
-    width: 100%; margin-top: 35px; padding: 22px; border-radius: 20px; border: none;
+    width: 100%; margin-top: 35px; padding: 22px; border-radius: 18px; border: none;
     background: var(--sapphire); color: #fff; font-weight: 800; font-size: 18px;
     letter-spacing: 2px; cursor: pointer; transition: 0.4s;
 }
