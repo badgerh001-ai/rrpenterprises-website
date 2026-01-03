@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <title>RRP Enterprises | Smart Logistics Ecosystem</title>
+    <title>RRP Enterprises | India's #1 Truck Booking Platform</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -20,50 +20,61 @@
                 </div>
             </div>
             <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#enquiry">Enquiry</a>
+                <a href="#about" class="nav-item">About Us</a>
+                <a href="#services" class="nav-item">Services</a>
                 <a href="mailto:contact@rrpenterprises.co.in" class="nav-cta">Get in Touch</a>
             </div>
         </div>
     </nav>
 
     <main class="hero-section">
+        <div class="hero-overlay"></div>
         <div class="content-wrapper">
             <div class="hero-text">
                 <div class="startup-badge">STARTUP INDIA RECOGNIZED</div>
-                <h1>India's #1 <br><span>Trucking Ecosystem</span></h1>
-                <p>Reliable FTL & PTL solutions for every Pincode, Mandal, and Taluk across the nation.</p>
+                <h1>Empowering India's <br><span>Logistics Network</span></h1>
+                <p>Digital-first FTL & PTL solutions across 21,000+ Pincodes.</p>
                 <div class="trust-indicators">
-                    <div class="stat-item"><strong>PAN-INDIA</strong><span>21,000+ Pincodes</span></div>
-                    <div class="stat-item"><strong>24/7</strong><span>Verified Support</span></div>
+                    <div class="stat-item"><strong>20+ Lakh</strong><span>Verified Trucks</span></div>
+                    <div class="stat-item"><strong>₹50 Lakh</strong><span>Trip Insurance</span></div>
                 </div>
             </div>
 
-            <div class="booking-portal">
+            <div class="booking-portal" id="booking">
                 <div class="tab-switcher">
-                    <button type="button" class="tab-btn active" onclick="switchTab(this, 'FTL')">Full Truck (FTL)</button>
-                    <button type="button" class="tab-btn" onclick="switchTab(this, 'PTL')">Part Load (PTL)</button>
+                    <button type="button" class="tab-btn active" onclick="switchTab(this, 'Full Truck (FTL)')">Full Truck (FTL)</button>
+                    <button type="button" class="tab-btn" onclick="switchTab(this, 'Part Load (PTL)')">Part Load (PTL)</button>
                 </div>
-                <form action="https://formspree.io/f/mpqwlvba" method="POST" class="booking-form">
-                    <input type="hidden" name="Inquiry_Type" id="serviceType" value="FTL">
-                    <div class="input-field">
-                        <label><i class="fas fa-map-marker-alt green"></i> LOADING POINT</label>
-                        <input type="text" name="Origin" placeholder="Enter City, Mandal or Pincode" required>
+                <form action="https://formspree.io/f/mpqwlvba" method="POST" class="booking-form" id="truckForm">
+                    <input type="hidden" name="Inquiry_Type" id="serviceType" value="Full Truck (FTL)">
+                    <div class="form-body">
+                        <div class="input-field">
+                            <label><i class="fas fa-map-marker-alt origin-icon"></i> LOADING POINT</label>
+                            <input type="text" name="Origin" placeholder="City, Mandal or Pincode" required>
+                        </div>
+                        <div class="input-field">
+                            <label><i class="fas fa-location-dot dest-icon"></i> UNLOADING POINT</label>
+                            <input type="text" name="Destination" placeholder="City, Mandal or Pincode" required>
+                        </div>
+                        <div class="dual-row">
+                            <div class="input-field">
+                                <label><i class="fas fa-calendar-check"></i> LOADING DATE</label>
+                                <input type="date" name="Date" required>
+                            </div>
+                            <div class="input-field">
+                                <label><i class="fas fa-phone"></i> MOBILE NUMBER</label>
+                                <input type="tel" name="Phone" placeholder="10-Digit Mobile" pattern="[0-9]{10}" required>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <label><i class="fas fa-box"></i> LOAD DETAILS</label>
+                            <textarea name="Remarks" placeholder="Weight, Cargo type, or instructions..." rows="2"></textarea>
+                        </div>
                     </div>
-                    <div class="input-field">
-                        <label><i class="fas fa-location-dot red"></i> UNLOADING POINT</label>
-                        <input type="text" name="Destination" placeholder="Enter City, Mandal or Pincode" required>
-                    </div>
-                    <div class="dual-row">
-                        <div class="input-field"><label>LOADING DATE</label><input type="date" name="Date" required></div>
-                        <div class="input-field"><label>PHONE NUMBER</label><input type="tel" name="Phone" placeholder="Mobile Number" required></div>
-                    </div>
-                    <div class="input-field">
-                        <label>GOODS & REMARKS</label>
-                        <textarea name="Remarks" placeholder="Weight, Cargo type, or instructions..." rows="2"></textarea>
-                    </div>
-                    <button type="submit" class="primary-btn">GENERATE INSTANT QUOTE <i class="fas fa-arrow-right"></i></button>
+                    <button type="submit" class="primary-btn">
+                        <span>GENERATE INSTANT QUOTE</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
                 </form>
             </div>
         </div>
@@ -72,104 +83,35 @@
     <section id="services" class="service-bar">
         <div class="bar-item">
             <i class="fas fa-truck-fast"></i>
-            <span>Full Truck Load (FTL)</span>
+            <span>Full Truck Load</span>
         </div>
         <div class="bar-item">
             <i class="fas fa-warehouse"></i>
             <span>Contract Logistics</span>
         </div>
         <div class="bar-item">
-            <i class="fas fa-plane"></i>
+            <i class="fas fa-plane-departure"></i>
             <span>Freight Forwarding</span>
         </div>
     </section>
 
-    <section id="about" class="about-section">
-        <div class="section-container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <h2 class="section-title">About Us</h2>
-                    <p>RRP ENTERPRISES is a diversified logistics company in India and a leading player in domestic B2B road transportation segment. We deliver reliable, end-to-end multimodal logistics solutions designed around our customers’ needs.</p>
-                    <p>With technology-driven operations, we provide real-time visibility, scalable capacity, and customized solutions that help our clients reduce costs and improve efficiency.</p>
-                    
-                    <div class="vision-mission">
-                        <div class="vm-card">
-                            <h3>Our Vision</h3>
-                            <p>To become a most trusted and technology-led logistics partner in India, enabling seamless movement of goods.</p>
-                        </div>
-                        <div class="vm-card">
-                            <h3>Our Mission</h3>
-                            <ul>
-                                <li>Deliver safe, timely solutions.</li>
-                                <li>Build long-term partnerships.</li>
-                                <li>Leverage technology for control.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="enquiry" class="enquiry-section">
-        <div class="enquiry-container">
-            <div class="enquiry-box vendor">
-                <h3>VENDOR ENQUIRY</h3>
-                <form action="https://formspree.io/f/mpqwlvba" method="POST">
-                    <input type="text" name="Vendor_Name" placeholder="Vendor name" required>
-                    <div class="dual-row">
-                        <input type="email" name="Email" placeholder="Email id" required>
-                        <input type="tel" name="Phone" placeholder="Phone No" required>
-                    </div>
-                    <input type="text" name="City" placeholder="City">
-                    <textarea name="Description" placeholder="Description"></textarea>
-                    <button type="submit" class="submit-red">Submit</button>
-                </form>
-            </div>
-
-            <div class="enquiry-box business">
-                <h3>BUSINESS ENQUIRY</h3>
-                <form action="https://formspree.io/f/mpqwlvba" method="POST">
-                    <input type="text" name="Company" placeholder="Company Name" required>
-                    <div class="dual-row">
-                        <input type="tel" name="Phone" placeholder="Phone Number">
-                        <input type="email" name="Email" placeholder="Email id">
-                    </div>
-                    <select name="Type">
-                        <option>Trucking - FTL</option>
-                        <option>Freight Forwarding</option>
-                    </select>
-                    <textarea name="Description" placeholder="Description"></textarea>
-                    <button type="submit" class="submit-red">Submit</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer">
+    <footer class="enterprise-footer">
         <div class="footer-grid">
-            <div class="footer-info">
-                <img src="assets/logo.png" alt="Logo" class="footer-logo">
-                <p><i class="fas fa-location-dot"></i> 635, 1st Floor, 21st Cross, Bhuvaneshwari Nagar, Hebbal, Bangalore - 560024</p>
-                <div class="footer-socials">
-                    <a href="https://www.linkedin.com/in/rrpenterprises"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="RRP" class="footer-logo">
+                <p>Leading the digital transformation of Indian logistics with verified reliability.</p>
+            </div>
+            <div class="footer-quick-links">
+                <h4>QUICK CONTACT</h4>
+                <div class="social-btns">
+                    <a href="https://wa.me/919494831803" class="social-link whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/rrpenterprises" target="_blank" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:contact@rrpenterprises.co.in" class="social-link mail"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <a href="#">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#services">Services</a>
-            </div>
-            <div class="footer-address">
-                <h4>Contact Us</h4>
-                <p><i class="fas fa-phone"></i> +91-8152055195</p>
-                <p><i class="fas fa-envelope"></i> support@rrpenterprises.co.in</p>
-                <p><i class="fab fa-whatsapp"></i> Chat on Whatsapp</p>
-            </div>
         </div>
-        <div class="copyright-bar">
-            &copy; 2026 RRP Enterprises. All Rights Reserved.
+        <div class="footer-bottom">
+            <p>&copy; 2026 RRP Enterprises. All Rights Reserved. Serving 1800+ Cities Pan-India.</p>
         </div>
     </footer>
 
