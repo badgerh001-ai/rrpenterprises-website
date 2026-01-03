@@ -1,88 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
+
 :root {
-    --rrp-blue: #004a99;
-    --rrp-gradient: linear-gradient(135deg, #004a99 0%, #0066cc 100%);
-    --white: #ffffff;
-    --shadow: 0 15px 35px rgba(0,0,0,0.2);
+    --primary: #004a99;
+    --accent: #3498db;
+    --glass: rgba(255, 255, 255, 0.08);
+    --pure-white: #ffffff;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+body { background: #000b1d; color: var(--pure-white); overflow-x: hidden; }
 
-/* Navbar */
-.navbar { background: var(--white); padding: 12px 8%; border-bottom: 4px solid var(--rrp-blue); position: sticky; top: 0; z-index: 1000; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-.nav-logo { height: 45px; }
-.brand-name { font-weight: 800; color: var(--rrp-blue); font-size: 22px; }
-.nav-links a { text-decoration: none; margin-left: 20px; color: #333; font-weight: 600; }
-.nav-cta { background: var(--rrp-blue); color: white !important; padding: 10px 20px; border-radius: 8px; }
-
-/* Hero Section */
-.hero { 
-    min-height: 90vh; 
-    background: linear-gradient(rgba(0, 43, 91, 0.8), rgba(0, 43, 91, 0.8)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80');
-    background-size: cover; display: flex; align-items: center; justify-content: center; padding: 50px 8%;
+/* Glass Navigation */
+.glass-nav { 
+    position: fixed; top: 0; width: 100%; z-index: 1000; 
+    background: rgba(0, 11, 29, 0.7); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.hero-container { display: flex; gap: 80px; align-items: center; width: 100%; max-width: 1200px; flex-wrap: wrap-reverse; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; max-width: 1400px; margin: 0 auto; }
+.logo-img { height: 40px; margin-right: 12px; }
+.brand-text { font-weight: 800; font-size: 18px; letter-spacing: 1px; color: #fff; }
+.cta-pill { background: var(--pure-white); color: #000 !important; padding: 8px 20px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; }
 
-/* Booking Card Layout */
-.booking-card { 
-    background: var(--white); padding: 40px; border-radius: 30px; 
-    width: 440px; box-shadow: var(--shadow); position: relative;
+/* Hero Deck */
+.hero-deck { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 120px 20px 60px; }
+.hero-bg { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+    background: radial-gradient(circle at top right, #004a99 0%, transparent 40%),
+                radial-gradient(circle at bottom left, #001a3d 0%, transparent 40%);
+    opacity: 0.6; z-index: -1;
 }
-.card-header h3 { font-size: 26px; color: #111; margin-bottom: 5px; }
-.card-header p { font-size: 13px; color: #666; margin-bottom: 30px; }
 
-.input-section { margin-bottom: 20px; }
-.input-row { display: flex; align-items: center; gap: 15px; margin-bottom: 5px; }
-.dot-wrapper { display: flex; flex-direction: column; align-items: center; }
-.dot { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; }
-.green { background: #2ecc71; box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3); }
-.red { background: #e74c3c; box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3); }
-.line-path { width: 2px; height: 30px; background: #ddd; margin: 4px 0; }
+.content-container { text-align: center; max-width: 900px; }
+.status-chip { background: rgba(52, 152, 219, 0.15); border: 1px solid var(--accent); color: var(--accent); padding: 6px 16px; border-radius: 50px; font-size: 12px; font-weight: 800; display: inline-block; margin-bottom: 20px; }
+h1 { font-size: clamp(36px, 8vw, 72px); line-height: 1; font-weight: 800; margin-bottom: 20px; }
+.gradient-text { background: linear-gradient(90deg, #fff, #3498db); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-.input-row input { 
-    flex: 1; padding: 14px 18px; border-radius: 12px; border: 1px solid #eee; 
-    background: #f9f9f9; font-size: 15px; outline: none; transition: 0.3s;
+/* The Next-Gen Booking Card */
+.booking-deck { 
+    background: var(--glass); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1);
+    padding: 40px; border-radius: 32px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); margin-top: 40px;
 }
-.input-row input:focus { border-color: var(--rrp-blue); background: #fff; }
-
-.contact-row { 
-    display: flex; align-items: center; background: #eef5fc; 
-    border-radius: 12px; padding: 12px 18px; margin-top: 20px; border: 1px solid #dce8f5;
+.form-grid { display: grid; grid-template-columns: 1fr 50px 1fr; gap: 20px; align-items: center; text-align: left; }
+.input-wrap { display: flex; flex-direction: column; gap: 10px; }
+.input-wrap label { font-size: 12px; font-weight: 700; opacity: 0.6; text-transform: uppercase; }
+.input-wrap input { 
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); 
+    padding: 16px; border-radius: 12px; color: #fff; font-size: 16px; outline: none; transition: 0.3s;
 }
-.contact-row i { color: var(--rrp-blue); margin-right: 15px; }
-.contact-row input { border: none; background: transparent; width: 100%; font-size: 16px; font-weight: 600; outline: none; }
+.input-wrap input:focus { border-color: var(--accent); background: rgba(255,255,255,0.1); }
+.form-connector { padding-top: 20px; color: var(--accent); font-size: 20px; }
+.full-width { grid-column: 1 / span 3; margin-top: 10px; }
 
-/* Colorful Info Banner */
-.promo-box { 
-    background: #fff9e6; border-radius: 15px; padding: 15px; 
-    margin: 25px 0; display: flex; align-items: center; gap: 15px; border: 1px solid #ffeeba;
+.glow-btn { 
+    width: 100%; margin-top: 30px; padding: 20px; border-radius: 16px; border: none;
+    background: var(--pure-white); color: #000; font-weight: 800; font-size: 18px;
+    display: flex; justify-content: center; align-items: center; gap: 12px; cursor: pointer; transition: 0.4s;
 }
-.promo-icon { font-size: 24px; color: #f39c12; }
-.promo-text strong { display: block; color: #856404; font-size: 15px; }
-.promo-text span { font-size: 12px; color: #997404; }
+.glow-btn:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(52, 152, 219, 0.4); }
 
-.submit-btn { 
-    width: 100%; padding: 20px; background: #111; color: white; 
-    border: none; border-radius: 15px; font-weight: 800; font-size: 17px; 
-    cursor: pointer; transition: 0.3s;
-}
-.submit-btn:hover { background: #000; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-
-/* Hero Content Styling */
-.hero-content { color: white; flex: 1; }
-.main-title { font-size: 60px; line-height: 1.1; margin-bottom: 20px; font-weight: 900; }
-.main-title span { color: #3498db; }
-.sub-text { font-size: 22px; margin-bottom: 40px; opacity: 0.9; }
-.hero-footer { display: flex; align-items: center; gap: 25px; }
-.footer-logo { height: 75px; filter: brightness(0) invert(1); }
-.badge { padding: 8px 20px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 14px; }
-.orange { background: #f39c12; color: white; }
-
-/* Floating WhatsApp */
+/* Floating Support */
 .wa-float { 
     position: fixed; bottom: 30px; right: 30px; background: #25d366; 
-    color: white; padding: 16px 28px; border-radius: 50px; text-decoration: none; 
-    font-weight: bold; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 2000;
+    width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 30px; color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 2000;
 }
 
-footer { background: #000; color: #666; text-align: center; padding: 40px; font-size: 14px; }
+footer { padding: 40px; text-align: center; font-size: 12px; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.05); }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .form-connector { transform: rotate(90deg); padding: 0; height: 30px; }
+    .full-width { grid-column: 1; }
+}
