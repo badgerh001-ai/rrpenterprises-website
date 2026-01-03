@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <title>RRP Enterprises | Smart Logistics Ecosystem</title>
+    <title>RRP Enterprises | India's Smartest Trucking Ecosystem</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -20,9 +20,10 @@
                 </div>
             </div>
             <div class="nav-links">
+                <a href="#about">About</a>
                 <a href="#services">Services</a>
                 <a href="#enquiry">Enquiry</a>
-                <a href="mailto:contact@rrpenterprises.co.in" class="nav-cta">Contact Us</a>
+                <a href="mailto:contact@rrpenterprises.co.in" class="nav-cta">Get in Touch</a>
             </div>
         </div>
     </nav>
@@ -45,7 +46,7 @@
                     <button type="button" class="tab-btn" onclick="switchTab(this, 'PTL')">Part Load (PTL)</button>
                 </div>
                 <form action="https://formspree.io/f/mpqwlvba" method="POST" class="booking-form">
-                    <input type="hidden" name="Service" id="serviceType" value="FTL">
+                    <input type="hidden" name="Inquiry_Type" id="serviceType" value="FTL">
                     <div class="input-field">
                         <label><i class="fas fa-map-marker-alt green"></i> LOADING POINT</label>
                         <input type="text" name="Origin" placeholder="Enter City, Mandal or Pincode" required>
@@ -60,7 +61,7 @@
                     </div>
                     <div class="input-field">
                         <label>GOODS & REMARKS</label>
-                        <textarea name="Remarks" placeholder="Type of Load, Weight, etc..." rows="2"></textarea>
+                        <textarea name="Remarks" placeholder="Weight, Cargo type, or instructions..." rows="2"></textarea>
                     </div>
                     <button type="submit" class="primary-btn">GENERATE INSTANT QUOTE <i class="fas fa-arrow-right"></i></button>
                 </form>
@@ -68,31 +69,43 @@
         </div>
     </main>
 
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title">About Us</h2>
+                    <p>RRP ENTERPRISES is a diversified logistics company in India and a leading player in domestic B2B road transportation segment. We deliver reliable, end-to-end multimodal logistics solutions designed around our customers’ needs.</p>
+                    <p>Logistics is more than moving cargo—it’s about keeping businesses running smoothly. With technology-driven operations, we provide real-time visibility and scalable capacity that helps clients reduce costs and meet delivery commitments with confidence.</p>
+                    
+                    <div class="vision-mission">
+                        <div class="vm-card">
+                            <h3>Our Vision</h3>
+                            <p>To become a most trusted and technology-led logistics partner in India, enabling seamless movement of goods and supporting the growth of our customers.</p>
+                        </div>
+                        <div class="vm-card">
+                            <h3>Our Mission</h3>
+                            <ul>
+                                <li>Deliver safe, timely, and cost-effective solutions.</li>
+                                <li>Build long-term partnerships through reliability.</li>
+                                <li>Leverage technology for better visibility and control.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="assets/about-logistics.jpg" alt="Logistics Technology" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800'">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="services" class="service-bar">
-        <div class="bar-item">
-            <i class="fas fa-truck-fast"></i>
-            <span>Full Truck Load</span>
-        </div>
-        <div class="bar-item">
-            <i class="fas fa-train"></i>
-            <span>Rail/Multi-modal</span>
-        </div>
-        <div class="bar-item">
-            <i class="fas fa-helmet-safety"></i>
-            <span>Project Logistics</span>
-        </div>
-        <div class="bar-item">
-            <i class="fas fa-ship"></i>
-            <span>Shipping/Coastal</span>
-        </div>
-        <div class="bar-item">
-            <i class="fas fa-warehouse"></i>
-            <span>Warehousing</span>
-        </div>
-        <div class="bar-item">
-            <i class="fas fa-plane"></i>
-            <span>Air Cargo</span>
-        </div>
+        <div class="bar-item"><i class="fas fa-truck-fast"></i><span>Full Truck Load (FTL)</span></div>
+        <div class="bar-item"><i class="fas fa-train"></i><span>Rail/Multi-modal</span></div>
+        <div class="bar-item"><i class="fas fa-helmet-safety"></i><span>Project Logistics</span></div>
+        <div class="bar-item"><i class="fas fa-ship"></i><span>Shipping/Coastal</span></div>
+        <div class="bar-item"><i class="fas fa-warehouse"></i><span>Warehousing & Distribution</span></div>
+        <div class="bar-item"><i class="fas fa-plane"></i><span>Freight Forwarding</span></div>
     </section>
 
     <section id="enquiry" class="enquiry-section">
@@ -105,10 +118,9 @@
                         <input type="email" name="Email" placeholder="Email id" required>
                         <input type="tel" name="Phone" placeholder="Phone No" required>
                     </div>
-                    <input type="text" name="Fleet" placeholder="Fleet Type">
                     <input type="text" name="City" placeholder="City">
                     <textarea name="Description" placeholder="Description"></textarea>
-                    <button type="submit" class="submit-red">Submit</button>
+                    <button type="submit" class="submit-red">Submit Vendor Request</button>
                 </form>
             </div>
 
@@ -117,20 +129,15 @@
                 <form action="https://formspree.io/f/mpqwlvba" method="POST">
                     <input type="text" name="Company" placeholder="Company Name" required>
                     <div class="dual-row">
-                        <input type="text" name="First_Name" placeholder="First Name">
-                        <input type="text" name="Last_Name" placeholder="Last Name">
-                    </div>
-                    <div class="dual-row">
                         <input type="tel" name="Phone" placeholder="Phone Number">
                         <input type="email" name="Email" placeholder="Email id">
                     </div>
                     <select name="Type">
-                        <option>Trucking - Long Haul</option>
-                        <option>Express Delivery</option>
+                        <option>Trucking - FTL</option>
+                        <option>Trucking - Project Logistics</option>
                     </select>
-                    <input type="text" name="GST" placeholder="GST No">
                     <textarea name="Description" placeholder="Description"></textarea>
-                    <button type="submit" class="submit-red">Submit</button>
+                    <button type="submit" class="submit-red">Submit Business Enquiry</button>
                 </form>
             </div>
         </div>
@@ -140,36 +147,28 @@
         <div class="footer-grid">
             <div class="footer-info">
                 <img src="assets/logo.png" alt="Logo" class="footer-logo">
-                <p><i class="fas fa-location-dot"></i> 635, 1st Floor, 21st Cross, Bhuvaneshwari Nagar, Hebbal, Bangalore - 560024</p>
+                <p>635, 1st Floor, 21st Cross, Bhuvaneshwari Nagar, Hebbal, Bangalore - 560024</p>
                 <div class="footer-socials">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.linkedin.com/in/rrpenterprises"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/in/rrpenterprises"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
                 </div>
             </div>
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <a href="#">Home</a>
-                <a href="#">About Us</a>
-                <a href="#">Services</a>
-            </div>
-            <div class="footer-links">
-                <h4>Other Links</h4>
-                <a href="#">Contact Us</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
+                <a href="#about">About Us</a>
+                <a href="#services">Services</a>
             </div>
             <div class="footer-address">
-                <h4>Address</h4>
+                <h4>Contact Us</h4>
                 <p><i class="fas fa-phone"></i> +91-8152055195</p>
                 <p><i class="fas fa-envelope"></i> support@rrpenterprises.co.in</p>
-                <p><i class="fab fa-whatsapp"></i> Contact Message on Whatsapp</p>
+                <p><i class="fab fa-whatsapp"></i> Chat on Whatsapp</p>
             </div>
         </div>
+        <div class="copyright-bar">
+            &copy; 2026 RRP Enterprises. All Rights Reserved.
+        </div>
     </footer>
-
-    <a href="https://wa.me/919494831803" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp"></i> WhatsApp Booking
-    </a>
 
     <script>
         function switchTab(element, service) {
