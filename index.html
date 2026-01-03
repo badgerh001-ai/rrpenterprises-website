@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <title>RRP Enterprises | India's Leading Truck Booking Platform</title>
+    <title>RRP Enterprises | Smart Logistics & Fleet Management</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="nav-links">
-                <a href="#booking" class="active">Book Truck</a>
+                <a href="#services">Our Solutions</a>
                 <a href="mailto:contact@rrpenterprises.co.in" class="nav-cta">Get in Touch</a>
             </div>
         </div>
@@ -32,17 +32,17 @@
             
             <div class="hero-text">
                 <div class="startup-badge">STARTUP INDIA RECOGNIZED</div>
-                <h1>India's #1 <br><span>Trucking Ecosystem</span></h1>
-                <p>Reliable FTL & PTL solutions for every Pincode, Mandal, and Taluk across the nation.</p>
+                <h1>Empowering India's <br><span>Logistics Network</span></h1>
+                <p>Digital-first FTL & PTL solutions across 21,000+ Pincodes.</p>
                 
                 <div class="trust-indicators">
                     <div class="stat-item">
-                        <strong>PAN-INDIA</strong>
-                        <span>21,000+ Pincodes</span>
+                        <strong>20+ Lakh</strong>
+                        <span>Verified Trucks</span>
                     </div>
                     <div class="stat-item">
-                        <strong>24/7</strong>
-                        <span>Verified Support</span>
+                        <strong>₹50 Lakh</strong>
+                        <span>Trip Insurance</span>
                     </div>
                 </div>
             </div>
@@ -54,19 +54,17 @@
                 </div>
 
                 <form action="https://formspree.io/f/mpqwlvba" method="POST" class="booking-form" id="truckForm">
-                    <input type="hidden" name="Service_Type" id="serviceType" value="Full Truck (FTL)">
+                    <input type="hidden" name="Inquiry_Type" id="serviceType" value="Full Truck (FTL)">
                     
                     <div class="form-body">
-                        <div class="route-search">
-                            <div class="input-field">
-                                <label><i class="fas fa-map-marker-alt origin-icon"></i> LOADING POINT</label>
-                                <input type="text" name="Origin" placeholder="Enter City, Mandal or Pincode" required>
-                            </div>
+                        <div class="input-field">
+                            <label><i class="fas fa-map-marker-alt origin-icon"></i> LOADING POINT</label>
+                            <input type="text" name="Origin" placeholder="City, Mandal or Pincode" required>
+                        </div>
 
-                            <div class="input-field">
-                                <label><i class="fas fa-location-dot dest-icon"></i> UNLOADING POINT</label>
-                                <input type="text" name="Destination" placeholder="Enter City, Mandal or Pincode" required>
-                            </div>
+                        <div class="input-field">
+                            <label><i class="fas fa-location-dot dest-icon"></i> UNLOADING POINT</label>
+                            <input type="text" name="Destination" placeholder="City, Mandal or Pincode" required>
                         </div>
 
                         <div class="dual-row">
@@ -75,14 +73,14 @@
                                 <input type="date" name="Date" required>
                             </div>
                             <div class="input-field">
-                                <label><i class="fas fa-phone"></i> PHONE NUMBER</label>
-                                <input type="tel" name="Phone" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+                                <label><i class="fas fa-phone"></i> MOBILE NUMBER</label>
+                                <input type="tel" name="Phone" placeholder="10-Digit Mobile" pattern="[0-9]{10}" required>
                             </div>
                         </div>
 
                         <div class="input-field">
-                            <label><i class="fas fa-truck-moving"></i> GOODS & REMARKS</label>
-                            <textarea name="Remarks" placeholder="Type of Load, Weight, or Truck requirements..." rows="2"></textarea>
+                            <label><i class="fas fa-box"></i> LOAD DETAILS</label>
+                            <textarea name="Remarks" placeholder="Weight, Cargo type, or Specific instructions..." rows="2"></textarea>
                         </div>
                     </div>
 
@@ -95,19 +93,39 @@
         </div>
     </main>
 
+    <section id="services" class="solutions-grid">
+        <div class="section-container">
+            <h2>Specialized Logistics Solutions</h2>
+            <div class="grid-layout">
+                <div class="solution-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Full Truck Load</h3>
+                    <p>Dedicated transits with zero damage risk.</p>
+                </div>
+                <div class="solution-card">
+                    <i class="fas fa-boxes-packing"></i>
+                    <h3>Part Load (PTL)</h3>
+                    <p>Save up to 25% by sharing truck space.</p>
+                </div>
+                <div class="solution-card">
+                    <i class="fas fa-satellite"></i>
+                    <h3>Fleet Tracking</h3>
+                    <p>Advanced GPS with remote engine locks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="enterprise-footer">
         <div class="footer-container">
-            <p>&copy; 2026 RRP Enterprises. All Rights Reserved. Serving 1800+ Cities in India.</p>
+            <p>&copy; 2026 RRP Enterprises. Serving 1800+ Cities Pan-India.</p>
         </div>
     </footer>
 
     <script>
         function switchTab(element, service) {
-            // Remove active class from all buttons
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
             element.classList.add('active');
-            // Update hidden form field
             document.getElementById('serviceType').value = service;
         }
     </script>
