@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <title>RRP Enterprises | Smart Logistics & Fleet Management</title>
+    <title>RRP Enterprises | India's Leading Truck Booking Platform</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -29,12 +29,10 @@
     <main class="hero-section">
         <div class="hero-overlay"></div>
         <div class="content-wrapper">
-            
             <div class="hero-text">
                 <div class="startup-badge">STARTUP INDIA RECOGNIZED</div>
                 <h1>Empowering India's <br><span>Logistics Network</span></h1>
                 <p>Digital-first FTL & PTL solutions across 21,000+ Pincodes.</p>
-                
                 <div class="trust-indicators">
                     <div class="stat-item">
                         <strong>20+ Lakh</strong>
@@ -52,21 +50,17 @@
                     <button type="button" class="tab-btn active" onclick="switchTab(this, 'Full Truck (FTL)')">Full Truck (FTL)</button>
                     <button type="button" class="tab-btn" onclick="switchTab(this, 'Part Load (PTL)')">Part Load (PTL)</button>
                 </div>
-
                 <form action="https://formspree.io/f/mpqwlvba" method="POST" class="booking-form" id="truckForm">
                     <input type="hidden" name="Inquiry_Type" id="serviceType" value="Full Truck (FTL)">
-                    
                     <div class="form-body">
                         <div class="input-field">
                             <label><i class="fas fa-map-marker-alt origin-icon"></i> LOADING POINT</label>
                             <input type="text" name="Origin" placeholder="City, Mandal or Pincode" required>
                         </div>
-
                         <div class="input-field">
                             <label><i class="fas fa-location-dot dest-icon"></i> UNLOADING POINT</label>
                             <input type="text" name="Destination" placeholder="City, Mandal or Pincode" required>
                         </div>
-
                         <div class="dual-row">
                             <div class="input-field">
                                 <label><i class="fas fa-calendar-check"></i> LOADING DATE</label>
@@ -77,13 +71,11 @@
                                 <input type="tel" name="Phone" placeholder="10-Digit Mobile" pattern="[0-9]{10}" required>
                             </div>
                         </div>
-
                         <div class="input-field">
                             <label><i class="fas fa-box"></i> LOAD DETAILS</label>
                             <textarea name="Remarks" placeholder="Weight, Cargo type, or Specific instructions..." rows="2"></textarea>
                         </div>
                     </div>
-
                     <button type="submit" class="primary-btn">
                         <span>GENERATE INSTANT QUOTE</span>
                         <i class="fas fa-arrow-right"></i>
@@ -95,7 +87,6 @@
 
     <section id="services" class="solutions-grid">
         <div class="section-container">
-            <h2>Specialized Logistics Solutions</h2>
             <div class="grid-layout">
                 <div class="solution-card">
                     <i class="fas fa-truck"></i>
@@ -117,8 +108,22 @@
     </section>
 
     <footer class="enterprise-footer">
-        <div class="footer-container">
-            <p>&copy; 2026 RRP Enterprises. Serving 1800+ Cities Pan-India.</p>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="RRP" class="footer-logo">
+                <p>Leading the digital transformation of Indian logistics with verified reliability.</p>
+            </div>
+            <div class="footer-quick-links">
+                <h4>QUICK CONTACT</h4>
+                <div class="social-btns">
+                    <a href="https://wa.me/919494831803" class="social-link whatsapp" title="WhatsApp Us"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/rrpenterprises" target="_blank" class="social-link linkedin" title="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:contact@rrpenterprises.co.in" class="social-link mail" title="Email Us"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RRP Enterprises. All Rights Reserved. Serving 1800+ Cities Pan-India.</p>
         </div>
     </footer>
 
@@ -129,6 +134,5 @@
             document.getElementById('serviceType').value = service;
         }
     </script>
-
 </body>
 </html>
