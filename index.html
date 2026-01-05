@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href="assets/logo.png">
     <title>RRP Enterprises | Powering Reliable Logistics Across India</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -138,7 +138,11 @@
                 </div>
                 <div class="vm-card">
                     <h3>Our Mission</h3>
-                    <p>To deliver safe, timely, and cost-effective solutions.</p>
+                    <ul>
+                        <li>Deliver safe, timely, and cost-effective solutions.</li>
+                        <li>Build long-term partnerships through transparency.</li>
+                        <li>Leverage technology and innovation for superior visibility.</li>
+                    </ul>
                 </div>
             </div>
             <div class="why-us-box">
@@ -244,19 +248,18 @@
     </div>
 
     <script>
-        // Toggle Mobile Menu
+        // MOBILE MENU TOGGLE
         const menuToggle = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            // Change icon from Bars to X when active
             const icon = menuToggle.querySelector('i');
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-times');
         });
 
-        // Close menu when a link is clicked
+        // CLOSE MENU ON LINK CLICK
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -266,11 +269,11 @@
             });
         });
 
-        // Simple Form Submission Feedback
+        // FORM SUBMISSION FEEDBACK
         const forms = document.querySelectorAll('form');
-        forms.forEach(form => {
-            form.addEventListener('submit', () => {
-                alert("Thank you! Your enquiry has been sent to RRP Enterprises. We will contact you shortly.");
+        forms.forEach(f => {
+            f.addEventListener('submit', () => {
+                alert("Thank you! Your enquiry has been sent to RRP Enterprises.");
             });
         });
     </script>
