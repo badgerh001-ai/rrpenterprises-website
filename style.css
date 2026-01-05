@@ -548,3 +548,42 @@ input:focus,textarea:focus,select:focus{
         grid-template-columns:1fr
     }
 }
+
+/* ===================== */
+/* ADDITIONS – DO NOT REMOVE */
+/* ===================== */
+
+/* FIX ANCHOR OFFSET FOR FIXED NAV */
+section{
+    scroll-margin-top:100px
+}
+
+/* SAFE SCROLL ANIMATIONS */
+.animate{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .8s ease, transform .8s ease
+}
+.animate.show{
+    opacity:1;
+    transform:none
+}
+
+/* IOS / ANDROID FORM SAFETY */
+input,textarea,select{
+    -webkit-appearance:none;
+    appearance:none
+}
+
+/* TOUCH IMPROVEMENTS */
+button,a{
+    -webkit-tap-highlight-color:transparent
+}
+
+/* REDUCE MOTION */
+@media (prefers-reduced-motion: reduce){
+    *{
+        animation:none!important;
+        transition:none!important
+    }
+}
