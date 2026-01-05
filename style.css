@@ -19,11 +19,11 @@ body { background: var(--dark); color: var(--white); overflow-x: hidden; scroll-
 
 .section-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* NAV STYLES */
+/* NAV */
 .main-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 11, 29, .95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, .08); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; }
 .brand-identity { display: flex; align-items: center; gap: 12px; }
-.nav-logo { height: 38px; background: #fff; padding: 4px; border-radius: 6px; }
+.nav-logo { height: 38px; background: #fff; border-radius: 4px; padding: 2px; }
 .brand-main { font-weight: 800; font-size: 15px; }
 .brand-tag { font-size: 9px; font-weight: 700; color: var(--accent); display: block; }
 .menu-toggle { display: none; font-size: 22px; cursor: pointer; color: #fff; }
@@ -32,7 +32,7 @@ body { background: var(--dark); color: var(--white); overflow-x: hidden; scroll-
 .nav-links a:hover { color: var(--accent); }
 .nav-cta { background: #fff; color: #000 !important; padding: 7px 18px; border-radius: 20px; font-weight: 700; }
 
-/* HERO STYLES */
+/* HERO */
 .hero-section { min-height: 100vh; padding: 150px 0 90px; display: flex; align-items: center; position: relative; }
 .hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle at 70% 25%, rgba(0, 74, 153, .25), transparent 60%); }
 .content-wrapper { display: flex; gap: 70px; align-items: center; justify-content: space-between; width: 100%; }
@@ -41,7 +41,7 @@ body { background: var(--dark); color: var(--white); overflow-x: hidden; scroll-
 .hero-text h1 { font-size: 52px; font-weight: 800; line-height: 1.15; margin-bottom: 18px; }
 .hero-text h1 span { color: var(--accent); }
 
-/* BOOKING STYLES */
+/* BOOKING */
 .booking-portal { background: #fff; color: #000; padding: 34px; border-radius: var(--radius); width: 100%; max-width: 460px; box-shadow: 0 40px 100px rgba(0, 0, 0, .45); }
 .booking-header h3 { font-size: 18px; font-weight: 800; color: var(--primary); margin-bottom: 20px; }
 .input-field { margin-bottom: 14px; }
@@ -67,6 +67,7 @@ input, textarea, select { width: 100%; padding: 12px; border-radius: 10px; borde
 .branding-bar { background: #fff; color: #000; padding: 60px 0; text-align: center; }
 .iconic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 18px; }
 .client-box { background: #f9fafb; padding: 16px; border-radius: 12px; font-weight: 800; font-size: 14px; border-bottom: 4px solid #eee; transition: .3s; }
+.client-box:hover { transform: translateY(-5px); }
 .c-maersk { color: #00243d; border-color: #00243d; }
 .c-sugna { color: #e61e25; border-color: #e61e25; }
 .c-delhivery { color: #ff6a00; border-color: #ff6a00; }
