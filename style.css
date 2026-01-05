@@ -1,86 +1,146 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <title>RRP Enterprises | India's #1 Trucking Ecosystem</title>
+    <link rel="stylesheet" href="style.css?v=1.1"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
-:root {
-    --primary: #004a99;
-    --accent: #3498db;
-    --bg-dark: #000b1d;
-    --footer-teal: #002d2d;
-    --red: #ff3b3b;
-    --white: #ffffff;
-}
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="brand-identity">
+                <img src="assets/logo.png" alt="RRP Logo" class="nav-logo">
+                <div class="brand-naming">
+                    <span class="brand-main">RRP ENTERPRISES</span>
+                    <span class="brand-tag">INTEGRATED LOGISTICS</span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link-item">About Us</a>
+                <a href="#services" class="nav-link-item">Services</a>
+                <a href="#enquiry" class="nav-link-item">Enquiry</a>
+                <a href="mailto:contact@rrpenterprises.co.in" class="nav-cta">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-body { background: var(--bg-dark); color: var(--white); overflow-x: hidden; scroll-behavior: smooth; }
+    <main class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="content-wrapper">
+            <div class="hero-text fade-in">
+                <div class="startup-badge">STARTUP INDIA RECOGNIZED</div>
+                <h1>Empowering India's <br><span>Logistics Network</span></h1>
+                <p>Digital-first FTL solutions across 21,000+ Pincodes.</p>
+                <div class="trust-indicators">
+                    <div class="stat-item"><strong>20+ Lakh</strong><span>Verified Trucks</span></div>
+                    <div class="stat-item"><strong>₹50 Lakh</strong><span>Trip Insurance</span></div>
+                </div>
+            </div>
 
-/* Fixed Navigation */
-.main-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 11, 29, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 12px 0; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 0 5%; max-width: 1400px; margin: 0 auto; }
-.brand-identity { display: flex; align-items: center; gap: 10px; }
-.nav-logo { height: 40px; background: #fff; border-radius: 4px; padding: 2px; }
-.brand-main { font-weight: 800; font-size: 16px; }
-.brand-tag { font-size: 8px; color: var(--accent); font-weight: 700; display: block; }
-.nav-links a { color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; margin-left: 15px; }
-.nav-cta { background: #fff; color: #000 !important; padding: 8px 16px; border-radius: 50px; }
+            <div class="booking-portal scale-up">
+                <div class="booking-header">
+                    <h3>Full Truck (FTL) Booking</h3>
+                </div>
+                <form action="https://formspree.io/f/mpqwlvba" method="POST" class="booking-form">
+                    <input type="hidden" name="Inquiry_Type" value="Full Truck (FTL)">
+                    <div class="form-body">
+                        <div class="input-field">
+                            <label><i class="fas fa-map-marker-alt" style="color:#27ae60"></i> LOADING POINT</label>
+                            <input type="text" name="Origin" placeholder="City or Pincode" required>
+                        </div>
+                        <div class="input-field">
+                            <label><i class="fas fa-location-dot" style="color:#e74c3c"></i> UNLOADING POINT</label>
+                            <input type="text" name="Destination" placeholder="City or Pincode" required>
+                        </div>
+                        <div class="dual-row">
+                            <div class="input-field"><label>DATE</label><input type="date" name="Date" required></div>
+                            <div class="input-field"><label>MOBILE</label><input type="tel" name="Phone" placeholder="Mobile" required></div>
+                        </div>
+                        <textarea name="Remarks" placeholder="Weight or Cargo details..." rows="2"></textarea>
+                    </div>
+                    <button type="submit" class="primary-btn">GENERATE INSTANT QUOTE <i class="fas fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+    </main>
 
-/* Hero Section */
-.hero-section { min-height: 100vh; padding: 120px 5% 60px; display: flex; align-items: center; position: relative; }
-.hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle at 70% 30%, rgba(0, 74, 153, 0.2), transparent 60%); z-index: -1; }
-.content-wrapper { display: grid; grid-template-columns: 1fr; gap: 40px; width: 100%; max-width: 1400px; margin: 0 auto; }
-.hero-text { text-align: center; }
-h1 { font-size: clamp(34px, 8vw, 64px); line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
-h1 span { color: var(--accent); }
-.startup-badge { border: 1px solid var(--accent); padding: 5px 12px; border-radius: 4px; font-size: 10px; font-weight: 800; margin-bottom: 15px; display: inline-block; }
+    <section class="iconic-marquee-section">
+        <div class="marquee-label">TRUSTED BY INDUSTRY LEADERS</div>
+        <div class="marquee-viewport">
+            <div class="marquee-content-track">
+                <span class="client-brand">DELHIVERY</span>
+                <span class="client-brand">CJ DARCL</span>
+                <span class="client-brand">SUGNA SPONGE & POWER</span>
+                <span class="client-brand">SUGNA METALS</span>
+                <span class="client-brand">BINJUSARIA PAPERS</span>
+                <span class="client-brand">NCL BUILDTEK</span>
+                <span class="client-brand">DHL</span>
+                <span class="client-brand">ACCPREE ENGINEERING</span>
+                <span class="client-brand">DELHIVERY</span>
+                <span class="client-brand">CJ DARCL</span>
+                <span class="client-brand">SUGNA SPONGE & POWER</span>
+                <span class="client-brand">SUGNA METALS</span>
+                <span class="client-brand">BINJUSARIA PAPERS</span>
+                <span class="client-brand">NCL BUILDTEK</span>
+                <span class="client-brand">DHL</span>
+                <span class="client-brand">ACCPREE ENGINEERING</span>
+            </div>
+        </div>
+    </section>
 
-/* Booking Card */
-.booking-portal { background: #fff; color: #000; border-radius: 20px; padding: 25px; width: 100%; max-width: 480px; margin: 0 auto; box-shadow: 0 40px 100px rgba(0,0,0,0.5); }
-.booking-header { border-bottom: 2px solid var(--primary); margin-bottom: 20px; padding-bottom: 10px; }
-.booking-header h3 { color: var(--primary); font-size: 18px; font-weight: 800; }
-.input-field { margin-bottom: 12px; text-align: left; }
-.input-field label { font-size: 10px; font-weight: 800; color: #999; display: block; margin-bottom: 4px; }
-.input-field input, textarea { width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 8px; background: #f8fafc; font-size: 14px; outline: none; }
-.dual-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.primary-btn { width: 100%; padding: 16px; background: #000; color: #fff; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; margin-top: 10px; }
+    <section id="services" class="service-bar">
+        <div class="bar-item"><i class="fas fa-truck-fast"></i><span>Full Truck Load</span></div>
+        <div class="bar-item"><i class="fas fa-warehouse"></i><span>Contract Logistics</span></div>
+        <div class="bar-item"><i class="fas fa-plane-departure"></i><span>Freight Forwarding</span></div>
+    </section>
 
-/* PUNCHY ICONIC MARQUEE */
-.clients-section { background: #fff; padding: 60px 0; border-bottom: 1px solid #eee; }
-.marquee-title-box { text-align: center; margin-bottom: 40px; }
-.marquee-label { color: #999; font-size: 12px; font-weight: 800; letter-spacing: 4px; }
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <h2 class="section-title dark">About Us</h2>
+            <div class="about-content">
+                <p><strong>RRP ENTERPRISES</strong> is a diversified logistics company delivering reliable, end-to-end multimodal solutions engineered around customer needs. We provide real-time visibility and scalable capacity to improve efficiency.</p>
+                <div class="vm-container">
+                    <div class="vm-card">
+                        <h3>Our Vision</h3>
+                        <p>To become a most trusted and technology-led logistics partner in India.</p>
+                    </div>
+                    <div class="vm-card">
+                        <h3>Our Mission</h3>
+                        <ul>
+                            <li>Deliver safe and timely solutions.</li>
+                            <li>Build long-term partnerships through transparency.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.marquee-container { width: 100%; overflow: hidden; position: relative; background: #fff; }
-.marquee-container::before, .marquee-container::after { content: ""; height: 100%; width: 200px; position: absolute; z-index: 2; pointer-events: none; }
-.marquee-container::before { left: 0; background: linear-gradient(to right, #fff, transparent); }
-.marquee-container::after { right: 0; background: linear-gradient(to left, #fff, transparent); }
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="RRP" class="footer-logo">
+                <p><i class="fas fa-location-dot"></i> Anantapur, Andhra Pradesh - 515001</p>
+            </div>
+            <div class="footer-quicklinks">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>+91 8152055195</p>
+                <p>support@rrpenterprises.co.in</p>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 RRP Enterprises. All Rights Reserved.</div>
+    </footer>
 
-.marquee-content { display: flex; width: max-content; animation: iconScroll 25s linear infinite; }
-.client-name { color: #ddd; font-size: clamp(20px, 4vw, 32px); font-weight: 800; text-transform: uppercase; padding: 0 40px; white-space: nowrap; transition: 0.3s; }
-.client-name:hover { color: var(--primary); cursor: default; }
-
-@keyframes iconScroll { 
-    0% { transform: translateX(0); } 
-    100% { transform: translateX(-50%); } 
-}
-
-/* Service Section */
-.service-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 60px 5%; background: rgba(255,255,255,0.03); text-align: center; }
-.bar-item i { font-size: 32px; color: var(--accent); margin-bottom: 12px; display: block; }
-
-/* About Section */
-.about-section { padding: 80px 5%; background: #fff; color: #000; text-align: center; }
-.vm-container { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 30px; max-width: 1000px; margin: 0 auto; }
-.vm-card { background: #f8fafc; padding: 25px; border-radius: 15px; border-left: 4px solid var(--primary); text-align: left; }
-
-/* Footer */
-.main-footer { background: var(--footer-teal); padding: 60px 5% 0; }
-.footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; padding-bottom: 40px; }
-.footer-logo { height: 35px; background: #fff; border-radius: 4px; padding: 2px; margin-bottom: 20px; }
-.footer-quicklinks ul { list-style: none; }
-.footer-quicklinks a { color: #ccc; text-decoration: none; font-size: 14px; line-height: 2.5; }
-.footer-bottom { text-align: center; padding: 25px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 11px; }
-
-@media (min-width: 968px) {
-    .content-wrapper { grid-template-columns: 1.1fr 0.9fr; text-align: left; }
-    .hero-text { text-align: left; }
-    .booking-portal { margin: 0; }
-    .vm-container { grid-template-columns: 1fr 1fr; }
-    .footer-grid { grid-template-columns: 2fr 1fr 1.5fr; text-align: left; }
-}
+</body>
+</html>
