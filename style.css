@@ -1,383 +1,155 @@
-/* RRP ENTERPRISES PROFESSIONAL CORE LAYOUT ENGINE
-   - NO TRIM ARCHITECTURE | ADDITIVE SYSTEM
-   - FIXED MARGINS | HIGH-CONTRAST COLORS | MOBILE SYSTEM READY
-   - Updated: logo constraints + image overflow protection
+/* style.css — Fresh compact layout for RRP Enterprises
+   - Modern, compact, responsive
+   - All original content preserved
+   - v13.0
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
-
-:root {
-    --primary-rrp-blue: #004a99;
-    --accent-rrp-sky: #3498db;
-    --navy-rrp-dark-bg: #000b1d;
-    --pure-rrp-white: #ffffff;
-    --muted-rrp-text: #6b7280;
-    --gray-rrp-light-bg: #f4f7fa;
-    --footer-rrp-teal: #002d2d;
-    --brand-rrp-crimson: #e61e25;
-    --vibrant-rrp-red: #ff3b3b;
-    --radius-rrp-ui: 24px;
-    --section-rrp-gap: 120px;
-    --premium-rrp-shadow: 0 45px 110px rgba(0, 0, 0, 0.5);
-    --header-height: 90px; /* used for scroll offset and spacing */
+:root{
+  --bg:#071228;
+  --card:#fff;
+  --muted:#6b7280;
+  --accent:#1776d1;
+  --accent-2:#0b3f6b;
+  --brand:#e61e25;
+  --text-light:#ffffff;
+  --max-width:1200px;
+  --gap:24px;
+  --radius:14px;
+  --header-h:72px;
 }
 
-/* 1. CORE SYSTEM RESET */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    font-family: 'Plus Jakarta Sans', sans-serif; 
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text-light);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+  overflow-x:hidden;
 }
 
-html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
+/* Utility container */
+.container{max-width:var(--max-width);margin:0 auto;padding:0 20px;width:100%}
+.container-section{padding:64px 0}
+
+/* Skip link */
+.skip-link{position:absolute;left:-9999px;top:auto;overflow:hidden}
+.skip-link:focus{left:12px;top:12px;background:#fff;color:#000;padding:8px 12px;border-radius:6px}
+
+/* Header */
+.site-header{position:sticky;top:0;background:linear-gradient(180deg, rgba(0,5,12,0.9), rgba(0,5,12,0.8));backdrop-filter:blur(6px);z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-link{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.brand-logo{height:44px;width:auto;max-width:160px;display:block;object-fit:contain;border-radius:8px;background:#fff;padding:6px}
+.brand-text{line-height:1}
+.brand-name{font-size:14px;display:block}
+.brand-tag{font-size:11px;color:var(--accent);display:block}
+
+/* Nav */
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-link{color:var(--text-light);text-decoration:none;font-weight:600;font-size:14px;padding:8px 6px;border-radius:6px;transition:color .18s}
+.nav-link:hover{color:var(--accent)}
+.nav-cta{background:var(--card);color:var(--bg);padding:9px 16px;border-radius:999px;font-weight:800;box-shadow:0 6px 18px rgba(0,0,0,0.2)}
+
+.hamburger{display:none;background:transparent;border:0;cursor:pointer;padding:8px;border-radius:8px}
+.hamburger-bar{display:block;width:22px;height:2px;background:#fff;margin:4px 0;border-radius:2px}
+
+/* Hero */
+.hero{padding:48px 0 64px;position:relative;background:linear-gradient(180deg,#021528 0%, rgba(3,16,31,0.9) 60%)}
+.hero-grid{display:grid;grid-template-columns:1fr 380px;gap:36px;align-items:center}
+.badge{display:inline-block;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.07);color:var(--accent);font-weight:700;font-size:12px}
+.hero-title{font-size:36px;line-height:1.03;margin-top:12px;color:var(--text-light)}
+.hero-title .accent{color:var(--accent)}
+.lead{color:rgba(255,255,255,0.87);margin-top:14px;font-size:15px}
+.hero-stats{display:flex;gap:18px;margin-top:22px}
+.stat{display:flex;gap:12px;align-items:center}
+.stat i{font-size:26px;color:var(--accent)}
+.stat strong{display:block;font-size:16px}
+.muted{color:var(--muted);font-size:13px}
+
+/* Hero right card */
+.hero-card{background:var(--card);color:#000;border-radius:18px;padding:22px;box-shadow:0 25px 60px rgba(2,6,23,0.5)}
+.card-header h3{margin:0;font-size:18px;color:var(--accent-2)}
+.card-header .muted{color:#6b7280}
+
+.booking-form .field{display:block;margin:12px 0}
+.field-label{display:block;font-size:12px;font-weight:700;color:#556}
+input[type="text"], input[type="tel"], input[type="date"], input[type="email"], textarea, select{
+  width:100%;padding:12px 14px;border-radius:10px;border:1px solid #e8eef6;background:#fbfdff;font-size:14px;outline:none;
+}
+.row{display:flex;gap:12px}
+.field.small{flex:1}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--accent-2);color:#fff;border:0;padding:12px 16px;border-radius:10px;font-weight:800;cursor:pointer}
+
+/* Clients carousel */
+.clients{background:#fff;color:#000;padding:48px 0}
+.section-title{font-size:22px;color:var(--brand);margin-bottom:18px}
+.carousel{display:flex;align-items:center;gap:12px}
+.carousel-btn{background:#f4f6f9;border:0;padding:10px;border-radius:999px;cursor:pointer}
+.carousel-track{display:flex;overflow-x:auto;gap:22px;padding:12px 4px;scroll-behavior:smooth}
+.carousel-track::-webkit-scrollbar{display:none}
+.logo{flex:0 0 220px;display:flex;align-items:center;justify-content:center;padding:18px;border-radius:12px;border:1px solid #f0f3f7;background:#fff}
+.logo img{max-height:42px;object-fit:contain}
+
+/* Trusted brands */
+.trusted{background:#f8fafc;color:#081225;padding:48px 0}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:12px}
+.brand-box{background:#fff;padding:18px;border-radius:12px;font-weight:800;color:#234;text-align:center;border-bottom:6px solid #eee}
+
+/* About & Services layout */
+.about-grid{display:grid;grid-template-columns:1fr 360px;gap:26px;align-items:start}
+.about-cards{display:grid;gap:18px}
+.card{background:rgba(255,255,255,0.03);padding:18px;border-radius:12px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.service{background:#fff;padding:18px;border-radius:12px;color:#000;text-align:center}
+.service-icon{font-size:30px;color:var(--accent);margin-bottom:10px}
+
+/* Tech, Why-us, Enquiry */
+.two-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.vm-card{background:#fff;padding:18px;border-radius:12px;color:#000}
+
+/* Footer */
+.site-footer{background:linear-gradient(180deg,var(--accent-2),#012029);color:#fff;padding:48px 0}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:20px;align-items:start}
+.footer-logo{height:56px;object-fit:contain}
+.footer-links{list-style:none}
+.footer-links li{margin:8px 0}
+.footer-links a{color:rgba(255,255,255,0.9);text-decoration:none}
+.footer-contacts a{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.95);text-decoration:none;margin-top:8px}
+
+/* Fixed action buttons */
+.fixed-actions{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:60}
+.action-btn{width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;box-shadow:0 12px 28px rgba(2,6,23,0.5)}
+.action-btn.call{background:#f59e0b}
+.action-btn.whatsapp{background:#25d366}
+
+/* Responsive */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr 340px}
+  .about-grid{grid-template-columns:1fr}
+  .hero-title{font-size:30px}
 }
 
-body { 
-    background: var(--navy-rrp-dark-bg); 
-    color: var(--pure-rrp-white); 
-    line-height: 1.7; 
-    scroll-behavior: smooth; 
+@media (max-width:820px){
+  .nav-links{display:none;position:fixed;top:72px;left:0;right:0;background:linear-gradient(180deg,rgba(0,5,12,0.98),rgba(0,5,12,0.96));flex-direction:column;padding:26px;gap:14px;z-index:60;border-top:1px solid rgba(255,255,255,0.03);backdrop-filter:blur(6px)}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+  .hero-grid{grid-template-columns:1fr;gap:20px;padding:24px 0}
+  .hero-card{max-width:620px;margin:0 auto}
+  .clients .container{padding:0}
+  .container{padding:0 16px}
 }
 
-/* Make anchor targets avoid being hidden under the fixed header */
-section[id], header[id], main[id], [id] {
-    scroll-margin-top: calc(var(--header-height) + 18px);
+@media (max-width:480px){
+  .brand-text{display:none}
+  .hero-title{font-size:22px}
+  .btn-primary{width:100%}
+  .carousel-track{gap:12px}
+  .logo{flex:0 0 160px;padding:12px}
+  .fixed-actions{right:12px;bottom:12px}
 }
-
-/* IMAGE SAFETY: prevent any img from overflowing its container */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
-
-/* SPECIFIC: header & footer logos must be constrained */
-.brand-logo-img {
-    display: block;
-    width: auto;
-    height: auto;
-    max-height: 48px;      /* strict cap for header logo */
-    max-width: 160px;      /* prevents very wide logos from expanding header */
-}
-
-/* Footer logo: slightly larger allowed but still constrained */
-.footer-logo-ui {
-    display: block;
-    width: auto;
-    height: auto;
-    max-height: 64px;
-    max-width: 220px;
-    background: #fff;
-    border-radius: 10px;
-    padding: 10px;
-}
-
-/* slider logos small visual constraint */
-.slider-ui-scroll-pane img {
-    max-height: 52px;
-    width: auto;
-}
-
-/*  container */
-.fixed-section-container { 
-    max-width: 1320px; 
-    margin: 0 auto; 
-    padding: 0 6%; 
-    width: 100%; 
-}
-
-/* 2. FIXED SYSTEM HEADER UI */
-.site-header-nav { 
-    position: fixed; 
-    top: 0; 
-    width: 100%; 
-    z-index: 9999; 
-    background: rgba(0, 11, 29, 0.98); 
-    backdrop-filter: blur(20px); 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-    height: var(--header-height); 
-    display: flex; 
-    align-items: center; 
-    -webkit-font-smoothing:antialiased;
-}
-
-/* wrapper keeps nav content centered */
-.nav-wrapper-container { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    width: 100%; 
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 30px;
-    gap: 20px;
-}
-
-/* Header branding layout */
-.header-branding {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-.brand-text-stack {
-    display: inline-block;
-    line-height: 1;
-}
-.brand-primary-name { 
-    font-weight: 800; 
-    font-size: 20px; 
-    color: #fff; 
-    letter-spacing: 0.5px; 
-    display: block;
-}
-.brand-secondary-tag { 
-    font-size: 10px; 
-    font-weight: 700; 
-    color: var(--accent-rrp-sky); 
-    display: block; 
-    text-transform: uppercase; 
-}
-
-/* Mobile nav toggle: hidden by default, shown on mobile */
-.mobile-nav-toggle-btn {
-    display: none;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    font-size: 22px;
-    padding: 6px;
-}
-
-/* main nav links */
-.main-navigation-links { display: flex; gap: 35px; align-items: center; }
-
-.nav-item-link { 
-    color: #fff; 
-    text-decoration: none; 
-    font-size: 14px; 
-    font-weight: 600; 
-    transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
-}
-
-.nav-item-link:hover { color: var(--accent-rrp-sky); }
-
-.nav-item-cta-btn { 
-    background: var(--pure-rrp-white); 
-    color: var(--navy-rrp-dark-bg) !important; 
-    padding: 12px 30px; 
-    border-radius: 50px; 
-    font-weight: 800; 
-    transition: 0.4s transform;
-}
-
-.nav-item-cta-btn:hover { transform: translateY(-3px) scale(1.03); }
-
-/* 3. HERO LAYOUT SYSTEM */
-.primary-hero-interface { 
-    min-height: calc(100vh - var(--header-height)); /* account for fixed header */
-    padding: calc(var(--header-height) + 60px) 0 120px; 
-    display: flex; 
-    align-items: center; 
-    position: relative; 
-}
-
-.hero-visual-overlay { 
-    position: absolute; 
-    inset: 0; 
-    background: radial-gradient(circle at 75% 30%, rgba(0, 74, 153, 0.4), transparent 75%); 
-    z-index: -1; 
-}
-
-.hero-modular-grid-system { 
-    display: grid; 
-    grid-template-columns: 1fr 480px; 
-    gap: 80px; 
-    align-items: center; 
-    width: 100%; 
-}
-
-/* ensure hero textual column doesn't overflow on narrower viewports */
-.hero-context-branding-block {
-    max-width: 800px;
-    word-wrap: break-word;
-}
-
-.hero-context-branding-block h1 { font-size: 68px; font-weight: 800; line-height: 1.05; margin-bottom: 30px; color: var(--accent-rrp-sky); }
-.hero-paragraph-text { color: rgba(255,255,255,0.9); font-size: 16px; margin-top: 18px; }
-.highlight-text { color: var(--accent-rrp-sky); }
-
-.recognition-badge-ui { 
-    border: 1px solid var(--accent-rrp-sky); 
-    padding: 10px 22px; 
-    border-radius: 10px; 
-    font-size: 14px; 
-    font-weight: 800; 
-    margin-bottom: 30px; 
-    display: inline-block; 
-    color: var(--accent-rrp-sky); 
-}
-
-.hero-trust-indicators-flex { display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap; }
-.trust-stat-ui i { font-size: 32px; color: var(--accent-rrp-sky); margin-bottom: 12px; }
-.trust-stat-ui strong { display: block; font-size: 28px; color: var(--pure-rrp-white); }
-
-/* 4. BOOKING PORTAL UI: LOCKED MARGINS */
-.hero-booking-portal-ui { 
-    background: var(--pure-rrp-white); 
-    color: #000; 
-    padding: 50px; 
-    border-radius: var(--radius-rrp-ui); 
-    box-shadow: var(--premium-rrp-shadow); 
-    width: 100%;
-    max-width: 480px; /* enforce the intended width to avoid overflow */
-}
-
-.portal-header-lock h3 { font-size: 24px; color: var(--primary-rrp-blue); font-weight: 800; margin-bottom: 10px; }
-.portal-header-lock p { font-size: 14px; color: #778; margin-bottom: 35px; }
-
-.portal-input-container { margin-bottom: 22px; }
-.portal-input-container label { display: block; font-size: 12px; font-weight: 800; color: #889; margin-bottom: 8px; }
-
-input, textarea, select { 
-    width: 100%; 
-    padding: 18px; 
-    border: 1px solid #e5e9f0; 
-    border-radius: 15px; 
-    background: #f9fbff; 
-    font-size: 14px; 
-    transition: 0.3s border-color;
-}
-
-input:focus { border-color: var(--primary-rrp-blue); outline: none; }
-
-.portal-input-grid-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-
-.portal-action-primary-btn { 
-    width: 100%; padding: 24px; background: #000; color: #fff; border: none; border-radius: 15px; 
-    font-weight: 800; cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-}
-.portal-action-primary-btn:hover { background: var(--primary-rrp-blue); transform: translateY(-5px); }
-
-/* 5. REPAIRED SLIDER ENGINE */
-.client-slider-interface { background: #fff; padding: 120px 0; text-align: center; color: #000; }
-.slider-ui-header-red { color: var(--brand-rrp-crimson); font-size: 32px; font-weight: 800; margin-bottom: 60px; }
-
-.slider-modular-wrapper { display: flex; align-items: center; position: relative; gap: 25px; overflow: hidden; }
-.slider-ui-scroll-pane { 
-    display: flex; overflow-x: auto; gap: 40px; scroll-behavior: smooth; 
-    scrollbar-width: none; padding: 40px 0; width: 100%;
-}
-.slider-ui-scroll-pane::-webkit-scrollbar { display: none; }
-
-.logo-display-card-ui { 
-    flex: 0 0 320px; padding: 45px; border: 1px solid #f0f3f7; 
-    border-radius: 20px; background: #fff; display: flex; align-items: center; justify-content: center;
-}
-.logo-display-card-ui img { max-width: 100%; filter: grayscale(1); opacity: 0.65; transition: 0.4s; }
-.logo-display-card-ui:hover img { filter: grayscale(0); opacity: 1; transform: scale(1.1); }
-
-.slider-ui-nav-btn { background: #f4f6f9; border: none; width: 55px; height: 55px; border-radius: 50%; cursor: pointer; transition: 0.3s; }
-.slider-ui-nav-btn:hover { background: var(--brand-rrp-crimson); color: #fff; }
-
-/* 6. BRANDING GRID ENGINE */
-.branding-masonry-bar { background: #fff; padding: 120px 0; text-align: center; color: #000; border-top: 1px solid #f0f0f0; }
-.masonry-identity-lock { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 60px; }
-
-.identity-box-cell { 
-    background: #f9fbff; padding: 35px; border-radius: 20px; font-weight: 800; 
-    color: #334; border-bottom: 8px solid #eee; text-align: center; transition: 0.35s transform;
-}
-.identity-box-cell:hover { transform: translateY(-10px); }
-
-.c-delhivery { border-color: #ff6a00; color: #ff6a00; }
-.c-sugna { border-color: var(--brand-rrp-crimson); color: var(--brand-rrp-crimson); }
-
-/* 7. REPAIRED SERVICES MODULAR GRID */
-.services-modular-system { background: #f4f7fa; padding: var(--section-rrp-gap) 0; color: #000; }
-.services-layout-grid-fixed { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 45px; }
-
-.service-module-card { 
-    background: #fff; padding: 55px 45px; border-radius: 35px; text-align: center; 
-    box-shadow: 0 25px 60px rgba(0,0,0,0.06); transition: 0.45s cubic-bezier(0.4, 0, 0.2, 1); 
-}
-.service-module-card:hover { transform: translateY(-18px); box-shadow: 0 40px 80px rgba(0,0,0,0.12); }
-.module-icon-ui { font-size: 60px; color: var(--primary-rrp-blue); margin-bottom: 35px; }
-
-/* 8. ENQUIRY UI SYSTEM */
-.enquiry-system-interface { padding: var(--section-rrp-gap) 0; background: #fff; }
-.enquiry-modular-grid-fixed { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-
-.enquiry-card-ui { 
-    padding: 60px; border-radius: 40px; box-shadow: 0 20px 50px rgba(230, 30, 37, 0.05); 
-}
-.vendor-theme { background: #fff4f4; }
-.business-theme { background: #f4faff; }
-
-.enquiry-theme-title { color: var(--vibrant-rrp-red); font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 40px; }
-.enquiry-ui-btn-red { 
-    background: var(--vibrant-rrp-red); color: #fff; border: none; padding: 24px; 
-    border-radius: 18px; width: 100%; font-weight: 800; cursor: pointer; transition: 0.3s; 
-}
-
-/* 9. REPAIRED FOOTER ARCHITECTURE */
-.global-footer-narrative { background: var(--footer-rrp-teal); padding: 120px 0 60px; border-top: 10px solid var(--brand-rrp-crimson); }
-.footer-master-modular-grid { display: grid; grid-template-columns: 1.8fr 0.8fr 0.8fr 1.4fr; gap: 80px; }
-
-.footer-ui-header { color: #fff; margin-bottom: 40px; border-bottom: 4px solid var(--brand-rrp-crimson); display: inline-block; font-size: 19px; }
-.footer-ui-links-list { list-style: none; }
-.footer-ui-links-list a { color: #ccd; text-decoration: none; line-height: 2.8; font-size: 16px; transition: 0.25s; }
-.footer-ui-links-list a:hover { color: var(--brand-rrp-crimson); }
-
-/* 10. FIXED ACTIONS UI */
-.global-fixed-action-buttons-ui { position: fixed; bottom: 55px; left: 55px; display: flex; flex-direction: column; gap: 24px; z-index: 9999; }
-.fa-ui-btn { 
-    width: 75px; height: 75px; border-radius: 50%; display: flex; align-items: center; 
-    justify-content: center; color: #fff; font-size: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); transition: 0.4s; 
-}
-.fa-ui-btn:hover { transform: scale(1.15) rotate(5deg); }
-.phone-ui-style { background: #f59e0b; }
-.whatsapp-ui-style { background: #25d366; }
-
-/* 11. MOBILE REPAIR ENGINE */
-@media (max-width: 1180px) {
-    .hero-modular-grid-system { grid-template-columns: 1fr; gap: 60px; text-align: center; }
-    .hero-context-branding-block h1 { font-size: 50px; }
-    .hero-trust-indicators-flex { justify-content: center; }
-    .hero-booking-portal-ui { margin: 0 auto; max-width: 100%; }
-
-    /* mobile nav: hide desktop links and show the toggle button */
-    .main-navigation-links { 
-        display: none; flex-direction: column; position: absolute; top: var(--header-height); left: 0; 
-        width: 100%; background: var(--navy-rrp-dark-bg); padding: 70px 0; border-bottom: 8px solid var(--accent-rrp-sky); 
-    }
-    .main-navigation-links.active { display: flex; }
-    .mobile-nav-toggle-btn { display: block; color: #fff; font-size: 28px; }
-
-    .enquiry-modular-grid-fixed, .footer-master-modular-grid { grid-template-columns: 1fr; gap: 55px; }
-
-    .fixed-section-container { padding: 0 5%; } /* reduce horizontal padding slightly on medium screens */
-}
-
-/* Extra small screens: avoid overflow and large typography */
-@media (max-width: 480px) {
-    .hero-context-branding-block h1 { font-size: 34px; line-height: 1.08; margin-bottom: 18px; }
-    .hero-context-branding-block p.hero-paragraph-text { font-size: 14px; }
-    .primary-hero-interface { padding: calc(var(--header-height) + 30px) 0 60px; }
-    .hero-booking-portal-ui { padding: 26px; border-radius: 18px; max-width: 92%; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
-    .portal-input-grid-dual { grid-template-columns: 1fr; }
-    .logo-display-card-ui { flex: 0 0 220px; padding: 20px; }
-    .service-module-card { padding: 30px 20px; }
-    .global-fixed-action-buttons-ui { left: auto; right: 18px; bottom: 18px; gap: 14px; }
-    .nav-wrapper-container { padding: 0 18px; }
-    .fixed-section-container { padding: 0 16px; }
-}
-
-/* 12. ANIMATION SYSTEM LOCK */
-.animate { opacity: 0; transform: translateY(60px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.animate.show { opacity: 1; transform: translateY(0); }
