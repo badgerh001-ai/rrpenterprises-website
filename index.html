@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="icon" type="image/png" href="assets/logo.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
     <title>RRP Enterprises | Modern Logistics Excellence Across India</title>
 
-    <meta name="description" content="RRP Enterprises: A trusted pan-India B2B logistics company specializing in Full Truck Load (FTL), Domestic Road Transport, Project Logistics, and Warehousing.">
-    <meta name="keywords" content="RRP Enterprises, B2B Logistics India, FTL Transportation, Road Transport Anantapur, Project Logistics, Freight Forwarding">
+    <meta name="description" content="RRP Enterprises: A trusted pan-India B2B logistics company specializing in Full Truck Load (FTL), Domestic Road Transport, Project Logistics, and Warehousing." />
+    <meta name="keywords" content="RRP Enterprises, B2B Logistics India, FTL Transportation, Road Transport Anantapur, Project Logistics, Freight Forwarding" />
 
-    <link rel="stylesheet" href="style.css?v=12.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=12.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
 
-    <nav class="site-header-nav">
+    <!-- Skip link for keyboard users -->
+    <a class="skip-link" href="#mainContent" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+
+    <nav class="site-header-nav" id="siteHeader" role="navigation" aria-label="Main Navigation">
         <div class="nav-wrapper-container">
             <div class="header-branding">
                 <img src="assets/logo.png" alt="RRP Logo" class="brand-logo-img">
@@ -24,21 +27,22 @@
                 </div>
             </div>
 
-            <div class="mobile-nav-toggle-btn" id="navToggle" aria-label="Toggle Navigation">
-                <i class="fas fa-bars"></i>
+            <!-- Mobile toggle: aria-controls references main nav id -->
+            <div class="mobile-nav-toggle-btn" id="navToggle" aria-label="Toggle Navigation" aria-controls="mainNav" aria-expanded="false" role="button" tabindex="0">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </div>
 
-            <div class="main-navigation-links">
-                <a href="#about" class="nav-item-link">About Us</a>
-                <a href="#services" class="nav-item-link">Our Services</a>
-                <a href="#clients" class="nav-item-link">Esteemed Clients</a>
-                <a href="#why-us" class="nav-item-link">Why Choose Us</a>
-                <a href="#enquiry" class="nav-item-cta-btn">Enquiry Now</a>
+            <div class="main-navigation-links" id="mainNav" role="menubar" aria-hidden="false">
+                <a href="#about" class="nav-item-link" role="menuitem">About Us</a>
+                <a href="#services" class="nav-item-link" role="menuitem">Our Services</a>
+                <a href="#clients" class="nav-item-link" role="menuitem">Esteemed Clients</a>
+                <a href="#why-us" class="nav-item-link" role="menuitem">Why Choose Us</a>
+                <a href="#enquiry" class="nav-item-cta-btn" role="menuitem">Enquiry Now</a>
             </div>
         </div>
     </nav>
 
-    <main class="primary-hero-interface">
+    <main class="primary-hero-interface" id="mainContent" role="main">
         <div class="hero-visual-overlay"></div>
         <div class="fixed-section-container">
             <div class="hero-modular-grid-system animate">
@@ -49,14 +53,14 @@
 
                     <div class="hero-trust-indicators-flex">
                         <div class="trust-stat-ui">
-                            <i class="fas fa-globe-asia"></i>
+                            <i class="fas fa-globe-asia" aria-hidden="true"></i>
                             <div class="stat-inner-text">
                                 <strong>PAN-INDIA</strong>
                                 <span>Operational Presence</span>
                             </div>
                         </div>
                         <div class="trust-stat-ui">
-                            <i class="fas fa-building"></i>
+                            <i class="fas fa-building" aria-hidden="true"></i>
                             <div class="stat-inner-text">
                                 <strong>B2B</strong>
                                 <span>Logistics Specialists</span>
@@ -75,12 +79,12 @@
                         <input type="hidden" name="Inquiry_Category" value="Full Truck Load (FTL)">
 
                         <div class="portal-input-container">
-                            <label><i class="fas fa-map-pin"></i> LOADING POINT</label>
+                            <label><i class="fas fa-map-pin" aria-hidden="true"></i> LOADING POINT</label>
                             <input type="text" name="Origin_Point" placeholder="Enter City or Pincode" required>
                         </div>
 
                         <div class="portal-input-container">
-                            <label><i class="fas fa-location-arrow"></i> UNLOADING POINT</label>
+                            <label><i class="fas fa-location-arrow" aria-hidden="true"></i> UNLOADING POINT</label>
                             <input type="text" name="Destination_Point" placeholder="Enter City or Pincode" required>
                         </div>
 
@@ -101,7 +105,7 @@
                         </div>
 
                         <button type="submit" class="portal-action-primary-btn">
-                            GENERATE INSTANT QUOTE <i class="fas fa-paper-plane"></i>
+                            GENERATE INSTANT QUOTE <i class="fas fa-paper-plane" aria-hidden="true"></i>
                         </button>
                     </form>
                 </div>
@@ -113,8 +117,8 @@
         <div class="fixed-section-container">
             <h2 class="slider-ui-header-red">OUR ESTEEMED CLIENT</h2>
             <div class="slider-modular-wrapper">
-                <button class="slider-ui-nav-btn prev" id="sliderPrevBtn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
-                <div class="slider-ui-scroll-pane" id="sliderMainPane">
+                <button class="slider-ui-nav-btn prev" id="sliderPrevBtn" aria-label="Previous"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                <div class="slider-ui-scroll-pane" id="sliderMainPane" role="region" aria-label="Client logos carousel">
                     <div class="logo-display-card-ui"><img src="assets/maersk.png" alt="Maersk"></div>
                     <div class="logo-display-card-ui"><img src="assets/nxt.png" alt="NXT Group"></div>
                     <div class="logo-display-card-ui"><img src="assets/cwc.png" alt="CWC India"></div>
@@ -128,9 +132,9 @@
                     <div class="logo-display-card-ui"><img src="assets/leghorn.png" alt="LeghornGroup"></div>
                     <div class="logo-display-card-ui"><img src="assets/forin.png" alt="Forin"></div>
                 </div>
-                <button class="slider-ui-nav-btn next" id="sliderNextBtn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+                <button class="slider-ui-nav-btn next" id="sliderNextBtn" aria-label="Next"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
             </div>
-            <div class="slider-ui-dots-indicator">
+            <div class="slider-ui-dots-indicator" aria-hidden="true">
                 <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
             </div>
         </div>
@@ -179,27 +183,27 @@
             <h2 class="narrative-section-title white">Comprehensive Logistics Solutions Under One Roof</h2>
             <div class="services-layout-grid-fixed">
                 <div class="service-module-card">
-                    <div class="module-icon-ui"><i class="fas fa-truck-moving"></i></div>
+                    <div class="module-icon-ui"><i class="fas fa-truck-moving" aria-hidden="true"></i></div>
                     <h3>Full Truck Load (FTL)</h3>
                     <p>Dedicated vehicles for your cargo, offering faster transit times, reduced handling risks, and cost efficiency for bulk movements.</p>
                 </div>
                 <div class="service-module-card">
-                    <div class="module-icon-ui"><i class="fas fa-road"></i></div>
+                    <div class="module-icon-ui"><i class="fas fa-road" aria-hidden="true"></i></div>
                     <h3>Domestic Road Transportation</h3>
                     <p>With a strong road network and experienced operations team, we provide reliable pan-India road transportation services ensure on-time deliveries.</p>
                 </div>
                 <div class="service-module-card">
-                    <div class="module-icon-ui"><i class="fas fa-project-diagram"></i></div>
+                    <div class="module-icon-ui"><i class="fas fa-project-diagram" aria-hidden="true"></i></div>
                     <h3>Project Logistics</h3>
                     <p>We manage complex and large-scale logistics projects with precision—handling planning, execution, and coordination for oversized consignments.</p>
                 </div>
                 <div class="service-module-card">
-                    <div class="module-icon-ui"><i class="fas fa-globe-americas"></i></div>
+                    <div class="module-icon-ui"><i class="fas fa-globe-americas" aria-hidden="true"></i></div>
                     <h3>Freight Forwarding</h3>
                     <p>Simplifying cargo movement with seamless coordination, compliance, and documentation support, ensuring hassle-free logistics operations.</p>
                 </div>
                 <div class="service-module-card">
-                    <div class="module-icon-ui"><i class="fas fa-warehouse"></i></div>
+                    <div class="module-icon-ui"><i class="fas fa-warehouse" aria-hidden="true"></i></div>
                     <h3>Warehousing & Distribution</h3>
                     <p>We offer flexible warehousing and distribution solutions that help businesses optimize inventory, reduce turnaround times, and improve efficiency.</p>
                 </div>
@@ -244,11 +248,11 @@
             <div class="why-choose-masonry-block">
                 <h2>Why Choose RRP ENTERPRISES?</h2>
                 <div class="why-checklist-ui">
-                    <span class="check-item-ui"><i class="fas fa-check-circle"></i> Proven expertise in B2B logistics</span>
-                    <span class="check-item-ui"><i class="fas fa-check-circle"></i> Strong domestic road transportation network</span>
-                    <span class="check-item-ui"><i class="fas fa-check-circle"></i> Technology-enabled operations</span>
-                    <span class="check-item-ui"><i class="fas fa-check-circle"></i> Customer-focused approach</span>
-                    <span class="check-item-ui"><i class="fas fa-check-circle"></i> Reliable execution and transparent processes</span>
+                    <span class="check-item-ui"><i class="fas fa-check-circle" aria-hidden="true"></i> Proven expertise in B2B logistics</span>
+                    <span class="check-item-ui"><i class="fas fa-check-circle" aria-hidden="true"></i> Strong domestic road transportation network</span>
+                    <span class="check-item-ui"><i class="fas fa-check-circle" aria-hidden="true"></i> Technology-enabled operations</span>
+                    <span class="check-item-ui"><i class="fas fa-check-circle" aria-hidden="true"></i> Customer-focused approach</span>
+                    <span class="check-item-ui"><i class="fas fa-check-circle" aria-hidden="true"></i> Reliable execution and transparent processes</span>
                 </div>
                 <div class="why-us-cta-text">
                     <p>At RRP ENTERPRISES, we don’t just move goods—we enable businesses to grow with confidence. Whether you need dependable transportation, complex project logistics, or integrated supply chain solutions, we are committed to delivering excellence at every mile.</p>
@@ -324,14 +328,14 @@
                     <img src="assets/logo.png" alt="RRP" class="footer-logo-ui">
                     <p class="brand-mission-statement">Move Your Business Forward with Reliability.</p>
                     <div class="footer-office-block-ui">
-                        <p><i class="fas fa-map-marker-alt"></i> <strong>RRP TRANSPORT</strong><br>
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <strong>RRP TRANSPORT</strong><br>
                         Bangalore Highway, Beside MG Car Showroom,<br>
                         Opposite Sakshi Office, Anantapur - 515001</p>
                     </div>
                     <div class="footer-social-connect-ui">
-                        <a href="https://linkedin.com/company/rrp-enterprises" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/918152055195" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://maps.google.com/?q=RRP+Enterprises+Anantapur" target="_blank" aria-label="Google Maps"><i class="fas fa-map-location-dot"></i></a>
+                        <a href="https://linkedin.com/company/rrp-enterprises" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/918152055195" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://maps.google.com/?q=RRP+Enterprises+Anantapur" target="_blank" rel="noopener noreferrer" aria-label="Google Maps"><i class="fas fa-map-location-dot" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -358,10 +362,10 @@
                 <div class="footer-col-module support-narrative-col">
                     <h4 class="footer-ui-header">Contact Support</h4>
                     <div class="footer-direct-contact-ui">
-                        <p><i class="fas fa-phone-alt"></i> +91-8152055195</p>
-                        <p><i class="fas fa-phone-alt"></i> +91-8217212432</p>
-                        <p><i class="fas fa-envelope-open-text"></i> contact@rrpenterprises.co.in</p>
-                        <p class="support-status-ui"><i class="fab fa-whatsapp"></i> 24/7 Active on WhatsApp</p>
+                        <p><i class="fas fa-phone-alt" aria-hidden="true"></i> +91-8152055195</p>
+                        <p><i class="fas fa-phone-alt" aria-hidden="true"></i> +91-8217212432</p>
+                        <p><i class="fas fa-envelope-open-text" aria-hidden="true"></i> contact@rrpenterprises.co.in</p>
+                        <p class="support-status-ui"><i class="fab fa-whatsapp" aria-hidden="true"></i> 24/7 Active on WhatsApp</p>
                     </div>
                 </div>
             </div>
@@ -372,43 +376,119 @@
         </div>
     </footer>
 
-    <div class="global-fixed-action-buttons-ui">
-        <a href="tel:+918152055195" class="fa-ui-btn phone-ui-style" title="Direct Phone Support"><i class="fas fa-phone"></i></a>
-        <a href="https://wa.me/918152055195" target="_blank" class="fa-ui-btn whatsapp-ui-style" title="Instant WhatsApp Support"><i class="fab fa-whatsapp"></i></a>
+    <div class="global-fixed-action-buttons-ui" aria-hidden="false">
+        <a href="tel:+918152055195" class="fa-ui-btn phone-ui-style" title="Direct Phone Support" aria-label="Call Support"><i class="fas fa-phone" aria-hidden="true"></i></a>
+        <a href="https://wa.me/918152055195" target="_blank" rel="noopener noreferrer" class="fa-ui-btn whatsapp-ui-style" title="Instant WhatsApp Support" aria-label="WhatsApp Support"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
     </div>
 
     <script>
-        // MOBILE NAVIGATION ENGINE REPAIR
-        const mNavBtn = document.getElementById('navToggle');
-        const mNavMenu = document.querySelector('.main-navigation-links');
-        mNavBtn.addEventListener('click', () => {
-            mNavMenu.classList.toggle('active');
-            mNavBtn.querySelector('i').classList.toggle('fa-bars');
-            mNavBtn.querySelector('i').classList.toggle('fa-times');
-        });
+        // MOBILE NAVIGATION ENGINE REPAIR + ACCESSIBILITY IMPROVEMENTS
+        (function () {
+            const mNavBtn = document.getElementById('navToggle');
+            const mNavMenu = document.getElementById('mainNav');
 
-        // REPAIRED CAROUSEL ENGINE
-        const cPaneUI = document.getElementById('sliderMainPane');
-        const cNextUI = document.getElementById('sliderNextBtn');
-        const cPrevUI = document.getElementById('sliderPrevBtn');
-
-        cNextUI.addEventListener('click', () => {
-            cPaneUI.scrollBy({ left: 340, behavior: 'smooth' });
-        });
-        cPrevUI.addEventListener('click', () => {
-            cPaneUI.scrollBy({ left: -340, behavior: 'smooth' });
-        });
-
-        // ADDITIVE INTERSECTION OBSERVER FOR NARRATIVE ANIMATIONS
-        const animScrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('show');
+            function closeMobileNav() {
+                if (!mNavBtn || !mNavMenu) return;
+                mNavMenu.classList.remove('active');
+                mNavBtn.setAttribute('aria-expanded', 'false');
+                mNavMenu.setAttribute('aria-hidden', 'true');
+                const icon = mNavBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
                 }
-            });
-        }, { threshold: 0.15 });
+            }
+            function openMobileNav() {
+                if (!mNavBtn || !mNavMenu) return;
+                mNavMenu.classList.add('active');
+                mNavBtn.setAttribute('aria-expanded', 'true');
+                mNavMenu.setAttribute('aria-hidden', 'false');
+                const icon = mNavBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            }
 
-        document.querySelectorAll('.animate').forEach(el => animScrollObserver.observe(el));
+            if (mNavBtn && mNavMenu) {
+                // Ensure initial accessibility state follows the CSS (menu visible on desktop)
+                const computedDisplay = window.getComputedStyle(mNavMenu).display;
+                mNavMenu.setAttribute('aria-hidden', computedDisplay === 'none' ? 'true' : 'false');
+
+                mNavBtn.addEventListener('click', () => {
+                    if (mNavMenu.classList.contains('active')) {
+                        closeMobileNav();
+                    } else {
+                        openMobileNav();
+                    }
+                });
+
+                // Keyboard accessibility for the toggle (Enter / Space)
+                mNavBtn.addEventListener('keydown', (ev) => {
+                    if (ev.key === 'Enter' || ev.key === ' ') {
+                        ev.preventDefault();
+                        mNavBtn.click();
+                    }
+                });
+
+                // Close mobile nav when a link is clicked (better UX)
+                mNavMenu.querySelectorAll('a').forEach(a => {
+                    a.addEventListener('click', () => {
+                        // only collapse if we're in mobile layout (menu was overlaying)
+                        if (window.getComputedStyle(mNavMenu).position === 'absolute' || mNavMenu.classList.contains('active')) {
+                            closeMobileNav();
+                        }
+                    });
+                });
+
+                // Close mobile nav when clicking outside (mobile)
+                document.addEventListener('click', (e) => {
+                    const target = e.target;
+                    if (!mNavMenu.contains(target) && !mNavBtn.contains(target) && mNavMenu.classList.contains('active')) {
+                        closeMobileNav();
+                    }
+                });
+
+                // Remove active state if resizing to desktop width
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 1180 && mNavMenu.classList.contains('active')) {
+                        mNavMenu.classList.remove('active');
+                        mNavBtn.setAttribute('aria-expanded', 'false');
+                        mNavMenu.setAttribute('aria-hidden', 'false'); // visible on desktop
+                        const icon = mNavBtn.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+
+            // REPAIRED CAROUSEL ENGINE (guarded)
+            const cPaneUI = document.getElementById('sliderMainPane');
+            const cNextUI = document.getElementById('sliderNextBtn');
+            const cPrevUI = document.getElementById('sliderPrevBtn');
+
+            if (cPaneUI && cNextUI && cPrevUI) {
+                cNextUI.addEventListener('click', () => {
+                    cPaneUI.scrollBy({ left: 340, behavior: 'smooth' });
+                });
+                cPrevUI.addEventListener('click', () => {
+                    cPaneUI.scrollBy({ left: -340, behavior: 'smooth' });
+                });
+            }
+
+            // ADDITIVE INTERSECTION OBSERVER FOR NARRATIVE ANIMATIONS
+            const animScrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.animate').forEach(el => animScrollObserver.observe(el));
+        })();
     </script>
 
 </body>
