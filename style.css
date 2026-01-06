@@ -1,7 +1,7 @@
 /* RRP ENTERPRISES PROFESSIONAL CORE LAYOUT ENGINE
    - NO TRIM ARCHITECTURE | ADDITIVE SYSTEM
    - FIXED MARGINS | HIGH-CONTRAST COLORS | MOBILE SYSTEM READY
-   - Updated: layout fixes for header/nav, anchor offset, responsive tweaks
+   - Updated: logo constraints + image overflow protection
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
@@ -48,6 +48,42 @@ section[id], header[id], main[id], [id] {
     scroll-margin-top: calc(var(--header-height) + 18px);
 }
 
+/* IMAGE SAFETY: prevent any img from overflowing its container */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* SPECIFIC: header & footer logos must be constrained */
+.brand-logo-img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: 48px;      /* strict cap for header logo */
+    max-width: 160px;      /* prevents very wide logos from expanding header */
+}
+
+/* Footer logo: slightly larger allowed but still constrained */
+.footer-logo-ui {
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: 64px;
+    max-width: 220px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* slider logos small visual constraint */
+.slider-ui-scroll-pane img {
+    max-height: 52px;
+    width: auto;
+}
+
+/*  container */
 .fixed-section-container { 
     max-width: 1320px; 
     margin: 0 auto; 
@@ -82,7 +118,7 @@ section[id], header[id], main[id], [id] {
     gap: 20px;
 }
 
-/* Header branding layout (added to keep logo + text aligned) */
+/* Header branding layout */
 .header-branding {
     display: flex;
     align-items: center;
@@ -107,9 +143,9 @@ section[id], header[id], main[id], [id] {
     text-transform: uppercase; 
 }
 
-/* Mobile nav toggle: hide on desktop (fix: toggle was visible on desktop) */
+/* Mobile nav toggle: hidden by default, shown on mobile */
 .mobile-nav-toggle-btn {
-    display: none; /* hidden by default, shown in mobile breakpoint below */
+    display: none;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -172,7 +208,8 @@ section[id], header[id], main[id], [id] {
     word-wrap: break-word;
 }
 
-.hero-context-branding-block h1 { font-size: 68px; font-weight: 800; line-height: 1.05; margin-bottom: 30px; }
+.hero-context-branding-block h1 { font-size: 68px; font-weight: 800; line-height: 1.05; margin-bottom: 30px; color: var(--accent-rrp-sky); }
+.hero-paragraph-text { color: rgba(255,255,255,0.9); font-size: 16px; margin-top: 18px; }
 .highlight-text { color: var(--accent-rrp-sky); }
 
 .recognition-badge-ui { 
@@ -292,7 +329,6 @@ input:focus { border-color: var(--primary-rrp-blue); outline: none; }
 .global-footer-narrative { background: var(--footer-rrp-teal); padding: 120px 0 60px; border-top: 10px solid var(--brand-rrp-crimson); }
 .footer-master-modular-grid { display: grid; grid-template-columns: 1.8fr 0.8fr 0.8fr 1.4fr; gap: 80px; }
 
-.footer-logo-ui { height: 55px; background: #fff; border-radius: 10px; padding: 10px; margin-bottom: 40px; }
 .footer-ui-header { color: #fff; margin-bottom: 40px; border-bottom: 4px solid var(--brand-rrp-crimson); display: inline-block; font-size: 19px; }
 .footer-ui-links-list { list-style: none; }
 .footer-ui-links-list a { color: #ccd; text-decoration: none; line-height: 2.8; font-size: 16px; transition: 0.25s; }
