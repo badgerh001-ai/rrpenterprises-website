@@ -1,6 +1,7 @@
 /* RRP ENTERPRISES PROFESSIONAL CORE LAYOUT ENGINE
    - NO TRIM ARCHITECTURE | ADDITIVE SYSTEM
    - FIXED MARGINS | HIGH-CONTRAST COLORS | MOBILE SYSTEM READY
+   - Updated: layout fixes for header/nav, anchor offset, responsive tweaks
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
@@ -18,6 +19,7 @@
     --radius-rrp-ui: 24px;
     --section-rrp-gap: 120px;
     --premium-rrp-shadow: 0 45px 110px rgba(0, 0, 0, 0.5);
+    --header-height: 90px; /* used for scroll offset and spacing */
 }
 
 /* 1. CORE SYSTEM RESET */
@@ -41,6 +43,11 @@ body {
     scroll-behavior: smooth; 
 }
 
+/* Make anchor targets avoid being hidden under the fixed header */
+section[id], header[id], main[id], [id] {
+    scroll-margin-top: calc(var(--header-height) + 18px);
+}
+
 .fixed-section-container { 
     max-width: 1320px; 
     margin: 0 auto; 
@@ -57,11 +64,13 @@ body {
     background: rgba(0, 11, 29, 0.98); 
     backdrop-filter: blur(20px); 
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-    height: 90px; 
+    height: var(--header-height); 
     display: flex; 
     align-items: center; 
+    -webkit-font-smoothing:antialiased;
 }
 
+/* wrapper keeps nav content centered */
 .nav-wrapper-container { 
     display: flex; 
     justify-content: space-between; 
@@ -70,22 +79,26 @@ body {
     max-width: 1320px;
     margin: 0 auto;
     padding: 0 30px;
+    gap: 20px;
 }
 
-.brand-logo-img { 
-    height: 52px; 
-    background: #fff; 
-    padding: 6px; 
-    border-radius: 10px; 
+/* Header branding layout (added to keep logo + text aligned) */
+.header-branding {
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
-
+.brand-text-stack {
+    display: inline-block;
+    line-height: 1;
+}
 .brand-primary-name { 
     font-weight: 800; 
     font-size: 20px; 
     color: #fff; 
     letter-spacing: 0.5px; 
+    display: block;
 }
-
 .brand-secondary-tag { 
     font-size: 10px; 
     font-weight: 700; 
@@ -94,6 +107,18 @@ body {
     text-transform: uppercase; 
 }
 
+/* Mobile nav toggle: hide on desktop (fix: toggle was visible on desktop) */
+.mobile-nav-toggle-btn {
+    display: none; /* hidden by default, shown in mobile breakpoint below */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 22px;
+    padding: 6px;
+}
+
+/* main nav links */
 .main-navigation-links { display: flex; gap: 35px; align-items: center; }
 
 .nav-item-link { 
@@ -119,8 +144,8 @@ body {
 
 /* 3. HERO LAYOUT SYSTEM */
 .primary-hero-interface { 
-    min-height: 100vh; 
-    padding: 150px 0 120px; 
+    min-height: calc(100vh - var(--header-height)); /* account for fixed header */
+    padding: calc(var(--header-height) + 60px) 0 120px; 
     display: flex; 
     align-items: center; 
     position: relative; 
@@ -141,6 +166,12 @@ body {
     width: 100%; 
 }
 
+/* ensure hero textual column doesn't overflow on narrower viewports */
+.hero-context-branding-block {
+    max-width: 800px;
+    word-wrap: break-word;
+}
+
 .hero-context-branding-block h1 { font-size: 68px; font-weight: 800; line-height: 1.05; margin-bottom: 30px; }
 .highlight-text { color: var(--accent-rrp-sky); }
 
@@ -155,7 +186,7 @@ body {
     color: var(--accent-rrp-sky); 
 }
 
-.hero-trust-indicators-flex { display: flex; gap: 40px; margin-top: 40px; }
+.hero-trust-indicators-flex { display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap; }
 .trust-stat-ui i { font-size: 32px; color: var(--accent-rrp-sky); margin-bottom: 12px; }
 .trust-stat-ui strong { display: block; font-size: 28px; color: var(--pure-rrp-white); }
 
@@ -166,7 +197,8 @@ body {
     padding: 50px; 
     border-radius: var(--radius-rrp-ui); 
     box-shadow: var(--premium-rrp-shadow); 
-    width: 100%; 
+    width: 100%;
+    max-width: 480px; /* enforce the intended width to avoid overflow */
 }
 
 .portal-header-lock h3 { font-size: 24px; color: var(--primary-rrp-blue); font-weight: 800; margin-bottom: 10px; }
@@ -283,14 +315,31 @@ input:focus { border-color: var(--primary-rrp-blue); outline: none; }
     .hero-trust-indicators-flex { justify-content: center; }
     .hero-booking-portal-ui { margin: 0 auto; max-width: 100%; }
 
+    /* mobile nav: hide desktop links and show the toggle button */
     .main-navigation-links { 
-        display: none; flex-direction: column; position: absolute; top: 90px; left: 0; 
+        display: none; flex-direction: column; position: absolute; top: var(--header-height); left: 0; 
         width: 100%; background: var(--navy-rrp-dark-bg); padding: 70px 0; border-bottom: 8px solid var(--accent-rrp-sky); 
     }
     .main-navigation-links.active { display: flex; }
     .mobile-nav-toggle-btn { display: block; color: #fff; font-size: 28px; }
 
     .enquiry-modular-grid-fixed, .footer-master-modular-grid { grid-template-columns: 1fr; gap: 55px; }
+
+    .fixed-section-container { padding: 0 5%; } /* reduce horizontal padding slightly on medium screens */
+}
+
+/* Extra small screens: avoid overflow and large typography */
+@media (max-width: 480px) {
+    .hero-context-branding-block h1 { font-size: 34px; line-height: 1.08; margin-bottom: 18px; }
+    .hero-context-branding-block p.hero-paragraph-text { font-size: 14px; }
+    .primary-hero-interface { padding: calc(var(--header-height) + 30px) 0 60px; }
+    .hero-booking-portal-ui { padding: 26px; border-radius: 18px; max-width: 92%; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+    .portal-input-grid-dual { grid-template-columns: 1fr; }
+    .logo-display-card-ui { flex: 0 0 220px; padding: 20px; }
+    .service-module-card { padding: 30px 20px; }
+    .global-fixed-action-buttons-ui { left: auto; right: 18px; bottom: 18px; gap: 14px; }
+    .nav-wrapper-container { padding: 0 18px; }
+    .fixed-section-container { padding: 0 16px; }
 }
 
 /* 12. ANIMATION SYSTEM LOCK */
