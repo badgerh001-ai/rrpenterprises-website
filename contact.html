@@ -6,8 +6,19 @@
     <title>Contact Us | RRP ENTERPRISES</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div class="floating-actions">
+        <a href="https://wa.me/919494831803" target="_blank" class="action-btn whatsapp" title="WhatsApp Us">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+919494831803" class="action-btn phone" title="Call Now">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
+
     <div class="container">
         <nav class="navbar glass">
             <a href="index.html" class="logo-container">
@@ -17,40 +28,92 @@
             <div class="nav-links">
                 <a href="index.html" class="social-link">Home</a>
                 <a href="about.html" class="social-link">About Us</a>
+                <a href="services.html" class="social-link">Services</a>
             </div>
         </nav>
 
-        <main class="hero-grid">
-            <section class="hero-main glass">
-                <span class="badge">Inquiry Desk</span>
-                <h2>Request a <span class="gradient-text">Quote.</span></h2>
-                
-                <form class="contact-form" action="https://formspree.io/f/mpqwlvba" method="POST">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <input type="email" name="email" placeholder="Business Email" required>
-                    <select name="service">
-                        <option value="ftl">FTL Transportation</option>
-                        <option value="freight">Freight Forwarding</option>
-                        <option value="contract">Contract Logistics</option>
-                        <option value="project">Project Logistics</option>
-                    </select>
-                    <textarea name="message" rows="5" placeholder="Describe your requirements..." required></textarea>
-                    <button type="submit" class="submit-btn">Send Inquiry</button>
+        <header style="text-align:center; margin: 60px 0 40px 0;">
+            <span class="badge">Inquiry Desk</span>
+            <h1 style="font-size: 3rem; margin-top: 15px;">Connect with <span class="gradient-text">Our Team.</span></h1>
+            <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto;">Choose the department relevant to your needs for a faster response.</p>
+        </header>
+
+        <div class="dual-form-grid">
+            <section class="glass form-card">
+                <div class="form-header">
+                    <i class="fas fa-truck-loading"></i>
+                    <h3>Vendor Enquiry</h3>
+                    <p>For fleet owners and partner transporters</p>
+                </div>
+                <form action="https://formspree.io/f/mpqwlvba" method="POST" class="contact-form">
+                    <input type="hidden" name="Subject" value="New Vendor Registration">
+                    <input type="text" name="vendor_name" placeholder="Vendor/Company Name" required>
+                    <div class="input-row">
+                        <input type="email" name="email" placeholder="Email ID" required>
+                        <input type="tel" name="phone" placeholder="Phone No" required>
+                    </div>
+                    <input type="text" name="fleet_details" placeholder="Fleet Size & Vehicle Types">
+                    <input type="text" name="city" placeholder="Base Operating City">
+                    <textarea name="message" rows="3" placeholder="Describe your services..."></textarea>
+                    <button type="submit" class="submit-btn">Register as Vendor</button>
                 </form>
             </section>
 
-            <aside class="hero-side glass">
-                <h3>Contact Details</h3>
-                <div class="phone-links" style="margin-bottom: 30px;">
-                    <a href="tel:9494831803"><i class="fas fa-phone"></i> +91 94948 31803</a>
-                    <a href="mailto:contact@rrpenterprises.co.in"><i class="fas fa-envelope"></i> contact@rrpenterprises.co.in</a>
+            <section class="glass form-card highlight-card">
+                <div class="form-header">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Business Enquiry</h3>
+                    <p>For B2B logistics & freight quotes</p>
                 </div>
-                <div class="status-box">
-                    <p>Typical Response Time:</p>
-                    <span class="pulse"></span> 24 Hours
+                <form action="https://formspree.io/f/mpqwlvba" method="POST" class="contact-form">
+                    <input type="hidden" name="Subject" value="New Business Quote Request">
+                    <input type="text" name="company_name" placeholder="Company Name" required>
+                    <div class="input-row">
+                        <input type="text" name="contact_person" placeholder="Contact Person" required>
+                        <input type="tel" name="phone" placeholder="Mobile Number" required>
+                    </div>
+                    <input type="email" name="email" placeholder="Business Email" required>
+                    <div class="input-row">
+                        <select name="service_required">
+                            <option value="FTL">FTL Transportation</option>
+                            <option value="Warehousing">Warehousing</option>
+                            <option value="Project">Project Logistics</option>
+                            <option value="Other">Other Services</option>
+                        </select>
+                        <input type="text" name="gst" placeholder="GST Number">
+                    </div>
+                    <textarea name="message" rows="3" placeholder="Route details or requirements..."></textarea>
+                    <button type="submit" class="submit-btn">Get Instant Quote</button>
+                </form>
+            </section>
+        </div>
+
+        <footer class="contact-grid">
+            <div class="card glass">
+                <i class="fas fa-map-location-dot icon"></i>
+                <h4>HQ Location</h4>
+                <p>Anantapur, Andhra Pradesh 515001</p>
+                <a href="https://maps.google.com" target="_blank" class="map-link">View on Maps →</a>
+            </div>
+            <div class="card glass">
+                <i class="fas fa-phone-volume icon"></i>
+                <h4>Direct Contact</h4>
+                <div class="phone-links">
+                    <a href="tel:9494831803">+91 94948 31803</a>
+                    <a href="mailto:contact@rrpenterprises.co.in">Email Desk</a>
                 </div>
-            </aside>
-        </main>
+            </div>
+            <div class="card glass">
+                <i class="fas fa-clock icon"></i>
+                <h4>Operational Hours</h4>
+                <p>Mon - Sat: 09:00 - 20:00</p>
+                <p style="font-size: 0.7rem; color: var(--accent-gold);">24/7 Support for Active Shipments</p>
+            </div>
+        </footer>
+
+        <div class="bottom-footer">
+            <p>© 2026 RRP ENTERPRISES. All Rights Reserved.</p>
+        </div>
     </div>
 </body>
 </html>
