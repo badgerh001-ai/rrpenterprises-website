@@ -181,7 +181,7 @@ h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin: 25px 0; lett
 
 .bottom-footer { text-align: center; padding-bottom: 40px; color: var(--text-dim); font-size: 0.75rem; letter-spacing: 1px; }
 
-/* Added styles for Contact Form */
+/* Contact Form Specifics */
 .contact-form { display: flex; flex-direction: column; gap: 15px; margin-top: 25px; }
 input, textarea, select {
     background: rgba(255, 255, 255, 0.05);
@@ -203,6 +203,10 @@ input, textarea, select {
     transition: 0.3s;
 }
 .submit-btn:hover { background: var(--accent-teal); transform: translateY(-3px); }
+
+/* Brands Grid */
+.brand-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; margin-top: 40px; }
+.brand-item { font-weight: 800; color: var(--text-dim); font-size: 0.9rem; text-transform: uppercase; }
 
 /* Responsive Mobile Layout */
 @media (max-width: 992px) {
