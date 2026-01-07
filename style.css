@@ -75,7 +75,7 @@ body {
 }
 
 .main-logo {
-    height: 40px; /* Adjust height based on your logo aspect ratio */
+    height: 40px;
     width: auto;
     object-fit: contain;
 }
