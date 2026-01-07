@@ -72,6 +72,8 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .main-logo {
@@ -84,15 +86,15 @@ body {
 .logo-text span { color: var(--accent-blue); }
 
 .nav-links { display: flex; align-items: center; gap: 30px; }
-.social-link { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+.nav-links a { text-decoration: none; }
+.social-link { color: var(--text-dim); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
 .social-link:hover { color: white; }
 
 .cta-btn {
     background: var(--accent-blue);
-    color: white;
+    color: white !important;
     padding: 10px 20px;
     border-radius: 10px;
-    text-decoration: none;
     font-weight: 700;
     font-size: 0.85rem;
     transition: 0.3s;
@@ -179,6 +181,29 @@ h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin: 25px 0; lett
 .phone-links a:hover { color: var(--accent-blue); }
 
 .bottom-footer { text-align: center; padding-bottom: 40px; color: var(--text-dim); font-size: 0.75rem; letter-spacing: 1px; }
+
+/* Form Styles for Contact Page */
+.contact-form { display: flex; flex-direction: column; gap: 15px; margin-top: 25px; }
+input, textarea, select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    padding: 12px 18px;
+    border-radius: 12px;
+    color: white;
+    font-family: inherit;
+    width: 100%;
+}
+.submit-btn {
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.submit-btn:hover { background: var(--accent-teal); transform: translateY(-3px); }
 
 /* Responsive Mobile Layout */
 @media (max-width: 992px) {
