@@ -4,38 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RRP ENTERPRISES | Intelligent Logistics Solutions</title>
-    <meta name="description" content="RRP ENTERPRISES - Technology-first logistics company specialized in B2B supply chain resilience.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="backToTop" class="back-to-top" title="Go to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <div class="floating-actions">
-        <a href="https://wa.me/919494831803" target="_blank" class="action-btn whatsapp" title="WhatsApp Us">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="tel:+919494831803" class="action-btn phone" title="Call Now">
-            <i class="fas fa-phone-alt"></i>
-        </a>
-    </div>
 
     <div class="container">
         <nav class="navbar glass">
             <a href="index.html" class="logo-container">
-                <img src="assets/logo.png" alt="RRP ENTERPRISES Logo" class="main-logo">
+                <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
                 <div class="logo-text">RRP <span>ENTERPRISES</span></div>
             </a>
-            
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-
-            <div class="nav-links" id="nav-menu">
+            <div class="nav-links">
                 <a href="about.html" class="social-link">About Us</a>
                 <a href="services.html" class="social-link">Services</a>
                 <a href="contact.html" class="cta-btn">Contact Us</a>
@@ -46,8 +29,8 @@
             <section class="hero-main glass">
                 <span class="badge">B2B Logistics Intelligence</span>
                 <h1>Powering Reliable <br><span class="gradient-text">Supply Chains.</span></h1>
-                <p>Strategic enablers of business velocity. We leverage technology and operational rigor to deliver cost-effective, transparent, and secure logistics.</p>
-                <br><br><br><br>
+                <p>Strategic enablers of business velocity. We leverage technology and operational rigor to deliver cost-effective, transparent, and secure logistics solutions across India.</p>
+                
                 <div class="metrics">
                     <div class="metric-item">
                         <span class="m-val">98.5%</span>
@@ -64,23 +47,38 @@
             <aside class="hero-side glass">
                 <h3>Our Core Services</h3>
                 <ul class="service-list">
-                    <li><i class="fas fa-truck-moving"></i> FTL Transportation</li>
-                    <li><i class="fas fa-ship"></i> Freight Forwarding</li>
-                    <li><i class="fas fa-file-contract"></i> Contract Logistics</li>
-                    <li><i class="fas fa-warehouse"></i> Warehousing & Dist.</li>
+                    <li>
+                        <i class="fas fa-truck-moving"></i>
+                        <span>FTL Transportation</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-ship"></i>
+                        <span>Freight Forwarding</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-file-contract"></i>
+                        <span>Contract Logistics</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-warehouse"></i>
+                        <span>Warehousing & Dist.</span>
+                    </li>
                 </ul>
                 <div class="status-box">
                     <p>Network Status:</p>
-                    <span class="pulse"></span> Active Pan-India Operations
+                    <div class="status-indicator">
+                        <span class="pulse"></span> 
+                        <span>Active Pan-India Operations</span>
+                    </div>
                 </div>
             </aside>
         </main>
 
-        <section class="dual-form-container" style="margin-top: 60px;">
-            <header style="text-align:center; margin-bottom: 40px;">
+        <section class="dual-form-container">
+            <header class="section-header">
                 <span class="badge">Inquiry Desk</span>
-                <h2 style="font-size: 2.5rem; margin-top: 15px;">Connect with <span class="gradient-text">Our Team.</span></h2>
-                <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto;">Choose the department relevant to your needs for a faster response.</p>
+                <h2>Connect with <span class="gradient-text">Our Team.</span></h2>
+                <p>Choose the department relevant to your needs for a faster response.</p>
             </header>
 
             <div class="dual-form-grid">
@@ -91,15 +89,23 @@
                         <p>For fleet owners and partner transporters</p>
                     </div>
                     <form action="https://formspree.io/f/mpqwlvba" method="POST" class="contact-form">
-                        <input type="hidden" name="Subject" value="Homepage: Vendor Registration">
-                        <input type="text" name="vendor_name" placeholder="Vendor/Company Name" required>
-                        <div class="input-row">
-                            <input type="email" name="email" placeholder="Email ID" required>
-                            <input type="tel" name="phone" placeholder="Phone No" required>
+                        <div class="form-group">
+                            <input type="text" name="vendor_name" placeholder="Company Name" required>
                         </div>
-                        <input type="text" name="fleet_details" placeholder="Fleet Size & Vehicle Types">
-                        <input type="text" name="city" placeholder="Base Operating City">
-                        <textarea name="message" rows="3" placeholder="Describe your services..."></textarea>
+                        <div class="input-row">
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Email ID" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="phone" placeholder="Phone Number" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="fleet" placeholder="Fleet Size (e.g., 5 Trucks, 10 Trailers)">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="4" placeholder="Describe your operational routes and vehicle types..."></textarea>
+                        </div>
                         <button type="submit" class="submit-btn">Register as Vendor</button>
                     </form>
                 </section>
@@ -111,111 +117,146 @@
                         <p>For B2B logistics & freight quotes</p>
                     </div>
                     <form action="https://formspree.io/f/mpqwlvba" method="POST" class="contact-form">
-                        <input type="hidden" name="Subject" value="Homepage: Business Quote">
-                        <input type="text" name="company_name" placeholder="Company Name" required>
-                        <div class="input-row">
-                            <input type="text" name="contact_person" placeholder="Contact Person" required>
-                            <input type="tel" name="phone" placeholder="Mobile Number" required>
+                        <div class="form-group">
+                            <input type="text" name="company" placeholder="Company Name" required>
                         </div>
-                        <input type="email" name="email" placeholder="Business Email" required>
                         <div class="input-row">
+                            <div class="form-group">
+                                <input type="text" name="contact_person" placeholder="Contact Person" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="mobile" placeholder="Mobile Number" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <select name="service_required">
-                                <option value="FTL">FTL Transportation</option>
-                                <option value="Warehousing">Warehousing</option>
-                                <option value="Project">Project Logistics</option>
+                                <option value="" disabled selected>Select Service</option>
+                                <option value="FTL Transportation">FTL Transportation</option>
+                                <option value="Warehousing">Warehousing & Distribution</option>
+                                <option value="Project Logistics">Project Logistics</option>
                                 <option value="Other">Other Services</option>
                             </select>
-                            <input type="text" name="gst" placeholder="GST Number">
                         </div>
-                        <textarea name="message" rows="3" placeholder="Route details or requirements..."></textarea>
+                        <div class="form-group">
+                            <textarea name="requirements" rows="4" placeholder="Mention Route details, Volume, and Frequency..."></textarea>
+                        </div>
                         <button type="submit" class="submit-btn">Get Instant Quote</button>
                     </form>
                 </section>
             </div>
         </section>
 
-        <section class="glass" style="padding: 50px; margin-bottom: 24px; text-align: center;">
-            <h2 style="margin-bottom: 40px;">Trusted by <span class="gradient-text">Leading Brands</span></h2>
+        <section class="glass brand-section">
+            <header class="section-header">
+                <h2>Trusted by <span class="gradient-text">Leading Brands</span></h2>
+            </header>
             <div class="brand-grid">
-                <img src="assets/brands/delhivery.png" alt="Delhivery Logo" class="brand-logo">
-                <img src="assets/brands/cj-darcl.png" alt="CJ Darcl Logo" class="brand-logo">
-                <img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge & Power Logo" class="brand-logo">
-                <img src="assets/brands/sugna-metals.png" alt="Sugna Metals Ltd Logo" class="brand-logo">
-                <img src="assets/brands/binjusaria.png" alt="Binjusaria Papers Logo" class="brand-logo">
-                <img src="assets/brands/ncl-buildtek.png" alt="NCL Buildtek Ltd Logo" class="brand-logo">
-                <img src="assets/brands/dhl-supply-chain.jpg" alt="DHL Logo" class="brand-logo">
-                <img src="assets/brands/accpree.png" alt="Accpree Engineering Logo" class="brand-logo">
+                <div class="brand-item">
+                    <img src="assets/brands/delhivery.png" alt="Delhivery" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/cj-darcl.png" alt="CJ Darcl" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge & Power" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/sugna-metals.png" alt="Sugna Metals Ltd" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/binjusaria.png" alt="Binjusaria Papers" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/ncl-buildtek.png" alt="NCL Buildtek Ltd" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/dhl-supply-chain.jpg" alt="DHL" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/accpree.png" alt="Accpree Engineering" class="brand-logo">
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-cards-grid">
+            <div class="glass contact-card">
+                <div class="card-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3>HQ Location</h3>
+                <p>Anantapur, Andhra Pradesh 515001</p>
+                <a href="https://maps.google.com" target="_blank" class="card-link">View on Maps &rarr;</a>
+            </div>
+
+            <div class="glass contact-card">
+                <div class="card-icon">
+                    <i class="fas fa-phone-volume"></i>
+                </div>
+                <h3>Direct Contact</h3>
+                <p>+91 94948 31803</p>
+                <a href="mailto:contact@rrpenterprises.co.in" class="card-link">Email Desk</a>
             </div>
         </section>
 
         <footer class="footer-main glass">
             <div class="footer-grid">
-                <div class="footer-col">
+                <div class="footer-col brand-col">
                     <div class="logo-container">
                         <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
                         <div class="logo-text">RRP <span>ENTERPRISES</span></div>
                     </div>
-                    <p class="footer-addr">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Anantapur, Andhra Pradesh 515001
+                    <p class="footer-description">
+                        Providing tech-enabled, reliable logistics and supply chain solutions across the Indian subcontinent.
                     </p>
-                    <div class="footer-socials">
+                    <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.linkedin.com/in/rrpenterprises" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
 
-                <div class="footer-col">
+                <div class="footer-col links-col">
                     <h4>Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-col">
-                    <h4>Other Links</h4>
+                <div class="footer-col links-col">
+                    <h4>Legal & Support</h4>
                     <ul class="footer-links">
-                        <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                        <li><a href="contact.html">Support Desk</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-col">
+                <div class="footer-col contact-col">
                     <h4>Address</h4>
-                    <div class="footer-contact-info">
-                        <p><a href="tel:9494831803"><i class="fas fa-phone-alt"></i> +91 94948 31803</a></p>
-                        <p><a href="mailto:contact@rrpenterprises.co.in"><i class="fas fa-envelope"></i> contact@rrpenterprises.co.in</a></p>
-                        <p><a href="https://wa.me/919494831803"><i class="fab fa-whatsapp"></i> WhatsApp Message</a></p>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 94948 31803</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@rrpenterprises.co.in</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Anantapur, AP 515001</span>
                     </div>
                 </div>
             </div>
-        </footer>
 
-        <div class="bottom-footer">
-            <p>© 2026 RRP ENTERPRISES. All Rights Reserved.</p>
-        </div>
+            <div class="bottom-footer">
+                <p>&copy; 2026 RRP ENTERPRISES. All Rights Reserved.</p>
+            </div>
+        </footer>
     </div>
 
-    <script>
-        const menuToggle = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
-        const backToTop = document.getElementById('backToTop');
-
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        window.onscroll = function() {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                backToTop.style.display = "flex";
-            } else {
-                backToTop.style.display = "none";
-            }
-        };
-    </script>
 </body>
 </html>
