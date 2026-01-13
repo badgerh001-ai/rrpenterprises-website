@@ -102,9 +102,6 @@ body {
 .hero-main { 
     padding: 60px; 
     position: relative; 
-    background: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.6)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
 }
 
 h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin: 25px 0; letter-spacing: -2px; }
@@ -180,38 +177,50 @@ input, textarea, select {
 /* =========================================
    6. BRANDS & UTILITY CARDS
    ========================================= */
-.brand-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; margin-top: 40px; }
-.brand-item { font-weight: 800; color: var(--text-dim); font-size: 0.9rem; text-transform: uppercase; }
+.brand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+    align-items: center;
+    justify-items: center;
+}
+
+.brand-logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 60px; /* Ensure logos are not too tall */
+    filter: brightness(0) invert(1); /* Turns colored logos white */
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.brand-logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
 
 .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 60px; }
 .card { padding: 40px; text-align: center; }
+
+/* FIX: Force card links to Gold color for better Night Mode visibility */
+.card a { 
+    color: var(--accent-gold); 
+    text-decoration: none; 
+    transition: 0.3s; 
+    font-weight: 600;
+}
+.card a:hover { color: white; }
+
 .icon { font-size: 1.5rem; color: var(--accent-gold); margin-bottom: 20px; }
 
 /* =========================================
-   7. FOOTER (QUICK LINKS)
+   7. FOOTER & BOTTOM
    ========================================= */
-.footer-main { padding: 60px 40px; margin-top: 40px; margin-bottom: 24px; }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 40px; }
-.footer-col h4 { color: white; margin-bottom: 25px; font-size: 1.1rem; position: relative; }
-.footer-col h4::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 30px; height: 2px; background: var(--accent-gold); }
-
-.footer-links { list-style: none; }
-.footer-links li { margin-bottom: 12px; }
-.footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-.footer-links a:hover { color: var(--accent-gold); padding-left: 5px; }
-.footer-links a.active { color: #ff4d4d; font-weight: 700; }
-
-.footer-contact-info p { margin-bottom: 15px; }
-.footer-contact-info a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 12px; }
-
-.footer-socials { display: flex; gap: 15px; margin-top: 25px; }
-.footer-socials a { width: 40px; height: 40px; border: 1px solid var(--glass-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; }
-.footer-socials a:hover { background: var(--accent-gold); color: #000; }
-
 .bottom-footer { text-align: center; padding-bottom: 40px; color: var(--text-dim); font-size: 0.75rem; }
 
 /* =========================================
-   8. FLOATING ACTIONS & BACK TO TOP
+   8. FLOATING ACTIONS
    ========================================= */
 .floating-actions {
     position: fixed;
@@ -239,25 +248,6 @@ input, textarea, select {
 .whatsapp { background: #22c55e; }
 .phone { background: var(--accent-gold); color: #000; }
 
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    width: 50px;
-    height: 50px;
-    background: var(--card-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 50%;
-    color: var(--accent-gold);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1000;
-    transition: 0.3s;
-}
-.back-to-top:hover { background: var(--accent-gold); color: #000; }
-
 /* =========================================
    9. MOBILE RESPONSIVENESS
    ========================================= */
@@ -279,16 +269,17 @@ input, textarea, select {
     }
     .nav-links.active { display: flex; }
 
-    .hero-grid, .contact-grid, .dual-form-grid, .footer-grid { grid-template-columns: 1fr; }
+    .hero-grid, .contact-grid, .dual-form-grid { grid-template-columns: 1fr; }
     .input-row { flex-direction: column; gap: 15px; }
     
     h1 { font-size: 2.5rem; }
     .hero-main { padding: 40px 20px; text-align: center; }
     .main-logo { height: 32px; }
+    .brand-grid { gap: 30px; }
 }
 
 @media (max-width: 480px) {
     h1 { font-size: 2rem; }
     .hero-side { padding: 30px 20px; }
-    .brand-grid { grid-template-columns: 1fr; }
+    .brand-grid { grid-template-columns: repeat(2, 1fr); }
 }
