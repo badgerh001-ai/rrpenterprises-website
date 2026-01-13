@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RRP ENTERPRISES | Intelligent Logistics Solutions</title>
+    
     <link rel="stylesheet" href="style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,11 +16,13 @@
 <body>
 
     <div class="container">
+        
         <nav class="navbar glass">
             <a href="index.html" class="logo-container">
                 <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
                 <div class="logo-text">RRP <span>ENTERPRISES</span></div>
             </a>
+            
             <div class="nav-links">
                 <a href="about.html" class="social-link">About Us</a>
                 <a href="services.html" class="social-link">Services</a>
@@ -29,7 +34,11 @@
             <section class="hero-main glass">
                 <span class="badge">B2B Logistics Intelligence</span>
                 <h1>Powering Reliable <br><span class="gradient-text">Supply Chains.</span></h1>
-                <p>Strategic enablers of business velocity. We leverage technology and operational rigor to deliver cost-effective, transparent, and secure logistics solutions across India.</p>
+                <p>
+                    Strategic enablers of business velocity. We leverage technology 
+                    and operational rigor to deliver cost-effective, transparent, 
+                    and secure logistics solutions across India.
+                </p>
                 
                 <div class="metrics">
                     <div class="metric-item">
@@ -64,6 +73,7 @@
                         <span>Warehousing & Dist.</span>
                     </li>
                 </ul>
+                
                 <div class="status-box">
                     <p>Network Status:</p>
                     <div class="status-indicator">
@@ -78,10 +88,11 @@
             <header class="section-header">
                 <span class="badge">Inquiry Desk</span>
                 <h2>Connect with <span class="gradient-text">Our Team.</span></h2>
-                <p>Choose the department relevant to your needs for a faster response.</p>
+                <p>Select the appropriate desk for faster response times.</p>
             </header>
 
             <div class="dual-form-grid">
+                
                 <section class="glass form-card">
                     <div class="form-header">
                         <i class="fas fa-truck-loading"></i>
@@ -90,21 +101,21 @@
                     </div>
                     <form action="https://formspree.io/f/mpqwlvba" method="POST" class="contact-form">
                         <div class="form-group">
-                            <input type="text" name="vendor_name" placeholder="Company Name" required>
+                            <input type="text" name="vendor_company" placeholder="Company Name" required>
                         </div>
                         <div class="input-row">
                             <div class="form-group">
-                                <input type="email" name="email" placeholder="Email ID" required>
+                                <input type="email" name="email" placeholder="Email Address" required>
                             </div>
                             <div class="form-group">
                                 <input type="tel" name="phone" placeholder="Phone Number" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="fleet" placeholder="Fleet Size (e.g., 5 Trucks, 10 Trailers)">
+                            <input type="text" name="fleet_info" placeholder="Fleet Size & Vehicle Types">
                         </div>
                         <div class="form-group">
-                            <textarea name="message" rows="4" placeholder="Describe your operational routes and vehicle types..."></textarea>
+                            <textarea name="message" rows="4" placeholder="Briefly describe your services..."></textarea>
                         </div>
                         <button type="submit" class="submit-btn">Register as Vendor</button>
                     </form>
@@ -114,31 +125,30 @@
                     <div class="form-header">
                         <i class="fas fa-briefcase"></i>
                         <h3>Business Enquiry</h3>
-                        <p>For B2B logistics & freight quotes</p>
+                        <p>For FTL and contract logistics quotes</p>
                     </div>
                     <form action="https://formspree.io/f/mpqwlvba" method="POST" class="contact-form">
                         <div class="form-group">
-                            <input type="text" name="company" placeholder="Company Name" required>
+                            <input type="text" name="client_company" placeholder="Company Name" required>
                         </div>
                         <div class="input-row">
                             <div class="form-group">
-                                <input type="text" name="contact_person" placeholder="Contact Person" required>
+                                <input type="text" name="contact_name" placeholder="Contact Person" required>
                             </div>
                             <div class="form-group">
                                 <input type="tel" name="mobile" placeholder="Mobile Number" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <select name="service_required">
-                                <option value="" disabled selected>Select Service</option>
-                                <option value="FTL Transportation">FTL Transportation</option>
-                                <option value="Warehousing">Warehousing & Distribution</option>
-                                <option value="Project Logistics">Project Logistics</option>
-                                <option value="Other">Other Services</option>
+                            <select name="service_interest">
+                                <option value="" disabled selected>Service Interested In</option>
+                                <option value="FTL">Full Truck Load (FTL)</option>
+                                <option value="Warehouse">Warehousing</option>
+                                <option value="Project">Project Logistics</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea name="requirements" rows="4" placeholder="Mention Route details, Volume, and Frequency..."></textarea>
+                            <textarea name="requirements" rows="4" placeholder="Share route or volume details..."></textarea>
                         </div>
                         <button type="submit" class="submit-btn">Get Instant Quote</button>
                     </form>
@@ -150,6 +160,7 @@
             <header class="section-header">
                 <h2>Trusted by <span class="gradient-text">Leading Brands</span></h2>
             </header>
+            
             <div class="brand-grid">
                 <div class="brand-item">
                     <img src="assets/brands/delhivery.png" alt="Delhivery" class="brand-logo">
@@ -158,22 +169,22 @@
                     <img src="assets/brands/cj-darcl.png" alt="CJ Darcl" class="brand-logo">
                 </div>
                 <div class="brand-item">
-                    <img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge & Power" class="brand-logo">
+                    <img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge" class="brand-logo">
                 </div>
                 <div class="brand-item">
-                    <img src="assets/brands/sugna-metals.png" alt="Sugna Metals Ltd" class="brand-logo">
+                    <img src="assets/brands/sugna-metals.png" alt="Sugna Metals" class="brand-logo">
                 </div>
                 <div class="brand-item">
                     <img src="assets/brands/binjusaria.png" alt="Binjusaria Papers" class="brand-logo">
                 </div>
                 <div class="brand-item">
-                    <img src="assets/brands/ncl-buildtek.png" alt="NCL Buildtek Ltd" class="brand-logo">
+                    <img src="assets/brands/ncl-buildtek.png" alt="NCL Buildtek" class="brand-logo">
                 </div>
                 <div class="brand-item">
                     <img src="assets/brands/dhl-supply-chain.jpg" alt="DHL" class="brand-logo">
                 </div>
                 <div class="brand-item">
-                    <img src="assets/brands/accpree.png" alt="Accpree Engineering" class="brand-logo">
+                    <img src="assets/brands/accpree.png" alt="Accpree" class="brand-logo">
                 </div>
             </div>
         </section>
@@ -185,7 +196,7 @@
                 </div>
                 <h3>HQ Location</h3>
                 <p>Anantapur, Andhra Pradesh 515001</p>
-                <a href="https://maps.google.com" target="_blank" class="card-link">View on Maps &rarr;</a>
+                <a href="#" class="card-link">View on Maps →</a>
             </div>
 
             <div class="glass contact-card">
@@ -200,13 +211,14 @@
 
         <footer class="footer-main glass">
             <div class="footer-grid">
+                
                 <div class="footer-col brand-col">
                     <div class="logo-container">
                         <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
                         <div class="logo-text">RRP <span>ENTERPRISES</span></div>
                     </div>
                     <p class="footer-description">
-                        Providing tech-enabled, reliable logistics and supply chain solutions across the Indian subcontinent.
+                        Leading the way in tech-enabled logistics and supply chain optimization across the Indian subcontinent.
                     </p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -226,17 +238,16 @@
                 </div>
 
                 <div class="footer-col links-col">
-                    <h4>Legal & Support</h4>
+                    <h4>Legal</h4>
                     <ul class="footer-links">
                         <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Sitemap</a></li>
-                        <li><a href="contact.html">Support Desk</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Carrier Terms</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col contact-col">
-                    <h4>Address</h4>
+                    <h4>Contact Info</h4>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
                         <span>+91 94948 31803</span>
@@ -253,7 +264,7 @@
             </div>
 
             <div class="bottom-footer">
-                <p>&copy; 2026 RRP ENTERPRISES. All Rights Reserved.</p>
+                <p>© 2026 RRP ENTERPRISES. All Rights Reserved.</p>
             </div>
         </footer>
     </div>
