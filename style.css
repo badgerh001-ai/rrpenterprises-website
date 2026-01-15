@@ -43,8 +43,8 @@ body {
     padding: 20px 50px;
     position: sticky;
     top: 0;
-    z-index: 999999; /* Higher than any content */
-    background: var(--nav-bg);
+    z-index: 999999; /* Higher than any content to fix overlap */
+    background: var(--nav-bg); /* Solid background covers scrolling text */
     border-bottom: 1px solid var(--glass-border);
     box-shadow: 0 15px 35px rgba(0,0,0,0.6);
 }
@@ -194,7 +194,6 @@ body {
     background: rgba(255,255,255,0.08);
     box-shadow: 0 0 20px rgba(234, 179, 8, 0.1);
 }
-.form-group select option { background: var(--bg-dark); color: #fff; }
 
 /* 9. BRANDING SECTION */
 .brand-section { padding: 100px 0; text-align: center; }
@@ -260,12 +259,12 @@ body {
 .map-container {
     width: 100%; height: 550px; border-radius: 40px; overflow: hidden;
     margin: 80px 0; border: 1px solid var(--glass-border);
-    filter: grayscale(1) invert(0.9) contrast(1.2); /* Stylized Map */
+    filter: grayscale(1) invert(0.9) contrast(1.2); 
     transition: 0.6s;
 }
 .map-container:hover { filter: grayscale(0) invert(0) contrast(1); }
 
-/* 12. MOBILE ACTION BAR (FOR PHONE SCREENSHOTS) */
+/* 12. MOBILE ACTION BAR */
 .mobile-action-bar {
     position: fixed;
     bottom: 25px; left: 25px; right: 25px;
@@ -282,18 +281,16 @@ body {
 .mobile-btn.call { background: #1e293b; color: white; border: 1px solid var(--glass-border); }
 .mobile-btn.whatsapp { background: #22c55e; color: white; animation: pulse-gold 2s infinite; }
 
-/* 13. RESPONSIVENESS (300+ Lines of Media Queries omitted for brevity, but logically applied here) */
+/* 13. RESPONSIVENESS */
 @media (max-width: 1200px) {
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
     .hero-main { padding: 60px; }
 }
-
 @media (max-width: 992px) {
     .hero-grid { grid-template-columns: 1fr; }
     .hero-main h1 { font-size: 3.5rem; }
     .dual-form-grid { grid-template-columns: 1fr; }
 }
-
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .navbar { padding: 15px 25px; border-radius: 0; }
@@ -301,7 +298,4 @@ body {
     .footer-main { padding-bottom: 140px; }
     .footer-grid { grid-template-columns: 1fr; }
     .form-card { padding: 40px 25px; }
-    .container { padding: 0 15px; }
 }
-
-/* ... Continuing with specific button heights, input padding adjustments, etc ... */
