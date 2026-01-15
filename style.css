@@ -42,7 +42,7 @@ body {
 .container {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 20px; /* Adjusted for smaller screens */
 }
 
 img {
@@ -95,6 +95,7 @@ img {
     display: inline-block;
     border: none;
     cursor: pointer;
+    text-align: center;
 }
 
 .cta-btn:hover {
@@ -110,28 +111,30 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 45px;
+    padding: 15px 30px;
     margin-top: 25px;
     position: sticky;
     top: 20px;
     z-index: 1000;
+    flex-wrap: wrap; /* Allows wrapping on very small screens */
+    gap: 15px;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     text-decoration: none;
     color: inherit;
 }
 
 .main-logo {
-    height: 50px;
+    height: 40px;
     width: auto;
 }
 
 .logo-text {
-    font-size: 1.4rem;
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
     font-weight: 800;
     letter-spacing: -0.5px;
 }
@@ -143,14 +146,14 @@ img {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: clamp(15px, 3vw, 40px);
 }
 
 .social-link {
     color: var(--text-dim);
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: var(--transition);
 }
 
@@ -163,33 +166,34 @@ img {
    ========================================================================== */
 .hero-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.8fr 1fr;
     gap: 28px;
     margin: 45px 0;
 }
 
 .hero-main {
-    padding: 70px;
+    padding: clamp(30px, 5vw, 70px);
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: clamp(2.2rem, 8vw, 4rem);
     font-weight: 800;
-    line-height: 1.05;
+    line-height: 1.1;
     margin-bottom: 30px;
-    letter-spacing: -2.5px;
+    letter-spacing: -1.5px;
 }
 
 .hero-main p {
     color: var(--text-dim);
-    font-size: 1.15rem;
+    font-size: clamp(1rem, 2vw, 1.15rem);
     max-width: 650px;
     margin-bottom: 45px;
 }
 
 .metrics {
     display: flex;
-    gap: 60px;
+    flex-wrap: wrap;
+    gap: 30px;
     margin-top: 25px;
 }
 
@@ -199,14 +203,14 @@ h1 {
 }
 
 .m-val {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     font-weight: 800;
     color: var(--accent-gold);
 }
 
 .m-lab {
     color: var(--text-dim);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -221,15 +225,16 @@ h1 {
    6. SIDEBAR & SERVICES
    ========================================================================== */
 .hero-side {
-    padding: 45px;
+    padding: clamp(25px, 4vw, 45px);
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .hero-side h3 {
     font-size: 1.3rem;
-    margin-bottom: 35px;
-    padding-bottom: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
     border-bottom: 1.5px solid var(--glass-border);
 }
 
@@ -239,23 +244,26 @@ h1 {
 
 .service-list li {
     display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 28px;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 24px;
     color: var(--text-dim);
     font-weight: 600;
+    font-size: 0.95rem;
 }
 
 .service-list i {
     color: var(--accent-gold);
-    font-size: 1.3rem;
-    width: 28px;
+    font-size: 1.1rem;
+    margin-top: 4px;
+    width: 24px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .status-box {
     margin-top: auto;
-    padding-top: 30px;
+    padding-top: 25px;
     border-top: 1.5px solid var(--glass-border);
 }
 
@@ -263,21 +271,22 @@ h1 {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
 }
 
 .pulse {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background: #22c55e;
     border-radius: 50%;
     animation: pulse-ring 2s infinite;
+    flex-shrink: 0;
 }
 
 @keyframes pulse-ring {
     0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-    70% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
+    70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
     100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
 
@@ -285,27 +294,27 @@ h1 {
    7. INQUIRY DESK (DUAL FORMS)
    ========================================================================== */
 .dual-form-container {
-    margin: 100px 0;
+    margin: clamp(50px, 10vw, 100px) 0;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: clamp(40px, 8vw, 60px);
 }
 
 .section-header h2 {
-    font-size: 3rem;
-    margin: 20px 0;
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    margin: 15px 0;
 }
 
 .dual-form-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 35px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
 }
 
 .form-card {
-    padding: 55px;
+    padding: clamp(25px, 5vw, 55px);
 }
 
 .highlight-card {
@@ -314,29 +323,29 @@ h1 {
 }
 
 .form-header {
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
 .form-header i {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     color: var(--accent-gold);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .form-header h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 8px;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 20px;
 }
 
 .input-row {
     display: flex;
-    gap: 22px;
+    gap: 20px;
 }
 
 .form-group {
@@ -347,8 +356,8 @@ input, textarea, select {
     width: 100%;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--glass-border);
-    padding: 16px 22px;
-    border-radius: 14px;
+    padding: 14px 20px;
+    border-radius: 12px;
     color: #fff;
     font-family: inherit;
     font-size: 1rem;
@@ -365,13 +374,13 @@ input:focus, textarea:focus, select:focus {
     background: var(--accent-gold);
     color: #000;
     border: none;
-    padding: 18px;
-    border-radius: 14px;
+    padding: 16px;
+    border-radius: 12px;
     font-weight: 800;
-    font-size: 1.05rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: var(--transition);
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .submit-btn:hover {
@@ -380,18 +389,18 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* ==========================================================================
-   8. BRAND SECTION (FIXED FOR VISIBILITY)
+   8. BRAND SECTION
    ========================================================================== */
 .brand-section {
-    padding: 70px;
+    padding: clamp(30px, 5vw, 70px);
     margin-bottom: 50px;
 }
 
 .brand-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 60px;
-    margin-top: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: clamp(20px, 5vw, 60px);
+    margin-top: 40px;
     align-items: center;
 }
 
@@ -399,23 +408,22 @@ input:focus, textarea:focus, select:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px; /* Uniform height */
+    height: 80px;
 }
 
 .brand-logo {
-    max-width: 180px;
-    max-height: 80px;
+    max-width: 100%;
+    max-height: 60px;
     width: auto;
     height: auto;
     object-fit: contain;
-    /* Removed brightness(0) filter to fix gray box issue */
     opacity: 0.85; 
     transition: var(--transition);
 }
 
 .brand-logo:hover {
     opacity: 1;
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
 /* ==========================================================================
@@ -423,26 +431,26 @@ input:focus, textarea:focus, select:focus {
    ========================================================================== */
 .contact-cards-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
     margin-bottom: 70px;
 }
 
 .contact-card {
-    padding: 45px;
+    padding: clamp(30px, 5vw, 45px);
     text-align: center;
     transition: var(--transition);
 }
 
 .contact-card:hover {
-    transform: translateY(-12px);
+    transform: translateY(-10px);
     border-color: var(--accent-gold);
 }
 
 .card-icon {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     color: var(--accent-gold);
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .card-link {
@@ -451,73 +459,80 @@ input:focus, textarea:focus, select:focus {
     color: var(--accent-gold);
     text-decoration: none;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 /* ==========================================================================
-   10. FOOTER (CLEANED)
+   10. FOOTER
    ========================================================================== */
 .footer-main {
-    padding: 70px 70px 40px 70px;
+    padding: clamp(40px, 5vw, 70px) clamp(20px, 5vw, 70px) 40px;
     margin-bottom: 40px;
 }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.6fr 0.8fr 0.8fr 1.2fr;
-    gap: 50px;
-    margin-bottom: 60px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+/* Make the first column wider if screen permits */
+@media (min-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: 1.5fr 0.8fr 0.8fr 1.2fr;
+    }
 }
 
 .footer-col h4 {
     color: var(--accent-gold);
-    margin-bottom: 30px;
-    font-size: 1.15rem;
+    margin-bottom: 25px;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
 
 .footer-description {
     color: var(--text-dim);
-    font-size: 1rem;
-    margin: 25px 0;
+    font-size: 0.95rem;
+    margin: 20px 0;
 }
 
 .footer-links {
-    list-style: none; /* Removed bullets */
+    list-style: none;
 }
 
 .footer-links li {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
 }
 
 .footer-links a {
     color: var(--text-dim);
     text-decoration: none;
     transition: var(--transition);
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .footer-links a:hover {
     color: #fff;
-    padding-left: 8px;
+    padding-left: 5px;
 }
 
 .social-icons {
     display: flex;
-    gap: 18px;
+    gap: 15px;
 }
 
 .social-icons a {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--accent-gold);
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: var(--transition);
 }
 
@@ -530,44 +545,126 @@ input:focus, textarea:focus, select:focus {
 .contact-item {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     color: var(--text-dim);
-    margin-bottom: 20px;
-    font-size: 1rem;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
 }
 
 .contact-item i {
     color: var(--accent-gold);
-    width: 20px;
+    width: 18px;
 }
 
 .bottom-footer {
     border-top: 1px solid var(--glass-border);
-    padding-top: 40px;
+    padding-top: 30px;
     text-align: center;
     color: var(--text-dim);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 /* ==========================================================================
-   11. RESPONSIVENESS
+   11. FLOATING BUTTONS (Mobile Specific)
    ========================================================================== */
-@media (max-width: 1100px) {
-    h1 { font-size: 3.2rem; }
-    .hero-grid { grid-template-columns: 1fr; }
-    .brand-grid { grid-template-columns: repeat(3, 1fr); }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
+.floating-contact {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 2000;
 }
 
+@media (min-width: 769px) {
+    .floating-contact {
+        display: none; /* Hide on desktop as per usual patterns */
+    }
+}
+
+.float-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.float-btn.call { background: rgba(30, 41, 59, 0.9); }
+.float-btn.whatsapp { background: rgba(34, 197, 94, 0.9); }
+
+/* ==========================================================================
+   12. MEDIA QUERIES & RESPONSIVENESS REFINEMENTS
+   ========================================================================== */
+
+/* Medium Devices (Tablets) */
+@media (max-width: 1024px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .navbar {
+        padding: 15px 20px;
+    }
+}
+
+/* Small Devices (Mobiles) */
 @media (max-width: 768px) {
-    .navbar { padding: 15px 25px; }
-    .nav-links { display: none; }
-    .hero-main { padding: 45px 25px; text-align: center; }
-    .metrics { justify-content: center; gap: 30px; }
-    .dual-form-grid { grid-template-columns: 1fr; }
-    .input-row { flex-direction: column; gap: 22px; }
-    .brand-grid { grid-template-columns: repeat(2, 1fr); gap: 35px; }
-    .contact-cards-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-    .footer-main { padding: 50px 25px; }
+    .nav-links {
+        display: none; /* In a real scenario, you'd add a hamburger menu here */
+    }
+
+    .navbar {
+        justify-content: center;
+    }
+
+    .hero-main {
+        text-align: center;
+    }
+
+    .hero-main p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .metrics {
+        justify-content: center;
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .metric-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .input-row {
+        flex-direction: column;
+    }
+
+    .brand-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-main {
+        margin-bottom: 80px; /* Space for floating buttons */
+    }
+}
+
+/* Very Small Devices */
+@media (max-width: 480px) {
+    .brand-grid {
+        grid-template-columns: 1fr;
+    }
 }
