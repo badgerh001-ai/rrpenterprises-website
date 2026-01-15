@@ -22,90 +22,65 @@
                 <a href="index.html" class="social-link">Home</a>
                 <a href="about.html" class="social-link">About Us</a>
                 <a href="services.html" class="social-link">Services</a>
-                <a href="contact.html" class="cta-btn">Contact Us</a>
+                <a href="contact.html" class="cta-btn active">Contact Us</a>
             </div>
         </nav>
 
         <header class="hero-main glass" style="margin-top: 40px; text-align: center;">
             <span class="badge">Get In Touch</span>
             <h1>Let's Optimize Your <br><span class="gradient-text">Supply Chain.</span></h1>
-            <p style="margin: 0 auto;">Whether you have a query about our services or want to explore a partnership, our team is ready to assist you.</p>
+            <p style="margin: 0 auto; max-width: 800px;">Whether you have a query about our services or want to explore a partnership, our team is ready to assist you.</p>
         </header>
 
         <section class="contact-cards-grid" style="margin-top: 30px;">
             <div class="glass contact-card">
-                <div class="card-icon">
-                    <i class="fas fa-phone-volume"></i>
-                </div>
+                <div class="card-icon"><i class="fas fa-phone-volume" style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 20px;"></i></div>
                 <h3>Call Our Experts</h3>
                 <p style="color: var(--text-dim); margin-bottom: 10px;">Available Mon-Sat (9AM - 7PM)</p>
                 <p style="font-size: 1.2rem; font-weight: 700;">+91 94948 31803</p>
-                <a href="tel:+919494831803" class="card-link">Call Now →</a>
+                <a href="tel:+919494831803" class="social-link" style="margin-top:15px; display:inline-block;">Call Now →</a>
             </div>
-
             <div class="glass contact-card">
-                <div class="card-icon">
-                    <i class="fas fa-envelope-open-text"></i>
-                </div>
+                <div class="card-icon"><i class="fas fa-envelope-open-text" style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 20px;"></i></div>
                 <h3>Email Inquiry</h3>
                 <p style="color: var(--text-dim); margin-bottom: 10px;">For quotes and documentation</p>
                 <p style="font-size: 1.1rem; font-weight: 700;">contact@rrpenterprises.co.in</p>
-                <a href="mailto:contact@rrpenterprises.co.in" class="card-link">Send Email →</a>
+                <a href="mailto:contact@rrpenterprises.co.in" class="social-link" style="margin-top:15px; display:inline-block;">Send Email →</a>
             </div>
         </section>
 
-        <section class="dual-form-container" style="margin-top: 0;">
-            <div class="dual-form-grid">
-                
+        <section class="dual-form-container" style="margin-top: 40px;">
+            <div class="dual-form-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
                 <section class="glass form-card highlight-card">
                     <div class="form-header">
-                        <i class="fas fa-paper-plane"></i>
+                        <i class="fas fa-paper-plane" style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 20px;"></i>
                         <h3>Send us a Message</h3>
                         <p>Fill out the form and we'll get back to you within 24 hours.</p>
                     </div>
                     <form action="https://formspree.io/f/mpqwlvba" method="POST" class="contact-form">
-                        <div class="input-row">
-                            <div class="form-group">
-                                <label style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 8px; display: block;">Your Name</label>
-                                <input type="text" name="name" placeholder="John Doe" required>
-                            </div>
-                            <div class="form-group">
-                                <label style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 8px; display: block;">Phone Number</label>
-                                <input type="tel" name="phone" placeholder="+91 00000 00000" required>
-                            </div>
+                        <div class="input-row" style="display: flex; gap: 20px;">
+                            <div class="form-group" style="flex: 1;"><label>Name</label><input type="text" name="name" placeholder="John Doe" required></div>
+                            <div class="form-group" style="flex: 1;"><label>Phone</label><input type="tel" name="phone" placeholder="+91 00000 00000" required></div>
                         </div>
+                        <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="email@company.com" required></div>
                         <div class="form-group">
-                            <label style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 8px; display: block;">Email Address</label>
-                            <input type="email" name="email" placeholder="email@company.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 8px; display: block;">Subject</label>
-                            <select name="subject">
+                            <label>Subject</label>
+                            <select name="subject" style="width:100%; padding:14px; background:rgba(255,255,255,0.04); border:1px solid var(--glass-border); color:#fff; border-radius:12px;">
                                 <option value="General Inquiry">General Inquiry</option>
                                 <option value="Freight Quote">Freight Quote</option>
                                 <option value="Warehousing">Warehousing Query</option>
                                 <option value="Partnership">Partnership Opportunity</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 8px; display: block;">Message</label>
-                            <textarea name="message" rows="5" placeholder="How can we help you today?" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <div class="form-group"><label>Message</label><textarea name="message" rows="5" placeholder="How can we help you today?" required></textarea></div>
+                        <button type="submit" class="cta-btn" style="width:100%; border:none; cursor:pointer;">Send Message</button>
                     </form>
                 </section>
 
                 <div style="display: flex; flex-direction: column; gap: 24px;">
                     <section class="glass form-card" style="flex: 1;">
-                        <div class="form-header">
-                            <i class="fas fa-map-marked-alt"></i>
-                            <h3>Headquarters</h3>
-                        </div>
-                        <p style="color: var(--text-dim); line-height: 1.8;">
-                            RRP ENTERPRISES<br>
-                            Anantapur, Andhra Pradesh<br>
-                            India - 515001
-                        </p>
+                        <div class="form-header"><i class="fas fa-map-marked-alt" style="font-size: 2.2rem; color: var(--accent-gold); margin-bottom: 20px;"></i><h3>Headquarters</h3></div>
+                        <p style="color: var(--text-dim); line-height: 1.8;">RRP ENTERPRISES<br>Anantapur, Andhra Pradesh<br>India - 515001</p>
                         <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 20px 0;">
                         <h4 style="color: var(--accent-gold); margin-bottom: 10px;">Regional Reach</h4>
                         <ul class="service-list" style="font-size: 0.85rem;">
@@ -114,76 +89,34 @@
                             <li><i class="fas fa-check-circle"></i> Pan-India Fleet Network</li>
                         </ul>
                     </section>
-                    
-                    <a href="https://wa.me/919494831803" class="glass" style="padding: 30px; text-decoration: none; display: flex; align-items: center; gap: 20px; transition: 0.3s; border-color: rgba(37, 211, 102, 0.27);">
+                    <a href="https://wa.me/919494831803" class="glass" style="padding: 30px; text-decoration: none; display: flex; align-items: center; gap: 20px; border-color: rgba(37, 211, 102, 0.3);">
                         <i class="fab fa-whatsapp" style="font-size: 2.5rem; color: #25d366;"></i>
-                        <div>
-                            <h4 style="color: #fff;">Chat on WhatsApp</h4>
-                            <p style="color: var(--text-dim); font-size: 0.8rem;">Instant support & updates</p>
-                        </div>
+                        <div><h4 style="color: #fff;">Chat on WhatsApp</h4><p style="color: var(--text-dim); font-size: 0.8rem;">Instant support & updates</p></div>
                     </a>
                 </div>
-
             </div>
         </section>
 
         <footer class="footer-main glass">
             <div class="footer-grid">
-                <div class="footer-col brand-col">
-                    <div class="logo-container">
-                        <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
-                        <div class="logo-text">RRP <span>ENTERPRISES</span></div>
-                    </div>
-                    <p class="footer-description">
-                        Providing tech-enabled, reliable logistics and supply chain solutions across the Indian subcontinent.
-                    </p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
+                <div class="footer-col">
+                    <div class="logo-text">RRP <span>ENTERPRISES</span></div>
+                    <p class="footer-description">Reliable logistics and supply chain solutions across the Indian subcontinent.</p>
                 </div>
-
-                <div class="footer-col links-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col links-col">
-                    <h4>Legal & Support</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Sitemap</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col contact-col">
+                <div class="footer-col">
                     <h4>Address</h4>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+91 94948 31803</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>contact@rrpenterprises.co.in</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Anantapur, AP 515001</span>
-                    </div>
+                    <div class="contact-item"><i class="fas fa-phone-alt"></i><span>+91 94948 31803</span></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>contact@rrpenterprises.co.in</span></div>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Anantapur, AP 515001</span></div>
                 </div>
             </div>
-
-            <div class="bottom-footer">
-                <p>© 2026 RRP ENTERPRISES. All Rights Reserved.</p>
-            </div>
+            <div class="bottom-footer"><p>© 2026 RRP ENTERPRISES. All Rights Reserved.</p></div>
         </footer>
+    </div>
+
+    <div class="floating-contact">
+        <a href="tel:+919494831803" class="float-btn call"><i class="fas fa-phone"></i> Call</a>
+        <a href="https://wa.me/919494831803" class="float-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 
 </body>
