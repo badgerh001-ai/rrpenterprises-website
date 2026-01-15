@@ -3,161 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRP ENTERPRISES | Precision Logistics & Supply Chain Solutions</title>
+    <title>RRP ENTERPRISES | India's Leading Logistics & Supply Chain Partner</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <div class="container">
-        <nav class="navbar">
+        <nav class="navbar glass">
             <a href="index.html" class="logo-container">
-                <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
+                <img src="assets/logo.png" alt="RRP Enterprises Logo" class="main-logo">
                 <div class="logo-text">RRP <span>ENTERPRISES</span></div>
             </a>
+            
             <div class="nav-links">
                 <a href="index.html" class="social-link active">Home</a>
                 <a href="about.html" class="social-link">About Us</a>
                 <a href="services.html" class="social-link">Services</a>
+                <a href="contact.html" class="social-link">Tracking</a>
                 <a href="contact.html" class="cta-btn">Contact Us</a>
             </div>
         </nav>
 
-        <main class="hero-grid">
-            <section class="hero-main glass">
-                <span class="badge">National Logistics Intelligence</span>
-                <h1>Reliable Supply <br><span class="gradient-text">Chain Partner.</span></h1>
-                <p style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 45px; max-width: 700px;">Strategically headquartered in Anantapur, we bridge the gap between production and consumption with a focus on integrity, speed, and real-time visibility.</p>
-                <div style="display: flex; gap: 60px; flex-wrap: wrap;">
-                    <div class="stat-item">
-                        <span style="font-size: 3rem; font-weight: 800; color: var(--accent-gold); display: block;">98.5%</span>
-                        <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase;">On-Time Delivery</span>
-                    </div>
-                    <div class="stat-item">
-                        <span style="font-size: 3rem; font-weight: 800; color: var(--accent-gold); display: block;">24/7</span>
-                        <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase;">Live Tracking</span>
-                    </div>
+        <section class="hero-grid">
+            <div class="hero-main glass">
+                <div class="badge">
+                    <i class="fas fa-shield-check" style="margin-right: 10px;"></i>
+                    ISO 9001:2015 Certified
                 </div>
-            </section>
-            <aside class="glass" style="padding: 50px; display: flex; flex-direction: column; justify-content: center;">
-                <h3 style="margin-bottom: 35px; border-left: 5px solid var(--accent-gold); padding-left: 20px;">Core Expertise</h3>
-                <ul style="list-style: none;">
-                    <li style="margin-bottom: 30px; display: flex; align-items: flex-start; gap: 20px;">
-                        <i class="fas fa-truck-moving" style="color: var(--accent-gold); font-size: 1.8rem; margin-top: 5px;"></i>
-                        <div><strong style="font-size: 1.2rem;">Pan-India FTL</strong><p style="color:var(--text-dim); font-size: 0.95rem;">Full Truck Load across all major states.</p></div>
-                    </li>
-                    <li style="margin-bottom: 30px; display: flex; align-items: flex-start; gap: 20px;">
-                        <i class="fas fa-warehouse" style="color: var(--accent-gold); font-size: 1.8rem; margin-top: 5px;"></i>
-                        <div><strong style="font-size: 1.2rem;">3PL Warehousing</strong><p style="color:var(--text-dim); font-size: 0.95rem;">Smart inventory & cross-docking hubs.</p></div>
-                    </li>
-                    <li style="display: flex; align-items: flex-start; gap: 20px;">
-                        <i class="fas fa-route" style="color: var(--accent-gold); font-size: 1.8rem; margin-top: 5px;"></i>
-                        <div><strong style="font-size: 1.2rem;">Project Logistics</strong><p style="color:var(--text-dim); font-size: 0.95rem;">Specialized heavy & ODC cargo handling.</p></div>
-                    </li>
-                </ul>
-            </aside>
-        </main>
-
-        <section class="dual-form-grid">
-            <div class="glass form-card">
-                <div style="display:flex; align-items:center; gap:20px; margin-bottom:45px;">
-                    <i class="fas fa-id-card-alt" style="font-size:2.8rem; color:var(--accent-gold);"></i>
-                    <h3>Vendor Registration</h3>
+                <h1>Moving India's <br><span class="gradient-text">Future Today.</span></h1>
+                <p style="color: var(--text-dim); margin: 30px 0 45px; font-size: 1.2rem; max-width: 600px; line-height: 1.8;">
+                    RRP Enterprises provides seamless, technology-driven logistics solutions across the Indian subcontinent. From Full Truck Load (FTL) to complex warehousing, we are the backbone of your supply chain.
+                </p>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <a href="contact.html" class="cta-btn">Get Instant Quote</a>
+                    <a href="services.html" class="social-link" style="display: flex; align-items: center; gap: 10px; padding: 20px;">
+                        Explore Services <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <form action="https://formspree.io/f/mpqwlvba" method="POST">
-                    <div class="form-group"><label>Transporter Name</label><input type="text" name="v_company" required></div>
-                    <div class="form-group"><label>Owner Name</label><input type="text" name="v_owner" required></div>
-                    <div class="form-group"><label>Mobile Number</label><input type="tel" name="v_phone" required></div>
-                    <div class="form-group">
-                        <label>Fleet Availability</label>
-                        <select name="v_fleet">
-                            <option>14ft / 17ft Eicher</option>
-                            <option>19ft / 20ft Container</option>
-                            <option>32ft Single/Multi Axle</option>
-                            <option>Taurus / 10 Wheeler</option>
-                        </select>
-                    </div>
-                    <div class="form-group"><label>Operational Routes</label><textarea name="v_routes" rows="3"></textarea></div>
-                    <button type="submit" class="cta-btn" style="width: 100%;">Apply to Partner</button>
-                </form>
             </div>
 
-            <div class="glass form-card">
-                <div style="display:flex; align-items:center; gap:20px; margin-bottom:45px;">
-                    <i class="fas fa-shipping-fast" style="font-size:2.8rem; color:var(--accent-gold);"></i>
-                    <h3>Business Quote</h3>
-                </div>
-                <form action="https://formspree.io/f/mpqwlvba" method="POST">
-                    <div class="form-group"><label>Organization</label><input type="text" name="b_company" required></div>
-                    <div class="form-group"><label>Point of Contact</label><input type="text" name="b_name" required></div>
-                    <div class="form-group"><label>Mobile Number</label><input type="tel" name="b_phone" required></div>
-                    <div class="form-group">
-                        <label>Service Type</label>
-                        <select name="b_service">
-                            <option>Monthly FTL Contract</option>
-                            <option>Spot Placement</option>
-                            <option>Warehousing Solution</option>
-                        </select>
+            <div class="glass" style="padding: 50px; display: flex; flex-direction: column; justify-content: center;">
+                <h3 style="margin-bottom: 35px; font-size: 1.8rem;">Core <span class="gradient-text">Statistics</span></h3>
+                
+                <div class="service-item" style="margin-bottom: 25px; padding: 25px;">
+                    <div style="display: flex; align-items: center; gap: 20px;">
+                        <i class="fas fa-truck-fast" style="font-size: 2.5rem; color: var(--accent-gold);"></i>
+                        <div>
+                            <h4 style="font-size: 1.4rem;">500+</h4>
+                            <p style="color: var(--text-dim); font-size: 0.9rem;">Verified Vehicles</p>
+                        </div>
                     </div>
-                    <div class="form-group"><label>Load Details</label><textarea name="b_details" rows="3"></textarea></div>
-                    <button type="submit" class="cta-btn" style="width: 100%;">Request Pricing</button>
-                </form>
+                </div>
+
+                <div class="service-item" style="margin-bottom: 25px; padding: 25px;">
+                    <div style="display: flex; align-items: center; gap: 20px;">
+                        <i class="fas fa-map-location-dot" style="font-size: 2.5rem; color: var(--accent-gold);"></i>
+                        <div>
+                            <h4 style="font-size: 1.4rem;">Pan India</h4>
+                            <p style="color: var(--text-dim); font-size: 0.9rem;">Network Reach</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-item" style="padding: 25px;">
+                    <div style="display: flex; align-items: center; gap: 20px;">
+                        <i class="fas fa-clock-rotate-left" style="font-size: 2.5rem; color: var(--accent-gold);"></i>
+                        <div>
+                            <h4 style="font-size: 1.4rem;">99.9%</h4>
+                            <p style="color: var(--text-dim); font-size: 0.9rem;">On-Time Delivery</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="brand-section glass" style="margin-top: 80px; padding: 80px 40px;">
-            <h2 style="font-size: 2.5rem;">Proudly Partnering with <span class="gradient-text">India's Leading Businesses.</span></h2>
+        <section class="brand-section glass">
+            <span class="badge">Trusted By Industry Leaders</span>
+            <h2 style="font-size: 2.8rem; margin: 20px 0;">The Fuel Behind <span class="gradient-text">India's Economy.</span></h2>
+            <p style="color: var(--text-dim); max-width: 700px; margin: 0 auto 60px;">We take pride in our long-standing partnerships with India's most recognized brands, providing reliable transport solutions 24/7.</p>
+            
             <div class="brand-grid">
-                <div class="brand-item"><img src="assets/brands/delhivery.png" alt="Delhivery" class="brand-logo"></div>
-                <div class="brand-item"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl" class="brand-logo"></div>
-                <div class="brand-item"><img src="assets/brands/sugna-metals.png" alt="Sugna" class="brand-logo"></div>
-                <div class="brand-item"><img src="assets/brands/ncl-buildtek.png" alt="NCL" class="brand-logo"></div>
-                <div class="brand-item"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL" class="brand-logo"></div>
-                <div class="brand-item"><img src="assets/brands/binjusaria.png" alt="Binjusaria" class="brand-logo"></div>
-                <div class="brand-item"><img src="assets/brands/accpree.png" alt="Accpree" class="brand-logo"></div>
-                <div class="brand-item"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge" class="brand-logo"></div>
+                <div class="brand-item">
+                    <img src="assets/brands/delhivery.png" alt="Delhivery Original Logo" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/cj-darcl.png" alt="CJ Darcl Original Logo" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/sugna-metals.png" alt="Sugna Metals Original Logo" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/ncl-buildtek.png" alt="NCL Buildtek Original Logo" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/dhl-supply-chain.jpg" alt="DHL Original Logo" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/binjusaria.png" alt="Binjusaria Original Logo" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/accpree.png" alt="Accpree Engineering Original Logo" class="brand-logo">
+                </div>
+                <div class="brand-item">
+                    <img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge Original Logo" class="brand-logo">
+                </div>
+            </div>
+        </section>
+
+        <section class="dual-form-grid">
+            <div class="glass form-card">
+                <span class="badge">Safety First</span>
+                <h3 class="gradient-text"><i class="fas fa-user-shield"></i> Secure Transit</h3>
+                <p style="color: var(--text-dim); margin-top: 20px; font-size: 1.1rem;">
+                    Every shipment is monitored through our centralized control tower. We use advanced GPS tracking and AI-driven route optimization to ensure your cargo is always on the safest and fastest path.
+                </p>
+                <ul style="margin-top: 30px; list-style: none;">
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 15px;"></i> Real-time GPS Tracking</li>
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 15px;"></i> Digital Proof of Delivery (e-POD)</li>
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--accent-gold); margin-right: 15px;"></i> 24/7 Customer Support</li>
+                </ul>
+            </div>
+            
+            <div class="glass form-card" style="background: linear-gradient(rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.9)), url('assets/truck-bg.jpg'); background-size: cover;">
+                <span class="badge">Our Fleet</span>
+                <h3 style="color: white;"><i class="fas fa-truck-container"></i> Diverse Solutions</h3>
+                <p style="color: var(--text-dim); margin-top: 20px; font-size: 1.1rem;">
+                    From small pickup trucks for local distribution to heavy-duty trailers for interstate freight, RRP Enterprises maintains a diverse fleet to handle any load size.
+                </p>
+                <div style="margin-top: 40px;">
+                    <a href="services.html" class="cta-btn">View Fleet Gallery</a>
+                </div>
             </div>
         </section>
 
         <footer class="footer-main glass">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="logo-container" style="margin-bottom: 25px;">
+                    <div class="logo-container" style="margin-bottom: 30px;">
                         <img src="assets/logo.png" alt="RRP" class="main-logo">
                         <div class="logo-text">RRP <span>ENTERPRISES</span></div>
                     </div>
-                    <p style="color: var(--text-dim); margin-bottom: 35px;">Leading the digital transformation of Indian logistics. Built for scale, engineered for reliability.</p>
+                    <p style="color: var(--text-dim); margin-bottom: 30px;">
+                        Providing world-class logistics and supply chain management services across India since inception. Your growth is our priority.
+                    </p>
                     <div class="footer-social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/919494831803"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919494831803" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
                     </div>
                 </div>
+
                 <div class="footer-col">
-                    <h4>DIRECTORY</h4>
+                    <h4>QUICK LINKS</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">Main Deck</a></li>
-                        <li><a href="about.html">Our Legacy</a></li>
+                        <li><a href="index.html">Home Overview</a></li>
+                        <li><a href="about.html">About Our Legacy</a></li>
                         <li><a href="services.html">Service Portfolio</a></li>
-                        <li><a href="contact.html">Support Desk</a></li>
+                        <li><a href="contact.html">Request a Quote</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-col">
-                    <h4>HEADQUARTERS</h4>
-                    <div class="contact-item"><i class="fas fa-phone-alt"></i><span>+91 94948 31803</span></div>
-                    <div class="contact-item"><i class="fas fa-envelope-open"></i><span>contact@rrpenterprises.co.in</span></div>
-                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Anantapur, Andhra Pradesh - 515001</span></div>
+                    <h4>OFFICE HEADQUARTERS</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Anantapur Main Road, Near NH-44,<br>Anantapur, Andhra Pradesh - 515001</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-volume"></i>
+                        <span>+91 94948 31803<br>+91 94411 22334</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <span>contact@rrpenterprises.co.in<br>support@rrpenterprises.co.in</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon - Sat: 09:00 AM - 08:00 PM<br>Operations: 24/7 Available</span>
+                    </div>
                 </div>
             </div>
-            <div style="text-align: center; border-top: 1px solid var(--glass-border); margin-top: 60px; padding-top: 40px; color: var(--text-dim); font-size: 0.9rem;">
-                © 2026 RRP ENTERPRISES. All Rights Reserved.
+            
+            <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--glass-border); text-align: center;">
+                <p style="color: var(--text-dim); font-size: 0.9rem;">
+                    © 2026 RRP ENTERPRISES Private Limited. All Rights Reserved. | Designed for Excellence.
+                </p>
             </div>
         </footer>
     </div>
 
     <div class="mobile-action-bar">
-        <a href="tel:+919494831803" class="mobile-btn call"><i class="fas fa-phone-alt"></i> Call Us</a>
-        <a href="https://wa.me/919494831803" class="mobile-btn whatsapp"><i class="fab fa-whatsapp"></i> Message</a>
+        <a href="tel:+919494831803" class="mobile-btn call">
+            <i class="fas fa-phone-alt"></i> Call Now
+        </a>
+        <a href="https://wa.me/919494831803" class="mobile-btn whatsapp">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
     </div>
+
 </body>
 </html>
