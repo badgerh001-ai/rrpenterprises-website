@@ -443,3 +443,20 @@ body {
         animation-duration: 28s;
     }
 }
+/* ===============================
+   FOOTER GRID FIX – EMPTY SPACE
+   =============================== */
+
+.footer-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* Ensure footer always fills container width */
+.footer-main {
+    width: 100%;
+}
+
+/* Prevent footer content from collapsing */
+.footer-col {
+    min-width: 0;
+}
