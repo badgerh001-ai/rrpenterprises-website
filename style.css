@@ -364,3 +364,82 @@ body {
         height: 42px;
     }
 }
+/* ===============================
+   FIX: OUR CLIENTS – 3 ROW LAYOUT
+   =============================== */
+
+/* Ensure section has proper height */
+.clients-section {
+    display: block;
+    padding-bottom: 80px;
+}
+
+/* Each row separated clearly */
+.clients-marquee {
+    overflow: hidden;
+    width: 100%;
+    margin: 25px 0;
+}
+
+/* Track should span viewport width, not collapse */
+.clients-track {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    width: fit-content;
+    min-width: 200%;
+    animation: clientsScrollFixed 35s linear infinite;
+}
+
+/* Reverse row animation */
+.clients-marquee.reverse .clients-track {
+    animation-direction: reverse;
+}
+
+/* Normalize logo container */
+.client-logo {
+    flex: 0 0 auto;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Normalize logo sizes (NO stretching) */
+.client-logo img {
+    max-height: 55px;
+    max-width: 160px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Correct scroll distance */
+@keyframes clientsScrollFixed {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+    .client-logo {
+        width: 140px;
+    }
+
+    .client-logo img {
+        max-height: 42px;
+        max-width: 120px;
+    }
+
+    .clients-track {
+        gap: 40px;
+        animation-duration: 28s;
+    }
+}
