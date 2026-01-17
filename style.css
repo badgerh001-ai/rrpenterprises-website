@@ -1,5 +1,5 @@
 /* ==========================================================================
-   RRP ENTERPRISES - MASTER STYLESHEET (FULL 500+ LINE RESTORATION)
+   RRP ENTERPRISES - MASTER STYLESHEET (STABLE & FIXED)
    ========================================================================== */
 
 /* 1. KEYFRAMES & ANIMATIONS */
@@ -8,81 +8,63 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
 @keyframes shine {
     0% { left: -100%; }
     100% { left: 100%; }
 }
 
 @keyframes pulse-gold {
-    0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.4); }
-    70% { box-shadow: 0 0 0 15px rgba(234, 179, 8, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(234,179,8,.4); }
+    70% { box-shadow: 0 0 0 15px rgba(234,179,8,0); }
+    100% { box-shadow: 0 0 0 0 rgba(234,179,8,0); }
 }
 
-@keyframes slideInRight {
-    from { transform: translateX(100px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes borderGlow {
-    0%, 100% { border-color: rgba(234, 179, 8, 0.2); }
-    50% { border-color: rgba(234, 179, 8, 0.5); }
+/* Client scroll animation */
+@keyframes clientScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
 
 /* 2. ROOT VARIABLES */
 :root {
     --bg-dark: #020617;
-    --card-bg: rgba(15, 23, 42, 0.7);
-    --nav-bg: #020617; 
+    --card-bg: rgba(15,23,42,.7);
+    --nav-bg: #020617;
     --accent-gold: #eab308;
-    --accent-gold-hover: #ca8a04;
     --text-main: #f8fafc;
     --text-dim: #94a3b8;
-    --glass-border: rgba(234, 179, 8, 0.15);
-    --gradient-gold: linear-gradient(135deg, #facc15, #eab308);
-    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
-    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --glass-border: rgba(234,179,8,.15);
+    --gradient-gold: linear-gradient(135deg,#facc15,#eab308);
+    --card-shadow: 0 8px 32px rgba(0,0,0,.45);
+    --transition: all .4s cubic-bezier(.4,0,.2,1);
     --font-primary: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* 3. RESET & BASE STYLES */
+/* 3. RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-}
+html { scroll-behavior: smooth; }
 
 body {
-    background-color: var(--bg-dark);
+    background: var(--bg-dark);
     color: var(--text-main);
     font-family: var(--font-primary);
     line-height: 1.8;
     overflow-x: hidden;
-    background-image: 
-        radial-gradient(circle at 20% 20%, rgba(234, 179, 8, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(234, 179, 8, 0.05) 0%, transparent 40%);
 }
 
+/* 4. CONTAINER */
 .container {
     max-width: 1440px;
-    margin: 0 auto;
+    margin: auto;
     padding: 0 30px;
 }
 
-/* 4. NAVIGATION & HEADER */
+/* 5. NAVBAR */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -90,11 +72,10 @@ body {
     padding: 20px 50px;
     position: sticky;
     top: 0;
-    z-index: 999999; 
-    background: var(--nav-bg); 
+    z-index: 9999;
+    background: var(--nav-bg);
     border-bottom: 1px solid var(--glass-border);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
 }
 
 .logo-container {
@@ -103,80 +84,52 @@ body {
     gap: 15px;
     text-decoration: none;
     color: inherit;
-    transition: var(--transition);
 }
 
 .main-logo {
     height: 55px;
-    width: auto;
-    object-fit: contain;
-    background: white;
-    border-radius: 8px;
+    background: #fff;
     padding: 5px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-radius: 8px;
 }
 
 .logo-text {
     font-size: 1.6rem;
     font-weight: 800;
-    letter-spacing: -0.5px;
-    text-transform: uppercase;
 }
 
-.logo-text span {
-    color: var(--accent-gold);
-}
+.logo-text span { color: var(--accent-gold); }
 
 .nav-links {
     display: flex;
-    align-items: center;
     gap: 45px;
 }
 
-.social-link { 
-    color: var(--text-dim); 
-    text-decoration: none; 
-    font-weight: 700; 
-    font-size: 0.95rem;
+.social-link {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-weight: 700;
     position: relative;
-    transition: var(--transition);
 }
 
-.social-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--accent-gold);
-    transition: var(--transition);
+.social-link.active,
+.social-link:hover { color: var(--accent-gold); }
+
+/* 6. HERO */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 35px;
+    margin: 60px 0;
+    animation: fadeInUp .8s ease-out;
 }
 
-.social-link:hover::after, 
-.social-link.active::after {
-    width: 100%;
-}
-
-.social-link:hover, 
-.social-link.active {
-    color: var(--accent-gold);
-}
-
-/* 5. HERO SECTION */
-.hero-grid { 
-    display: grid; 
-    grid-template-columns: 1.7fr 1fr; 
-    gap: 35px; 
-    margin: 60px 0; 
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.hero-main { 
-    padding: 85px; 
-    position: relative; 
-    overflow: hidden; 
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(2, 6, 23, 0.95) 100%);
+.hero-main {
+    padding: 85px;
+    background: linear-gradient(135deg,rgba(15,23,42,.8),rgba(2,6,23,.95));
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-main::before {
@@ -184,279 +137,131 @@ body {
     position: absolute;
     top: 0; left: -100%;
     width: 50%; height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+    background: linear-gradient(to right,transparent,rgba(255,255,255,.05),transparent);
     transform: skewX(-25deg);
     animation: shine 8s infinite;
 }
 
-.hero-main h1 { 
-    font-size: clamp(3.5rem, 8vw, 5rem); 
-    line-height: 1.1; 
-    margin-bottom: 35px; 
-    font-weight: 800; 
-    letter-spacing: -2px;
+.hero-main h1 {
+    font-size: clamp(3.5rem,8vw,5rem);
+    line-height: 1.1;
 }
 
-/* 6. GLASSMORPHISM CARDS */
+/* 7. GLASS */
 .glass {
     background: var(--card-bg);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     border: 1px solid var(--glass-border);
     border-radius: 40px;
-    transition: var(--transition);
     box-shadow: var(--card-shadow);
 }
 
-.glass:hover {
-    border-color: rgba(234, 179, 8, 0.4);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    transform: translateY(-10px);
-}
-
-.badge {
-    display: inline-flex;
-    align-items: center;
-    background: rgba(234, 179, 8, 0.1);
-    color: var(--accent-gold);
-    padding: 12px 28px;
-    border-radius: 60px;
-    font-size: 0.85rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 35px;
-    border: 1px solid rgba(234, 179, 8, 0.2);
-}
-
-.gradient-text {
-    background: var(--gradient-gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
-}
-
-/* 7. CTA & BUTTONS */
+/* 8. BUTTON */
 .cta-btn {
     background: var(--gradient-gold);
-    color: #000 !important;
+    color: #000;
     padding: 22px 50px;
     border-radius: 20px;
     font-weight: 900;
     text-decoration: none;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transition: var(--transition);
-    box-shadow: 0 10px 30px rgba(234, 179, 8, 0.3);
 }
 
-.cta-btn:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(234, 179, 8, 0.5);
-}
-
-/* 8. BRAND / PARTNER SECTION */
-.brand-section { 
-    padding: 120px 0; 
-    text-align: center; 
-}
-
-.brand-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 40px;
-    align-items: center;
-    margin-top: 80px;
-}
-
-.brand-item {
-    padding: 40px;
-    background: rgba(255,255,255,0.02);
-    border-radius: 30px;
-    border: 1px solid var(--glass-border);
-    transition: var(--transition);
-    height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.brand-item:hover {
-    background: rgba(255,255,255,0.07);
-    border-color: var(--accent-gold);
-    transform: scale(1.08) rotate(2deg);
-}
-
-.brand-logo { 
-    max-height: 70px; 
-    max-width: 100%;
-    width: auto;
-    filter: none !important;
-    opacity: 1 !important;
-    transition: 0.5s; 
-    object-fit: contain;
-}
-
-/* 9–14 REMAIN UNCHANGED (FORMS, FOOTER, MEDIA QUERIES) */
-/* YOUR ORIGINAL CONTENT CONTINUES EXACTLY AS PROVIDED */
-
-/* ===================================================================== */
-/* ================== ADDITION STARTS BELOW (ONLY NEW) ================== */
-/* ===================================================================== */
+/* ==========================================================================
+   OUR CLIENTS – STABLE 3 ROW SCROLL
+   ========================================================================== */
 
 .clients-section {
-    margin-top: 80px;
+    margin: 100px 0;
+    padding: 60px;
 }
 
-.clients-marquee {
-    overflow: hidden;
-    width: 100%;
-    margin-top: 25px;
-}
-
-.clients-track {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    width: max-content;
-    animation: clientsScroll 30s linear infinite;
-}
-
-.clients-marquee.reverse .clients-track {
-    animation-direction: reverse;
-}
-
-.client-logo {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.client-logo img {
-    height: 55px;
-    width: auto;
-    object-fit: contain;
-    opacity: 0.85;
-    transition: 0.3s ease;
-}
-
-.client-logo img:hover {
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-@keyframes clientsScroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
-
-@media (max-width: 768px) {
-    .clients-track {
-        gap: 40px;
-        animation-duration: 24s;
-    }
-
-    .client-logo img {
-        height: 42px;
-    }
-}
-/* ===============================
-   FIX: OUR CLIENTS – 3 ROW LAYOUT
-   =============================== */
-
-/* Ensure section has proper height */
-.clients-section {
-    display: block;
-    padding-bottom: 80px;
-}
-
-/* Each row separated clearly */
 .clients-marquee {
     overflow: hidden;
     width: 100%;
     margin: 25px 0;
 }
 
-/* Track should span viewport width, not collapse */
 .clients-track {
     display: flex;
-    align-items: center;
     gap: 60px;
-    width: fit-content;
-    min-width: 200%;
-    animation: clientsScrollFixed 35s linear infinite;
+    width: max-content;
+    animation: clientScroll 35s linear infinite;
 }
 
-/* Reverse row animation */
 .clients-marquee.reverse .clients-track {
     animation-direction: reverse;
 }
 
-/* Normalize logo container */
 .client-logo {
-    flex: 0 0 auto;
     width: 180px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-/* Normalize logo sizes (NO stretching) */
 .client-logo img {
     max-height: 55px;
-    max-width: 160px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    background: white;
+    max-width: 150px;
+    background: #fff;
     padding: 10px;
     border-radius: 10px;
+    object-fit: contain;
 }
 
-/* Correct scroll distance */
-@keyframes clientsScrollFixed {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
+/* ==========================================================================
+   FOOTER (FIXED)
+   ========================================================================== */
+
+.footer-main {
+    margin-top: 120px;
+    padding: 80px 50px 60px;
 }
-
-/* Mobile fix */
-@media (max-width: 768px) {
-    .client-logo {
-        width: 140px;
-    }
-
-    .client-logo img {
-        max-height: 42px;
-        max-width: 120px;
-    }
-
-    .clients-track {
-        gap: 40px;
-        animation-duration: 28s;
-    }
-}
-/* ===============================
-   FOOTER GRID FIX – EMPTY SPACE
-   =============================== */
 
 .footer-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 60px;
 }
 
-/* Ensure footer always fills container width */
-.footer-main {
-    width: 100%;
+.footer-col h4 {
+    color: var(--accent-gold);
+    margin-bottom: 25px;
 }
 
-/* Prevent footer content from collapsing */
-.footer-col {
-    min-width: 0;
+.contact-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: var(--text-dim);
+}
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-main { padding: 50px 30px; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .clients-track { gap: 40px; animation-duration: 28s; }
+    .client-logo { width: 140px; }
+    .client-logo img { max-height: 42px; }
+    .container { padding: 0 15px; }
+}
+
+.mobile-action-bar {
+    position: fixed;
+    bottom: 25px;
+    left: 15px;
+    right: 15px;
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 768px) {
+    .mobile-action-bar { display: grid; }
 }
