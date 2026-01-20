@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – PREMIUM MODERN LOGISTICS STYLES (v3.0)
-   Features: Mobile Hamburger, Floating Round Badges, Modern Quick Links
+   RRP ENTERPRISES – PREMIUM MODERN LOGISTICS STYLES (v3.1)
+   Features: Full Mobile Compatibility, Safari Blur Fixes, Round Badges
    =================================================================== */
 
 /* ---------------- 1. RESET & THEME VARIABLES ---------------- */
@@ -44,6 +44,7 @@ body {
 
 .glass {
   background: var(--bg-card);
+  /* Added: Safari compatibility prefixes */
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
@@ -66,6 +67,7 @@ body {
   z-index: 10000;
   background: rgba(2, 6, 23, 0.9);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -99,7 +101,6 @@ body {
 
 .logo-text span { color: var(--gold); }
 
-/* Hamburger Button Styling */
 .menu-btn {
   display: none;
   font-size: 1.5rem;
@@ -115,7 +116,7 @@ body {
   align-items: center;
 }
 
-/* Mobile Menu Logic */
+/* Mobile Navigation Stability Fixes */
 @media (max-width: 992px) {
   .menu-btn { display: block; }
 
@@ -125,12 +126,15 @@ body {
     right: -100%;
     width: 250px;
     height: auto;
-    background: var(--bg-dark);
+    background: #0f172a; /* Solid fall-back for older browsers */
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 30px;
     border-radius: 0 0 0 20px;
     border: 1px solid var(--border-light);
-    transition: 0.4s ease-in-out;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
   }
 
@@ -158,7 +162,7 @@ body {
   color: var(--gold);
 }
 
-/* ---------------- 4. HERO & STATS (GRID FIX) ---------------- */
+/* ---------------- 4. HERO & STATS (MOBILE SPACING FIXES) ---------------- */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -178,6 +182,19 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/* Fix: Shrink padding and text for smaller mobile devices */
+@media (max-width: 480px) {
+  .hero-main {
+    padding: 25px 20px;
+  }
+  .hero-main h1 {
+    font-size: 2.2rem !important; /* Forces a smaller size on tiny screens */
+  }
+  .hero-main p {
+    font-size: 1rem;
+  }
 }
 
 .badge {
@@ -212,6 +229,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+@media (max-width: 480px) {
+  .stats-sidebar { padding: 20px; }
 }
 
 .service-item {
@@ -253,22 +274,17 @@ body {
   box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
 }
 
-.cta-btn:hover {
-  background: var(--gold-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(234, 179, 8, 0.4);
-}
-
-/* ---------------- 7. CLIENTS MARQUEE (REVERSE ADDED) ---------------- */
+/* ---------------- 7. CLIENTS MARQUEE (SCALING FIX) ---------------- */
 .clients-section {
-  padding: 80px 0;
+  padding: 60px 0;
   text-align: center;
 }
 
 .clients-marquee {
   overflow: hidden;
-  padding: 20px 0;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  padding: 15px 0;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .clients-track {
@@ -284,34 +300,33 @@ body {
 
 .client-logo {
   background: #fff;
-  padding: 15px;
+  padding: 10px;
   border-radius: 12px;
-  height: 80px;
-  width: 160px;
+  height: 70px; /* Reduced for better mobile fit */
+  width: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: var(--transition);
 }
 
-.client-logo img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
+@media (max-width: 480px) {
+  .client-logo { width: 110px; height: 60px; }
+  .clients-track { gap: 15px; }
 }
 
 /* ---------------- 8. MODERN QUICK LINKS & FOOTER ---------------- */
 .footer-main {
-  margin-top: 80px;
-  padding: 60px 0 100px;
+  margin-top: 60px;
+  padding: 60px 0 120px;
   background: linear-gradient(to top, #000, var(--bg-dark));
   border-top: 1px solid var(--border-light);
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
 }
 
 .footer-col h4 {
@@ -339,59 +354,38 @@ body {
   transition: var(--transition);
 }
 
-.footer-links li a i {
-  font-size: 0.7rem;
-  color: var(--gold);
-}
-
 .footer-links li a:hover {
   color: var(--gold);
   transform: translateX(10px);
 }
 
-.contact-item {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.contact-item i {
-  color: var(--gold);
-  margin-top: 5px;
-}
-
-/* ---------------- 9. ROUND FLOATING BADGES ---------------- */
+/* ---------------- 9. ROUND FLOATING BADGES (Z-INDEX FIX) ---------------- */
 .floating-badges {
   position: fixed;
-  bottom: 30px;
-  right: 25px;
+  bottom: 25px;
+  right: 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  z-index: 9999;
+  gap: 12px;
+  z-index: 10001; /* Above everything including nav */
 }
 
 .badge-round {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #fff;
   text-decoration: none;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
   transition: var(--transition);
-  border: 2px solid rgba(255,255,255,0.1);
 }
 
 .badge-round.whatsapp { background: #22c55e; }
-.badge-round.call { background: #1e293b; }
-
-.badge-round:hover {
-  transform: scale(1.1) translateY(-5px);
-}
+.badge-round.call { background: #1e293b; border: 1px solid var(--border-light); }
 
 /* ---------------- 10. ANIMATIONS ---------------- */
 @keyframes scroll {
@@ -404,6 +398,4 @@ body {
   to { transform: translateX(0); }
 }
 
-/* Industry Related Extra Decorations */
-.footer-col .logo-container { margin-bottom: 20px; }
 .badge-center { display: flex; justify-content: center; margin-bottom: 15px; }
