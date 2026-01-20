@@ -18,12 +18,16 @@
                 <div class="logo-text">RRP <span>ENTERPRISES</span></div>
             </a>
 
+            <div class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+                <i class="fas fa-bars"></i>
+            </div>
+
             <ul class="nav-links">
                 <li><a href="index.html" class="social-link active">Home</a></li>
                 <li><a href="about.html" class="social-link">About Us</a></li>
                 <li><a href="services.html" class="social-link">Services</a></li>
                 <li><a href="contact.html" class="social-link">Tracking</a></li>
-                <li><a href="contact.html" class="cta-btn nav-cta" style="padding: 10px 20px; font-size: 0.85rem;">Contact Us</a></li>
+                <li><a href="contact.html" class="cta-btn nav-cta" style="padding: 10px 20px; font-size: 0.85rem; color: #000;">Contact Us</a></li>
             </ul>
         </div>
     </nav>
@@ -80,7 +84,7 @@
         </section>
 
         <section class="clients-section glass" style="margin-top: 40px; border-radius: 30px;">
-            <div class="badge-center" style="display: flex; justify-content: center; margin-bottom: 10px;">
+            <div class="badge-center">
                 <span class="badge">Our Clients</span>
             </div>
             <h2 class="section-title" style="margin-bottom: 40px; text-align: center;">
@@ -101,7 +105,7 @@
             </div>
 
             <div class="clients-marquee">
-                <div class="clients-track" style="animation-direction: reverse;">
+                <div class="clients-track reverse">
                     <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
                     <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
                     <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
@@ -129,7 +133,7 @@
     <footer class="footer-main glass">
         <div class="container footer-grid">
             <div class="footer-col">
-                <div class="logo-container" style="margin-bottom: 20px;">
+                <div class="logo-container">
                     <img src="assets/logo.png" class="main-logo" alt="RRP">
                     <div class="logo-text">RRP <span>ENTERPRISES</span></div>
                 </div>
@@ -137,23 +141,23 @@
             </div>
 
             <div class="footer-col">
-                <h4 style="color: var(--gold); margin-bottom: 20px;">QUICK LINKS</h4>
+                <h4>QUICK LINKS</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4 style="color: var(--gold); margin-bottom: 20px;">GET IN TOUCH</h4>
-                <div class="contact-item" style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 15px;">
-                    <i class="fas fa-phone" style="color: var(--gold); margin-top: 5px;"></i>
+                <h4>GET IN TOUCH</h4>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
                     <span style="color: var(--text-dim);">+91 9494831803<br>+91 9014884668</span>
                 </div>
-                <div class="contact-item" style="display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-envelope" style="color: var(--gold);"></i>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
                     <span style="color: var(--text-dim);">contact@rrpenterprises.co.in</span>
                 </div>
             </div>
@@ -164,12 +168,12 @@
         </div>
     </footer>
 
-    <div class="mobile-action-bar">
-        <a href="tel:+919494831803" class="mobile-btn call">
-            <i class="fas fa-phone"></i> Call Now
+    <div class="floating-badges">
+        <a href="https://wa.me/919494831803" class="badge-round whatsapp">
+            <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="https://wa.me/919494831803" class="mobile-btn whatsapp">
-            <i class="fab fa-whatsapp"></i> WhatsApp
+        <a href="tel:+919494831803" class="badge-round call">
+            <i class="fas fa-phone"></i>
         </a>
     </div>
 
