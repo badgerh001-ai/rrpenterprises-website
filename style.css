@@ -1,262 +1,271 @@
 /* ===================================================================
-   RRP ENTERPRISES – STABLE & MOBILE-FIRST CSS (FINAL)
+   RRP ENTERPRISES – REFINED MODERN DESIGN (FULL REPLACEMENT)
+   Focus: Decluttering, Visual Hierarchy, & Precision Spacing
    =================================================================== */
 
-/* ---------------- RESET ---------------- */
+/* ---------------- 1. RESET & VARIABLES ---------------- */
+:root {
+  --gold: #eab308;
+  --gold-hover: #facc15;
+  --bg-dark: #020617;
+  --bg-card: rgba(15, 23, 42, 0.6);
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
+  --border-light: rgba(234, 179, 8, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  
+  /* Standardized Spacing Scale */
+  --space-xs: 8px;
+  --space-s: 16px;
+  --space-m: 24px;
+  --space-l: 48px;
+  --space-xl: 80px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
+html { 
+  scroll-behavior: smooth; 
+  font-size: 16px; 
+}
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background: #020617;
-  color: #f8fafc;
-  line-height: 1.7;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ---------------- VARIABLES ---------------- */
-:root {
-  --gold: #eab308;
-  --dim: #94a3b8;
-  --glass: rgba(15,23,42,.7);
-  --border: rgba(234,179,8,.15);
-}
-
-/* ---------------- CONTAINER ---------------- */
+/* ---------------- 2. UTILITY & CONTAINERS ---------------- */
 .container {
-  max-width: 1440px;
-  margin: auto;
-  padding: 0 16px;
+  max-width: 1280px; /* Reduced from 1440 for better readability */
+  margin: 0 auto;
+  padding: 0 var(--space-m);
 }
 
-/* ================= NAVBAR ================= */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+}
+
+/* ---------------- 3. NAVIGATION (FIXED CLUTTER) ---------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 16px;
+  padding: var(--space-s) var(--space-m);
   position: sticky;
   top: 0;
-  z-index: 9999;
-  background: #020617;
-  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
-  color: inherit;
 }
 
 .main-logo {
-  height: 42px;
+  height: 40px;
+  width: auto;
   background: #fff;
-  padding: 4px;
-  border-radius: 6px;
+  padding: 6px;
+  border-radius: 8px;
 }
 
 .logo-text {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text-main);
 }
 
 .logo-text span { color: var(--gold); }
 
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 32px;
+  list-style: none;
 }
 
 .social-link {
-  color: var(--dim);
+  color: var(--text-dim);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
 }
 
-.social-link.active,
-.social-link:hover { color: var(--gold); }
+.social-link:hover, .social-link.active {
+  color: var(--gold);
+}
 
-/* ================= HERO ================= */
+/* ---------------- 4. HERO SECTION ---------------- */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
-  margin: 30px 0;
+  gap: var(--space-m);
+  padding: var(--space-m) 0;
 }
 
 .hero-main {
-  padding: 32px 22px;
-  background: linear-gradient(135deg,rgba(15,23,42,.9),rgba(2,6,23,.95));
-  border-radius: 28px;
+  padding: var(--space-l) var(--space-m);
+  background: radial-gradient(circle at top left, rgba(30, 41, 59, 0.5), transparent);
+  border-radius: 32px;
+  border: 1px solid var(--glass-border);
 }
 
 .hero-main h1 {
-  font-size: 2.4rem;
-  line-height: 1.2;
-  margin-bottom: 18px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--space-m);
+  background: linear-gradient(to right, #fff, var(--text-dim));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-main p {
-  font-size: 1rem;
-  color: var(--dim);
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  max-width: 600px;
 }
 
-/* ================= GLASS ================= */
-.glass {
-  background: var(--glass);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-}
-
-/* ================= STATS / CARDS ================= */
+/* ---------------- 5. SERVICES / CARDS ---------------- */
 .service-item {
-  padding: 20px;
-  margin-bottom: 16px;
-  background: rgba(255,255,255,.03);
-  border-radius: 22px;
+  padding: var(--space-m);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  transition: all 0.3s ease;
 }
 
-.service-item h4 { font-size: 1.2rem; }
-.text-dim { color: var(--dim); }
+.service-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--gold);
+}
 
-/* ================= BUTTON ================= */
 .cta-btn {
   display: inline-block;
-  background: linear-gradient(135deg,#facc15,#eab308);
+  background: var(--gold);
   color: #000;
-  padding: 16px 26px;
-  border-radius: 16px;
-  font-weight: 900;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 700;
   text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-/* ================= CLIENTS ================= */
+.cta-btn:hover {
+  background: var(--gold-hover);
+  transform: translateY(-2px);
+}
+
+/* ---------------- 6. MARQUEE / CLIENTS ---------------- */
 .clients-section {
-  margin: 50px 0;
-  padding: 28px 18px;
+  padding: var(--space-xl) 0;
+  text-align: center;
 }
 
 .clients-marquee {
   overflow: hidden;
-  margin: 18px 0;
+  padding: var(--space-m) 0;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .clients-track {
   display: flex;
-  gap: 32px;
+  gap: 60px; /* Increased gap for cleanliness */
   width: max-content;
-  animation: scroll 26s linear infinite;
-}
-
-.clients-marquee.reverse .clients-track {
-  animation-direction: reverse;
-}
-
-.client-logo {
-  width: 130px;
-  display: flex;
-  justify-content: center;
+  animation: scroll 30s linear infinite;
 }
 
 .client-logo img {
-  max-height: 42px;
-  max-width: 120px;
-  background: #fff;
-  padding: 8px;
-  border-radius: 8px;
+  height: 45px;
+  filter: grayscale(1) brightness(2); /* Makes logos look uniform and clean */
+  opacity: 0.7;
+  transition: all 0.3s ease;
 }
 
-/* ================= FOOTER ================= */
+.client-logo img:hover {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+}
+
+/* ---------------- 7. FOOTER ---------------- */
 .footer-main {
-  margin-top: 60px;
-  padding: 50px 20px 120px; /* space for action bar */
+  padding: var(--space-xl) 0 140px;
+  border-top: 1px solid var(--border-light);
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 30px;
-  text-align: center;
-}
-
-.footer-col h4 {
-  color: var(--gold);
-  margin-bottom: 14px;
+  gap: var(--space-l);
 }
 
 .contact-item {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  color: var(--dim);
+  align-items: center;
+  gap: 12px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
 }
 
-/* ================= MOBILE ACTION BAR ================= */
+/* ---------------- 8. MOBILE ACTION BAR ---------------- */
 .mobile-action-bar {
   position: fixed;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  z-index: 99999;
+  z-index: 2000;
 }
 
 .mobile-btn {
-  padding: 14px;
-  border-radius: 14px;
-  font-weight: 900;
+  padding: 16px;
+  border-radius: 16px;
+  font-weight: 800;
   text-decoration: none;
   text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
-.mobile-btn.call {
-  background: #1e293b;
-  color: #fff;
-}
+.mobile-btn.call { background: #1e293b; color: #fff; }
+.mobile-btn.whatsapp { background: #22c55e; color: #fff; }
 
-.mobile-btn.whatsapp {
-  background: #22c55e;
-  color: #fff;
-}
-
-/* ================= ANIMATION ================= */
+/* ---------------- 9. ANIMATIONS & RESPONSIVE ---------------- */
 @keyframes scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
-/* ================= DESKTOP RESTORE ================= */
 @media (min-width: 992px) {
-  .container { padding: 0 30px; }
-
   .hero-grid {
-    grid-template-columns: 1.7fr 1fr;
-    gap: 35px;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-l);
+    align-items: center;
   }
 
-  .hero-main {
-    padding: 85px;
-  }
-
-  .hero-main h1 {
-    font-size: clamp(3.5rem,8vw,5rem);
-  }
-
-  .nav-links { display: flex; }
-  .mobile-action-bar { display: none; }
+  .hero-main h1 { font-size: 4rem; }
 
   .footer-grid {
-    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-    text-align: left;
+    grid-template-columns: 2fr 1fr 1fr;
   }
+
+  .mobile-action-bar { display: none; }
 }
