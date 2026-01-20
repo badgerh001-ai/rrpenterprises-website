@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – PREMIUM MODERN LOGISTICS STYLES (v3.1)
-   Features: Full Mobile Compatibility, Safari Blur Fixes, Round Badges
+   RRP ENTERPRISES – PREMIUM MODERN LOGISTICS STYLES (v3.2)
+   Features: Viewport Zoom Lock, Animated Hamburger, Safari Blur Fixes
    =================================================================== */
 
 /* ---------------- 1. RESET & THEME VARIABLES ---------------- */
@@ -26,12 +26,19 @@
   box-sizing: border-box;
 }
 
+/* FIX: Strict Viewport Lock to prevent Zoom/Wiggle */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  touch-action: manipulation; /* Prevents accidental double-tap zoom */
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--bg-dark);
   color: var(--text-main);
   line-height: 1.6;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -40,11 +47,11 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
 }
 
 .glass {
   background: var(--bg-card);
-  /* Added: Safari compatibility prefixes */
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
@@ -59,7 +66,7 @@ body {
   font-weight: 800;
 }
 
-/* ---------------- 3. NAVIGATION & HAMBURGER ---------------- */
+/* ---------------- 3. NAVIGATION & ANIMATED HAMBURGER ---------------- */
 .navbar {
   padding: 15px 0;
   position: sticky;
@@ -101,13 +108,33 @@ body {
 
 .logo-text span { color: var(--gold); }
 
+/* Updated: Hamburger Animation Code */
 .menu-btn {
   display: none;
-  font-size: 1.5rem;
-  color: var(--gold);
+  width: 30px;
+  height: 20px;
+  position: relative;
   cursor: pointer;
-  transition: var(--transition);
+  z-index: 10001;
 }
+
+.menu-btn span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: var(--gold);
+  border-radius: 9px;
+  transition: .25s ease-in-out;
+}
+
+.menu-btn span:nth-child(1) { top: 0px; }
+.menu-btn span:nth-child(2) { top: 8px; }
+.menu-btn span:nth-child(3) { top: 16px; }
+
+.menu-btn.open span:nth-child(1) { top: 8px; transform: rotate(135deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; left: -40px; }
+.menu-btn.open span:nth-child(3) { top: 8px; transform: rotate(-135deg); }
 
 .nav-links {
   display: flex;
@@ -126,7 +153,7 @@ body {
     right: -100%;
     width: 250px;
     height: auto;
-    background: #0f172a; /* Solid fall-back for older browsers */
+    background: #0f172a;
     background: var(--bg-card);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -184,13 +211,12 @@ body {
   justify-content: center;
 }
 
-/* Fix: Shrink padding and text for smaller mobile devices */
 @media (max-width: 480px) {
   .hero-main {
     padding: 25px 20px;
   }
   .hero-main h1 {
-    font-size: 2.2rem !important; /* Forces a smaller size on tiny screens */
+    font-size: 2.2rem !important;
   }
   .hero-main p {
     font-size: 1rem;
@@ -274,15 +300,17 @@ body {
   box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
 }
 
-/* ---------------- 7. CLIENTS MARQUEE (SCALING FIX) ---------------- */
+/* ---------------- 7. CLIENTS MARQUEE (ZOOM FIX) ---------------- */
 .clients-section {
   padding: 60px 0;
   text-align: center;
+  overflow: hidden; /* Added lock */
 }
 
 .clients-marquee {
   overflow: hidden;
   padding: 15px 0;
+  width: 100%;
   mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
@@ -302,12 +330,12 @@ body {
   background: #fff;
   padding: 10px;
   border-radius: 12px;
-  height: 70px; /* Reduced for better mobile fit */
+  height: 70px;
   width: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition);
+  flex-shrink: 0; /* Prevents logos from squishing */
 }
 
 @media (max-width: 480px) {
@@ -359,7 +387,7 @@ body {
   transform: translateX(10px);
 }
 
-/* ---------------- 9. ROUND FLOATING BADGES (Z-INDEX FIX) ---------------- */
+/* ---------------- 9. ROUND FLOATING BADGES ---------------- */
 .floating-badges {
   position: fixed;
   bottom: 25px;
@@ -367,7 +395,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 10001; /* Above everything including nav */
+  z-index: 10001;
 }
 
 .badge-round {
