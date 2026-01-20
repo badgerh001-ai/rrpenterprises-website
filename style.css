@@ -1,6 +1,5 @@
 /* ===================================================================
-   RRP ENTERPRISES – REFINED MODERN DESIGN (FULL REPLACEMENT)
-   Focus: Decluttering, Visual Hierarchy, & Precision Spacing
+   RRP ENTERPRISES – REFINED MODERN DESIGN (COLOR LOGO VERSION)
    =================================================================== */
 
 /* ---------------- 1. RESET & VARIABLES ---------------- */
@@ -44,7 +43,7 @@ body {
 
 /* ---------------- 2. UTILITY & CONTAINERS ---------------- */
 .container {
-  max-width: 1280px; /* Reduced from 1440 for better readability */
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 var(--space-m);
 }
@@ -56,7 +55,7 @@ body {
   border-radius: 24px;
 }
 
-/* ---------------- 3. NAVIGATION (FIXED CLUTTER) ---------------- */
+/* ---------------- 3. NAVIGATION ---------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -98,6 +97,7 @@ body {
   display: flex;
   gap: 32px;
   list-style: none;
+  align-items: center;
 }
 
 .social-link {
@@ -132,9 +132,6 @@ body {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: var(--space-m);
-  background: linear-gradient(to right, #fff, var(--text-dim));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .hero-main p {
@@ -150,11 +147,6 @@ body {
   border: 1px solid var(--glass-border);
   border-radius: 20px;
   transition: all 0.3s ease;
-}
-
-.service-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--gold);
 }
 
 .cta-btn {
@@ -173,7 +165,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ---------------- 6. MARQUEE / CLIENTS ---------------- */
+/* ---------------- 6. MARQUEE / CLIENTS (COLOR FIX) ---------------- */
 .clients-section {
   padding: var(--space-xl) 0;
   text-align: center;
@@ -182,26 +174,33 @@ body {
 .clients-marquee {
   overflow: hidden;
   padding: var(--space-m) 0;
-  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .clients-track {
   display: flex;
-  gap: 60px; /* Increased gap for cleanliness */
+  gap: 40px;
   width: max-content;
   animation: scroll 30s linear infinite;
+  align-items: center;
+}
+
+.client-logo {
+  background: #ffffff; /* White background ensures colored logos are visible */
+  padding: 12px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  height: 80px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .client-logo img {
-  height: 45px;
-  filter: grayscale(1) brightness(2); /* Makes logos look uniform and clean */
-  opacity: 0.7;
-  transition: all 0.3s ease;
-}
-
-.client-logo img:hover {
-  filter: grayscale(0) brightness(1);
-  opacity: 1;
+  max-height: 50px;
+  max-width: 100%;
+  object-fit: contain;
+  /* Removed grayscale and opacity filters */
 }
 
 /* ---------------- 7. FOOTER ---------------- */
@@ -242,7 +241,6 @@ body {
   font-weight: 800;
   text-decoration: none;
   text-align: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 .mobile-btn.call { background: #1e293b; color: #fff; }
@@ -260,12 +258,7 @@ body {
     gap: var(--space-l);
     align-items: center;
   }
-
   .hero-main h1 { font-size: 4rem; }
-
-  .footer-grid {
-    grid-template-columns: 2fr 1fr 1fr;
-  }
-
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
   .mobile-action-bar { display: none; }
 }
