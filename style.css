@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – PREMIUM MODERN LOGISTICS STYLES (v3.2)
-   Features: Viewport Zoom Lock, Animated Hamburger, Safari Blur Fixes
+   RRP ENTERPRISES – PREMIUM MODERN LOGISTICS STYLES (v3.3 – STABLE)
+   Improvements: Clean Overrides, Performance, Accessibility, Stability
    =================================================================== */
 
 /* ---------------- 1. RESET & THEME VARIABLES ---------------- */
@@ -8,16 +8,20 @@
   --gold: #eab308;
   --gold-hover: #facc15;
   --bg-dark: #020617;
-  --bg-card: rgba(15, 23, 42, 0.8); 
+  --bg-card: rgba(15, 23, 42, 0.8);
   --text-main: #f8fafc;
   --text-dim: #94a3b8;
   --border-light: rgba(234, 179, 8, 0.2);
   --glass-border: rgba(255, 255, 255, 0.08);
-  
-  /* Modern Spacing */
+
   --radius-lg: 24px;
   --radius-md: 12px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-Index Scale */
+  --z-navbar: 1000;
+  --z-menu: 1100;
+  --z-float: 1200;
 }
 
 * {
@@ -26,12 +30,12 @@
   box-sizing: border-box;
 }
 
-/* FIX: Strict Viewport Lock to prevent Zoom/Wiggle */
+/* Viewport Lock */
 html, body {
   width: 100%;
   overflow-x: hidden;
   position: relative;
-  touch-action: manipulation; /* Prevents accidental double-tap zoom */
+  touch-action: manipulation;
 }
 
 body {
@@ -42,7 +46,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---------------- 2. UTILITY ---------------- */
+/* ---------------- 2. UTILITIES ---------------- */
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -60,18 +64,18 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--gold), #fff);
+  background: linear-gradient(135deg, var(--gold), #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 800;
 }
 
-/* ---------------- 3. NAVIGATION & ANIMATED HAMBURGER ---------------- */
+/* ---------------- 3. NAVBAR ---------------- */
 .navbar {
   padding: 15px 0;
   position: sticky;
   top: 0;
-  z-index: 10000;
+  z-index: var(--z-navbar);
   background: rgba(2, 6, 23, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -93,8 +97,7 @@ body {
 
 .main-logo {
   height: 42px;
-  width: auto;
-  background: #fff;
+  background: #ffffff;
   padding: 5px;
   border-radius: 8px;
 }
@@ -103,38 +106,49 @@ body {
   font-size: 1.2rem;
   font-weight: 800;
   color: var(--text-main);
-  letter-spacing: -0.5px;
 }
 
-.logo-text span { color: var(--gold); }
+.logo-text span {
+  color: var(--gold);
+}
 
-/* Updated: Hamburger Animation Code */
+/* Hamburger */
 .menu-btn {
   display: none;
   width: 30px;
   height: 20px;
   position: relative;
   cursor: pointer;
-  z-index: 10001;
+  z-index: var(--z-menu);
 }
 
 .menu-btn span {
-  display: block;
   position: absolute;
   height: 3px;
   width: 100%;
   background: var(--gold);
   border-radius: 9px;
-  transition: .25s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
-.menu-btn span:nth-child(1) { top: 0px; }
+.menu-btn span:nth-child(1) { top: 0; }
 .menu-btn span:nth-child(2) { top: 8px; }
 .menu-btn span:nth-child(3) { top: 16px; }
 
-.menu-btn.open span:nth-child(1) { top: 8px; transform: rotate(135deg); }
-.menu-btn.open span:nth-child(2) { opacity: 0; left: -40px; }
-.menu-btn.open span:nth-child(3) { top: 8px; transform: rotate(-135deg); }
+.menu-btn.open span:nth-child(1) {
+  top: 8px;
+  transform: rotate(135deg);
+}
+
+.menu-btn.open span:nth-child(2) {
+  opacity: 0;
+  left: -40px;
+}
+
+.menu-btn.open span:nth-child(3) {
+  top: 8px;
+  transform: rotate(-135deg);
+}
 
 .nav-links {
   display: flex;
@@ -143,7 +157,6 @@ body {
   align-items: center;
 }
 
-/* Mobile Navigation Stability Fixes */
 @media (max-width: 992px) {
   .menu-btn { display: block; }
 
@@ -151,9 +164,7 @@ body {
     position: fixed;
     top: 70px;
     right: -100%;
-    width: 250px;
-    height: auto;
-    background: #0f172a;
+    width: 260px;
     background: var(--bg-card);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -161,18 +172,15 @@ body {
     padding: 30px;
     border-radius: 0 0 0 20px;
     border: 1px solid var(--border-light);
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+    transition: var(--transition);
+    z-index: var(--z-menu);
   }
 
-  .nav-links.active {
-    right: 0;
-  }
+  .nav-links.active { right: 0; }
 
   .nav-links li {
     width: 100%;
-    text-align: left;
-    padding: 10px 0;
+    padding: 12px 0;
     border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 }
@@ -185,11 +193,12 @@ body {
   transition: var(--transition);
 }
 
-.social-link:hover, .social-link.active {
+.social-link:hover,
+.social-link.active {
   color: var(--gold);
 }
 
-/* ---------------- 4. HERO & STATS (MOBILE SPACING FIXES) ---------------- */
+/* ---------------- 4. HERO ---------------- */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -206,50 +215,40 @@ body {
 
 .hero-main {
   padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 @media (max-width: 480px) {
   .hero-main {
     padding: 25px 20px;
   }
+
   .hero-main h1 {
-    font-size: 2.2rem !important;
-  }
-  .hero-main p {
-    font-size: 1rem;
+    font-size: 2.2rem;
   }
 }
 
 .badge {
-  display: inline-block;
   padding: 6px 14px;
-  background: rgba(234, 179, 8, 0.1);
+  background: rgba(234,179,8,0.1);
   color: var(--gold);
   border-radius: 50px;
   font-size: 0.8rem;
   font-weight: 700;
-  text-transform: uppercase;
   margin-bottom: 20px;
   width: fit-content;
 }
 
 .hero-main h1 {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  line-height: 1.1;
   margin-bottom: 24px;
 }
 
 .hero-main p {
-  font-size: 1.15rem;
   color: var(--text-dim);
   margin-bottom: 32px;
-  max-width: 600px;
 }
 
-/* ---------------- 5. STATS BOX ---------------- */
+/* ---------------- 5. STATS ---------------- */
 .stats-sidebar {
   padding: 30px;
   display: flex;
@@ -257,93 +256,77 @@ body {
   gap: 20px;
 }
 
-@media (max-width: 480px) {
-  .stats-sidebar { padding: 20px; }
-}
-
 .service-item {
   padding: 20px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255,255,255,0.03);
   border-radius: var(--radius-md);
   display: flex;
-  align-items: center;
   gap: 20px;
   transition: var(--transition);
 }
 
 .service-item:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255,255,255,0.06);
   transform: translateX(5px);
-}
-
-.service-item i {
-  font-size: 2rem;
-  color: var(--gold);
-}
-
-.service-item h4 {
-  font-size: 1.5rem;
-  font-weight: 800;
 }
 
 /* ---------------- 6. BUTTONS ---------------- */
 .cta-btn {
-  display: inline-block;
   background: var(--gold);
   color: #000;
   padding: 16px 32px;
   border-radius: var(--radius-md);
   font-weight: 700;
   text-decoration: none;
+  display: inline-block;
   transition: var(--transition);
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
 }
 
-/* ---------------- 7. CLIENTS MARQUEE (ZOOM FIX) ---------------- */
+/* ---------------- 7. CLIENTS MARQUEE (SINGLE SOURCE) ---------------- */
 .clients-section {
   padding: 60px 0;
-  text-align: center;
-  overflow: hidden; /* Added lock */
+  overflow: hidden;
+  position: relative;
 }
 
 .clients-marquee {
-  overflow: hidden;
-  padding: 15px 0;
   width: 100%;
-  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  overflow: hidden;
+  margin: 30px 0;
 }
 
 .clients-track {
   display: flex;
-  gap: 30px;
-  width: max-content;
-  animation: scroll 30s linear infinite;
+  gap: 60px;
+  width: fit-content;
+  min-width: 200%;
+  animation: clientScroll 35s linear infinite;
+  will-change: transform;
 }
 
-.clients-track.reverse {
-  animation: scroll-reverse 30s linear infinite;
+.clients-marquee.reverse .clients-track {
+  animation-direction: reverse;
 }
 
 .client-logo {
-  background: #fff;
-  padding: 10px;
-  border-radius: 12px;
-  height: 70px;
-  width: 130px;
+  flex: 0 0 auto;
+  width: 180px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0; /* Prevents logos from squishing */
 }
 
-@media (max-width: 480px) {
-  .client-logo { width: 110px; height: 60px; }
-  .clients-track { gap: 15px; }
+.client-logo img {
+  max-width: 150px;
+  max-height: 60px;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
 }
 
-/* ---------------- 8. MODERN QUICK LINKS & FOOTER ---------------- */
+/* ---------------- 8. FOOTER ---------------- */
 .footer-main {
   margin-top: 60px;
   padding: 60px 0 120px;
@@ -353,16 +336,13 @@ body {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
   gap: 40px;
 }
 
 .footer-col h4 {
   color: var(--gold);
   margin-bottom: 25px;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
   font-weight: 800;
 }
 
@@ -373,21 +353,18 @@ body {
   gap: 15px;
 }
 
-.footer-links li a {
+.footer-links a {
   color: var(--text-dim);
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
   transition: var(--transition);
 }
 
-.footer-links li a:hover {
+.footer-links a:hover {
   color: var(--gold);
-  transform: translateX(10px);
+  transform: translateX(8px);
 }
 
-/* ---------------- 9. ROUND FLOATING BADGES ---------------- */
+/* ---------------- 9. FLOATING BADGES ---------------- */
 .floating-badges {
   position: fixed;
   bottom: 25px;
@@ -395,7 +372,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 10001;
+  z-index: var(--z-float);
 }
 
 .badge-round {
@@ -405,108 +382,32 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
   color: #fff;
   text-decoration: none;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-  transition: var(--transition);
 }
 
 .badge-round.whatsapp { background: #22c55e; }
-.badge-round.call { background: #1e293b; border: 1px solid var(--border-light); }
+.badge-round.call {
+  background: #1e293b;
+  border: 1px solid var(--border-light);
+}
 
 /* ---------------- 10. ANIMATIONS ---------------- */
-@keyframes scroll {
+@keyframes clientScroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
-@keyframes scroll-reverse {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+/* ---------------- ACCESSIBILITY ---------------- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
 }
 
-.badge-center { display: flex; justify-content: center; margin-bottom: 15px; }
-/* ==========================================================
-   FIX: HOME PAGE – OUR CLIENTS LOGO OVERLAP (SAFE OVERRIDE)
-   ========================================================== */
-
-/* Prevent section collapse */
-.clients-section {
-    position: relative;
-    overflow: hidden;
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
-
-/* Each marquee row */
-.clients-marquee {
-    width: 100%;
-    overflow: hidden;
-    margin: 30px 0;
-}
-
-/* Track must be wider than viewport */
-.clients-track {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    width: fit-content;
-    min-width: 200%;
-    animation: clientScroll 35s linear infinite;
-}
-
-/* Reverse row */
-.clients-marquee.reverse .clients-track {
-    animation-direction: reverse;
-}
-
-/* Logo container – FIXED SIZE (CRITICAL) */
-.client-logo {
-    flex: 0 0 auto;
-    width: 180px;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Logo image – NO OVERFLOW */
-.client-logo img {
-    display: block;
-    max-width: 150px;
-    max-height: 60px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    background: #ffffff;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-/* Animation (single source of truth) */
-@keyframes clientScroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-}
-
-/* =========================
-   MOBILE FIXES
-   ========================= */
-@media (max-width: 768px) {
-
-    .clients-track {
-        gap: 40px;
-        animation-duration: 28s;
-    }
-
-    .client-logo {
-        width: 140px;
-        height: 80px;
-    }
-
-    .client-logo img {
-        max-width: 120px;
-        max-height: 45px;
-        padding: 8px;
-    }
-}
-
