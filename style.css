@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – PREMIUM MODERN LOGISTICS STYLES (v3.3 – STABLE)
-   Improvements: Clean Overrides, Performance, Accessibility, Stability
+   RRP ENTERPRISES – PREMIUM MODERN LOGISTICS STYLES (v3.4 – STABLE)
+   Fix: Footer Quick Links Alignment (Desktop + Mobile)
    =================================================================== */
 
 /* ---------------- 1. RESET & THEME VARIABLES ---------------- */
@@ -282,7 +282,7 @@ body {
   transition: var(--transition);
 }
 
-/* ---------------- 7. CLIENTS MARQUEE (SINGLE SOURCE) ---------------- */
+/* ---------------- 7. CLIENTS MARQUEE ---------------- */
 .clients-section {
   padding: 60px 0;
   overflow: hidden;
@@ -326,7 +326,7 @@ body {
   border-radius: 10px;
 }
 
-/* ---------------- 8. FOOTER ---------------- */
+/* ---------------- 8. FOOTER (FIXED) ---------------- */
 .footer-main {
   margin-top: 60px;
   padding: 60px 0 120px;
@@ -338,6 +338,13 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
   gap: 40px;
+  align-items: center;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .footer-col h4 {
@@ -350,18 +357,54 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
 }
 
-.footer-links a {
+.footer-links li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--text-dim);
   text-decoration: none;
   transition: var(--transition);
 }
 
-.footer-links a:hover {
+.footer-links li a i {
+  font-size: 0.75rem;
+}
+
+.footer-links li a:hover {
   color: var(--gold);
-  transform: translateX(8px);
+  transform: translateX(6px);
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+/* Mobile footer alignment */
+@media (max-width: 768px) {
+  .footer-grid {
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-col {
+    align-items: center;
+  }
+
+  .footer-links {
+    align-items: center;
+  }
+
+  .footer-links li a {
+    justify-content: center;
+  }
 }
 
 /* ---------------- 9. FLOATING BADGES ---------------- */
