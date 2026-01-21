@@ -2,31 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | RRP ENTERPRISES - Our Legacy & Values</title>
 
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>About Us | RRP ENTERPRISES - Our Legacy & Values</title>
+    <meta name="description" content="Learn about RRP Enterprises, a premier Indian logistics provider delivering reliable, scalable, and technology-driven supply chain solutions.">
+    <link rel="canonical" href="https://rrpenterprises.co.in/about.html">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<div class="container">
-
-    <!-- NAVBAR -->
-    <nav class="navbar glass">
-        <a href="index.html" class="logo-container">
-            <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
+<!-- ================= NAVBAR (SAME AS INDEX) ================= -->
+<nav class="navbar" role="navigation">
+    <div class="container">
+        <a href="index.html" class="logo-container" aria-label="RRP Enterprises Home">
+            <img src="assets/logo.png" alt="RRP Enterprises Logo" class="main-logo">
             <div class="logo-text">RRP <span>ENTERPRISES</span></div>
         </a>
 
-        <div class="nav-links">
-            <a href="index.html" class="social-link">Home</a>
-            <a href="about.html" class="social-link active">About Us</a>
-            <a href="services.html" class="social-link">Services</a>
-            <a href="contact.html" class="cta-btn">Contact Us</a>
-        </div>
-    </nav>
+        <button class="menu-btn" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="social-link">Home</a></li>
+            <li><a href="about.html" class="social-link active">About Us</a></li>
+            <li><a href="services.html" class="social-link">Services</a></li>
+            <li><a href="contact.html" class="cta-btn nav-cta">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ================= MAIN ================= -->
+<main class="container">
 
     <!-- HERO -->
     <section class="hero-grid">
@@ -35,12 +54,12 @@
 
             <h1>About <span class="gradient-text">RRP ENTERPRISES</span></h1>
 
-            <p style="color: var(--text-dim); font-size: 1.2rem; margin-top: 25px; line-height: 1.8;">
+            <p class="text-dim" style="font-size:1.2rem; line-height:1.8;">
                 RRP ENTERPRISES is a premier diversified logistics provider in India, specializing in the domestic B2B road transportation segment.
                 We don’t just move cargo; we power the supply chains that keep Indian businesses moving forward.
             </p>
 
-            <p style="color: var(--text-dim); font-size: 1.1rem; margin-top: 20px; line-height: 1.8;">
+            <p class="text-dim" style="font-size:1.1rem; line-height:1.8;">
                 We deliver reliable, end-to-end multimodal logistics solutions engineered around our customers’ unique requirements.
                 From Full Truck Load (FTL) and Project Logistics to Freight Forwarding and Contract Logistics,
                 we bridge the gap between where your products are and where they need to be.
@@ -48,77 +67,71 @@
         </div>
 
         <!-- SIDE HIGHLIGHTS -->
-        <div class="glass" style="padding: 50px; display: flex; flex-direction: column; justify-content: center; gap: 30px;">
-            <div style="text-align: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 30px;">
-                <i class="fas fa-award" style="font-size: 3.5rem; color: var(--accent-gold); margin-bottom: 15px;"></i>
-                <h3 style="font-size: 1.5rem;">Unmatched Reliability</h3>
-                <p style="color: var(--text-dim); font-size: 0.9rem;">
-                    Meeting delivery commitments with absolute confidence.
-                </p>
+        <div class="glass">
+            <div class="service-item">
+                <i class="fas fa-award" aria-hidden="true"></i>
+                <div>
+                    <h4>Unmatched Reliability</h4>
+                    <p class="text-dim">Meeting delivery commitments with absolute confidence.</p>
+                </div>
             </div>
 
-            <div style="text-align: center;">
-                <i class="fas fa-chart-line" style="font-size: 3.5rem; color: var(--accent-gold); margin-bottom: 15px;"></i>
-                <h3 style="font-size: 1.5rem;">Scalable Growth</h3>
-                <p style="color: var(--text-dim); font-size: 0.9rem;">
-                    Logistics solutions that grow alongside your business.
-                </p>
+            <div class="service-item">
+                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                <div>
+                    <h4>Scalable Growth</h4>
+                    <p class="text-dim">Logistics solutions that grow alongside your business.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- LOGISTICS REDEFINED -->
-    <section class="glass" style="margin-top: 80px; padding: 70px 40px;">
-        <h2 style="text-align: center; margin-bottom: 50px;">
+    <section class="glass" style="margin-top:60px;">
+        <h2 class="badge-center">
             Logistics <span class="gradient-text">Redefined</span>
         </h2>
 
-        <div class="brand-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-            <div style="text-align: center;">
-                <i class="fas fa-location-crosshairs" style="font-size: 2.2rem; color: var(--accent-gold);"></i>
-                <h4 style="margin-top: 15px;">Real-Time Visibility</h4>
-                <p style="color: var(--text-dim); font-size: 0.95rem;">
-                    Stay informed with precision tracking and proactive updates.
-                </p>
+        <div class="hero-grid">
+            <div class="service-item">
+                <i class="fas fa-location-crosshairs" aria-hidden="true"></i>
+                <div>
+                    <h4>Real-Time Visibility</h4>
+                    <p class="text-dim">Stay informed with precision tracking and proactive updates.</p>
+                </div>
             </div>
 
-            <div style="text-align: center;">
-                <i class="fas fa-arrows-spin" style="font-size: 2.2rem; color: var(--accent-gold);"></i>
-                <h4 style="margin-top: 15px;">Cost Efficiency</h4>
-                <p style="color: var(--text-dim); font-size: 0.95rem;">
-                    Optimized routes and processes that protect your bottom line.
-                </p>
+            <div class="service-item">
+                <i class="fas fa-arrows-spin" aria-hidden="true"></i>
+                <div>
+                    <h4>Cost Efficiency</h4>
+                    <p class="text-dim">Optimized routes and processes that protect your bottom line.</p>
+                </div>
             </div>
 
-            <div style="text-align: center;">
-                <i class="fas fa-shield-halved" style="font-size: 2.2rem; color: var(--accent-gold);"></i>
-                <h4 style="margin-top: 15px;">Precision & Safety</h4>
-                <p style="color: var(--text-dim); font-size: 0.95rem;">
-                    Cost-effective solutions without compromising timelines or security.
-                </p>
+            <div class="service-item">
+                <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                <div>
+                    <h4>Precision & Safety</h4>
+                    <p class="text-dim">Cost-effective solutions without compromising timelines or security.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- VISION & MISSION -->
-    <section class="dual-form-grid" style="margin-top: 80px;">
-        <div class="glass" style="padding: 60px;">
-            <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px;">
-                <i class="fas fa-eye" style="font-size: 2.5rem; color: var(--accent-gold);"></i>
-                <h2>Our Strategic Vision</h2>
-            </div>
-            <p style="color: var(--text-dim); font-size: 1.1rem; line-height: 1.7;">
+    <section class="hero-grid" style="margin-top:60px;">
+        <div class="glass">
+            <h2><i class="fas fa-eye" aria-hidden="true"></i> Our Strategic Vision</h2>
+            <p class="text-dim" style="line-height:1.7;">
                 To become India’s most trusted, technology-led logistics partner,
                 enabling the seamless movement of goods and fueling the growth of our customers across every industry.
             </p>
         </div>
 
-        <div class="glass" style="padding: 60px;">
-            <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px;">
-                <i class="fas fa-bullseye" style="font-size: 2.5rem; color: var(--accent-gold);"></i>
-                <h2>Our Mission</h2>
-            </div>
-            <ul style="color: var(--text-dim); line-height: 1.8; padding-left: 18px;">
+        <div class="glass">
+            <h2><i class="fas fa-bullseye" aria-hidden="true"></i> Our Mission</h2>
+            <ul class="text-dim" style="line-height:1.8;">
                 <li>Precision & Safety in every movement</li>
                 <li>Lasting partnerships through transparency</li>
                 <li>Innovation-first, technology-driven operations</li>
@@ -129,51 +142,83 @@
     </section>
 
     <!-- CTA -->
-    <section class="glass" style="margin: 100px 0; padding: 80px 40px; text-align: center;">
-        <h2 style="margin-bottom: 20px;">
+    <section class="glass" style="margin:80px 0; text-align:center;">
+        <h2>
             Ready to <span class="gradient-text">Streamline Your Supply Chain?</span>
         </h2>
-        <p style="color: var(--text-dim); margin-bottom: 35px;">
+        <p class="text-dim">
             Whether it’s a complex project or a standard shipment, we bring the technology, fleet,
             and commitment to ensure your success.
         </p>
         <a href="contact.html" class="cta-btn">Contact Us Today</a>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer-main glass">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="logo-container" style="margin-bottom: 25px;">
-                    <img src="assets/logo.png" alt="RRP" class="main-logo">
-                    <div class="logo-text">RRP <span>ENTERPRISES</span></div>
-                </div>
-                <p class="text-dim">Providing world-class logistics solutions across India.</p>
-            </div>
+</main>
 
-            <div class="footer-col">
-                <h4>CONTACT</h4>
-                <div class="contact-item"><i class="fas fa-phone-alt"></i><span>+91 94948 31803</span></div>
-                <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Anantapur, AP</span></div>
+<!-- ================= FOOTER (SAME AS INDEX) ================= -->
+<footer class="footer-main glass">
+    <div class="container footer-grid">
+
+        <div class="footer-col">
+            <div class="logo-container">
+                <img src="assets/logo.png" class="main-logo" alt="RRP Enterprises Logo">
+                <div class="logo-text">RRP <span>ENTERPRISES</span></div>
             </div>
+            <p class="text-dim">Providing world-class logistics solutions across India.</p>
         </div>
 
-        <div class="footer-bottom">
-            © 2026 RRP ENTERPRISES. All Rights Reserved.
+        <div class="footer-col">
+            <h4>GET IN TOUCH</h4>
+            <p class="text-dim">+91 94948 31803</p>
+            <p class="text-dim">contact@rrpenterprises.co.in</p>
         </div>
-    </footer>
+    </div>
 
+    <div class="footer-bottom">
+        &copy; 2026 RRP Enterprises. All rights reserved.
+    </div>
+</footer>
+
+<!-- FLOATING CONTACT -->
+<div class="floating-badges">
+    <a href="https://wa.me/919494831803" class="badge-round whatsapp" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+919494831803" class="badge-round call" aria-label="Call RRP Enterprises">
+        <i class="fas fa-phone"></i>
+    </a>
 </div>
 
-<!-- MOBILE ACTION BAR -->
-<div class="mobile-action-bar">
-    <a href="tel:+919494831803" class="mobile-btn call">
-        <i class="fas fa-phone-alt"></i> Call Us
-    </a>
-    <a href="https://wa.me/919494831803" class="mobile-btn whatsapp">
-        <i class="fab fa-whatsapp"></i> WhatsApp
-    </a>
-</div>
+<!-- ================= SCRIPT ================= -->
+<script>
+    const menuBtn = document.getElementById('mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+            const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            menuBtn.classList.toggle('open');
+            navLinks.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', !expanded);
+        });
+
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('open');
+                navLinks.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                menuBtn.classList.remove('open');
+                navLinks.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+</script>
 
 </body>
 </html>
