@@ -2,175 +2,220 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | RRP ENTERPRISES - Logistics & Supply Chain</title>
 
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>Services | RRP ENTERPRISES - Logistics & Supply Chain</title>
+    <meta name="description" content="Explore RRP Enterprises logistics services including Full Truck Load (FTL), Contract Logistics, Freight Forwarding, and Project Logistics across India.">
+    <link rel="canonical" href="https://rrpenterprises.co.in/services.html">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<div class="container">
-
-    <!-- NAVBAR -->
-    <nav class="navbar glass">
-        <a href="index.html" class="logo-container">
-            <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
+<!-- ================= NAVBAR (SAME AS INDEX) ================= -->
+<nav class="navbar" role="navigation">
+    <div class="container">
+        <a href="index.html" class="logo-container" aria-label="RRP Enterprises Home">
+            <img src="assets/logo.png" alt="RRP Enterprises Logo" class="main-logo">
             <div class="logo-text">RRP <span>ENTERPRISES</span></div>
         </a>
 
-        <div class="nav-links">
-            <a href="index.html" class="social-link">Home</a>
-            <a href="about.html" class="social-link">About Us</a>
-            <a href="services.html" class="social-link active">Services</a>
-            <a href="contact.html" class="cta-btn">Contact Us</a>
-        </div>
-    </nav>
+        <button class="menu-btn" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="social-link">Home</a></li>
+            <li><a href="about.html" class="social-link">About Us</a></li>
+            <li><a href="services.html" class="social-link active">Services</a></li>
+            <li><a href="contact.html" class="cta-btn nav-cta">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ================= MAIN ================= -->
+<main class="container">
 
     <!-- SERVICES INTRO -->
-    <section class="brand-section">
-        <span class="badge">Service Portfolio</span>
+    <section class="glass" style="margin-top:40px;">
+        <div class="badge-center">
+            <span class="badge">Service Portfolio</span>
+        </div>
 
-        <h1 style="margin-bottom: 20px;">
+        <h1 style="text-align:center; margin-bottom:20px;">
             What We <span class="gradient-text">Deliver.</span>
         </h1>
 
-        <p style="color: var(--text-dim); max-width: 800px; margin: 0 auto 60px; text-align: center;">
+        <p class="text-dim" style="max-width:800px; margin:0 auto 60px; text-align:center;">
             We offer reliable, scalable logistics solutions designed to support complex supply chains across industries.
         </p>
 
         <!-- SERVICES GRID -->
-        <div class="dual-form-grid" style="text-align: left;">
+        <section class="hero-grid">
 
             <!-- Full Truck Load -->
-            <div class="glass form-card">
-                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px;">
-                    <i class="fas fa-truck-fast" style="font-size: 2.5rem; color: var(--accent-gold);"></i>
-                    <h3 style="font-size: 1.6rem;">Full Truck Load (FTL)</h3>
+            <div class="glass">
+                <div class="service-item">
+                    <i class="fas fa-truck-fast" aria-hidden="true"></i>
+                    <div>
+                        <h3>Full Truck Load (FTL)</h3>
+                        <p class="text-dim">
+                            Dedicated vehicles for point-to-point transportation across India. Best suited for high-volume cargo requiring speed, safety, and direct delivery.
+                        </p>
+                        <ul class="text-dim">
+                            <li>14ft to 32ft Vehicles</li>
+                            <li>Open & Closed Body Trucks</li>
+                            <li>GPS Tracked Fleet</li>
+                        </ul>
+                    </div>
                 </div>
-
-                <p style="color: var(--text-dim); margin-bottom: 20px;">
-                    Dedicated vehicles for point-to-point transportation across India. Best suited for high-volume cargo requiring speed, safety, and direct delivery.
-                </p>
-
-                <ul style="list-style: none; color: var(--accent-gold); font-weight: 600; font-size: 0.9rem;">
-                    <li><i class="fas fa-check"></i> 14ft to 32ft Vehicles</li>
-                    <li><i class="fas fa-check"></i> Open & Closed Body Trucks</li>
-                    <li><i class="fas fa-check"></i> GPS Tracked Fleet</li>
-                </ul>
             </div>
 
             <!-- Contract Logistics -->
-            <div class="glass form-card">
-                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px;">
-                    <i class="fas fa-handshake" style="font-size: 2.5rem; color: var(--accent-gold);"></i>
-                    <h3 style="font-size: 1.6rem;">Contract Logistics</h3>
+            <div class="glass">
+                <div class="service-item">
+                    <i class="fas fa-handshake" aria-hidden="true"></i>
+                    <div>
+                        <h3>Contract Logistics</h3>
+                        <p class="text-dim">
+                            Long-term logistics partnerships tailored to your business operations. We manage transportation, planning, and execution with performance-driven KPIs.
+                        </p>
+                        <ul class="text-dim">
+                            <li>Dedicated Fleet Solutions</li>
+                            <li>Cost & Route Optimization</li>
+                            <li>SLA-Based Operations</li>
+                        </ul>
+                    </div>
                 </div>
-
-                <p style="color: var(--text-dim); margin-bottom: 20px;">
-                    Long-term logistics partnerships tailored to your business operations. We manage transportation, planning, and execution with performance-driven KPIs.
-                </p>
-
-                <ul style="list-style: none; color: var(--accent-gold); font-weight: 600; font-size: 0.9rem;">
-                    <li><i class="fas fa-check"></i> Dedicated Fleet Solutions</li>
-                    <li><i class="fas fa-check"></i> Cost & Route Optimization</li>
-                    <li><i class="fas fa-check"></i> SLA-Based Operations</li>
-                </ul>
             </div>
 
             <!-- Freight Forwarding -->
-            <div class="glass form-card">
-                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px;">
-                    <i class="fas fa-ship" style="font-size: 2.5rem; color: var(--accent-gold);"></i>
-                    <h3 style="font-size: 1.6rem;">Freight Forwarding</h3>
+            <div class="glass">
+                <div class="service-item">
+                    <i class="fas fa-ship" aria-hidden="true"></i>
+                    <div>
+                        <h3>Freight Forwarding</h3>
+                        <p class="text-dim">
+                            End-to-end freight forwarding services ensuring smooth domestic and international cargo movement with complete documentation support.
+                        </p>
+                        <ul class="text-dim">
+                            <li>Road Freight Coordination</li>
+                            <li>Documentation & Compliance</li>
+                            <li>Door-to-Door Solutions</li>
+                        </ul>
+                    </div>
                 </div>
-
-                <p style="color: var(--text-dim); margin-bottom: 20px;">
-                    End-to-end freight forwarding services ensuring smooth domestic and international cargo movement with complete documentation support.
-                </p>
-
-                <ul style="list-style: none; color: var(--accent-gold); font-weight: 600; font-size: 0.9rem;">
-                    <li><i class="fas fa-check"></i> Road Freight Coordination</li>
-                    <li><i class="fas fa-check"></i> Documentation & Compliance</li>
-                    <li><i class="fas fa-check"></i> Door-to-Door Solutions</li>
-                </ul>
             </div>
 
             <!-- Project Logistics -->
-            <div class="glass form-card">
-                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px;">
-                    <i class="fas fa-gears" style="font-size: 2.5rem; color: var(--accent-gold);"></i>
-                    <h3 style="font-size: 1.6rem;">Project Logistics</h3>
+            <div class="glass">
+                <div class="service-item">
+                    <i class="fas fa-gears" aria-hidden="true"></i>
+                    <div>
+                        <h3>Project Logistics</h3>
+                        <p class="text-dim">
+                            Specialized handling of heavy-lift, oversized, and complex cargo. We manage planning, route surveys, and execution from origin to site.
+                        </p>
+                        <ul class="text-dim">
+                            <li>ODC & Heavy Cargo</li>
+                            <li>Route & Feasibility Studies</li>
+                            <li>Multi-Modal Coordination</li>
+                        </ul>
+                    </div>
                 </div>
-
-                <p style="color: var(--text-dim); margin-bottom: 20px;">
-                    Specialized handling of heavy-lift, oversized, and complex cargo. We manage planning, route surveys, and execution from origin to site.
-                </p>
-
-                <ul style="list-style: none; color: var(--accent-gold); font-weight: 600; font-size: 0.9rem;">
-                    <li><i class="fas fa-check"></i> ODC & Heavy Cargo</li>
-                    <li><i class="fas fa-check"></i> Route & Feasibility Studies</li>
-                    <li><i class="fas fa-check"></i> Multi-Modal Coordination</li>
-                </ul>
             </div>
 
-        </div>
+        </section>
     </section>
 
     <!-- CTA -->
-    <section class="glass" style="margin: 100px 0; padding: 70px 40px; text-align: center;">
-        <h2 style="margin-bottom: 25px;">
+    <section class="glass" style="margin:80px 0; text-align:center;">
+        <h2>
             Need a Customized <span class="gradient-text">Logistics Plan?</span>
         </h2>
-
-        <p style="color: var(--text-dim); margin-bottom: 40px;">
+        <p class="text-dim" style="margin-bottom:35px;">
             Our team is ready to design a reliable and cost-efficient logistics strategy for your business.
         </p>
-
         <a href="contact.html" class="cta-btn">Talk to an Expert</a>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer-main glass">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="logo-container">
-                    <img src="assets/logo.png" class="main-logo" alt="RRP">
-                    <div class="logo-text">RRP <span>ENTERPRISES</span></div>
-                </div>
-                <p class="text-dim">Providing world-class logistics solutions across India.</p>
-            </div>
+</main>
 
-            <div class="footer-col">
-                <h4>CONTACT</h4>
-                <div class="contact-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>+91 94948 31803</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>contact@rrpenterprises.co.in</span>
-                </div>
+<!-- ================= FOOTER (SAME AS INDEX) ================= -->
+<footer class="footer-main glass">
+    <div class="container footer-grid">
+
+        <div class="footer-col">
+            <div class="logo-container">
+                <img src="assets/logo.png" class="main-logo" alt="RRP Enterprises Logo">
+                <div class="logo-text">RRP <span>ENTERPRISES</span></div>
             </div>
+            <p class="text-dim">Providing world-class logistics solutions across India.</p>
         </div>
 
-        <div class="footer-bottom">
-            © 2026 RRP ENTERPRISES. All Rights Reserved.
+        <div class="footer-col">
+            <h4>GET IN TOUCH</h4>
+            <p class="text-dim">+91 94948 31803</p>
+            <p class="text-dim">contact@rrpenterprises.co.in</p>
         </div>
-    </footer>
+    </div>
 
+    <div class="footer-bottom">
+        &copy; 2026 RRP Enterprises. All rights reserved.
+    </div>
+</footer>
+
+<!-- FLOATING CONTACT -->
+<div class="floating-badges">
+    <a href="https://wa.me/919494831803" class="badge-round whatsapp" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+919494831803" class="badge-round call" aria-label="Call RRP Enterprises">
+        <i class="fas fa-phone"></i>
+    </a>
 </div>
 
-<!-- MOBILE ACTION BAR -->
-<div class="mobile-action-bar">
-    <a href="tel:+919494831803" class="mobile-btn call">
-        <i class="fas fa-phone-alt"></i> Call Us
-    </a>
-    <a href="https://wa.me/919494831803" class="mobile-btn whatsapp">
-        <i class="fab fa-whatsapp"></i> WhatsApp
-    </a>
-</div>
+<!-- ================= SCRIPT ================= -->
+<script>
+    const menuBtn = document.getElementById('mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+            const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            menuBtn.classList.toggle('open');
+            navLinks.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', !expanded);
+        });
+
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('open');
+                navLinks.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                menuBtn.classList.remove('open');
+                navLinks.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+</script>
 
 </body>
 </html>
