@@ -2,42 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRP ENTERPRISES | India's Leading Logistics & Supply Chain Partner</title>
 
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary SEO -->
+    <title>RRP ENTERPRISES | India's Leading Logistics & Supply Chain Partner</title>
+    <meta name="description" content="RRP Enterprises delivers reliable, technology-driven logistics solutions across India. Specializing in FTL, supply chain, and pan-India transportation services.">
+    <meta name="keywords" content="RRP Enterprises, logistics company India, FTL transport, supply chain logistics, road transportation India">
+    <link rel="canonical" href="https://rrpenterprises.co.in/">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="RRP ENTERPRISES | India's Leading Logistics Partner">
+    <meta property="og:description" content="Seamless, reliable logistics and supply chain solutions across India.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rrpenterprises.co.in/">
+    <meta property="og:image" content="https://rrpenterprises.co.in/assets/logo.png">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <nav class="navbar">
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar" role="navigation">
         <div class="container">
-            <a href="index.html" class="logo-container">
+            <a href="index.html" class="logo-container" aria-label="RRP Enterprises Home">
                 <img src="assets/logo.png" alt="RRP Enterprises Logo" class="main-logo">
                 <div class="logo-text">RRP <span>ENTERPRISES</span></div>
             </a>
 
-            <div class="menu-btn" id="mobile-toggle">
+            <button class="menu-btn" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
 
             <ul class="nav-links">
                 <li><a href="index.html" class="social-link active">Home</a></li>
                 <li><a href="about.html" class="social-link">About Us</a></li>
                 <li><a href="services.html" class="social-link">Services</a></li>
                 <li><a href="contact.html" class="social-link">Tracking</a></li>
-                <li><a href="contact.html" class="cta-btn nav-cta" style="padding: 10px 20px; font-size: 0.85rem; color: #000;">Contact Us</a></li>
+                <li><a href="contact.html" class="cta-btn nav-cta">Contact Us</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- ================= MAIN ================= -->
     <main class="container">
+
+        <!-- HERO -->
         <section class="hero-grid">
             <div class="hero-main glass">
                 <span class="badge">Logistics Excellence</span>
+
                 <h1>
                     Moving India's<br>
                     <span class="gradient-text">Future Today.</span>
@@ -48,19 +71,20 @@
                     From Full Truck Load (FTL) to complex supply chain movements, we are the backbone of your logistics.
                 </p>
 
-                <div class="hero-btns" style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 30px;">
+                <div class="hero-btns">
                     <a href="contact.html" class="cta-btn">Get Instant Quote</a>
-                    <a href="services.html" class="social-link explore-btn" style="display: flex; align-items: center; gap: 8px;">
+                    <a href="services.html" class="social-link explore-btn">
                         Explore Services <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
+            <!-- STATS -->
             <div class="stats-sidebar glass">
                 <h3 class="stats-title">Core <span class="gradient-text">Statistics</span></h3>
 
                 <div class="service-item">
-                    <i class="fas fa-truck-fast"></i>
+                    <i class="fas fa-truck-fast" aria-hidden="true"></i>
                     <div>
                         <h4>500+</h4>
                         <p class="text-dim">Verified Vehicles</p>
@@ -68,7 +92,7 @@
                 </div>
 
                 <div class="service-item">
-                    <i class="fas fa-map-location-dot"></i>
+                    <i class="fas fa-map-location-dot" aria-hidden="true"></i>
                     <div>
                         <h4>Pan India</h4>
                         <p class="text-dim">Network Reach</p>
@@ -76,7 +100,7 @@
                 </div>
 
                 <div class="service-item">
-                    <i class="fas fa-clock-rotate-left"></i>
+                    <i class="fas fa-clock-rotate-left" aria-hidden="true"></i>
                     <div>
                         <h4>99.9%</h4>
                         <p class="text-dim">On-Time Delivery</p>
@@ -85,29 +109,31 @@
             </div>
         </section>
 
-        <section class="clients-section glass" style="margin-top: 40px; border-radius: 30px;">
+        <!-- CLIENTS -->
+        <section class="clients-section glass">
             <div class="badge-center">
                 <span class="badge">Our Clients</span>
             </div>
-            <h2 class="section-title" style="margin-bottom: 40px; text-align: center;">
+
+            <h2 class="section-title">
                 The Brands That <span class="gradient-text">Trust Us</span>
             </h2>
 
             <div class="clients-marquee">
                 <div class="clients-track">
-                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
+                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL Supply Chain"></div>
                     <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
                     <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
                     <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna Metals"></div>
-                    <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
+                    <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL Buildtek"></div>
+                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL Supply Chain"></div>
                     <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
                     <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
                 </div>
             </div>
 
-            <div class="clients-marquee">
-                <div class="clients-track reverse">
+            <div class="clients-marquee reverse">
+                <div class="clients-track">
                     <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
                     <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
                     <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
@@ -121,25 +147,27 @@
 
             <div class="clients-marquee">
                 <div class="clients-track">
-                    <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-                    <div class="client-logo"><img src="assets/brands/sugna-group.png" alt="Sugna Group"></div>
+                    <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL Buildtek"></div>
                     <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
-                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
-                    <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-                    <div class="client-logo"><img src="assets/brands/sugna-group.png" alt="Sugna Group"></div>
+                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL Supply Chain"></div>
+                    <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL Buildtek"></div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- ================= FOOTER ================= -->
     <footer class="footer-main glass">
         <div class="container footer-grid">
+
             <div class="footer-col">
                 <div class="logo-container">
-                    <img src="assets/logo.png" class="main-logo" alt="RRP">
+                    <img src="assets/logo.png" class="main-logo" alt="RRP Enterprises Logo">
                     <div class="logo-text">RRP <span>ENTERPRISES</span></div>
                 </div>
-                <p class="text-dim">Providing world-class logistics solutions across India. Reliable, Fast, and Secure.</p>
+                <p class="text-dim">
+                    Providing world-class logistics solutions across India. Reliable, Fast, and Secure.
+                </p>
             </div>
 
             <div class="footer-col">
@@ -155,45 +183,64 @@
             <div class="footer-col">
                 <h4>GET IN TOUCH</h4>
                 <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span style="color: var(--text-dim);">+91 9494831803<br>+91 9014884668</span>
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    <span class="text-dim">
+                        +91 9494831803<br>
+                        +91 9014884668
+                    </span>
                 </div>
                 <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span style="color: var(--text-dim);">contact@rrpenterprises.co.in</span>
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <span class="text-dim">contact@rrpenterprises.co.in</span>
                 </div>
             </div>
         </div>
-        
-        <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-light); color: var(--text-dim); font-size: 0.9rem;">
+
+        <div class="footer-bottom">
             &copy; 2026 RRP Enterprises. All rights reserved.
         </div>
     </footer>
 
+    <!-- FLOATING CONTACT -->
     <div class="floating-badges">
-        <a href="https://wa.me/919494831803" class="badge-round whatsapp">
+        <a href="https://wa.me/919494831803" class="badge-round whatsapp" aria-label="Chat on WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="tel:+919494831803" class="badge-round call">
+        <a href="tel:+919494831803" class="badge-round call" aria-label="Call RRP Enterprises">
             <i class="fas fa-phone"></i>
         </a>
     </div>
 
+    <!-- ================= SCRIPT ================= -->
     <script>
         const menuBtn = document.getElementById('mobile-toggle');
         const navLinks = document.querySelector('.nav-links');
 
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('open');
-            navLinks.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.social-link').forEach(link => {
-            link.addEventListener('click', () => {
-                menuBtn.classList.remove('open');
-                navLinks.classList.remove('active');
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', () => {
+                const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+                menuBtn.classList.toggle('open');
+                navLinks.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', !expanded);
             });
-        });
+
+            document.querySelectorAll('.social-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuBtn.classList.remove('open');
+                    navLinks.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    menuBtn.classList.remove('open');
+                    navLinks.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
     </script>
+
 </body>
 </html>
