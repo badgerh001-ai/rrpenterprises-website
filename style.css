@@ -427,3 +427,86 @@ body {
 }
 
 .badge-center { display: flex; justify-content: center; margin-bottom: 15px; }
+/* ==========================================================
+   FIX: HOME PAGE – OUR CLIENTS LOGO OVERLAP (SAFE OVERRIDE)
+   ========================================================== */
+
+/* Prevent section collapse */
+.clients-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Each marquee row */
+.clients-marquee {
+    width: 100%;
+    overflow: hidden;
+    margin: 30px 0;
+}
+
+/* Track must be wider than viewport */
+.clients-track {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    width: fit-content;
+    min-width: 200%;
+    animation: clientScroll 35s linear infinite;
+}
+
+/* Reverse row */
+.clients-marquee.reverse .clients-track {
+    animation-direction: reverse;
+}
+
+/* Logo container – FIXED SIZE (CRITICAL) */
+.client-logo {
+    flex: 0 0 auto;
+    width: 180px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logo image – NO OVERFLOW */
+.client-logo img {
+    display: block;
+    max-width: 150px;
+    max-height: 60px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Animation (single source of truth) */
+@keyframes clientScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* =========================
+   MOBILE FIXES
+   ========================= */
+@media (max-width: 768px) {
+
+    .clients-track {
+        gap: 40px;
+        animation-duration: 28s;
+    }
+
+    .client-logo {
+        width: 140px;
+        height: 80px;
+    }
+
+    .client-logo img {
+        max-width: 120px;
+        max-height: 45px;
+        padding: 8px;
+    }
+}
+
