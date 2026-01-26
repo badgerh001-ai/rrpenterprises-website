@@ -1,5 +1,5 @@
 /* ===================================================================
-   RRP ENTERPRISES – FINAL PRODUCTION CSS (v2025.4 - Compact 4x4)
+   RRP ENTERPRISES – FINAL PRODUCTION CSS (v2025.5 - Mobile Grid Fixed)
    =================================================================== */
 
 /* ---------------- 1. RESET & VARIABLES ---------------- */
@@ -220,12 +220,12 @@ body {
 /* SCROLL CONTAINER */
 .clients-marquee {
   width: 100%; overflow: hidden; 
-  margin: 10px 0; /* Super tight 10px margin for dense wall */
+  margin: 10px 0; /* Tight spacing for "Wall" effect */
   mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
 }
 
 .clients-track {
-  display: flex; gap: 20px; /* Reduced gap for density */
+  display: flex; gap: 20px; /* Uniform gap for Grid Look */
   width: max-content;
   animation: scroll 35s linear infinite;
 }
@@ -241,12 +241,13 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* ---------------- 8. CARGO MARQUEE CARDS (COMPACT 4x4) ---------------- */
-/* Reduced sizes to ensure 4 rows fit on screen nicely */
+/* ---------------- 8. CARGO MARQUEE CARDS (GRID FIX) ---------------- */
+/* These styles ensure 4 rows look like a neat grid */
 
 .cargo-card {
   flex: 0 0 auto;
-  width: 160px; /* Smaller width */
+  width: 160px;  /* Fixed Width */
+  height: 140px; /* Fixed Height = Uniform Grid */
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
@@ -263,18 +264,33 @@ body {
 
 .cargo-card img {
   width: 100%;
-  height: 100px; /* Smaller height for compact look */
-  object-fit: cover;
+  height: 100px; /* Uniform Image Height */
+  object-fit: cover; /* Prevents "Stone" breaking layout */
   border-bottom: 1px solid var(--glass-border);
 }
 
 .cargo-card span {
   padding: 8px;
-  font-size: 0.8rem; /* Smaller font */
+  font-size: 0.8rem;
   font-weight: 700;
   color: #fff;
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
+  /* Center text vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; 
+}
+
+/* Mobile Fix for Grid */
+@media (max-width: 768px) {
+  .cargo-card {
+    width: 120px; /* Smaller card on mobile */
+    height: 110px;
+  }
+  .cargo-card img { height: 75px; }
+  .cargo-card span { height: 35px; font-size: 0.7rem; }
 }
 
 /* ---------------- 9. FOOTER ---------------- */
