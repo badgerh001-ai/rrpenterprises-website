@@ -1,14 +1,14 @@
 /* ===================================================================
-   RRP ENTERPRISES – FINAL PRODUCTION CSS (v2025.5 - Mobile Grid Fixed)
+   RRP ENTERPRISES – FINAL MASTER STYLES (v2025.7)
    =================================================================== */
 
 /* ---------------- 1. RESET & VARIABLES ---------------- */
 :root {
   /* Brand Colors */
-  --gold: #fbbf24;       /* Bright Premium Gold */
-  --gold-hover: #f59e0b; /* Deep Amber */
-  --bg-dark: #09090b;    /* Deep Black Background */
-  --bg-card: rgba(24, 24, 27, 0.9); /* Card Background */
+  --gold: #fbbf24;
+  --gold-hover: #f59e0b;
+  --bg-dark: #09090b;
+  --bg-card: rgba(24, 24, 27, 0.9);
   
   /* Text */
   --text-main: #ffffff;
@@ -217,15 +217,14 @@ body {
 .section-title { font-size: 1.8rem; margin-bottom: 30px; }
 .badge-center { display: flex; justify-content: center; width: 100%; }
 
-/* SCROLL CONTAINER */
 .clients-marquee {
   width: 100%; overflow: hidden; 
-  margin: 10px 0; /* Tight spacing for "Wall" effect */
+  margin: 10px 0; 
   mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
 }
 
 .clients-track {
-  display: flex; gap: 20px; /* Uniform gap for Grid Look */
+  display: flex; gap: 20px;
   width: max-content;
   animation: scroll 35s linear infinite;
 }
@@ -233,22 +232,19 @@ body {
 .clients-marquee.reverse .clients-track { animation-direction: reverse; }
 @keyframes scroll { to { transform: translateX(-50%); } }
 
-/* HOME PAGE LOGOS */
 .client-logo img {
   height: 60px;
   background: #fff; padding: 8px; border-radius: 8px;
-  opacity: 1; /* Original Colors */
+  opacity: 1; 
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* ---------------- 8. CARGO MARQUEE CARDS (GRID FIX) ---------------- */
-/* These styles ensure 4 rows look like a neat grid */
-
+/* ---------------- 8. CARGO MARQUEE CARDS ---------------- */
 .cargo-card {
   flex: 0 0 auto;
-  width: 160px;  /* Fixed Width */
-  height: 140px; /* Fixed Height = Uniform Grid */
-  background: rgba(255, 255, 255, 0.05);
+  width: 160px;
+  height: 140px;
+  background: #1f2937;
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -264,56 +260,138 @@ body {
 
 .cargo-card img {
   width: 100%;
-  height: 100px; /* Uniform Image Height */
-  object-fit: cover; /* Prevents "Stone" breaking layout */
+  height: 100px;
+  object-fit: cover;
   border-bottom: 1px solid var(--glass-border);
+  background: #1f2937;
 }
 
 .cargo-card span {
-  padding: 8px;
+  width: 100%;
+  height: 40px;
+  padding: 0 5px;
   font-size: 0.8rem;
   font-weight: 700;
   color: #fff;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.3);
-  /* Center text vertically */
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px; 
+  text-align: center;
 }
 
-/* Mobile Fix for Grid */
 @media (max-width: 768px) {
-  .cargo-card {
-    width: 120px; /* Smaller card on mobile */
-    height: 110px;
-  }
+  .cargo-card { width: 120px; height: 110px; }
   .cargo-card img { height: 75px; }
   .cargo-card span { height: 35px; font-size: 0.7rem; }
 }
 
-/* ---------------- 9. FOOTER ---------------- */
+/* ---------------- 9. CONTACT PAGE STYLES (NEW) ---------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  padding: 20px 0 60px;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* Contact Cards (Left) */
+.info-card {
+  padding: 24px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  transition: 0.3s;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: ''; position: absolute; left: 0; top: 0; width: 4px; height: 100%;
+  background: var(--gold); opacity: 0.5;
+}
+
+/* Colorful Card Modifiers */
+.info-card.phone::before { background: var(--gold); }
+.info-card.whatsapp::before { background: #22c55e; }
+.info-card.email::before { background: #3b82f6; }
+.info-card.address::before { background: #a855f7; }
+
+.info-card:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateX(10px);
+}
+
+.icon-box {
+  width: 50px; height: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.2rem; flex-shrink: 0;
+}
+
+/* Icon Colors */
+.info-card.phone .icon-box { color: var(--gold); background: rgba(251, 191, 36, 0.1); }
+.info-card.whatsapp .icon-box { color: #22c55e; background: rgba(34, 197, 94, 0.1); }
+.info-card.email .icon-box { color: #3b82f6; background: rgba(59, 130, 246, 0.1); }
+.info-card.address .icon-box { color: #a855f7; background: rgba(168, 85, 247, 0.1); }
+
+.info-content h3 { color: #fff; font-size: 1.1rem; margin-bottom: 5px; }
+.info-content p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; }
+.info-content a { color: #fff; text-decoration: none; transition: 0.3s; }
+.info-content a:hover { color: var(--gold); }
+
+/* Contact Form (Right) */
+.contact-form-box {
+  padding: 40px;
+  background: rgba(24, 24, 27, 0.6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+}
+
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; color: var(--text-dim); margin-bottom: 8px; font-size: 0.9rem; }
+
+.form-input {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: 0.3s;
+}
+
+.form-input:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.05);
+  outline: none;
+}
+
+textarea.form-input { resize: vertical; min-height: 150px; }
+
+/* ---------------- 10. FOOTER & FLOATING ---------------- */
 .footer-main {
-  padding: 60px 0 100px; background: #020617; border-top: 1px solid var(--glass-border);
-  margin-top: 60px;
+  padding: 60px 0 100px; background: #020617; border-top: 1px solid var(--glass-border); margin-top: 60px;
 }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-
 .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 0.05em; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .footer-links a { color: var(--text-dim); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
 .footer-links a:hover { color: var(--gold); padding-left: 5px; }
-
 .contact-item { display: flex; gap: 12px; margin-bottom: 15px; align-items: flex-start; }
+.footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; color: rgba(255,255,255,0.3); }
 
-.footer-bottom {
-  text-align: center; margin-top: 40px; padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  font-size: 0.8rem; color: rgba(255,255,255,0.3);
-}
-
-/* Desktop Floating Buttons */
 .floating-badges {
   position: fixed; bottom: 30px; right: 30px;
   display: flex; flex-direction: column; gap: 15px; z-index: var(--z-dock);
@@ -325,8 +403,5 @@ body {
   transition: transform 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 .badge-round:hover { transform: scale(1.1); }
-.whatsapp { background: #25D366; }
+.whatsapp { background: #22c55e; }
 .call { background: var(--bg-dark); border: 1px solid var(--glass-border); }
-
-/* Accessibility */
-a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
