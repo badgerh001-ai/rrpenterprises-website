@@ -1,5 +1,5 @@
 /* ===================================================================
-   RRP ENTERPRISES – FINAL PRODUCTION CSS (v2025.2)
+   RRP ENTERPRISES – FINAL PRODUCTION CSS (v2025.4 - Compact 4x4)
    =================================================================== */
 
 /* ---------------- 1. RESET & VARIABLES ---------------- */
@@ -149,7 +149,6 @@ body {
 
 .hero-main p { color: var(--text-dim); margin-bottom: 30px; font-size: 1rem; }
 .hero-btns { display: flex; flex-wrap: wrap; gap: 15px; }
-.explore-btn { color: #fff; display: flex; align-items: center; gap: 8px; text-decoration: none; }
 
 .stats-sidebar { padding: 24px; display: flex; flex-direction: column; gap: 15px; }
 
@@ -189,7 +188,7 @@ body {
   .nav-cta { margin-top: 20px; text-align: center; display: block; }
 }
 
-/* ---------------- 6. MOBILE APP DOCK (Phone Only) ---------------- */
+/* ---------------- 6. MOBILE APP DOCK ---------------- */
 .mobile-app-dock { display: none; }
 
 @media (max-width: 768px) {
@@ -213,35 +212,72 @@ body {
   .footer-col:nth-child(2) { display: none; }
 }
 
-/* ---------------- 7. CLIENTS MARQUEE (FIXED) ---------------- */
+/* ---------------- 7. CLIENTS MARQUEE (Home & Services) ---------------- */
 .clients-section { padding: 40px 0; overflow: hidden; text-align: center; }
 .section-title { font-size: 1.8rem; margin-bottom: 30px; }
 .badge-center { display: flex; justify-content: center; width: 100%; }
 
-/* Tight margins for 3-row stack effect (15px) */
+/* SCROLL CONTAINER */
 .clients-marquee {
   width: 100%; overflow: hidden; 
-  margin: 15px 0; 
+  margin: 10px 0; /* Super tight 10px margin for dense wall */
   mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
 }
 
 .clients-track {
-  display: flex; gap: 40px; width: max-content;
-  animation: scroll 30s linear infinite;
+  display: flex; gap: 20px; /* Reduced gap for density */
+  width: max-content;
+  animation: scroll 35s linear infinite;
 }
 
 .clients-marquee.reverse .clients-track { animation-direction: reverse; }
 @keyframes scroll { to { transform: translateX(-50%); } }
 
+/* HOME PAGE LOGOS */
 .client-logo img {
   height: 60px;
   background: #fff; padding: 8px; border-radius: 8px;
-  /* ORIGINAL COLORS RESTORED (No Grayscale filter) */
-  opacity: 1; 
+  opacity: 1; /* Original Colors */
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* ---------------- 8. FOOTER ---------------- */
+/* ---------------- 8. CARGO MARQUEE CARDS (COMPACT 4x4) ---------------- */
+/* Reduced sizes to ensure 4 rows fit on screen nicely */
+
+.cargo-card {
+  flex: 0 0 auto;
+  width: 160px; /* Smaller width */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.cargo-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+}
+
+.cargo-card img {
+  width: 100%;
+  height: 100px; /* Smaller height for compact look */
+  object-fit: cover;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.cargo-card span {
+  padding: 8px;
+  font-size: 0.8rem; /* Smaller font */
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* ---------------- 9. FOOTER ---------------- */
 .footer-main {
   padding: 60px 0 100px; background: #020617; border-top: 1px solid var(--glass-border);
   margin-top: 60px;
@@ -261,49 +297,7 @@ body {
   font-size: 0.8rem; color: rgba(255,255,255,0.3);
 }
 
-/* ---------------- 9. SERVICES GRID (FIXED: 4x4, Load Names Visible) ---------------- */
-/* This targets the Services Page Grid specifically */
-section.glass .hero-grid {
-  display: grid;
-  /* Force 4 columns for the 4x4 look */
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 20px;
-  padding: 20px;
-}
-
-section.glass .hero-grid img.glass {
-  width: 100%;
-  /* Height adjusted to 120px so images are compact and Names are visible */
-  height: 120px; 
-  object-fit: cover;
-  border-radius: var(--radius-md);
-  transition: transform 0.2s;
-  border: 1px solid var(--glass-border);
-  margin-bottom: 10px; /* Space for the load name text below */
-}
-
-section.glass .hero-grid img.glass:hover {
-  transform: scale(1.05);
-  border-color: var(--gold);
-  z-index: 10;
-}
-
-/* Responsive adjustment for Services Grid */
-@media (max-width: 1024px) {
-  section.glass .hero-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 768px) {
-  section.glass .hero-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 480px) {
-  /* Keep 2 columns on phone for dense look, instead of 1 */
-  section.glass .hero-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  section.glass .hero-grid img.glass { height: 100px; } 
-}
-
-/* ---------------- 10. DESKTOP FLOATING BUTTONS ---------------- */
+/* Desktop Floating Buttons */
 .floating-badges {
   position: fixed; bottom: 30px; right: 30px;
   display: flex; flex-direction: column; gap: 15px; z-index: var(--z-dock);
