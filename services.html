@@ -161,7 +161,7 @@
                         <label class="form-label">Mobile Number</label>
                         <input type="tel" class="form-input" placeholder="+91 99999 99999" required>
                     </div>
-                    <button type="submit" class="full-btn">Get OTP</button>
+                    <button type="submit" class="full-btn">Secure Login</button>
                 </form>
             </div>
 
@@ -467,24 +467,49 @@
             }
         }
 
-        // 4. Login Logic (Demo)
-        function handleLogin(e) {
-            e.preventDefault();
-            const phone = e.target.querySelector('input[type="tel"]').value;
-            
-            if(phone.includes('9999999999')) {
-                alert("✅ Login Successful!\nWelcome back, Admin.");
-                closeModal();
-            } else {
-                alert("⚠️ Number not registered.\nPlease click 'Sign Up' tab to create an account.");
-            }
-        }
-
-        // 5. Sign Up Logic (Demo)
+        // 4. Handle Sign Up (Saves User to Browser Memory)
         function handleSignup(e) {
             e.preventDefault();
-            alert("✅ Registration Request Sent!\nOur team will verify your GST and approve access within 24 hours.");
-            closeModal();
+            
+            // Get values
+            const name = e.target.querySelector('input[placeholder="Enter Name"]').value;
+            const company = e.target.querySelector('input[placeholder="Business Name"]').value;
+            const mobile = e.target.querySelector('input[placeholder="+91..."]').value;
+
+            // Save to "Database" (LocalStorage)
+            const userObj = {
+                name: name,
+                company: company,
+                mobile: mobile,
+                joined: new Date().toLocaleDateString()
+            };
+
+            localStorage.setItem('rrp_db_' + mobile, JSON.stringify(userObj)); // Save User
+
+            alert("✅ Registration Successful!\n\nYou can now Login with mobile number: " + mobile);
+            switchTab('login'); // Switch to Login tab automatically
+        }
+
+        // 5. Handle Login (Checks Browser Memory)
+        function handleLogin(e) {
+            e.preventDefault();
+            const phoneInput = e.target.querySelector('input[type="tel"]').value;
+            
+            // Check if user exists
+            const storedUser = localStorage.getItem('rrp_db_' + phoneInput);
+
+            if(storedUser || phoneInput === '9999999999') {
+                // Save session
+                localStorage.setItem('rrp_user', phoneInput);
+                if(storedUser) {
+                    localStorage.setItem('rrp_user_data', storedUser);
+                }
+                
+                // Redirect to Dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                alert("⚠️ Number not found!\nPlease Register first or use Admin Demo: 9999999999");
+            }
         }
 
     </script>
