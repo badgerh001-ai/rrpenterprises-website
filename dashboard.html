@@ -49,7 +49,10 @@
             border-radius: 16px; padding: 20px; margin-bottom: 20px;
             display: flex; flex-direction: column; gap: 15px;
             transition: 0.3s;
+            animation: slideDown 0.5s ease-out; /* New Animation */
         }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
         .load-card:hover { border-color: #0ea5e9; transform: translateY(-3px); }
         
         .load-header { display: flex; justify-content: space-between; align-items: flex-start; }
@@ -59,6 +62,7 @@
         }
         .status-transit { background: rgba(14, 165, 233, 0.15); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.3); }
         .status-pending { background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+        .status-created { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
 
         .load-route { display: flex; align-items: center; gap: 10px; color: #94a3b8; font-size: 0.95rem; }
         .load-route i { color: #6366f1; font-size: 0.8rem; }
@@ -79,10 +83,76 @@
         }
         .action-btn:hover { background: rgba(255,255,255,0.1); }
 
+        /* === BOOKING MODAL STYLES === */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000;
+            justify-content: center; align-items: center; padding: 20px;
+        }
+        .modal-box {
+            background: #0f172a; border: 1px solid rgba(255,255,255,0.15); border-radius: 20px;
+            width: 100%; max-width: 500px; padding: 30px; position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+        .close-modal { position: absolute; top: 20px; right: 20px; color: #94a3b8; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .form-group { margin-bottom: 15px; }
+        .form-label { display: block; color: #94a3b8; font-size: 0.85rem; margin-bottom: 8px; }
+        .form-input { 
+            width: 100%; padding: 12px; background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #fff; outline: none;
+        }
+        .form-input:focus { border-color: #0ea5e9; background: rgba(255,255,255,0.08); }
+        .submit-btn { width: 100%; padding: 14px; background: #0ea5e9; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px; font-size: 1rem; }
+
     </style>
 </head>
 
 <body>
+
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeBooking()">&times;</button>
+            <h2 style="color: #fff; margin-bottom: 20px;">Book New Load</h2>
+            
+            <form onsubmit="handleBooking(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Pickup City</label>
+                        <input type="text" id="origin" class="form-input" placeholder="e.g. Anantapur" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Drop City</label>
+                        <input type="text" id="destination" class="form-input" placeholder="e.g. Delhi" required>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Cargo Type</label>
+                        <select id="cargoType" class="form-input">
+                            <option>Coal (Bulk)</option>
+                            <option>Iron Ore</option>
+                            <option>Cement / Fly Ash</option>
+                            <option>General Goods</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Weight (Tons)</label>
+                        <input type="number" id="weight" class="form-input" placeholder="20" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Pickup Date</label>
+                    <input type="date" id="date" class="form-input" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
 
     <nav class="navbar">
         <div class="container">
@@ -111,14 +181,14 @@
                 <h1 style="font-size: 1.8rem; margin-bottom: 5px;">My Dashboard</h1>
                 <p style="color: #94a3b8;">Welcome back, <span id="welcome-name">Partner</span></p>
             </div>
-            <button class="cta-btn" style="padding: 10px 20px; font-size: 0.9rem;">
+            <button onclick="openBooking()" class="cta-btn" style="padding: 10px 20px; font-size: 0.9rem;">
                 <i class="fas fa-plus"></i> <span class="hide-mobile">Book New Load</span>
             </button>
         </div>
 
         <div class="stat-grid">
             <div class="stat-card">
-                <div class="stat-number" style="color: #38bdf8;">02</div>
+                <div class="stat-number" style="color: #38bdf8;" id="active-count">02</div>
                 <div class="stat-label">Active Loads</div>
             </div>
             <div class="stat-card">
@@ -133,52 +203,56 @@
 
         <div class="section-header">
             <h3 style="font-size: 1.2rem; color: #fff;">Live Shipments</h3>
-            <button class="refresh-btn"><i class="fas fa-sync-alt"></i> Refresh</button>
+            <button class="refresh-btn" onclick="location.reload()"><i class="fas fa-sync-alt"></i> Refresh</button>
         </div>
 
-        <div class="load-card">
-            <div class="load-header">
-                <span class="load-id">#RRP-8842</span>
-                <span class="load-status status-transit">In Transit</span>
-            </div>
-            <div class="load-route">
-                <span>Anantapur</span>
-                <i class="fas fa-arrow-right"></i>
-                <span>Hyderabad</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #94a3b8; margin-top: 5px;">
-                <span>Truck: AP02 TA 1234</span>
-                <span>Driver: Ramesh (9988...)</span>
-            </div>
-            <div class="progress-track">
-                <div class="progress-fill" style="width: 75%;"></div>
-            </div>
-            <div style="font-size: 0.75rem; color: #0ea5e9; text-align: right; margin-top: 5px;">Expected: Today, 8 PM</div>
+        <div id="shipments-list">
             
-            <div class="action-grid">
-                <button class="action-btn"><i class="fas fa-map-marker-alt"></i> Live Map</button>
-                <button class="action-btn"><i class="fas fa-phone"></i> Call Driver</button>
+            <div class="load-card">
+                <div class="load-header">
+                    <span class="load-id">#RRP-8842</span>
+                    <span class="load-status status-transit">In Transit</span>
+                </div>
+                <div class="load-route">
+                    <span>Anantapur</span>
+                    <i class="fas fa-arrow-right"></i>
+                    <span>Hyderabad</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #94a3b8; margin-top: 5px;">
+                    <span>Truck: AP02 TA 1234</span>
+                    <span>Driver: Ramesh (9988...)</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 75%;"></div>
+                </div>
+                <div style="font-size: 0.75rem; color: #0ea5e9; text-align: right; margin-top: 5px;">Expected: Today, 8 PM</div>
+                
+                <div class="action-grid">
+                    <button class="action-btn"><i class="fas fa-map-marker-alt"></i> Live Map</button>
+                    <button class="action-btn"><i class="fas fa-phone"></i> Call Driver</button>
+                </div>
             </div>
-        </div>
 
-        <div class="load-card">
-            <div class="load-header">
-                <span class="load-id">#RRP-9921</span>
-                <span class="load-status status-pending">Loading</span>
+            <div class="load-card">
+                <div class="load-header">
+                    <span class="load-id">#RRP-9921</span>
+                    <span class="load-status status-pending">Loading</span>
+                </div>
+                <div class="load-route">
+                    <span>Tadipatri (Cement)</span>
+                    <i class="fas fa-arrow-right"></i>
+                    <span>Bangalore</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 15%; background: #facc15;"></div>
+                </div>
+                
+                <div class="action-grid">
+                    <button class="action-btn"><i class="fas fa-file-invoice"></i> View LR</button>
+                    <button class="action-btn"><i class="fas fa-headset"></i> Support</button>
+                </div>
             </div>
-            <div class="load-route">
-                <span>Tadipatri (Cement)</span>
-                <i class="fas fa-arrow-right"></i>
-                <span>Bangalore</span>
-            </div>
-            <div class="progress-track">
-                <div class="progress-fill" style="width: 15%; background: #facc15;"></div>
-            </div>
-            
-            <div class="action-grid">
-                <button class="action-btn"><i class="fas fa-file-invoice"></i> View LR</button>
-                <button class="action-btn"><i class="fas fa-headset"></i> Support</button>
-            </div>
+
         </div>
 
     </main>
@@ -203,18 +277,19 @@
     </div>
 
     <script>
-        // RETRIEVE USER DATA (Simulated Real-Time)
+        // === 1. USER AUTH DISPLAY ===
         document.addEventListener('DOMContentLoaded', () => {
             const userData = JSON.parse(localStorage.getItem('rrp_user_data'));
-            
             if (userData) {
                 document.getElementById('welcome-name').innerText = userData.name.split(' ')[0];
                 document.getElementById('user-name-display').innerText = userData.name;
                 document.getElementById('user-initial').innerText = userData.name.charAt(0).toUpperCase();
             } else {
-                // Fallback for Demo Login
                 document.getElementById('welcome-name').innerText = "Client";
             }
+            
+            // LOAD SAVED SHIPMENTS
+            loadSavedShipments();
         });
 
         function logout() {
@@ -223,6 +298,111 @@
                 window.location.href = 'services.html';
             }
         }
+
+        // === 2. BOOKING ENGINE LOGIC ===
+        
+        const modal = document.getElementById('bookingModal');
+
+        function openBooking() {
+            // Set default date to today
+            document.getElementById('date').valueAsDate = new Date();
+            modal.style.display = 'flex';
+        }
+
+        function closeBooking() {
+            modal.style.display = 'none';
+        }
+
+        // Close modal if clicked outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeBooking();
+            }
+        }
+
+        function handleBooking(e) {
+            e.preventDefault();
+
+            // 1. Get Values
+            const origin = document.getElementById('origin').value;
+            const dest = document.getElementById('destination').value;
+            const cargo = document.getElementById('cargoType').value;
+            const weight = document.getElementById('weight').value;
+
+            // 2. Create Load Object
+            const loadID = 'RRP-' + Math.floor(1000 + Math.random() * 9000); // Random ID like RRP-4821
+            
+            const newLoad = {
+                id: loadID,
+                origin: origin,
+                dest: dest,
+                cargo: cargo,
+                weight: weight,
+                status: 'Created'
+            };
+
+            // 3. Save to LocalStorage (So it stays after refresh)
+            let myLoads = JSON.parse(localStorage.getItem('rrp_my_loads')) || [];
+            myLoads.unshift(newLoad); // Add to top
+            localStorage.setItem('rrp_my_loads', JSON.stringify(myLoads));
+
+            // 4. Render immediately
+            renderLoadCard(newLoad);
+
+            // 5. Success UI
+            closeBooking();
+            alert(`✅ Booking Successful!\nTracking ID: ${loadID}\nWe will assign a vehicle shortly.`);
+            
+            // 6. Update Counter
+            updateCounter();
+        }
+
+        function renderLoadCard(load) {
+            const list = document.getElementById('shipments-list');
+            
+            const html = `
+            <div class="load-card" style="border-left: 4px solid #22c55e;">
+                <div class="load-header">
+                    <span class="load-id">#${load.id}</span>
+                    <span class="load-status status-created">Order Placed</span>
+                </div>
+                <div class="load-route">
+                    <span>${load.origin}</span>
+                    <i class="fas fa-arrow-right"></i>
+                    <span>${load.dest}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #94a3b8; margin-top: 5px;">
+                    <span>Cargo: ${load.cargo} (${load.weight}T)</span>
+                    <span>Status: Pending Truck</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 5%; background: #22c55e;"></div>
+                </div>
+                
+                <div class="action-grid">
+                    <button class="action-btn"><i class="fas fa-file-contract"></i> Details</button>
+                    <button class="action-btn"><i class="fas fa-times-circle" style="color:#ef4444;"></i> Cancel</button>
+                </div>
+            </div>
+            `;
+
+            // Insert at the VERY TOP of the list
+            list.insertAdjacentHTML('afterbegin', html);
+        }
+
+        function loadSavedShipments() {
+            const myLoads = JSON.parse(localStorage.getItem('rrp_my_loads')) || [];
+            // We reverse it so the newest stays on top when we loop
+            [...myLoads].reverse().forEach(load => renderLoadCard(load));
+            updateCounter();
+        }
+
+        function updateCounter() {
+            const myLoads = JSON.parse(localStorage.getItem('rrp_my_loads')) || [];
+            // Base count (2 static) + New loads
+            document.getElementById('active-count').innerText = (2 + myLoads.length).toString().padStart(2, '0');
+        }
+
     </script>
 </body>
 </html>
