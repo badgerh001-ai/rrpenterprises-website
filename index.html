@@ -62,18 +62,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* === SCROLL FIX FOR LAPTOP === */
-        /* This forces the layout to flow naturally instead of trapping the scroll */
+        /* === FINAL LAPTOP SCROLL & LAYOUT FIX === */
+        
+        /* 1. Force the Window to handle scrolling (Prevents Middle Scroll) */
         html, body {
             overflow-x: hidden;
+            overflow-y: auto !important; /* Window scrollbar only */
             width: 100%;
-            height: auto !important; /* Allows page to grow */
+            height: auto !important;
+            margin: 0;
+            padding: 0;
         }
-        /* Override fixed heights on main containers */
-        .hero-grid, .container, section, .hero-main {
+
+        /* 2. Prevent internal sections from trapping the scroll */
+        .hero-grid, .container, section, .hero-main, main, .glass {
             height: auto !important; 
+            max-height: none !important;
             min-height: 0 !important;
-            overflow: visible !important; /* Prevents inner scrollbars */
+            overflow: visible !important; /* No scrollbars inside cards/sections */
+        }
+
+        /* 3. Fix "Empty Right Side" by centering the container */
+        .container {
+            width: 100%;
+            max-width: 1300px; /* Optimal width for laptops */
+            margin-left: auto !important;  /* Push from left */
+            margin-right: auto !important; /* Push from right */
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* 4. Keep Marquees working (exception to the rule) */
+        .clients-marquee, .clients-track {
+            overflow: hidden !important;
         }
 
         /* TRENDY FOOTER STYLE */
@@ -90,7 +111,7 @@
         @media (max-width: 992px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
 
-        /* MOBILE DOCK PILL (No Menu Button) */
+        /* MOBILE DOCK PILL */
         .mobile-app-dock { display: none; } 
         @media (max-width: 768px) {
             .mobile-app-dock {
