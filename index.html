@@ -62,39 +62,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* === FINAL LAPTOP SCROLL & LAYOUT FIX === */
+        /* === FINAL LAPTOP CENTER & SCROLL FIX === */
         
-        /* 1. Force the Window to handle scrolling (Prevents Middle Scroll) */
+        /* 1. Global Reset for Scrolling */
         html, body {
             overflow-x: hidden;
-            overflow-y: auto !important; /* Window scrollbar only */
+            overflow-y: auto !important; /* Forces normal window scrolling */
             width: 100%;
             height: auto !important;
             margin: 0;
             padding: 0;
         }
 
-        /* 2. Prevent internal sections from trapping the scroll */
-        .hero-grid, .container, section, .hero-main, main, .glass {
+        /* 2. Container Centering Logic - CRITICAL FIX */
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Standard Laptop Width limit */
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding-left: 20px;
+            padding-right: 20px;
+            box-sizing: border-box; /* Includes padding in width calculation */
+        }
+
+        /* 3. Hero Section Fix */
+        .hero-grid {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto; /* Centers the Hero content */
+            height: auto !important; 
+            min-height: 0 !important;
+            overflow: visible !important;
+        }
+
+        /* 4. Release internal scrolls */
+        section, .hero-main, main, .glass {
             height: auto !important; 
             max-height: none !important;
             min-height: 0 !important;
-            overflow: visible !important; /* No scrollbars inside cards/sections */
-        }
-
-        /* 3. Fix "Empty Right Side" by centering the container */
-        .container {
-            width: 100%;
-            max-width: 1300px; /* Optimal width for laptops */
-            margin-left: auto !important;  /* Push from left */
-            margin-right: auto !important; /* Push from right */
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        /* 4. Keep Marquees working (exception to the rule) */
-        .clients-marquee, .clients-track {
-            overflow: hidden !important;
+            overflow: visible !important; 
         }
 
         /* TRENDY FOOTER STYLE */
