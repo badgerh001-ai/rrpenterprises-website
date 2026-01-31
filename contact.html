@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -155,9 +154,18 @@
                 <div class="info-card email">
                     <div class="icon-box"><i class="fas fa-envelope"></i></div>
                     <div class="info-content">
-                        <h3>Email Us</h3>
-                        <p>For corporate inquiries</p>
+                        <h3>General Inquiry</h3>
+                        <p>For bookings & support</p>
                         <a href="mailto:contact@rrpenterprises.co.in">contact@rrpenterprises.co.in</a>
+                    </div>
+                </div>
+
+                <div class="info-card email" style="border: 1px solid rgba(14, 165, 233, 0.3); background: rgba(14, 165, 233, 0.05);">
+                    <div class="icon-box"><i class="fas fa-user-tie" style="color: #38bdf8;"></i></div>
+                    <div class="info-content">
+                        <h3>CEO Contact</h3>
+                        <p>Direct Management Line</p>
+                        <a href="mailto:ramesh@rrpenterprises.co.in" style="color: #38bdf8;">ramesh@rrpenterprises.co.in</a>
                     </div>
                 </div>
 
@@ -166,7 +174,7 @@
                     <div class="info-content">
                         <h3>Head Office</h3>
                         <p>
-                            # 6-4-994, Maruthi Nagar,<br>
+                            # 6-4-994, Maruthi Nagar,
                             80ft Road, Anantapuramu - 515001. (A.P)
                         </p>
                     </div>
@@ -177,11 +185,11 @@
                     <div class="info-content">
                         <h3>Our Branches</h3>
                         <p style="margin-bottom: 12px;">
-                            <strong>Anantapur:</strong><br>
+                            <strong>Anantapur:</strong>
                             Beside MG Car Show Room, Bangalore NH.
                         </p>
                         <p>
-                            <strong>Tadipatri:</strong><br>
+                            <strong>Tadipatri:</strong>
                             Yallanur Road - 515411.
                         </p>
                     </div>
@@ -191,26 +199,26 @@
 
             <div class="contact-form-box glass">
                 <h3 style="margin-bottom: 30px; font-size: 1.5rem; color:#fff;">Send a Message</h3>
-                <form action="#" method="POST">
+                <form action="https://formspree.io/f/mpqwlvba" method="POST">
                     <div class="form-group">
                         <label class="form-label">Full Name</label>
-                        <input type="text" class="form-input" placeholder="Enter your name" required>
+                        <input type="text" name="full_name" class="form-input" placeholder="Enter your name" required>
                     </div>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="form-group">
                             <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-input" placeholder="+91..." required>
+                            <input type="tel" name="phone_number" class="form-input" placeholder="+91..." required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Cargo Type</label>
-                            <input type="text" class="form-input" placeholder="e.g. Coal, Steel">
+                            <input type="text" name="cargo_type" class="form-input" placeholder="e.g. Coal, Steel">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Message</label>
-                        <textarea class="form-input" placeholder="Tell us about your requirements..."></textarea>
+                        <textarea name="message" class="form-input" placeholder="Tell us about your requirements..."></textarea>
                     </div>
 
                     <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer;">
