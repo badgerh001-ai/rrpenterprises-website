@@ -1,5 +1,5 @@
 /* ===================================================================
-   RRP ENTERPRISES – ULTIMATE INDUSTRY GRADE (v2025.15)
+   RRP ENTERPRISES – ULTIMATE INDUSTRY GRADE (v2025.17 - FIX)
    Theme: "Cyber-Logistics" (Mobile-Native & Safe Area Ready)
    =================================================================== */
 
@@ -34,8 +34,8 @@
 
 html { 
   scroll-behavior: smooth; 
-  -webkit-text-size-adjust: 100%; /* Prevents random font zooming on mobile landscape */
-  -webkit-tap-highlight-color: transparent; /* Removes blue tap box on Android */
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent; 
 }
 
 ::-webkit-scrollbar { width: 8px; }
@@ -56,7 +56,6 @@ body {
     radial-gradient(circle at 0% 0%, rgba(14, 165, 233, 0.15), transparent 40%),
     radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.1), transparent 40%);
   background-attachment: fixed;
-  /* iOS Momentum Scrolling */
   -webkit-overflow-scrolling: touch;
 }
 
@@ -66,12 +65,11 @@ body {
 .glass {
   background: var(--glass-bg);
   backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px); /* Safari support */
+  -webkit-backdrop-filter: blur(24px);
   border: var(--border-glow);
   border-top: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-float);
-  /* GPU Acceleration for smooth scroll */
   transform: translateZ(0); 
   will-change: transform; 
 }
@@ -112,68 +110,69 @@ body {
   font-weight: 700;
   text-decoration: none;
   font-size: 0.95rem;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Faster click response */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
   border: 1px solid rgba(255,255,255,0.1);
   display: inline-flex; align-items: center; gap: 8px;
-  /* Mobile Tap Feel */
   touch-action: manipulation;
 }
 .cta-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 30px rgba(14, 165, 233, 0.5); }
-.cta-btn:active { transform: scale(0.96); } /* Physical click feel */
+.cta-btn:active { transform: scale(0.96); }
 
 
-/* ---------------- 4. NEW SHIPPING BANNER & STATS ---------------- */
+/* ---------------- 4. FIXED SHIPPING BANNER (Robust Image Loading) ---------------- */
 
-/* The Full Width Banner */
 .ship-banner-section {
     position: relative;
     width: 100%;
-    /* Use a high quality placeholder or replace with your local file */
-    background: url('https://images.unsplash.com/photo-1494412574643-35d324688133?q=80&w=2075&auto=format&fit=crop') no-repeat center center;
+    
+    /* FALLBACK COLOR (If image fails, this shows Dark Blue instead of Black) */
+    background-color: #0f172a; 
+    
+    /* BACKGROUND IMAGE - Using a highly reliable Unsplash Source */
+    background-image: linear-gradient(to right, rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.3)), 
+                      url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop');
+    
     background-size: cover;
-    height: 85vh; /* Tall cinematic height */
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    height: 85vh;
     min-height: 600px;
-    display: flex;
-    align-items: center;
     overflow: hidden;
 }
 
-/* Dark overlay to ensure text readability if image is bright */
-.ship-banner-section::before {
-    content: '';
-    position: absolute; top:0; left:0; width:100%; height:100%;
-    background: linear-gradient(to right, rgba(0,0,0,0.4), transparent, rgba(0,0,0,0.6));
-    z-index: 1;
-}
-
-/* Container for positioning text */
+/* GRID LAYOUT to prevent overlap */
 .ship-overlay-content {
     position: relative;
-    width: 100%;
     height: 100%;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    /* Two columns: Left 50% | Right 50% */
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+    padding-bottom: 40px;
 }
 
-/* The Left Box (Grey Background) */
+/* The Left Box */
 .ship-text-box {
-    background: rgba(55, 65, 81, 0.85); /* Slate grey with transparency */
-    backdrop-filter: blur(10px);
-    padding: 40px;
-    max-width: 600px;
-    border-left: 5px solid #fff; /* White accent line */
-    margin-left: 0; 
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    /* Animation */
+    background: rgba(30, 41, 59, 0.85); /* Darker slate */
+    backdrop-filter: blur(12px);
+    padding: 40px 50px;
+    border-left: 6px solid #fff;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    
+    /* Center it vertically in left column */
+    align-self: center; 
+    justify-self: start;
+    max-width: 90%; /* Stops it from hitting the right side */
+    
     opacity: 0; animation: slideInLeft 1s ease forwards;
 }
 
 .ship-text-box h2 {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     line-height: 1.5;
     text-transform: uppercase;
@@ -182,15 +181,19 @@ body {
 
 /* "WE DESIGN LOGISTICS" Text */
 .ship-huge-text {
-    position: absolute;
-    bottom: 60px;
-    right: 24px;
     color: #fff;
-    font-size: clamp(2.5rem, 6vw, 5rem); /* Responsive sizing */
+    font-size: clamp(3rem, 5vw, 6rem); /* Responsive sizing */
     font-weight: 800;
     text-transform: uppercase;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    text-shadow: 0 4px 30px rgba(0,0,0,0.9);
+    line-height: 1;
+    
+    /* Position at bottom right of right column */
+    align-self: end; /* Stick to bottom */
+    justify-self: end; /* Stick to right */
     text-align: right;
+    margin-bottom: 60px; /* Lift off bottom edge */
+    
     opacity: 0; animation: fadeInUser 1s ease 0.5s forwards;
 }
 
@@ -272,7 +275,7 @@ body {
 
 .clients-marquee {
   width: 100%; overflow: hidden; 
-  margin: 12px 0; /* Tight spacing for 4 rows */
+  margin: 12px 0; 
   mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
 }
 
@@ -283,7 +286,6 @@ body {
 .clients-marquee.reverse .clients-track { animation-direction: reverse; }
 @keyframes scroll { to { transform: translateX(-50%); } }
 
-/* Home/About Page Logos */
 .client-logo img {
   height: 60px; background: #fff; padding: 10px; border-radius: 12px;
   box-shadow: 0 0 15px rgba(255,255,255,0.1);
@@ -328,26 +330,31 @@ body {
   .nav-links.active { transform: translateY(0); }
   .nav-links li { width: auto; border: none; }
   
-  /* Hide desktop side buttons on tablets */
   .desktop-only { display: none !important; }
+  
+  /* Tablet/Mobile Layout: Stack them */
+  .ship-overlay-content {
+      grid-template-columns: 1fr; /* Single column */
+      align-content: center;
+      gap: 40px;
+      padding-top: 60px;
+  }
+  .ship-text-box { justify-self: center; text-align: left; width: 100%; }
+  .ship-huge-text { justify-self: center; text-align: center; font-size: 2.5rem; margin-bottom: 0; }
 }
 
 @media (max-width: 768px) {
-  /* Banner Tweaks for Mobile */
-  .ship-banner-section { height: 65vh; min-height: 500px; }
-  .ship-text-box { margin: 0 20px; padding: 25px; width: auto; max-width: 90%; }
+  .ship-banner-section { height: auto; min-height: 90vh; padding: 80px 0; }
+  .ship-text-box { margin: 0; padding: 30px; }
   .ship-text-box h2 { font-size: 1.1rem; }
-  .ship-huge-text { font-size: 2.2rem; bottom: 80px; }
   
-  /* Stats Stack */
   .stats-flex-row { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .stat-item { width: 100%; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 12px; }
+  .stat-item { width: 100%; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 12px; }
 
   /* MOBILE PILL DOCK FIX */
   .mobile-app-dock {
     position: fixed; 
     bottom: 20px; 
-    /* SAFE AREA PADDING for iPhone X+ */
     padding-bottom: env(safe-area-inset-bottom);
     left: 50%; transform: translateX(-50%);
     width: 92%; max-width: 380px;
@@ -366,6 +373,6 @@ body {
   .dock-item:active { transform: scale(0.95); } 
   .dock-item:active i { color: var(--primary); }
   
-  body { padding-bottom: 120px; } /* Prevent footer overlap */
+  body { padding-bottom: 120px; }
   .footer-col:nth-child(2) { display: none; }
 }
