@@ -24,10 +24,86 @@
     <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/logo.png">
 
-    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="style.css?v=12">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. FORCE GRID LAYOUT (Laptop vs Mobile) */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr; /* Side-by-Side on Laptop */
+            gap: 40px;
+            margin-top: 40px;
+            margin-bottom: 80px;
+            align-items: start;
+        }
+
+        /* 2. CARD STYLING */
+        .info-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .info-card:hover {
+            transform: translateY(-5px);
+            background: rgba(14, 165, 233, 0.1);
+            border-color: #0ea5e9;
+        }
+        .icon-box {
+            width: 50px; height: 50px;
+            background: rgba(14, 165, 233, 0.2);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: #38bdf8;
+            flex-shrink: 0;
+        }
+        .info-content h3 { color: #fff; font-size: 1.1rem; margin-bottom: 5px; }
+        .info-content p, .info-content a { color: #94a3b8; font-size: 0.95rem; text-decoration: none; }
+
+        /* 3. FORM BOX STYLING */
+        .contact-form-box {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; color: #fff; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
+        .form-input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            font-family: inherit;
+        }
+        .form-input:focus { border-color: #0ea5e9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.2); }
+        textarea.form-input { resize: vertical; min-height: 120px; }
+
+        /* 4. MOBILE RESPONSIVENESS (Critical Fix) */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr; /* Stack on Mobile */
+                gap: 50px;
+            }
+            .contact-form-box { padding: 25px; }
+            h1 { font-size: 2.5rem !important; }
+        }
+    </style>
 </head>
 
 <body>
@@ -56,7 +132,7 @@
             <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px;">
                 Get in <span class="gradient-text">Touch</span>
             </h1>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+            <p style="color: #94a3b8; max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
                 Whether you need a freight quote, long-term logistics support, or project transportation expertise — our team is ready.
             </p>
         </div>
@@ -130,7 +206,7 @@
 
             </div>
 
-            <div class="contact-form-box glass">
+            <div class="contact-form-box">
                 <h3 style="margin-bottom: 30px; font-size: 1.5rem; color:#fff;">Send a Message</h3>
                 <form action="https://formspree.io/f/mpqwlvba" method="POST">
                     <div class="form-group">
@@ -154,7 +230,7 @@
                         <textarea name="message" class="form-input" placeholder="Tell us about your requirements..."></textarea>
                     </div>
 
-                    <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer;">
+                    <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer; justify-content: center;">
                         Submit Enquiry <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
                     </button>
                 </form>
