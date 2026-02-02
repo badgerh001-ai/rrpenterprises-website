@@ -1,5 +1,5 @@
 /* ===================================================================
-   RRP ENTERPRISES – FORCE FIX (v2025.v9 - Custom Truck Banner)
+   RRP ENTERPRISES – FORCE FIX (v2025.v10 - System Update Bar)
    Theme: "Cyber-Logistics" (Mobile-Native & Safe Area Ready)
    =================================================================== */
 
@@ -92,7 +92,35 @@ body {
 
 .badge-center { display: flex; justify-content: center; width: 100%; }
 
-/* ---------------- 3. RESPONSIVE NAVBAR ---------------- */
+/* ---------------- 3. SYSTEM UPDATE BAR (v10 New) ---------------- */
+.top-system-bar {
+    background: #171717;
+    border-bottom: 1px solid #f59e0b; /* Amber warning color */
+    color: #fff;
+    padding: 12px 0;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 3001; /* Higher than navbar */
+}
+.top-system-bar .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-align: center;
+}
+.top-system-bar i {
+    color: #f59e0b;
+    font-size: 1.1rem;
+    animation: pulse 2s infinite;
+}
+.system-text strong { color: #f59e0b; margin-right: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+.system-text span { opacity: 0.9; color: #cbd5e1; }
+
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+
+/* ---------------- 4. RESPONSIVE NAVBAR ---------------- */
 .navbar {
   height: var(--nav-height);
   position: sticky; top: 0; z-index: var(--z-nav);
@@ -131,7 +159,7 @@ body {
 .cta-btn:active { transform: scale(0.96); }
 
 
-/* ---------------- 4. ORIGINAL HERO LAYOUT (Restored for Inner Pages) ---------------- */
+/* ---------------- 5. ORIGINAL HERO LAYOUT (Restored for Inner Pages) ---------------- */
 .hero-grid {
   display: grid; grid-template-columns: 1fr; gap: 30px; padding: 40px 0;
   min-height: 85vh; align-content: center;
@@ -165,7 +193,7 @@ body {
 .service-item h4 { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
 
 
-/* ---------------- 5. CARGO & CARD STYLES (Restored) ---------------- */
+/* ---------------- 6. CARGO & CARD STYLES (Restored) ---------------- */
 .cargo-card {
   flex: 0 0 auto;
   width: 140px;
@@ -188,46 +216,38 @@ body {
   display: flex; align-items: center; justify-content: center; text-align: center;
 }
 
-/* ---------------- 6. NEW HOME TRUCK BANNER (V9 Update) ---------------- */
+/* ---------------- 7. NEW HOME TRUCK BANNER ---------------- */
 .truck-banner-section {
     position: relative; width: 100%; height: 85vh; min-height: 600px;
     background-color: #0f172a; 
-    /* Image Path for Custom Truck Banner */
     background: url('assets/home-banner.jpg') no-repeat center center/cover;
     overflow: hidden;
     display: flex;
     align-items: center;
 }
-
-/* Dark gradient overlay to ensure text is readable but truck stays visible */
 .truck-banner-section::before {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.1) 100%);
     z-index: 1;
 }
-
 .truck-overlay-content {
     position: relative; z-index: 2; width: 100%;
-    display: grid; grid-template-columns: 1.2fr 0.8fr; /* Gives space for text */
+    display: grid; grid-template-columns: 1.2fr 0.8fr; 
 }
-
 .truck-text-box {
     padding: 0 20px;
     max-width: 800px;
     opacity: 0; animation: slideInLeft 1s ease forwards;
 }
-
 .truck-text-box h1 {
     color: #fff; font-size: clamp(2.8rem, 6vw, 5rem); 
     font-weight: 800; line-height: 1.1; margin: 20px 0;
     text-transform: uppercase; text-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-
 .truck-text-box p {
     color: #cbd5e1; font-size: 1.1rem; max-width: 550px; line-height: 1.6;
 }
-
-/* Side Sticky Buttons (Desktop) */
+/* Side Sticky Buttons */
 .side-sticky-nav {
     position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 10;
     display: flex; flex-direction: column;
@@ -241,7 +261,7 @@ body {
 .side-btn.phone { background: var(--primary); border-radius: 0 0 0 6px; }
 .side-btn.phone:hover { background: #0284c7; width: 60px; }
 
-/* ---------------- 7. STATS BAR ---------------- */
+/* ---------------- 8. STATS BAR ---------------- */
 .stats-bar-wrapper { background: #000; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 30px 0; }
 .stats-flex-row { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px; }
 .stat-item { display: flex; align-items: center; gap: 15px; }
@@ -249,7 +269,7 @@ body {
 .stat-item h4 { font-size: 1.5rem; color: #fff; font-weight: 800; line-height: 1; }
 .stat-item p { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; }
 
-/* ---------------- 8. MARQUEE & SCROLL (FORCED FIX) ---------------- */
+/* ---------------- 9. MARQUEE & SCROLL ---------------- */
 .clients-marquee { 
     width: 100%; 
     overflow: hidden; 
@@ -275,7 +295,7 @@ body {
 }
 .industry-item i { color: var(--primary); }
 
-/* ---------------- 9. ROADMAP SECTION ---------------- */
+/* ---------------- 10. ROADMAP SECTION ---------------- */
 .roadmap-section {
     padding: 80px 0; position: relative;
     background: linear-gradient(to bottom, #000 0%, #050a15 100%);
@@ -300,19 +320,6 @@ body {
 .roadmap-step h3 { color: #fff; font-size: 1.1rem; margin: 0; }
 .roadmap-step p { color: var(--text-muted); font-size: 0.85rem; max-width: 180px; line-height: 1.4; }
 .step-connector { display: flex; justify-content: center; color: rgba(255,255,255,0.1); font-size: 1.5rem; }
-
-/* ---------------- 10. CONTACT PAGE CARDS ---------------- */
-.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; padding: 40px 0; align-items: start; }
-@media (max-width: 992px) { .contact-grid { grid-template-columns: 1fr; gap: 30px; } }
-.info-card { padding: 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); margin-bottom: 20px; display: flex; align-items: flex-start; gap: 20px; transition: 0.3s; }
-.info-card:hover { background: rgba(255,255,255,0.05); transform: translateX(5px); border-color: var(--primary); }
-.icon-box { width: 48px; height: 48px; background: rgba(14, 165, 233, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; flex-shrink: 0; }
-.info-content h3 { color: #fff; font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
-.info-content p, .info-content a { color: #94a3b8; font-size: 0.95rem; font-weight: 500; text-decoration: none; display: block; line-height: 1.6; }
-.contact-form-box { padding: 40px; background: rgba(15, 23, 42, 0.8); border-radius: var(--radius-lg); border: 1px solid var(--border-glow); }
-.form-group { margin-bottom: 20px; }
-.form-input { width: 100%; padding: 14px 20px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; font-size: 1rem; transition: 0.3s; }
-textarea.form-input { resize: vertical; min-height: 120px; }
 
 /* ---------------- 11. QUICK TRACK & MODAL ---------------- */
 .quick-track-box {
@@ -394,6 +401,10 @@ textarea.form-input { resize: vertical; min-height: 120px; }
   .truck-text-box h1 { font-size: 2.2rem; }
   .hero-btns { justify-content: center; }
   .truck-banner-section::before { background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 100%); }
+  
+  /* System Bar Mobile */
+  .top-system-bar .container { flex-direction: column; gap: 5px; }
+  .system-text span { display: block; font-size: 0.8rem; }
   
   /* Roadmap Mobile */
   .roadmap-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; position: relative; }
