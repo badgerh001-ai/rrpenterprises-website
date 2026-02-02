@@ -1,5 +1,5 @@
 /* ===================================================================
-   RRP ENTERPRISES – FORCE FIX (v2025.v10 - System Update Bar)
+   RRP ENTERPRISES – FORCE FIX (v2025.v11 - Cyber Upgrades)
    Theme: "Cyber-Logistics" (Mobile-Native & Safe Area Ready)
    =================================================================== */
 
@@ -92,7 +92,7 @@ body {
 
 .badge-center { display: flex; justify-content: center; width: 100%; }
 
-/* ---------------- 3. SYSTEM UPDATE BAR (v10 New) ---------------- */
+/* ---------------- 3. SYSTEM UPDATE BAR ---------------- */
 .top-system-bar {
     background: #171717;
     border-bottom: 1px solid #f59e0b; /* Amber warning color */
@@ -112,12 +112,12 @@ body {
 .top-system-bar i {
     color: #f59e0b;
     font-size: 1.1rem;
-    animation: pulse 2s infinite;
+    animation: pulse-amber 2s infinite;
 }
 .system-text strong { color: #f59e0b; margin-right: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
 .system-text span { opacity: 0.9; color: #cbd5e1; }
 
-@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+@keyframes pulse-amber { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
 
 /* ---------------- 4. RESPONSIVE NAVBAR ---------------- */
@@ -154,9 +154,17 @@ body {
   border: 1px solid rgba(255,255,255,0.1);
   display: inline-flex; align-items: center; gap: 8px;
   touch-action: manipulation;
+  /* New Neon Pulse Animation */
+  animation: neon-pulse 3s infinite;
 }
 .cta-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 30px rgba(14, 165, 233, 0.5); }
 .cta-btn:active { transform: scale(0.96); }
+
+@keyframes neon-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+}
 
 
 /* ---------------- 5. ORIGINAL HERO LAYOUT (Restored for Inner Pages) ---------------- */
@@ -187,13 +195,27 @@ body {
   border-radius: var(--radius-md);
   display: flex; align-items: center; gap: 20px;
   transition: 0.3s;
+  position: relative;
+  overflow: hidden;
 }
-.service-item:hover { background: rgba(14, 165, 233, 0.08); border-color: var(--primary); transform: translateX(10px); }
+/* Cyber Gradient Border Hover Effect */
+.service-item:hover { 
+    background: rgba(14, 165, 233, 0.05); 
+    border-color: transparent; 
+    transform: translateX(10px); 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.service-item::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+    background: var(--accent-gradient); opacity: 0; transition: 0.3s;
+}
+.service-item:hover::before { opacity: 1; }
+
 .service-item i { font-size: 1.8rem; color: var(--primary); filter: drop-shadow(0 0 8px var(--primary)); }
 .service-item h4 { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
 
 
-/* ---------------- 6. CARGO & CARD STYLES (Restored) ---------------- */
+/* ---------------- 6. CARGO & CARD STYLES ---------------- */
 .cargo-card {
   flex: 0 0 auto;
   width: 140px;
@@ -207,7 +229,10 @@ body {
   position: relative;
   will-change: transform;
 }
-.cargo-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+/* Touch Feedback Scale Down */
+.cargo-card:active { transform: scale(0.95); }
+.cargo-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 5px 15px rgba(14, 165, 233, 0.2); }
+
 .cargo-card img { width: 100%; height: 85px; object-fit: cover; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .cargo-card span {
   width: 100%; height: 35px;
@@ -255,6 +280,8 @@ body {
 .side-btn {
     width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
     color: white; font-size: 1.4rem; text-decoration: none; transition: 0.3s;
+    /* Pulse for side buttons too */
+    animation: neon-pulse 4s infinite; 
 }
 .side-btn.whatsapp { background: #25D366; border-radius: 6px 0 0 0; }
 .side-btn.whatsapp:hover { background: #1ebc57; width: 60px; }
@@ -406,18 +433,30 @@ body {
   .top-system-bar .container { flex-direction: column; gap: 5px; }
   .system-text span { display: block; font-size: 0.8rem; }
   
-  /* Roadmap Mobile */
-  .roadmap-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; position: relative; }
-  .roadmap-grid::before {
-        content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 100%;
-        background: linear-gradient(to bottom, rgba(14, 165, 233, 0), rgba(14, 165, 233, 0.3) 10%, rgba(14, 165, 233, 0.3) 90%, rgba(14, 165, 233, 0));
-        transform: translateX(-1px); z-index: 0;
+  /* Roadmap Mobile - NEW CYBER VERTICAL LOOK */
+  .roadmap-grid { 
+      grid-template-columns: 1fr; gap: 40px; margin-top: 40px; position: relative; 
+      /* Connecting Vertical Line */
+      border-left: 2px dashed rgba(14, 165, 233, 0.3);
+      margin-left: 20px;
+      padding-left: 30px;
   }
+  /* Remove old Horizontal line */
+  .roadmap-grid::before { display: none; } 
   .step-connector { display: none; }
+  
   .roadmap-step {
         background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 16px;
         border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);
-        max-width: 300px; margin: 0 auto; width: 100%;
+        max-width: 100%; margin: 0; width: 100%;
+        /* Align with the new vertical line */
+        position: relative;
+  }
+  /* Dot connector for vertical line */
+  .roadmap-step::before {
+      content: ''; position: absolute; left: -36px; top: 30px;
+      width: 12px; height: 12px; background: var(--primary);
+      border-radius: 50%; box-shadow: 0 0 10px var(--primary);
   }
 }
 
