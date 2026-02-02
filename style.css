@@ -1,5 +1,5 @@
 /* ===================================================================
-   RRP ENTERPRISES – MASTER REPAIR (v2025.Final)
+   RRP ENTERPRISES – MASTER REPAIR (v2025.Final - Marquee Fix)
    Theme: "Cyber-Logistics" (Mobile-Native & Safe Area Ready)
    =================================================================== */
 
@@ -139,8 +139,7 @@ body {
 .cta-btn:active { transform: scale(0.96); }
 
 
-/* ---------------- 4. ORIGINAL HERO LAYOUT (Restored for Inner Pages) ---------------- */
-/* This fixes the crash on About, Services, Contact */
+/* ---------------- 4. ORIGINAL HERO LAYOUT (Restored) ---------------- */
 .hero-grid {
   display: grid; grid-template-columns: 1fr; gap: 30px; padding: 40px 0;
   min-height: 85vh; align-content: center;
@@ -197,7 +196,7 @@ body {
   display: flex; align-items: center; justify-content: center; text-align: center;
 }
 
-/* ---------------- 6. NEW HOME SHIP BANNER (For Index.html) ---------------- */
+/* ---------------- 6. NEW HOME SHIP BANNER ---------------- */
 .ship-banner-section {
     position: relative; width: 100%; height: 85vh; min-height: 600px;
     background-color: #0f172a; 
@@ -242,7 +241,7 @@ body {
 .side-btn.phone { background: var(--primary); border-radius: 0 0 0 6px; }
 .side-btn.phone:hover { background: #0284c7; width: 60px; }
 
-/* ---------------- 7. STATS BAR (Below Banner) ---------------- */
+/* ---------------- 7. STATS BAR ---------------- */
 .stats-bar-wrapper { background: #000; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 30px 0; }
 .stats-flex-row { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px; }
 .stat-item { display: flex; align-items: center; gap: 15px; }
@@ -250,9 +249,19 @@ body {
 .stat-item h4 { font-size: 1.5rem; color: #fff; font-weight: 800; line-height: 1; }
 .stat-item p { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; }
 
-/* ---------------- 8. MARQUEE, CLIENTS & INDUSTRY ---------------- */
-.clients-marquee { width: 100%; overflow: hidden; margin: 12px 0; mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent); }
-.clients-track { display: flex; gap: 20px; width: max-content; animation: scroll 40s linear infinite; }
+/* ---------------- 8. MARQUEE & SCROLL (FIXED) ---------------- */
+.clients-marquee { 
+    width: 100%; 
+    overflow: hidden; 
+    margin: 12px 0; 
+    /* MASK REMOVED: Now scrolls edge-to-edge clearly */
+}
+.clients-track { 
+    display: flex; 
+    gap: 20px; 
+    width: max-content; 
+    animation: scroll 50s linear infinite; /* Slower = Smoother */
+}
 .clients-marquee.reverse .clients-track { animation-direction: reverse; }
 @keyframes scroll { to { transform: translateX(-50%); } }
 .client-logo img { height: 60px; background: #fff; padding: 10px; border-radius: 12px; }
