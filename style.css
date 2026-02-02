@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – ULTIMATE INDUSTRY GRADE (v2025.Final)
-   Theme: "Cyber-Logistics" (Mobile-Native, SEO-Ready & Safe Area)
+   RRP ENTERPRISES – MASTER REPAIR (v2025.Final)
+   Theme: "Cyber-Logistics" (Mobile-Native & Safe Area Ready)
    =================================================================== */
 
 /* ---------------- 1. ADVANCED VARIABLES & RESET ---------------- */
@@ -34,8 +34,8 @@
 
 html { 
   scroll-behavior: smooth; 
-  -webkit-text-size-adjust: 100%; /* Prevents random font zooming on mobile landscape */
-  -webkit-tap-highlight-color: transparent; /* Removes blue tap box on Android */
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent; 
 }
 
 ::-webkit-scrollbar { width: 8px; }
@@ -56,12 +56,16 @@ body {
     radial-gradient(circle at 0% 0%, rgba(14, 165, 233, 0.15), transparent 40%),
     radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.1), transparent 40%);
   background-attachment: fixed;
-  /* iOS Momentum Scrolling */
   -webkit-overflow-scrolling: touch;
 }
 
 /* ---------------- 2. COMPONENT UTILITIES ---------------- */
-.container { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
+.container { 
+    width: 100%;
+    max-width: 1320px; 
+    margin: 0 auto; 
+    padding: 0 24px; 
+}
 
 .glass {
   background: var(--glass-bg);
@@ -71,7 +75,6 @@ body {
   border-top: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-float);
-  /* GPU Acceleration for smooth scroll */
   transform: translateZ(0); 
   will-change: transform; 
 }
@@ -82,6 +85,20 @@ body {
   -webkit-text-fill-color: transparent;
   font-weight: 800;
 }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  color: var(--primary-glow);
+  border-radius: 50px;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.1);
+}
+
+.badge-center { display: flex; justify-content: center; width: 100%; }
 
 /* ---------------- 3. RESPONSIVE NAVBAR ---------------- */
 .navbar {
@@ -112,40 +129,27 @@ body {
   font-weight: 700;
   text-decoration: none;
   font-size: 0.95rem;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Faster click response */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
   border: 1px solid rgba(255,255,255,0.1);
   display: inline-flex; align-items: center; gap: 8px;
-  /* Mobile Tap Feel */
   touch-action: manipulation;
 }
 .cta-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 30px rgba(14, 165, 233, 0.5); }
-.cta-btn:active { transform: scale(0.96); } /* Physical click feel */
+.cta-btn:active { transform: scale(0.96); }
 
-/* ---------------- 4. HERO SECTION ---------------- */
+
+/* ---------------- 4. ORIGINAL HERO LAYOUT (Restored for Inner Pages) ---------------- */
+/* This fixes the crash on About, Services, Contact */
 .hero-grid {
   display: grid; grid-template-columns: 1fr; gap: 30px; padding: 40px 0;
   min-height: 85vh; align-content: center;
 }
-
 @media (min-width: 992px) {
   .hero-grid { grid-template-columns: 1.6fr 1fr; padding: 80px 0; align-items: center; }
 }
 
 .hero-main { padding: 50px; position: relative; overflow: hidden; }
-
-.badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 8px 16px;
-  background: rgba(14, 165, 233, 0.1);
-  border: 1px solid rgba(14, 165, 233, 0.3);
-  color: var(--primary-glow);
-  border-radius: 50px;
-  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
-  margin-bottom: 30px;
-  box-shadow: 0 0 15px rgba(14, 165, 233, 0.1);
-}
-
 .hero-main h1 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.05; margin-bottom: 24px; letter-spacing: -0.03em; }
 .hero-main p { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 40px; max-width: 600px; }
 
@@ -153,7 +157,7 @@ body {
 .explore-btn { color: #fff; font-weight: 600; display: flex; align-items: center; gap: 10px; text-decoration: none; transition: 0.3s; }
 .explore-btn:hover { color: var(--primary); gap: 15px; }
 
-/* Stats Sidebar */
+/* Stats Sidebar (For Inner Pages) */
 .stats-sidebar { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
 .stats-title { font-size: 1.4rem; color: #fff; margin-bottom: 10px; }
 
@@ -169,55 +173,217 @@ body {
 .service-item i { font-size: 1.8rem; color: var(--primary); filter: drop-shadow(0 0 8px var(--primary)); }
 .service-item h4 { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
 
-/* ---------------- 5. MARQUEE & SCROLL ---------------- */
-.clients-section { padding: 40px 0; overflow: hidden; text-align: center; }
-.section-title { font-size: 2.2rem; margin-bottom: 30px; }
-.badge-center { display: flex; justify-content: center; width: 100%; }
 
-.clients-marquee {
-  width: 100%; overflow: hidden; 
-  margin: 12px 0; /* Tight spacing for 4 rows */
-  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-}
-
-.clients-track {
-  display: flex; gap: 20px; width: max-content;
-  animation: scroll 40s linear infinite;
-}
-.clients-marquee.reverse .clients-track { animation-direction: reverse; }
-@keyframes scroll { to { transform: translateX(-50%); } }
-
-/* Home/About Page Logos */
-.client-logo img {
-  height: 60px; background: #fff; padding: 10px; border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255,255,255,0.1);
-}
-
-/* ---------------- 6. CARGO CARDS (Fixed Size for 4x4) ---------------- */
+/* ---------------- 5. CARGO & CARD STYLES (Restored) ---------------- */
 .cargo-card {
   flex: 0 0 auto;
-  width: 140px;  /* Reduced from 160px for compact fit */
-  height: 120px; /* Reduced height */
+  width: 140px;
+  height: 120px;
   background: rgba(15, 23, 42, 0.6);
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--border-glow);
   border-radius: 12px;
   overflow: hidden;
   display: flex; flex-direction: column;
   transition: transform 0.3s ease;
   position: relative;
-  /* Performance */
   will-change: transform;
 }
-
 .cargo-card:hover { transform: translateY(-5px); border-color: var(--primary); }
-
-.cargo-card img {
-  width: 100%; height: 85px; object-fit: cover;
-  border-bottom: 1px solid var(--glass-border);
-}
-
+.cargo-card img { width: 100%; height: 85px; object-fit: cover; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .cargo-card span {
   width: 100%; height: 35px;
   padding: 0 5px; font-size: 0.75rem; font-weight: 700; color: #fff;
   background: rgba(0, 0, 0, 0.6);
-  display: flex
+  display: flex; align-items: center; justify-content: center; text-align: center;
+}
+
+/* ---------------- 6. NEW HOME SHIP BANNER (For Index.html) ---------------- */
+.ship-banner-section {
+    position: relative; width: 100%; height: 85vh; min-height: 600px;
+    background-color: #0f172a; 
+    background-image: linear-gradient(to right, rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.3)), 
+                      url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.ship-overlay-content {
+    position: relative; height: 100%; z-index: 2;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-bottom: 40px;
+}
+
+.ship-text-box {
+    background: rgba(30, 41, 59, 0.85); backdrop-filter: blur(12px);
+    padding: 40px 50px; border-left: 6px solid #fff;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    align-self: center; justify-self: start; max-width: 90%;
+    opacity: 0; animation: slideInLeft 1s ease forwards;
+}
+.ship-text-box h2 { color: #fff; font-size: 1.6rem; font-weight: 700; line-height: 1.5; letter-spacing: 0.05em; }
+
+.ship-huge-text {
+    color: #fff; font-size: clamp(3rem, 5vw, 6rem); font-weight: 800; text-transform: uppercase;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.9); line-height: 1;
+    align-self: end; justify-self: end; text-align: right; margin-bottom: 60px;
+    opacity: 0; animation: fadeInUser 1s ease 0.5s forwards;
+}
+
+/* Side Sticky Buttons (Desktop) */
+.side-sticky-nav {
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 10;
+    display: flex; flex-direction: column;
+}
+.side-btn {
+    width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 1.4rem; text-decoration: none; transition: 0.3s;
+}
+.side-btn.whatsapp { background: #25D366; border-radius: 6px 0 0 0; }
+.side-btn.whatsapp:hover { background: #1ebc57; width: 60px; }
+.side-btn.phone { background: var(--primary); border-radius: 0 0 0 6px; }
+.side-btn.phone:hover { background: #0284c7; width: 60px; }
+
+/* ---------------- 7. STATS BAR (Below Banner) ---------------- */
+.stats-bar-wrapper { background: #000; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 30px 0; }
+.stats-flex-row { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px; }
+.stat-item { display: flex; align-items: center; gap: 15px; }
+.stat-item i { font-size: 2rem; color: var(--primary); }
+.stat-item h4 { font-size: 1.5rem; color: #fff; font-weight: 800; line-height: 1; }
+.stat-item p { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; }
+
+/* ---------------- 8. MARQUEE, CLIENTS & INDUSTRY ---------------- */
+.clients-marquee { width: 100%; overflow: hidden; margin: 12px 0; mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent); }
+.clients-track { display: flex; gap: 20px; width: max-content; animation: scroll 40s linear infinite; }
+.clients-marquee.reverse .clients-track { animation-direction: reverse; }
+@keyframes scroll { to { transform: translateX(-50%); } }
+.client-logo img { height: 60px; background: #fff; padding: 10px; border-radius: 12px; }
+
+.industry-section { padding: 40px 0; background: #000; border-top: 1px solid rgba(255,255,255,0.1); }
+.industry-header { text-align: center; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.9rem; margin-bottom: 20px; }
+.industry-item {
+    padding: 10px 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50px;
+    color: #fff; display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.9rem; white-space: nowrap;
+}
+.industry-item i { color: var(--primary); }
+
+/* ---------------- 9. NEW ROADMAP SECTION ---------------- */
+.roadmap-section {
+    padding: 80px 0; position: relative;
+    background: linear-gradient(to bottom, #000 0%, #050a15 100%);
+}
+.roadmap-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr); 
+    align-items: center; gap: 10px; margin-top: 50px; text-align: center;
+}
+.roadmap-step { display: flex; flex-direction: column; align-items: center; gap: 15px; position: relative; z-index: 2; }
+.step-icon {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; color: var(--primary); transition: 0.3s;
+}
+.roadmap-step:hover .step-icon { transform: translateY(-5px); background: var(--primary); color: #fff; }
+.step-number {
+    position: absolute; top: -5px; right: -5px;
+    background: #fff; color: #000; font-weight: 800; font-size: 0.75rem;
+    width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.roadmap-step h3 { color: #fff; font-size: 1.1rem; margin: 0; }
+.roadmap-step p { color: var(--text-muted); font-size: 0.85rem; max-width: 180px; line-height: 1.4; }
+.step-connector { display: flex; justify-content: center; color: rgba(255,255,255,0.1); font-size: 1.5rem; }
+
+/* ---------------- 10. CONTACT PAGE CARDS ---------------- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; padding: 40px 0; align-items: start; }
+@media (max-width: 992px) { .contact-grid { grid-template-columns: 1fr; gap: 30px; } }
+.info-card { padding: 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); margin-bottom: 20px; display: flex; align-items: flex-start; gap: 20px; transition: 0.3s; }
+.info-card:hover { background: rgba(255,255,255,0.05); transform: translateX(5px); border-color: var(--primary); }
+.icon-box { width: 48px; height: 48px; background: rgba(14, 165, 233, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; flex-shrink: 0; }
+.info-content h3 { color: #fff; font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+.info-content p, .info-content a { color: #94a3b8; font-size: 0.95rem; font-weight: 500; text-decoration: none; display: block; line-height: 1.6; }
+.contact-form-box { padding: 40px; background: rgba(15, 23, 42, 0.8); border-radius: var(--radius-lg); border: 1px solid var(--border-glow); }
+.form-group { margin-bottom: 20px; }
+.form-input { width: 100%; padding: 14px 20px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; font-size: 1rem; transition: 0.3s; }
+textarea.form-input { resize: vertical; min-height: 120px; }
+
+/* ---------------- 11. FOOTER & DOCK ---------------- */
+.footer-main { padding: 80px 0 120px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; padding: 6px 0; display: block; transition: 0.2s; }
+.footer-links a:hover { color: var(--primary); padding-left: 8px; }
+.footer-contact-item { display: flex; gap: 15px; margin-bottom: 20px; color: #94a3b8; align-items: flex-start; }
+.footer-contact-item i { color: #0ea5e9; margin-top: 5px; }
+
+/* Mobile Menu & Dock */
+.menu-btn { display: none; background: none; border: none; z-index: 2500; cursor: pointer; }
+.menu-btn span { display: block; width: 30px; height: 2px; background: #fff; margin: 6px 0; transition: 0.3s; }
+.menu-btn.open span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); background: var(--primary); }
+.menu-btn.open span:nth-child(2) { opacity: 0; }
+.menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); background: var(--primary); }
+
+/* ANIMATIONS */
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes fadeInUser { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ---------------- 12. MEDIA QUERIES ---------------- */
+@media (max-width: 992px) {
+  .menu-btn { display: block; }
+  .nav-links {
+    position: fixed; top: 0; right: 0; width: 100%; height: 100dvh; 
+    background: rgba(2, 6, 23, 0.98); backdrop-filter: blur(20px);
+    flex-direction: column; justify-content: center; gap: 30px;
+    transform: translateY(-100%); transition: transform 0.4s; z-index: 2400;
+  }
+  .nav-links.active { transform: translateY(0); }
+  .nav-links li { width: auto; border: none; }
+  .desktop-only { display: none !important; }
+  
+  /* Ship Banner Mobile */
+  .ship-overlay-content { grid-template-columns: 1fr; align-content: center; gap: 40px; padding-top: 60px; }
+  .ship-text-box { justify-self: center; text-align: left; width: 100%; }
+  .ship-huge-text { justify-self: center; text-align: center; font-size: 2.5rem; margin-bottom: 0; }
+  
+  /* Roadmap Mobile */
+  .roadmap-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; position: relative; }
+  .roadmap-grid::before {
+        content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 100%;
+        background: linear-gradient(to bottom, rgba(14, 165, 233, 0), rgba(14, 165, 233, 0.3) 10%, rgba(14, 165, 233, 0.3) 90%, rgba(14, 165, 233, 0));
+        transform: translateX(-1px); z-index: 0;
+  }
+  .step-connector { display: none; }
+  .roadmap-step {
+        background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);
+        max-width: 300px; margin: 0 auto; width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .ship-banner-section { height: auto; min-height: 90vh; padding: 80px 0; }
+  .ship-text-box { margin: 0; padding: 30px; }
+  .ship-text-box h2 { font-size: 1.1rem; }
+  .stats-flex-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .stat-item { width: 100%; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 12px; }
+  
+  /* Cargo Cards Mobile */
+  .cargo-card { width: 110px; height: 100px; }
+  .cargo-card img { height: 70px; }
+
+  /* Mobile Dock */
+  .mobile-app-dock {
+    position: fixed; bottom: 20px; padding-bottom: env(safe-area-inset-bottom);
+    left: 50%; transform: translateX(-50%); width: 92%; max-width: 380px;
+    background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 24px;
+    display: flex; justify-content: space-between; padding: 12px 24px;
+    z-index: var(--z-dock); box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  }
+  .dock-item {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    color: var(--text-muted); text-decoration: none; font-size: 0.7rem; flex: 1;
+  }
+  .dock-item i { font-size: 1.4rem; color: #fff; }
+  .dock-item:active { transform: scale(0.95); } 
+  .dock-item:active i { color: var(--primary); }
+  
+  body { padding-bottom: 120px; }
+  .footer-col:nth-child(2) { display: none; }
+}
