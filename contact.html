@@ -94,7 +94,10 @@
         .form-input:focus { border-color: #0ea5e9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.2); }
         textarea.form-input { resize: vertical; min-height: 120px; }
 
-        /* 4. MOBILE RESPONSIVENESS (Critical Fix) */
+        /* 4. MOBILE DOCK STYLES (FIXED: Hides on Desktop, Shows on Mobile) */
+        .mobile-app-dock { display: none; } /* HIDDEN ON LAPTOP */
+
+        /* 5. MOBILE RESPONSIVENESS */
         @media (max-width: 992px) {
             .contact-grid {
                 grid-template-columns: 1fr; /* Stack on Mobile */
@@ -102,6 +105,29 @@
             }
             .contact-form-box { padding: 25px; }
             h1 { font-size: 2.5rem !important; }
+        }
+
+        @media (max-width: 768px) {
+            /* SHOW DOCK ON MOBILE ONLY */
+            .mobile-app-dock {
+                position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+                width: 90%; max-width: 350px;
+                background: rgba(15, 23, 42, 0.95);
+                backdrop-filter: blur(16px);
+                border: 1px solid rgba(255,255,255,0.15);
+                border-radius: 50px;
+                display: flex; justify-content: space-evenly;
+                padding: 12px 20px;
+                z-index: 9999;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            }
+            .dock-item {
+                display: flex; flex-direction: column; align-items: center;
+                color: #94a3b8; text-decoration: none; font-size: 0.7rem; gap: 4px;
+                border: none; background: none;
+            }
+            .dock-item i { font-size: 1.4rem; color: #fff; }
+            .dock-item.active i { color: #0ea5e9; }
         }
     </style>
 </head>
