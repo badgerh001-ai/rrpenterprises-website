@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Terms & Conditions | RRP Enterprises</title>
+    <meta name="description" content="Terms of Service for RRP Enterprises. Logistics liability, payment terms, and prohibited items policy.">
+    <meta name="robots" content="noindex, follow">
+    
+    <link rel="stylesheet" href="style.css?v=12">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <style>
+        .legal-content h2 { color: #fff; margin-top: 30px; margin-bottom: 15px; font-size: 1.5rem; border-left: 4px solid #0ea5e9; padding-left: 15px; }
+        .legal-content p, .legal-content li { color: #94a3b8; margin-bottom: 15px; line-height: 1.8; }
+        .legal-content ul { padding-left: 20px; margin-bottom: 20px; }
+        .legal-content strong { color: #cbd5e1; }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo-container">
+                <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
+                <div class="logo-text">RRP <span>ENTERPRISES</span></div>
+            </a>
+            <button class="menu-btn" id="mobile-toggle"><span></span><span></span><span></span></button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="social-link">Home</a></li>
+                <li><a href="about.html" class="social-link">About Us</a></li>
+                <li><a href="services.html" class="social-link">Services</a></li>
+                <li><a href="contact.html" class="social-link">Contact</a></li>
+                <li><a href="contact.html" class="cta-btn">Get Quote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container" style="padding-top: 60px; padding-bottom: 80px;">
+        
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="badge">Conditions of Carriage</span>
+            <h1 style="font-size: clamp(2.5rem, 5vw, 4rem);">Terms & <span class="gradient-text">Conditions</span></h1>
+            <p style="color: #94a3b8;">Effective Date: February 1, 2026</p>
+        </div>
+
+        <div class="glass legal-content" style="padding: 40px; border-radius: 24px;">
+            <p>Welcome to RRP Enterprises. By booking a consignment with us, you agree to the following terms and conditions covering the transportation of goods.</p>
+
+            <h2>1. Prohibited Items</h2>
+            <p>The following items are strictly prohibited for transport. Consignors found shipping these items will be held legally liable:</p>
+            <ul>
+                <li>Explosives, firearms, or ammunition.</li>
+                <li>Illegal drugs or narcotics.</li>
+                <li>Highly flammable liquids (without prior specific hazardous cargo approval).</li>
+                <li>Stolen goods or contraband.</li>
+            </ul>
+
+            <h2>2. Liability & Insurance</h2>
+            <p><strong>Owner's Risk:</strong> Unless specifically insured by RRP Enterprises under a separate written agreement, all goods are transported at "Owner's Risk" (OR). We recommend clients obtain their own marine/transit insurance.</p>
+            <p>RRP Enterprises is not liable for:</p>
+            <ul>
+                <li>Natural calamities (Act of God) such as floods, earthquakes, or cyclones.</li>
+                <li>Seizure by government authorities due to improper documentation provided by the consignor.</li>
+                <li>Internal damage to packaging where the outer packaging is intact.</li>
+            </ul>
+
+            <h2>3. Documentation</h2>
+            <p>The consignor is responsible for providing valid E-Way Bills, Invoices, and Delivery Challans. Any detention of vehicles due to expired or invalid documents will result in demurrage charges payable by the consignor.</p>
+
+            <h2>4. Payment Terms</h2>
+            <p>Freight charges must be paid as per the agreed terms (To Pay, Paid, or TBB). Late payments may attract interest at 18% per annum. RRP Enterprises reserves the general lien over goods for unpaid freight charges.</p>
+
+            <h2>5. Jurisdiction</h2>
+            <p>Any disputes arising out of or in connection with these services shall be subject to the exclusive jurisdiction of the courts in <strong>Anantapur, Andhra Pradesh</strong>.</p>
+        </div>
+
+    </main>
+
+    <footer class="footer-main">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="logo-container">
+                    <img src="assets/logo.png" class="main-logo" alt="Logo">
+                    <div class="logo-text">RRP <span>ENTERPRISES</span></div>
+                </div>
+                <p style="color: #94a3b8; margin-top: 20px;">Reliable, Fast, and Secure transport for every industry.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; text-align: center; color: rgba(255,255,255,0.3);">
+            &copy; 2026 RRP Enterprises. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                menuBtn.classList.toggle('open');
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
