@@ -101,7 +101,7 @@
             overflow: visible !important; 
         }
 
-        /* === BLINKING LIGHTS (New Feature) === */
+        /* === BLINKING LIGHTS === */
         .led-light {
             display: inline-block;
             width: 8px; height: 8px;
@@ -110,21 +110,18 @@
             vertical-align: middle;
         }
         
-        /* Red Alert LED */
         .led-red {
             background-color: #ef4444;
             box-shadow: 0 0 8px #ef4444, 0 0 15px #ef4444;
             animation: blink-red 1s infinite;
         }
         
-        /* Green Online LED */
         .led-green {
             background-color: #22c55e;
             box-shadow: 0 0 8px #22c55e, 0 0 15px #22c55e;
             animation: blink-green 2s infinite;
         }
 
-        /* Radar Pulse for Tracking Icon */
         .radar-pulse {
             position: relative;
         }
@@ -146,6 +143,38 @@
             0% { width: 100%; height: 100%; opacity: 1; } 
             100% { width: 200%; height: 200%; opacity: 0; } 
         }
+
+        /* === FESTIVAL BANNER 2026 === */
+        .festival-banner {
+            background: linear-gradient(90deg, #312e81 0%, #4c1d95 50%, #312e81 100%);
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 3002; /* Above System Bar */
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            letter-spacing: 0.05em;
+        }
+        /* Shine Effect */
+        .festival-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+            transform: skewX(-20deg);
+            animation: banner-shine 6s infinite;
+        }
+        @keyframes banner-shine {
+            0% { left: -100%; }
+            20% { left: 200%; } /* Fast sweep */
+            100% { left: 200%; }
+        }
+        .festival-icon { color: #a78bfa; margin-right: 8px; font-size: 1.1rem; }
+
 
         /* TRENDY FOOTER STYLE */
         .footer-main { padding: 80px 0 40px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; }
@@ -183,6 +212,12 @@
 </head>
 
 <body>
+
+    <div class="festival-banner">
+        <i class="fas fa-om festival-icon"></i> 
+        HAPPY MAHASHIVRATRI 2026 
+        <span style="opacity: 0.7; margin-left: 10px; font-weight: 400;">| Wishing you success & prosperity</span>
+    </div>
 
     <div class="top-system-bar">
         <div class="container">
@@ -297,7 +332,8 @@
 
                 <div class="roadmap-step">
                     <div class="step-icon radar-pulse">
-                        <i class="fas fa-map-location-dot" style="color: #ef4444;"></i> <div class="step-number">02</div>
+                        <i class="fas fa-map-location-dot" style="color: #ef4444;"></i>
+                        <div class="step-number">02</div>
                     </div>
                     <h3>Live Tracking</h3>
                     <p>Real-time GPS updates. Know exactly where your cargo is 24/7.</p>
