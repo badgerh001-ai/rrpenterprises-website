@@ -24,7 +24,7 @@
     <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/logo.png">
 
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=13">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -140,6 +140,74 @@
         
         .full-btn { width: 100%; padding: 12px; background: #0ea5e9; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px; }
         .full-btn:hover { background: #0284c7; }
+
+        /* === 2x2 SLOW SCROLL GRID STYLES (New Request) === */
+        .reference-grid-wrapper {
+            height: 500px; /* Limits visibility to roughly 2 rows + gap */
+            overflow: hidden;
+            position: relative;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 20px;
+        }
+        
+        /* The scrolling container */
+        .reference-track {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 Columns Fixed */
+            gap: 20px;
+            /* SLOW VERTICAL SCROLL ANIMATION */
+            animation: verticalScroll 40s linear infinite; 
+        }
+        
+        .reference-track:hover {
+            animation-play-state: paused; /* Pause on hover */
+        }
+        
+        /* The Item Card */
+        .grid-cargo-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+        .grid-cargo-card:hover {
+            border-color: #0ea5e9;
+            transform: scale(1.02);
+        }
+        .grid-cargo-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .grid-cargo-card span {
+            padding: 12px;
+            text-align: center;
+            font-weight: 700;
+            color: #fff;
+            background: rgba(0,0,0,0.2);
+        }
+
+        @keyframes verticalScroll {
+            0% { transform: translateY(0); }
+            /* We duplicate content, so we scroll halfway up */
+            100% { transform: translateY(-50%); }
+        }
+
+        /* Mobile Adjustment: Stack to 1 column or keep 2 small ones */
+        @media (max-width: 768px) {
+            .reference-track {
+                grid-template-columns: 1fr; /* 1 Column on phones */
+            }
+            .reference-grid-wrapper {
+                height: 400px; /* Slightly shorter on mobile */
+            }
+        }
 
     </style>
 </head>
@@ -281,106 +349,47 @@
             <div class="badge-center"><span class="badge">Reference Loads</span></div>
             <h2 class="section-title">Types of Cargo We <span class="gradient-text">Handle</span></h2>
 
-            <div class="clients-marquee">
-                <div class="clients-track">
-                    <div class="cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                    <div class="cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
-                    <div class="cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
-                    <div class="cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
-                    <div class="cargo-card"><img src="assets/services/metalpipe.png.jpeg" alt="Pipes"><span>Metal Pipes</span></div>
-                    <div class="cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                    <div class="cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
-                    <div class="cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
-                    <div class="cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                    <div class="cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
-                    <div class="cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
-                    <div class="cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
-                    <div class="cargo-card"><img src="assets/services/metalpipe.png.jpeg" alt="Pipes"><span>Metal Pipes</span></div>
-                    <div class="cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                    <div class="cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
-                    <div class="cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
-                    <div class="cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                    <div class="cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
-                    <div class="cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
-                    <div class="cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
+            <div class="reference-grid-wrapper">
+                <div class="reference-track">
+                    <div class="grid-cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/metalpipe.png.jpeg" alt="Pipes"><span>Metal Pipes</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire Mesh"><span>Wire Mesh</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood"><span>Plywood</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Drums"><span>Cable Drums</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/appolopipes.png.jpeg" alt="PVC"><span>PVC Pipes</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/plasticgranulesbags.png.jpeg" alt="Granules"><span>Granules</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Scrap"><span>Battery Scrap</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/books.png.jpeg" alt="Books"><span>Paper/Books</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartz"><span>Quartzite</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/daburproducts.png.jpeg" alt="FMCG"><span>FMCG</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/maricoproducts.png.jpeg" alt="Oil"><span>Edible Oil</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Metal"><span>Metal Scrap</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper"><span>Paper Reels</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Pellet"><span>Iron Pellets</span></div>
+
+                    <div class="grid-cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/metalpipe.png.jpeg" alt="Pipes"><span>Metal Pipes</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire Mesh"><span>Wire Mesh</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood"><span>Plywood</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Drums"><span>Cable Drums</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/appolopipes.png.jpeg" alt="PVC"><span>PVC Pipes</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/plasticgranulesbags.png.jpeg" alt="Granules"><span>Granules</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Scrap"><span>Battery Scrap</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/books.png.jpeg" alt="Books"><span>Paper/Books</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartz"><span>Quartzite</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/daburproducts.png.jpeg" alt="FMCG"><span>FMCG</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/maricoproducts.png.jpeg" alt="Oil"><span>Edible Oil</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Metal"><span>Metal Scrap</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper"><span>Paper Reels</span></div>
+                    <div class="grid-cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Pellet"><span>Iron Pellets</span></div>
                 </div>
             </div>
-
-            <div class="clients-marquee reverse">
-                <div class="clients-track">
-                    <div class="cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire Mesh"><span>Wire Mesh</span></div>
-                    <div class="cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood"><span>Plywood</span></div>
-                    <div class="cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Drums"><span>Cable Drums</span></div>
-                    <div class="cargo-card"><img src="assets/services/appolopipes.png.jpeg" alt="PVC"><span>PVC Pipes</span></div>
-                    <div class="cargo-card"><img src="assets/services/plasticgranulesbags.png.jpeg" alt="Granules"><span>Granules</span></div>
-                    <div class="cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire Mesh"><span>Wire Mesh</span></div>
-                    <div class="cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood"><span>Plywood</span></div>
-                    <div class="cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Drums"><span>Cable Drums</span></div>
-                    <div class="cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire Mesh"><span>Wire Mesh</span></div>
-                    <div class="cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood"><span>Plywood</span></div>
-                    <div class="cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Drums"><span>Cable Drums</span></div>
-                    <div class="cargo-card"><img src="assets/services/appolopipes.png.jpeg" alt="PVC"><span>PVC Pipes</span></div>
-                    <div class="cargo-card"><img src="assets/services/plasticgranulesbags.png.jpeg" alt="Granules"><span>Granules</span></div>
-                    <div class="cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire Mesh"><span>Wire Mesh</span></div>
-                    <div class="cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood"><span>Plywood</span></div>
-                    <div class="cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Drums"><span>Cable Drums</span></div>
-                    <div class="cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire Mesh"><span>Wire Mesh</span></div>
-                    <div class="cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood"><span>Plywood</span></div>
-                    <div class="cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Drums"><span>Cable Drums</span></div>
-                    <div class="cargo-card"><img src="assets/services/appolopipes.png.jpeg" alt="PVC"><span>PVC Pipes</span></div>
-                </div>
-            </div>
-
-            <div class="clients-marquee">
-                <div class="clients-track">
-                    <div class="cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Scrap"><span>Battery Scrap</span></div>
-                    <div class="cargo-card"><img src="assets/services/books.png.jpeg" alt="Books"><span>Paper/Books</span></div>
-                    <div class="cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartz"><span>Quartzite</span></div>
-                    <div class="cargo-card"><img src="assets/services/daburproducts.png.jpeg" alt="FMCG"><span>FMCG</span></div>
-                    <div class="cargo-card"><img src="assets/services/maricoproducts.png.jpeg" alt="Oil"><span>Edible Oil</span></div>
-                    <div class="cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Scrap"><span>Battery Scrap</span></div>
-                    <div class="cargo-card"><img src="assets/services/books.png.jpeg" alt="Books"><span>Paper/Books</span></div>
-                    <div class="cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartz"><span>Quartzite</span></div>
-                    <div class="cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Scrap"><span>Battery Scrap</span></div>
-                    <div class="cargo-card"><img src="assets/services/books.png.jpeg" alt="Books"><span>Paper/Books</span></div>
-                    <div class="cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartz"><span>Quartzite</span></div>
-                    <div class="cargo-card"><img src="assets/services/daburproducts.png.jpeg" alt="FMCG"><span>FMCG</span></div>
-                    <div class="cargo-card"><img src="assets/services/maricoproducts.png.jpeg" alt="Oil"><span>Edible Oil</span></div>
-                    <div class="cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Scrap"><span>Battery Scrap</span></div>
-                    <div class="cargo-card"><img src="assets/services/books.png.jpeg" alt="Books"><span>Paper/Books</span></div>
-                    <div class="cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartz"><span>Quartzite</span></div>
-                    <div class="cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Scrap"><span>Battery Scrap</span></div>
-                    <div class="cargo-card"><img src="assets/services/books.png.jpeg" alt="Books"><span>Paper/Books</span></div>
-                    <div class="cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartz"><span>Quartzite</span></div>
-                    <div class="cargo-card"><img src="assets/services/daburproducts.png.jpeg" alt="FMCG"><span>FMCG</span></div>
-                </div>
-            </div>
-
-            <div class="clients-marquee reverse">
-                <div class="clients-track">
-                    <div class="cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Metal"><span>Metal Scrap</span></div>
-                    <div class="cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper"><span>Paper Reels</span></div>
-                    <div class="cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Pellet"><span>Iron Pellets</span></div>
-                    <div class="cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                    <div class="cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
-                    <div class="cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Metal"><span>Metal Scrap</span></div>
-                    <div class="cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper"><span>Paper Reels</span></div>
-                    <div class="cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Pellet"><span>Iron Pellets</span></div>
-                    <div class="cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Metal"><span>Metal Scrap</span></div>
-                    <div class="cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper"><span>Paper Reels</span></div>
-                    <div class="cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Pellet"><span>Iron Pellets</span></div>
-                    <div class="cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                    <div class="cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
-                    <div class="cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Metal"><span>Metal Scrap</span></div>
-                    <div class="cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper"><span>Paper Reels</span></div>
-                    <div class="cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Pellet"><span>Iron Pellets</span></div>
-                    <div class="cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Metal"><span>Metal Scrap</span></div>
-                    <div class="cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper"><span>Paper Reels</span></div>
-                    <div class="cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Pellet"><span>Iron Pellets</span></div>
-                    <div class="cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                </div>
-            </div>
-
         </section>
     </main>
 
@@ -414,6 +423,8 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact Support</a></li>
                     <li><a href="contact.html">Track Shipment</a></li>
+                    <li style="margin-top: 10px;"><a href="privacy.html" style="color: #6366f1;">Privacy Policy</a></li>
+                    <li><a href="terms.html" style="color: #6366f1;">Terms & Conditions</a></li>
                 </ul>
             </div>
 
