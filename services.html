@@ -141,9 +141,9 @@
         .full-btn { width: 100%; padding: 12px; background: #0ea5e9; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px; }
         .full-btn:hover { background: #0284c7; }
 
-        /* === 2x2 SLOW SCROLL GRID STYLES (New Request) === */
+        /* === 2x2 SLOW SCROLL GRID STYLES (IMAGE FIX v17) === */
         .reference-grid-wrapper {
-            height: 500px; /* Limits visibility to roughly 2 rows + gap */
+            height: 650px; /* Increased height so taller images fit well */
             overflow: hidden;
             position: relative;
             background: rgba(0,0,0,0.3);
@@ -181,7 +181,8 @@
         }
         .grid-cargo-card img {
             width: 100%;
-            height: 140px;
+            height: auto; /* Allow natural height based on ratio */
+            aspect-ratio: 16/9; /* Widescreen shape - SHOWS FULL TRUCK */
             object-fit: cover;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
