@@ -1,5 +1,5 @@
 /* ===================================================================
-   RRP ENTERPRISES – FORCE FIX (v2025.v11 - Cyber Upgrades)
+   RRP ENTERPRISES – FORCE FIX (v2026.v12 - Cyber V2)
    Theme: "Cyber-Logistics" (Mobile-Native & Safe Area Ready)
    =================================================================== */
 
@@ -28,6 +28,13 @@ html {
   scroll-behavior: smooth; 
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent; 
+}
+
+/* === COOL FEATURE 1: NEON SELECTION === */
+::selection {
+    background: var(--accent);
+    color: #fff;
+    text-shadow: 0 0 8px var(--accent);
 }
 
 ::-webkit-scrollbar { width: 8px; }
@@ -154,11 +161,11 @@ body {
   border: 1px solid rgba(255,255,255,0.1);
   display: inline-flex; align-items: center; gap: 8px;
   touch-action: manipulation;
-  /* New Neon Pulse Animation */
+  /* Neon Pulse Animation */
   animation: neon-pulse 3s infinite;
 }
 .cta-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 10px 30px rgba(14, 165, 233, 0.5); }
-.cta-btn:active { transform: scale(0.96); }
+.cta-btn:active { transform: scale(0.96); } /* Haptic Feel */
 
 @keyframes neon-pulse {
     0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); }
@@ -205,6 +212,19 @@ body {
     transform: translateX(10px); 
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
+
+/* === COOL FEATURE 2: HOLOGRAPHIC SHIMMER === */
+.service-item::after, .info-card::after {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    transform: skewX(-25deg);
+    transition: 0.5s; pointer-events: none;
+}
+.service-item:hover::after, .info-card:hover::after {
+    left: 150%; transition: 0.7s ease-in-out;
+}
+
 .service-item::before {
     content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
     background: var(--accent-gradient); opacity: 0; transition: 0.3s;
@@ -229,8 +249,9 @@ body {
   position: relative;
   will-change: transform;
 }
-/* Touch Feedback Scale Down */
-.cargo-card:active { transform: scale(0.95); }
+/* === COOL FEATURE 3: HAPTIC TOUCH (Mobile) === */
+.cargo-card:active { transform: scale(0.95); border-color: var(--primary); }
+
 .cargo-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 5px 15px rgba(14, 165, 233, 0.2); }
 
 .cargo-card img { width: 100%; height: 85px; object-fit: cover; border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -474,9 +495,12 @@ body {
   .cargo-card { width: 110px; height: 100px; }
   .cargo-card img { height: 70px; }
 
-  /* Mobile Dock */
+  /* === COOL FEATURE 4: SAFE AREA MOBILE DOCK === */
   .mobile-app-dock {
-    position: fixed; bottom: 20px; padding-bottom: env(safe-area-inset-bottom);
+    position: fixed; 
+    bottom: 20px; 
+    /* DYNAMIC SAFE AREA PADDING (Fixes iPhone Swipe Issue) */
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
     left: 50%; transform: translateX(-50%); width: 92%; max-width: 380px;
     background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(16px);
     border: 1px solid rgba(255,255,255,0.15); border-radius: 24px;
@@ -488,7 +512,7 @@ body {
     color: var(--text-muted); text-decoration: none; font-size: 0.7rem; flex: 1;
   }
   .dock-item i { font-size: 1.4rem; color: #fff; }
-  .dock-item:active { transform: scale(0.95); } 
+  .dock-item:active { transform: scale(0.90); } 
   .dock-item:active i { color: var(--primary); }
   
   body { padding-bottom: 120px; }
