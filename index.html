@@ -144,36 +144,34 @@
             100% { width: 200%; height: 200%; opacity: 0; } 
         }
 
-        /* === FESTIVAL BANNER 2026 === */
-        .festival-banner {
-            background: linear-gradient(90deg, #312e81 0%, #4c1d95 50%, #312e81 100%);
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 0.95rem;
+        /* === NEW SHIVRATRI BADGE (Integrated) === */
+        .shiv-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 20px;
+            /* Glassmorphic Purple Background */
+            background: rgba(88, 28, 135, 0.4); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.5); /* Neon Purple Border */
+            border-radius: 50px;
+            color: #d8b4fe; /* Light Purple Text */
             font-weight: 700;
-            position: relative;
-            z-index: 3002; /* Above System Bar */
-            overflow: hidden;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+            animation: float-badge 3s ease-in-out infinite;
         }
-        /* Shine Effect */
-        .festival-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
-            transform: skewX(-20deg);
-            animation: banner-shine 6s infinite;
+        .shiv-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px #d8b4fe;
         }
-        @keyframes banner-shine {
-            0% { left: -100%; }
-            20% { left: 200%; } /* Fast sweep */
-            100% { left: 200%; }
+        @keyframes float-badge {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(168, 85, 247, 0.5); }
+            100% { transform: translateY(0); }
         }
-        .festival-icon { color: #a78bfa; margin-right: 8px; font-size: 1.1rem; }
 
 
         /* TRENDY FOOTER STYLE */
@@ -213,12 +211,6 @@
 
 <body>
 
-    <div class="festival-banner">
-        <i class="fas fa-om festival-icon"></i> 
-        HAPPY MAHASHIVRATRI 2026 
-        <span style="opacity: 0.7; margin-left: 10px; font-weight: 400;">| Wishing you success & prosperity</span>
-    </div>
-
     <div class="top-system-bar">
         <div class="container">
             <div class="system-text">
@@ -253,7 +245,12 @@
     <section class="truck-banner-section">
         <div class="truck-overlay-content container">
             <div class="truck-text-box">
-                <span class="badge">
+                
+                <div class="shiv-badge">
+                    <i class="fas fa-om shiv-icon"></i> 
+                    Happy Mahashivratri 2026
+                </div>
+                <br> <span class="badge">
                     <span class="led-light led-green"></span> Premium Logistics Fleet
                 </span>
                 <h1>
