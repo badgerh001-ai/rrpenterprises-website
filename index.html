@@ -157,7 +157,6 @@
             color: #d8b4fe; 
             font-weight: 700;
             font-size: 0.9rem;
-            /* Margin Bottom handles the spacing now, no <br> needed */
             margin-bottom: 20px; 
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
             animation: float-badge 3s ease-in-out infinite;
@@ -210,6 +209,51 @@
             font-size: 3rem; color: rgba(255,255,255,0.05);
         }
 
+        /* === NEW GIFT ICON CSS === */
+        .gift-trigger {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 3500; /* Above everything */
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+            animation: gift-pulse 2s infinite;
+            transition: transform 0.3s;
+        }
+        .gift-trigger:hover { transform: scale(1.1); }
+        .gift-trigger i { font-size: 1.8rem; color: #fff; }
+        
+        @keyframes gift-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+
+        /* Welcome Letter Modal Specifics */
+        .letter-content {
+            background: #1e1e1e;
+            padding: 40px;
+            border: 1px solid #f59e0b;
+            text-align: center;
+            position: relative;
+        }
+        .letter-content h2 { color: #f59e0b; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+        .letter-content p { color: #d1d5db; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+        .signature { margin-top: 30px; font-style: italic; color: #9ca3af; }
+
+        @media (max-width: 768px) {
+            /* Move gift icon up on mobile so it doesn't hit the dock */
+            .gift-trigger { bottom: 100px; left: 20px; width: 50px; height: 50px; }
+            .gift-trigger i { font-size: 1.4rem; }
+        }
+
         /* TRENDY FOOTER STYLE */
         .footer-main { padding: 80px 0 40px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 60px; }
@@ -246,6 +290,27 @@
 </head>
 
 <body>
+
+    <div class="gift-trigger" onclick="openWelcome()">
+        <i class="fas fa-gift"></i>
+    </div>
+
+    <div id="welcomeModal" class="modal-overlay">
+        <div class="modal-box letter-content">
+            <button class="close-modal" onclick="closeWelcome()">&times;</button>
+            <i class="fas fa-crown" style="font-size: 3rem; color: #f59e0b; margin-bottom: 20px;"></i>
+            <h2>Welcome to RRP Enterprises</h2>
+            <p>Dear Valued Partner,</p>
+            <p>Welcome to our new digital home. We are honored to have you here.</p>
+            <p>As India's leading logistics partner, we are dedicated to moving your business forward with precision, speed, and integrity. Whether it's FTL, Bulk Cargo, or Supply Chain solutions, we treat your cargo as our own.</p>
+            <p>Please explore our platform designed to streamline your logistics experience.</p>
+            <div class="signature">
+                Sincerely,<br>
+                <strong>The Management Team</strong><br>
+                RRP Enterprises
+            </div>
+        </div>
+    </div>
 
     <div class="top-system-bar">
         <div class="container">
@@ -695,6 +760,22 @@
                 menuBtn.classList.toggle('open');
                 navLinks.classList.toggle('active');
             });
+        }
+
+        // WELCOME MODAL LOGIC
+        function openWelcome() {
+            document.getElementById('welcomeModal').style.display = 'flex';
+        }
+        function closeWelcome() {
+            document.getElementById('welcomeModal').style.display = 'none';
+        }
+        
+        // Close if clicking outside the modal box
+        window.onclick = function(event) {
+            const modal = document.getElementById('welcomeModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
     </script>
 </body>
