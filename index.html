@@ -101,6 +101,52 @@
             overflow: visible !important; 
         }
 
+        /* === BLINKING LIGHTS (New Feature) === */
+        .led-light {
+            display: inline-block;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+        /* Red Alert LED */
+        .led-red {
+            background-color: #ef4444;
+            box-shadow: 0 0 8px #ef4444, 0 0 15px #ef4444;
+            animation: blink-red 1s infinite;
+        }
+        
+        /* Green Online LED */
+        .led-green {
+            background-color: #22c55e;
+            box-shadow: 0 0 8px #22c55e, 0 0 15px #22c55e;
+            animation: blink-green 2s infinite;
+        }
+
+        /* Radar Pulse for Tracking Icon */
+        .radar-pulse {
+            position: relative;
+        }
+        .radar-pulse::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            border: 2px solid #ef4444;
+            animation: radar-ping 1.5s infinite;
+            z-index: -1;
+        }
+
+        @keyframes blink-red { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        @keyframes blink-green { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        @keyframes radar-ping { 
+            0% { width: 100%; height: 100%; opacity: 1; } 
+            100% { width: 200%; height: 200%; opacity: 0; } 
+        }
+
         /* TRENDY FOOTER STYLE */
         .footer-main { padding: 80px 0 40px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 60px; }
@@ -140,10 +186,10 @@
 
     <div class="top-system-bar">
         <div class="container">
-            <i class="fas fa-screwdriver-wrench"></i>
             <div class="system-text">
-                <strong>⚠️ SYSTEM UPDATE IN PROGRESS</strong>
-                <span>We are currently upgrading our digital platform to serve you better. Full booking and tracking features will be available shortly.</span>
+                <span class="led-light led-red"></span> 
+                <strong>SYSTEM UPDATE IN PROGRESS</strong>
+                <span>We are currently upgrading our digital platform to serve you better.</span>
             </div>
         </div>
     </div>
@@ -172,7 +218,9 @@
     <section class="truck-banner-section">
         <div class="truck-overlay-content container">
             <div class="truck-text-box">
-                <span class="badge"><i class="fas fa-certificate"></i> Premium Logistics Fleet</span>
+                <span class="badge">
+                    <span class="led-light led-green"></span> Premium Logistics Fleet
+                </span>
                 <h1>
                     POWERING YOUR <br>
                     <span class="gradient-text">SUPPLY CHAIN</span>
@@ -248,9 +296,8 @@
                 </div>
 
                 <div class="roadmap-step">
-                    <div class="step-icon">
-                        <i class="fas fa-map-location-dot"></i>
-                        <div class="step-number">02</div>
+                    <div class="step-icon radar-pulse">
+                        <i class="fas fa-map-location-dot" style="color: #ef4444;"></i> <div class="step-number">02</div>
                     </div>
                     <h3>Live Tracking</h3>
                     <p>Real-time GPS updates. Know exactly where your cargo is 24/7.</p>
@@ -445,7 +492,9 @@
                 <div class="footer-contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 600;">+91 94948 31803</div>
+                        <div style="color: #fff; font-weight: 600;">
+                            <span class="led-light led-green"></span> +91 94948 31803
+                        </div>
                         <div style="font-size: 0.9rem;">24/7 Support</div>
                     </div>
                 </div>
