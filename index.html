@@ -144,7 +144,7 @@
             100% { width: 200%; height: 200%; opacity: 0; } 
         }
 
-        /* === FESTIVAL BADGE (Adjusted for Laptop) === */
+        /* === FESTIVAL BADGE === */
         .shiv-badge {
             display: inline-flex;
             align-items: center;
@@ -172,7 +172,7 @@
             100% { transform: translateY(0); }
         }
 
-        /* === NEW REVIEWS SECTION CSS === */
+        /* === REVIEWS CSS === */
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -209,49 +209,100 @@
             font-size: 3rem; color: rgba(255,255,255,0.05);
         }
 
-        /* === NEW GIFT ICON CSS === */
-        .gift-trigger {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 3500; /* Above everything */
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
-            animation: gift-pulse 2s infinite;
-            transition: transform 0.3s;
-        }
-        .gift-trigger:hover { transform: scale(1.1); }
-        .gift-trigger i { font-size: 1.8rem; color: #fff; }
+        /* === NEW TRUCK-GIFT ANIMATION & MODAL === */
         
-        @keyframes gift-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        /* 1. The Trigger Wrapper */
+        .gift-truck-trigger {
+            position: fixed;
+            bottom: 30px; left: 30px;
+            width: 70px; height: 70px;
+            background: linear-gradient(135deg, #0ea5e9, #0284c7); /* Truck Blue */
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            z-index: 3500;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.5);
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s;
+            animation: truck-idle 2s ease-in-out infinite; /* Engine Vibration */
+        }
+        .gift-truck-trigger:hover {
+            transform: scale(1.1) rotate(-5deg);
         }
 
-        /* Welcome Letter Modal Specifics */
-        .letter-content {
-            background: #1e1e1e;
-            padding: 40px;
-            border: 1px solid #f59e0b;
-            text-align: center;
+        /* 2. The Icons (Truck + Gift) */
+        .truck-icon-stack {
             position: relative;
+            width: 40px; height: 40px;
         }
-        .letter-content h2 { color: #f59e0b; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
-        .letter-content p { color: #d1d5db; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
-        .signature { margin-top: 30px; font-style: italic; color: #9ca3af; }
+        .fa-truck-fast-custom {
+            font-size: 1.8rem; color: #fff;
+            position: absolute; bottom: 0; left: 0;
+        }
+        .fa-gift-custom {
+            font-size: 1.2rem; color: #f59e0b; /* Gold Gift */
+            position: absolute; 
+            top: -8px; 
+            left: 8px; /* Sitting on the truck bed */
+            transform: rotate(10deg);
+            animation: gift-bounce 2s infinite;
+        }
+
+        /* 3. Animations */
+        @keyframes truck-idle {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-3px); } /* Vibrate up */
+            100% { transform: translateY(0); }
+        }
+        @keyframes gift-bounce {
+            0%, 100% { transform: rotate(10deg) translateY(0); }
+            50% { transform: rotate(5deg) translateY(-2px); }
+        }
+
+        /* 4. The 3D Unfolding Letter Modal */
+        .letter-modal-box {
+            background: #fff; /* White Paper */
+            color: #1e293b;   /* Dark Text for readability on paper */
+            padding: 50px 40px;
+            border-radius: 4px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            /* Letter Design */
+            background-image: linear-gradient(#f8f9fa 1px, transparent 1px);
+            background-size: 100% 1.5rem; /* Lined Paper Effect */
+            border: 8px solid #f59e0b; /* Gold Border */
+            /* 3D Animation Start State */
+            transform: scaleY(0);
+            transform-origin: bottom;
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Elastic Open */
+        }
+        
+        .modal-overlay.active .letter-modal-box {
+            transform: scaleY(1);
+            opacity: 1;
+        }
+
+        .letter-content h2 { 
+            color: #0f172a; 
+            font-family: 'Playfair Display', serif; 
+            margin-bottom: 20px; 
+            border-bottom: 2px solid #f59e0b;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .letter-content p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 15px; font-weight: 500; }
+        .signature { margin-top: 30px; font-family: 'Cursive', serif; font-size: 1.2rem; color: #0ea5e9; }
+        .close-letter {
+            position: absolute; top: 10px; right: 15px;
+            font-size: 2rem; color: #94a3b8; cursor: pointer; background: none; border: none;
+        }
+        .close-letter:hover { color: #ef4444; }
 
         @media (max-width: 768px) {
-            /* Move gift icon up on mobile so it doesn't hit the dock */
-            .gift-trigger { bottom: 100px; left: 20px; width: 50px; height: 50px; }
-            .gift-trigger i { font-size: 1.4rem; }
+            .gift-truck-trigger { bottom: 100px; left: 20px; }
         }
 
         /* TRENDY FOOTER STYLE */
@@ -291,23 +342,29 @@
 
 <body>
 
-    <div class="gift-trigger" onclick="openWelcome()">
-        <i class="fas fa-gift"></i>
+    <div class="gift-truck-trigger" onclick="openWelcome()">
+        <div class="truck-icon-stack">
+            <i class="fas fa-gift fa-gift-custom"></i>
+            <i class="fas fa-truck-fast fa-truck-fast-custom"></i>
+        </div>
     </div>
 
     <div id="welcomeModal" class="modal-overlay">
-        <div class="modal-box letter-content">
-            <button class="close-modal" onclick="closeWelcome()">&times;</button>
-            <i class="fas fa-crown" style="font-size: 3rem; color: #f59e0b; margin-bottom: 20px;"></i>
-            <h2>Welcome to RRP Enterprises</h2>
-            <p>Dear Valued Partner,</p>
-            <p>Welcome to our new digital home. We are honored to have you here.</p>
-            <p>As India's leading logistics partner, we are dedicated to moving your business forward with precision, speed, and integrity. Whether it's FTL, Bulk Cargo, or Supply Chain solutions, we treat your cargo as our own.</p>
-            <p>Please explore our platform designed to streamline your logistics experience.</p>
-            <div class="signature">
-                Sincerely,<br>
-                <strong>The Management Team</strong><br>
-                RRP Enterprises
+        <div class="letter-modal-box">
+            <button class="close-letter" onclick="closeWelcome()">&times;</button>
+            
+            <div class="letter-content" style="text-align: center;">
+                <i class="fas fa-certificate" style="font-size: 3rem; color: #f59e0b; margin-bottom: 20px;"></i>
+                <h2>Welcome Partner</h2>
+                <p>To <strong>RRP Enterprises</strong>,</p>
+                <p>We are delighted to welcome you to our digital logistics hub. Our commitment is to move your business forward with the speed, safety, and precision you deserve.</p>
+                <p>Whether it's a single truckload or a complex supply chain project, consider it handled.</p>
+                
+                <div class="signature">
+                    <p>Sincerely,</p>
+                    <img src="assets/logo.png" style="height: 40px; opacity: 0.8; margin-top: 10px;" alt="Signature">
+                    <p style="font-size: 0.9rem; color: #64748b; margin-top: 5px;">The RRP Team</p>
+                </div>
             </div>
         </div>
     </div>
@@ -762,19 +819,28 @@
             });
         }
 
-        // WELCOME MODAL LOGIC
+        // === WELCOME MODAL LOGIC ===
         function openWelcome() {
-            document.getElementById('welcomeModal').style.display = 'flex';
+            const modal = document.getElementById('welcomeModal');
+            modal.style.display = 'flex';
+            // Force reflow to restart animation
+            void modal.offsetWidth; 
+            modal.classList.add('active');
         }
+        
         function closeWelcome() {
-            document.getElementById('welcomeModal').style.display = 'none';
+            const modal = document.getElementById('welcomeModal');
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300); // Wait for transition
         }
         
         // Close if clicking outside the modal box
         window.onclick = function(event) {
             const modal = document.getElementById('welcomeModal');
             if (event.target == modal) {
-                modal.style.display = "none";
+                closeWelcome();
             }
         }
     </script>
