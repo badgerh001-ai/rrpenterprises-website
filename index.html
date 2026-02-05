@@ -144,18 +144,17 @@
             100% { width: 200%; height: 200%; opacity: 0; } 
         }
 
-        /* === NEW SHIVRATRI BADGE (Integrated) === */
+        /* === NEW SHIVRATRI BADGE === */
         .shiv-badge {
             display: inline-flex;
             align-items: center;
             padding: 8px 20px;
-            /* Glassmorphic Purple Background */
             background: rgba(88, 28, 135, 0.4); 
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(168, 85, 247, 0.5); /* Neon Purple Border */
+            border: 1px solid rgba(168, 85, 247, 0.5); 
             border-radius: 50px;
-            color: #d8b4fe; /* Light Purple Text */
+            color: #d8b4fe; 
             font-weight: 700;
             font-size: 0.9rem;
             margin-bottom: 25px;
@@ -173,6 +172,42 @@
             100% { transform: translateY(0); }
         }
 
+        /* === NEW REVIEWS SECTION CSS === */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .review-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #0ea5e9;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .stars { color: #f59e0b; margin-bottom: 15px; font-size: 0.9rem; }
+        .review-text {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .client-info h5 { color: #fff; font-weight: 700; margin-bottom: 2px; }
+        .client-info span { color: #0ea5e9; font-size: 0.85rem; font-weight: 600; }
+        .quote-icon {
+            position: absolute; top: 20px; right: 20px;
+            font-size: 3rem; color: rgba(255,255,255,0.05);
+        }
 
         /* TRENDY FOOTER STYLE */
         .footer-main { padding: 80px 0 40px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; }
@@ -250,7 +285,9 @@
                     <i class="fas fa-om shiv-icon"></i> 
                     Happy Mahashivratri 2026
                 </div>
-                <br> <span class="badge">
+                <br> 
+
+                <span class="badge">
                     <span class="led-light led-green"></span> Premium Logistics Fleet
                 </span>
                 <h1>
@@ -484,6 +521,94 @@
             </div>
         </section>
     </main>
+
+    <section class="reviews-section" style="padding: 80px 0; background: #020617; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05), transparent 70%); pointer-events: none;"></div>
+        
+        <div class="container">
+            <div class="badge-center"><span class="badge">Client Testimonials</span></div>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 20px;">
+                Trusted by <span class="gradient-text">Leaders</span>
+            </h2>
+            <p style="text-align: center; color: #94a3b8; max-width: 600px; margin: 0 auto;">
+                See what industry giants say about our precision, speed, and reliability.
+            </p>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"RRP has been our go-to for steel transport from Bellary. Their fleet is reliable and the drivers are very professional. The live tracking helps us manage our plant inventory effortlessly."</p>
+                    <div class="client-info">
+                        <h5>Rajesh Kumar</h5>
+                        <span>Plant Manager, Steel Corp</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Excellent FTL service for our FMCG goods to Bangalore. We used to face delays with other vendors, but RRP's 'On-Time Delivery' promise is genuine. Zero breakage record so far!"</p>
+                    <div class="client-info">
+                        <h5>Suresh Reddy</h5>
+                        <span>Distributor, FMCG Logistics</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">"We needed urgent movement of construction material to Hyderabad. RRP arranged a heavy-duty vehicle in 30 minutes. The speed and responsiveness of their support team is impressive."</p>
+                    <div class="client-info">
+                        <h5>Anil Mehta</h5>
+                        <span>Head of Procurement, Infra Ltd</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Transporting fragile glass loads is risky, but RRP handles it with such care. We have shipped over 50 truckloads this year with zero damage. Highly recommended for sensitive cargo."</p>
+                    <div class="client-info">
+                        <h5>Vikram Singh</h5>
+                        <span>Ops Manager, Glass World</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Best logistics partner in Anantapur. Their bulk cargo rates for Iron Ore and Coal are very competitive, and their billing process is 100% transparent. A trustworthy partner."</p>
+                    <div class="client-info">
+                        <h5>Priya Desai</h5>
+                        <span>Director, Mining Corp</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">"Professional team. They handled our project logistics for heavy machinery smoothly from Mumbai to Chennai. They handled all the permits and documentation seamlessly."</p>
+                    <div class="client-info">
+                        <h5>Karthik N</h5>
+                        <span>Project Lead, Industrial Solutions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer-main">
         <div class="container footer-grid">
