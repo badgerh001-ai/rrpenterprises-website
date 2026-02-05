@@ -209,49 +209,44 @@
             font-size: 3rem; color: rgba(255,255,255,0.05);
         }
 
-        /* === NEW TRUCK-GIFT ANIMATION & MODAL === */
+        /* === ROYAL UNBOXING FEATURES === */
         
-        /* 1. The Trigger Wrapper */
+        /* 1. Nitro Truck Trigger */
         .gift-truck-trigger {
             position: fixed;
             bottom: 30px; left: 30px;
             width: 70px; height: 70px;
-            background: linear-gradient(135deg, #0ea5e9, #0284c7); /* Truck Blue */
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer;
             z-index: 3500;
             box-shadow: 0 10px 30px rgba(14, 165, 233, 0.5);
             border: 2px solid rgba(255,255,255,0.2);
-            transition: transform 0.3s;
-            animation: truck-idle 2s ease-in-out infinite; /* Engine Vibration */
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: truck-idle 2s ease-in-out infinite;
         }
+        /* Speed Trail Effect on Hover */
         .gift-truck-trigger:hover {
-            transform: scale(1.1) rotate(-5deg);
+            transform: scale(1.15) translateX(5px);
+            box-shadow: -10px 0 20px rgba(14, 165, 233, 0.8);
         }
 
-        /* 2. The Icons (Truck + Gift) */
-        .truck-icon-stack {
-            position: relative;
-            width: 40px; height: 40px;
-        }
+        .truck-icon-stack { position: relative; width: 40px; height: 40px; }
         .fa-truck-fast-custom {
             font-size: 1.8rem; color: #fff;
             position: absolute; bottom: 0; left: 0;
         }
         .fa-gift-custom {
-            font-size: 1.2rem; color: #f59e0b; /* Gold Gift */
-            position: absolute; 
-            top: -8px; 
-            left: 8px; /* Sitting on the truck bed */
+            font-size: 1.2rem; color: #f59e0b;
+            position: absolute; top: -8px; left: 8px;
             transform: rotate(10deg);
             animation: gift-bounce 2s infinite;
         }
 
-        /* 3. Animations */
         @keyframes truck-idle {
             0% { transform: translateY(0); }
-            50% { transform: translateY(-3px); } /* Vibrate up */
+            50% { transform: translateY(-3px); }
             100% { transform: translateY(0); }
         }
         @keyframes gift-bounce {
@@ -259,42 +254,73 @@
             50% { transform: rotate(5deg) translateY(-2px); }
         }
 
-        /* 4. The 3D Unfolding Letter Modal */
+        /* 2. Premium Letter Modal */
         .letter-modal-box {
-            background: #fff; /* White Paper */
-            color: #1e293b;   /* Dark Text for readability on paper */
-            padding: 50px 40px;
-            border-radius: 4px;
-            max-width: 500px;
+            background: #fffdf5; /* Cream Paper */
+            color: #1e293b;
+            padding: 60px 40px 40px; /* Extra top padding for Seal */
+            border-radius: 8px;
+            max-width: 550px;
             width: 90%;
             position: relative;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            /* Letter Design */
-            background-image: linear-gradient(#f8f9fa 1px, transparent 1px);
-            background-size: 100% 1.5rem; /* Lined Paper Effect */
-            border: 8px solid #f59e0b; /* Gold Border */
-            /* 3D Animation Start State */
-            transform: scaleY(0);
-            transform-origin: bottom;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border: 1px solid #e2e8f0;
+            /* 3D Unfold Animation */
+            transform: perspective(1000px) rotateX(90deg);
+            transform-origin: top;
             opacity: 0;
-            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Elastic Open */
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         .modal-overlay.active .letter-modal-box {
-            transform: scaleY(1);
+            transform: perspective(1000px) rotateX(0deg);
             opacity: 1;
+        }
+
+        /* 3. The Royal Wax Seal */
+        .wax-seal {
+            position: absolute;
+            top: -25px; left: 50%;
+            transform: translateX(-50%);
+            width: 60px; height: 60px;
+            background: #ef4444; /* Red Wax */
+            border-radius: 50%;
+            border: 4px solid #b91c1c;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            color: #fee2e2;
+            font-weight: 800;
+            font-size: 1.2rem;
+            font-family: 'Times New Roman', serif;
+            z-index: 10;
+        }
+
+        /* 4. Confetti Animation */
+        .confetti-piece {
+            position: absolute;
+            width: 10px; height: 10px;
+            background: #f59e0b;
+            top: -20px;
+            opacity: 0;
+        }
+        .modal-overlay.active .confetti-piece {
+            animation: confetti-fall 3s ease-out forwards;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
         }
 
         .letter-content h2 { 
             color: #0f172a; 
             font-family: 'Playfair Display', serif; 
             margin-bottom: 20px; 
-            border-bottom: 2px solid #f59e0b;
-            display: inline-block;
-            padding-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 15px;
         }
-        .letter-content p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 15px; font-weight: 500; }
-        .signature { margin-top: 30px; font-family: 'Cursive', serif; font-size: 1.2rem; color: #0ea5e9; }
+        .letter-content p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 15px; color: #334155; }
+        .signature { margin-top: 30px; font-family: 'Cursive', serif; font-size: 1.2rem; color: #0284c7; text-align: right; }
         .close-letter {
             position: absolute; top: 10px; right: 15px;
             font-size: 2rem; color: #94a3b8; cursor: pointer; background: none; border: none;
@@ -350,20 +376,27 @@
     </div>
 
     <div id="welcomeModal" class="modal-overlay">
+        <div class="confetti-piece" style="left: 10%; background: #ef4444; animation-delay: 0s;"></div>
+        <div class="confetti-piece" style="left: 20%; background: #f59e0b; animation-delay: 0.2s;"></div>
+        <div class="confetti-piece" style="left: 30%; background: #3b82f6; animation-delay: 0.4s;"></div>
+        <div class="confetti-piece" style="left: 50%; background: #10b981; animation-delay: 0.1s;"></div>
+        <div class="confetti-piece" style="left: 70%; background: #8b5cf6; animation-delay: 0.3s;"></div>
+        <div class="confetti-piece" style="left: 90%; background: #ec4899; animation-delay: 0.5s;"></div>
+
         <div class="letter-modal-box">
+            <div class="wax-seal">RRP</div>
             <button class="close-letter" onclick="closeWelcome()">&times;</button>
             
-            <div class="letter-content" style="text-align: center;">
-                <i class="fas fa-certificate" style="font-size: 3rem; color: #f59e0b; margin-bottom: 20px;"></i>
+            <div class="letter-content">
                 <h2>Welcome Partner</h2>
-                <p>To <strong>RRP Enterprises</strong>,</p>
-                <p>We are delighted to welcome you to our digital logistics hub. Our commitment is to move your business forward with the speed, safety, and precision you deserve.</p>
-                <p>Whether it's a single truckload or a complex supply chain project, consider it handled.</p>
+                <p>Dear Valued Client,</p>
+                <p>We are honored to welcome you to <strong>RRP Enterprises</strong>. As India's trusted logistics partner, we pledge to handle your business with integrity, speed, and precision.</p>
+                <p>Whether moving heavy machinery or bulk cargo, your success is our priority.</p>
                 
                 <div class="signature">
                     <p>Sincerely,</p>
                     <img src="assets/logo.png" style="height: 40px; opacity: 0.8; margin-top: 10px;" alt="Signature">
-                    <p style="font-size: 0.9rem; color: #64748b; margin-top: 5px;">The RRP Team</p>
+                    <p style="font-size: 0.9rem; color: #64748b; margin-top: 5px;">The Management Team</p>
                 </div>
             </div>
         </div>
