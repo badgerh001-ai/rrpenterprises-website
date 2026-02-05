@@ -141,15 +141,18 @@
         .full-btn { width: 100%; padding: 12px; background: #0ea5e9; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px; }
         .full-btn:hover { background: #0284c7; }
 
-        /* === 2x2 SLOW SCROLL GRID STYLES (IMAGE FIX v17) === */
+        /* === 2x2 SLOW SCROLL GRID STYLES (ALIGNMENT FIX v18) === */
         .reference-grid-wrapper {
-            height: 650px; /* Increased height so taller images fit well */
+            height: 650px; 
             overflow: hidden;
             position: relative;
             background: rgba(0,0,0,0.3);
             border: 1px solid rgba(255,255,255,0.05);
             border-radius: 20px;
             padding: 20px;
+            /* Added Fade Mask for Smoothness */
+            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
         }
         
         /* The scrolling container */
@@ -181,8 +184,8 @@
         }
         .grid-cargo-card img {
             width: 100%;
-            height: auto; /* Allow natural height based on ratio */
-            aspect-ratio: 16/9; /* Widescreen shape - SHOWS FULL TRUCK */
+            height: auto; 
+            aspect-ratio: 16/9; /* Widescreen shape */
             object-fit: cover;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
@@ -196,17 +199,19 @@
 
         @keyframes verticalScroll {
             0% { transform: translateY(0); }
-            /* We duplicate content, so we scroll halfway up */
             100% { transform: translateY(-50%); }
         }
 
-        /* Mobile Adjustment: Stack to 1 column or keep 2 small ones */
+        /* Mobile Adjustment: Stack to 1 column */
         @media (max-width: 768px) {
             .reference-track {
                 grid-template-columns: 1fr; /* 1 Column on phones */
             }
             .reference-grid-wrapper {
-                height: 400px; /* Slightly shorter on mobile */
+                height: 500px; /* Better height for mobile */
+            }
+            h2.section-title {
+                font-size: 1.8rem; /* Smaller title on mobile */
             }
         }
 
@@ -348,7 +353,9 @@
 
         <section class="clients-section glass" style="margin-bottom: 80px;">
             <div class="badge-center"><span class="badge">Reference Loads</span></div>
-            <h2 class="section-title">Types of Cargo We <span class="gradient-text">Handle</span></h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">
+                Types of Cargo We <span class="gradient-text">Handle</span>
+            </h2>
 
             <div class="reference-grid-wrapper">
                 <div class="reference-track">
