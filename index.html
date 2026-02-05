@@ -144,7 +144,7 @@
             100% { width: 200%; height: 200%; opacity: 0; } 
         }
 
-        /* === NEW SHIVRATRI BADGE === */
+        /* === FESTIVAL BADGE (Adjusted for Laptop) === */
         .shiv-badge {
             display: inline-flex;
             align-items: center;
@@ -157,7 +157,8 @@
             color: #d8b4fe; 
             font-weight: 700;
             font-size: 0.9rem;
-            margin-bottom: 25px;
+            /* Margin Bottom handles the spacing now, no <br> needed */
+            margin-bottom: 20px; 
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
             animation: float-badge 3s ease-in-out infinite;
         }
@@ -279,17 +280,17 @@
 
     <section class="truck-banner-section">
         <div class="truck-overlay-content container">
-            <div class="truck-text-box">
+            <div class="truck-text-box" style="display: flex; flex-direction: column; align-items: flex-start;">
                 
                 <div class="shiv-badge">
                     <i class="fas fa-om shiv-icon"></i> 
                     Happy Mahashivratri 2026
                 </div>
-                <br> 
 
                 <span class="badge">
                     <span class="led-light led-green"></span> Premium Logistics Fleet
                 </span>
+                
                 <h1>
                     POWERING YOUR <br>
                     <span class="gradient-text">SUPPLY CHAIN</span>
@@ -299,7 +300,7 @@
                     Reliable, technology-driven, and ready to move your business forward.
                 </p>
                 <div class="hero-btns" style="margin-top: 30px;">
-                    <a href="contact.html" class="cta-btn">Get Instant Quote</a>
+                    <a href="contact.html" class="cta-btn">Book Load</a>
                     <a href="services.html" class="explore-btn" style="color: #fff; margin-left: 20px;">
                         Explore Fleet <i class="fas fa-arrow-right"></i>
                     </a>
