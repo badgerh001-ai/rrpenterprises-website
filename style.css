@@ -1,5 +1,5 @@
 /* ===================================================================
-   RRP ENTERPRISES – CORPORATE WHITE THEME (v2026.v30)
+   RRP ENTERPRISES – CORPORATE WHITE THEME (v2026.v31)
    Theme: "Professional White" (Mobile-Native, Fixed Layouts)
    =================================================================== */
 
@@ -289,6 +289,38 @@ body {
 .menu-btn.open span:nth-child(2) { opacity: 0; }
 .menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); background: var(--primary); }
 
+/* ---------------- 14. MOBILE DOCK (The Fix) ---------------- */
+/* Default: Hidden on Desktop */
+.mobile-app-dock { display: none; }
+
+/* Only show on Mobile */
+@media (max-width: 768px) {
+  .mobile-app-dock {
+    position: fixed; 
+    bottom: 20px; 
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    left: 50%; transform: translateX(-50%); width: 92%; max-width: 380px;
+    background: rgba(255, 255, 255, 0.95); 
+    backdrop-filter: blur(16px);
+    border: 1px solid #e2e8f0; border-radius: 24px;
+    display: flex; justify-content: space-between; padding: 12px 24px;
+    z-index: 9999; /* Highest priority */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  }
+  .dock-item {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    color: #64748b; text-decoration: none; font-size: 0.7rem; flex: 1;
+  }
+  .dock-item i { font-size: 1.4rem; color: #0f172a; }
+  .dock-item:active { transform: scale(0.90); } 
+  .dock-item:active i { color: var(--primary); }
+  
+  /* Body padding to prevent dock covering footer */
+  body { padding-bottom: 140px; }
+  
+  .footer-col:nth-child(2) { display: none; } /* Hide unnecessary footer links on mobile */
+}
+
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 992px) {
   .menu-btn { display: block; }
@@ -333,38 +365,12 @@ body {
 }
 
 @media (max-width: 768px) {
-  /* BODY PADDING FIX */
-  body { padding-bottom: 140px; } /* Ensure space for dock */
-
   /* Track Box Mobile */
   .quick-track-box { flex-direction: column; padding: 15px; border-radius: 20px; gap: 10px; width: 100%; }
   
   /* Stats Column */
   .stats-flex-row { flex-direction: column; align-items: flex-start; gap: 20px; }
   .stat-item { width: 100%; padding: 15px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; }
-  
-  /* Mobile Dock - FIXED Z-INDEX & PADDING */
-  .mobile-app-dock {
-    position: fixed; 
-    bottom: 20px; 
-    padding-bottom: calc(12px + env(safe-area-inset-bottom));
-    left: 50%; transform: translateX(-50%); width: 92%; max-width: 380px;
-    background: rgba(255, 255, 255, 0.95); 
-    backdrop-filter: blur(16px);
-    border: 1px solid #e2e8f0; border-radius: 24px;
-    display: flex; justify-content: space-between; padding: 12px 24px;
-    z-index: 9999; /* Highest priority */
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-  }
-  .dock-item {
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-    color: #64748b; text-decoration: none; font-size: 0.7rem; flex: 1;
-  }
-  .dock-item i { font-size: 1.4rem; color: #0f172a; }
-  .dock-item:active { transform: scale(0.90); } 
-  .dock-item:active i { color: var(--primary); }
-  
-  .footer-col:nth-child(2) { display: none; } /* Hide unnecessary footer links on mobile */
 }
 
 /* === FESTIVAL BADGE (Light Theme) === */
