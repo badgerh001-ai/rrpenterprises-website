@@ -1,401 +1,415 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>RRP ENTERPRISES | India's Leading Logistics Partner</title>
-    <meta name="description" content="RRP Enterprises: Premium logistics solutions. FTL, Project Transport & Supply Chain Management across India. Reliable, Fast, and Secure.">
-    <meta name="keywords" content="RRP Enterprises, Logistics Company Anantapur, FTL Transport India, Bulk Cargo Movers, Supply Chain Solutions, Truck Transport Andhra Pradesh">
-    <meta name="author" content="RRP Enterprises">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://rrpenterprises.co.in/">
+/* ===================================================================
+   RRP ENTERPRISES – PUNCHY BOLD THEME (v2026.v33)
+   Theme: "High-Voltage Logistics" (Polished Layouts, Fixed Mobile)
+   =================================================================== */
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rrpenterprises.co.in/">
-    <meta property="og:title" content="RRP Enterprises | Moving India's Future Today">
-    <meta property="og:description" content="Trusted Logistics Partner. 500+ Vehicles. Pan-India Network. Get a quote for FTL & Bulk Cargo today.">
-    <meta property="og:image" content="https://rrpenterprises.co.in/assets/logo.png">
-    <meta property="og:image:width" content="512">
-    <meta property="og:image:height" content="512">
+/* ---------------- 1. VARIABLES (HIGH CONTRAST) ---------------- */
+:root {
+  /* PUNCHY PALETTE */
+  --primary: #2563eb;       /* Electric Blue */
+  --primary-dark: #1e40af;  /* Deep Blue */
+  --secondary: #020617;     /* Midnight Navy (Deepest Dark) */
+  --accent: #f97316;        /* PUNCHY ORANGE (Action Buttons) */
+  
+  /* Backgrounds */
+  --bg-body: #ffffff;       /* Pure White */
+  --bg-subtle: #f8fafc;     /* Very Light Grey/Blue Tint */
+  --bg-dark: #0f172a;       /* Slate Dark */
+  
+  /* Typography */
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  
+  /* UI Elements */
+  --border-light: 1px solid #e2e8f0;
+  --shadow-card: 0 10px 30px -10px rgba(0,0,0,0.1);
+  --shadow-pop: 4px 4px 0px 0px var(--secondary); /* Brutalist Pop Shadow */
+  
+  --nav-height: 80px;
+  --z-dock: 9999;
+  --z-nav: 5000;
+}
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RRP Enterprises | Premier Logistics Solutions">
-    <meta name="twitter:description" content="Seamless supply chain solutions across India. Book FTL & Bulk Cargo with RRP Enterprises.">
-    <meta name="twitter:image" content="https://rrpenterprises.co.in/assets/logo.png">
-    <link rel="icon" href="assets/logo.png" type="image/png">
-    <link rel="apple-touch-icon" href="assets/logo.png">
+html { 
+  scroll-behavior: smooth; 
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+  height: 100%;
+}
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "RRP Enterprises",
-      "url": "https://rrpenterprises.co.in/",
-      "logo": "https://rrpenterprises.co.in/assets/logo.png",
-      "image": "https://rrpenterprises.co.in/assets/logo.png",
-      "description": "India's Leading Logistics & Supply Chain Partner.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "# 6-4-994, Maruthi Nagar, 80ft Road",
-        "addressLocality": "Anantapuramu",
-        "addressRegion": "Andhra Pradesh",
-        "postalCode": "515001",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-9494831803",
-        "contactType": "customer service",
-        "areaServed": "IN",
-        "availableLanguage": "en"
-      },
-      "sameAs": [
-        "https://www.facebook.com/rrpenterprises", 
-        "https://www.linkedin.com/company/rrp-enterprises"
-      ]
-    }
-    </script>
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #fff; }
+::-webkit-scrollbar-thumb { background: var(--secondary); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-    <link rel="stylesheet" href="style.css?v=33">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-</head>
+::selection { background: var(--accent); color: #fff; }
 
-<body>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <div class="gift-truck-trigger" onclick="openWelcome()">
-        <i class="fas fa-truck-fast fa-truck-fast-custom"></i>
-        <i class="fas fa-gift fa-gift-custom"></i>
-    </div>
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-body);
+  font-family: var(--font-main);
+  color: #334155; /* Softer dark for body text */
+  line-height: 1.6;
+  /* Tech Grid Background */
+  background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 24px 24px;
+  padding-bottom: 120px; /* Space for mobile dock */
+}
 
-    <div id="welcomeModal" class="modal-overlay">
-        <div class="confetti-piece" style="left: 10%; background: #ef4444; animation-delay: 0s;"></div>
-        <div class="confetti-piece" style="left: 30%; background: #3b82f6; animation-delay: 0.4s;"></div>
-        <div class="confetti-piece" style="left: 70%; background: #8b5cf6; animation-delay: 0.3s;"></div>
-        <div class="confetti-piece" style="left: 90%; background: #ec4899; animation-delay: 0.5s;"></div>
+/* ---------------- 2. UTILITIES ---------------- */
+.container { 
+    width: 100%;
+    max-width: 1280px; 
+    margin: 0 auto; 
+    padding: 0 24px; 
+}
 
-        <div class="letter-modal-box">
-            <div class="wax-seal">RRP</div>
-            <button class="close-letter" onclick="closeWelcome()">&times;</button>
-            <div class="letter-content">
-                <h2>Welcome Partner</h2>
-                <p>Dear Valued Client,</p>
-                <p>We are honored to welcome you to <strong>RRP Enterprises</strong>. As India's trusted logistics partner, we pledge to handle your business with integrity, speed, and precision.</p>
-                <div class="signature">
-                    <p>Sincerely,</p>
-                    <img src="assets/logo.png" style="height: 40px; opacity: 0.8; margin-top: 10px;" alt="Signature">
-                    <p style="font-size: 0.9rem; color: #64748b; margin-top: 5px;">The Management Team</p>
-                </div>
-            </div>
-        </div>
-    </div>
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
 
-    <div class="top-system-bar">
-        <div class="container">
-            <span class="led-light"></span> 
-            SYSTEM UPDATE: PLATFORM UPGRADE IN PROGRESS
-        </div>
-    </div>
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    color: var(--secondary);
+}
 
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo-container">
-                <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
-                <div class="logo-text">RRP <span>ENTERPRISES</span></div>
-            </a>
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px;
+  background: var(--bg-dark);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+.badge-center { display: flex; justify-content: center; width: 100%; }
 
-            <button class="menu-btn" id="mobile-toggle" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
+/* ---------------- 3. SYSTEM BAR ---------------- */
+.top-system-bar {
+    background: var(--secondary);
+    color: #fff;
+    padding: 10px 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-bottom: 3px solid var(--accent);
+}
+.top-system-bar .container { display: flex; justify-content: center; align-items: center; gap: 10px; }
+.led-light { display: inline-block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: 0.4; } }
 
-            <ul class="nav-links">
-                <li><a href="index.html" class="social-link active">Home</a></li>
-                <li><a href="about.html" class="social-link">About Us</a></li>
-                <li><a href="services.html" class="social-link">Services</a></li>
-                <li><a href="contact.html" class="social-link">Tracking</a></li>
-                <li><a href="contact.html" class="cta-btn">Contact Us <i class="fas fa-arrow-right"></i></a></li>
-            </ul>
-        </div>
-    </nav>
+/* ---------------- 4. NAVBAR (Glass) ---------------- */
+.navbar {
+  height: var(--nav-height);
+  position: sticky; top: 0; z-index: var(--z-nav);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+.navbar .container { display: flex; justify-content: space-between; align-items: center; width: 100%; height: 100%; }
 
-    <section class="truck-banner-section">
-        <div class="container hero-split-grid">
-            
-            <div class="hero-text-content">
-                <div class="badge">
-                    <i class="fas fa-om"></i> Happy Mahashivratri 2026
-                </div>
-                
-                <h1>
-                    POWERING YOUR <br>
-                    <span class="gradient-text">SUPPLY CHAIN</span>
-                </h1>
-                
-                <p>
-                    Experience the future of logistics. Reliable, technology-driven, and ready to move your business forward with India's most trusted fleet.
-                </p>
-                
-                <div class="hero-btns">
-                    <a href="contact.html" class="cta-btn">Book A Load <i class="fas fa-arrow-right"></i></a>
-                    <a href="services.html" class="outline-btn">Explore Fleet</a>
-                </div>
-            </div>
+.logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.main-logo { height: 45px; width: auto; }
+.logo-text { font-size: 1.4rem; font-weight: 900; color: var(--secondary); letter-spacing: -0.03em; line-height: 1; }
+.logo-text span { color: var(--primary); font-size: 0.8rem; display: block; letter-spacing: 0.1em; text-transform: uppercase; }
 
-            <div class="hero-image-wrapper">
-                <div class="hero-img-mask">
-                    <img src="assets/home-banner.jpg" alt="RRP Logistics Truck Fleet">
-                </div>
-            </div>
-            
-        </div>
-    </section>
+.nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+.social-link { 
+    color: var(--secondary); text-decoration: none; font-weight: 700; font-size: 0.95rem; 
+    text-transform: uppercase; position: relative;
+}
+.social-link:hover { color: var(--primary); }
 
-    <div class="stats-bar-wrapper">
-        <div class="container stats-grid-cards">
-            <div class="stat-card">
-                <i class="fas fa-truck-fast"></i>
-                <h4>500+</h4>
-                <p>Verified Vehicles</p>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-map-location-dot"></i>
-                <h4>Pan India</h4>
-                <p>Network Coverage</p>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-clock"></i>
-                <h4>99.9%</h4>
-                <p>On-Time Delivery</p>
-            </div>
-        </div>
-    </div>
+.cta-btn {
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 4px; 
+  font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+  text-decoration: none; font-size: 0.9rem;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0px var(--secondary); 
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.cta-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--secondary); background: #ea580c; }
+.cta-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--secondary); }
 
-    <section class="bento-section">
-        <div class="container">
-            <div class="badge-center"><span class="badge">Our Capabilities</span></div>
-            <h2 class="section-title" style="text-align: center;">
-                Logistics <span class="gradient-text">Redefined</span>
-            </h2>
+/* ---------------- 5. PUNCHY SPLIT HERO ---------------- */
+.truck-banner-section {
+    position: relative; 
+    padding: 80px 0;
+    background: #fff;
+    overflow: hidden;
+}
+.hero-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+}
+.hero-text-content h1 {
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--secondary);
+    margin: 20px 0;
+    letter-spacing: -0.03em;
+}
+.hero-text-content p {
+    font-size: 1.2rem;
+    color: #64748b;
+    max-width: 500px;
+    margin-bottom: 40px;
+}
+.hero-img-mask {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 0px var(--bg-subtle);
+    border: 2px solid var(--secondary);
+    overflow: hidden;
+    transform: rotate(2deg);
+    transition: 0.3s;
+}
+.hero-img-mask:hover { transform: rotate(0deg); }
+.hero-img-mask img { width: 100%; display: block; }
 
-            <div class="bento-grid">
-                <div class="bento-item bento-large">
-                    <div>
-                        <div class="bento-icon-box">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <h3>End-to-End Supply Chain</h3>
-                        <p>From raw material handling to final mile delivery, we optimize every step of your logistics journey.</p>
-                    </div>
-                    <i class="fas fa-arrow-right" style="align-self: flex-end; font-size: 1.5rem;"></i>
-                </div>
+.hero-btns { display: flex; gap: 20px; align-items: center; }
+.outline-btn {
+    padding: 12px 28px;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+    font-weight: 800; text-transform: uppercase; text-decoration: none;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+.outline-btn:hover { background: var(--secondary); color: #fff; }
 
-                <div class="bento-item">
-                    <div class="bento-icon-box"><i class="fas fa-truck"></i></div>
-                    <h3>FTL Transport</h3>
-                    <p>Full Truck Load services ensuring dedicated capacity and faster transit times.</p>
-                </div>
+/* ---------------- 8. FLOATING STATS ---------------- */
+.stats-bar-wrapper { padding: 20px 0 60px; }
+.stats-grid-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+}
+.stat-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    padding: 30px;
+    border-radius: 12px;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+.stat-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.stat-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 10px; }
+.stat-card h4 { font-size: 2.5rem; font-weight: 900; color: var(--secondary); line-height: 1; }
+.stat-card p { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
 
-                <div class="bento-item">
-                    <div class="bento-icon-box"><i class="fas fa-cubes"></i></div>
-                    <h3>Bulk Cargo</h3>
-                    <p>Specialized handling for coal, iron ore, and heavy industrial materials.</p>
-                </div>
+/* ---------------- 9. MARQUEE & BENTO GRID ---------------- */
+.clients-marquee { margin: 20px 0; overflow: hidden; }
+.clients-track { display: flex; gap: 40px; width: max-content; animation: scroll 40s linear infinite; }
+.clients-marquee.reverse .clients-track { animation-direction: reverse; }
+@keyframes scroll { to { transform: translateX(-50%); } }
 
-                <div class="bento-item">
-                    <div class="bento-icon-box"><i class="fas fa-project-diagram"></i></div>
-                    <h3>Project Logistics</h3>
-                    <p>Complex moves for heavy machinery and ODC consignments.</p>
-                </div>
+.client-logo img { 
+    height: 70px; 
+    background: #fff; padding: 10px; border-radius: 8px; 
+    border: 1px solid #e2e8f0;
+    filter: grayscale(100%); transition: 0.3s;
+}
+.client-logo img:hover { filter: grayscale(0%); border-color: var(--primary); transform: scale(1.05); }
 
-                <div class="bento-item">
-                    <div class="bento-icon-box"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Secure Transit</h3>
-                    <p>GPS-enabled fleet with 24/7 monitoring for high-value goods.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+/* BENTO GRID */
+.bento-section { padding: 80px 0; background: var(--bg-subtle); }
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 250px);
+    gap: 20px;
+}
+.bento-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    border: 1px solid #e2e8f0;
+    transition: 0.3s;
+    position: relative; overflow: hidden;
+}
+.bento-item:hover { border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.bento-large { grid-column: span 2; grid-row: span 2; background: var(--secondary); color: #fff; }
+.bento-large h3 { color: #fff !important; font-size: 2rem !important; }
+.bento-large p { color: #cbd5e1 !important; font-size: 1.1rem; }
+.bento-icon-box {
+    width: 60px; height: 60px; background: #f1f5f9; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; color: var(--primary); margin-bottom: 20px;
+}
+.bento-large .bento-icon-box { background: rgba(255,255,255,0.1); color: #fff; }
 
-    <section class="roadmap-section">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center;">How It <span class="gradient-text">Works</span></h2>
-            <div class="roadmap-grid">
-                <div class="roadmap-step">
-                    <div class="step-icon"><i class="fas fa-file-signature"></i><div class="step-number">01</div></div>
-                    <h3>Book Load</h3>
-                </div>
-                <div class="step-connector"><i class="fas fa-chevron-right"></i></div>
-                
-                <div class="roadmap-step">
-                    <div class="step-icon" style="border-color: var(--accent); color: var(--accent);"><i class="fas fa-map-location-dot"></i><div class="step-number">02</div></div>
-                    <h3>Live Track</h3>
-                </div>
-                <div class="step-connector"><i class="fas fa-chevron-right"></i></div>
+/* Roadmap */
+.roadmap-section { padding: 80px 0; background: #fff; }
+.roadmap-grid { display: grid; grid-template-columns: repeat(7, 1fr); align-items: center; gap: 10px; text-align: center; }
+.roadmap-step { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.step-icon { 
+    width: 80px; height: 80px; border-radius: 50%; border: 2px solid #e2e8f0; 
+    display: flex; align-items: center; justify-content: center; 
+    font-size: 1.5rem; color: var(--secondary); transition: 0.3s;
+}
+.step-icon:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+.step-number { 
+    position: absolute; top: -5px; right: -5px; background: var(--accent); color: #fff; 
+    width: 25px; height: 25px; border-radius: 50%; font-size: 0.8rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+}
+.step-connector { color: #cbd5e1; font-size: 1.5rem; }
 
-                <div class="roadmap-step">
-                    <div class="step-icon"><i class="fas fa-truck-fast"></i><div class="step-number">03</div></div>
-                    <h3>Fast Transit</h3>
-                </div>
-                <div class="step-connector"><i class="fas fa-chevron-right"></i></div>
+/* ---------------- 12. FOOTER (Refined) ---------------- */
+.footer-main { 
+    padding: 80px 0 40px; 
+    background: var(--secondary); 
+    color: #fff; 
+    margin-top: 0; 
+}
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 40px; }
 
-                <div class="roadmap-step">
-                    <div class="step-icon"><i class="fas fa-box-open"></i><div class="step-number">04</div></div>
-                    <h3>Delivery</h3>
-                </div>
-            </div>
-        </div>
-    </section>
+.footer-col h4 { 
+    color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 25px; 
+    text-transform: uppercase; border-left: 4px solid var(--accent); padding-left: 15px; 
+}
 
-    <main class="container" style="padding: 60px 24px;">
-        <div class="badge-center"><span class="badge">Trusted Partners</span></div>
-        <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">The Brands That <span class="gradient-text">Trust Us</span></h2>
+/* QUICK LINKS LAYOUT FIX */
+.footer-links { padding: 0; margin: 0; }
+.footer-links li { list-style: none; margin-bottom: 12px; }
+.footer-links a { 
+    color: #cbd5e1; /* Brighter grey for readability */
+    text-decoration: none; 
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 500; transition: 0.3s;
+}
+/* Chevron Icon for Links */
+.footer-links a::before {
+    content: '\f054'; /* FontAwesome chevron-right */
+    font-family: 'Font Awesome 6 Free'; font-weight: 900;
+    font-size: 0.7rem; color: var(--accent); opacity: 0.7;
+}
+.footer-links a:hover { color: #fff; padding-left: 5px; }
+.footer-links a:hover::before { opacity: 1; }
 
-        <div class="clients-marquee">
-            <div class="clients-track">
-                <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
-                <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
-                <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-                <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
-                <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
-            </div>
-        </div>
+.footer-contact-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
+.footer-contact-item i { color: var(--accent); margin-top: 5px; font-size: 1.2rem; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; margin-top: 20px; }
 
-        <div class="clients-marquee reverse">
-            <div class="clients-track">
-                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-            </div>
-        </div>
-    </main>
+/* ---------------- 13. MOBILE DOCK & RESPONSIVE ---------------- */
+/* STRICT HIDE ON DESKTOP */
+.mobile-app-dock { display: none !important; }
 
-    <section class="reviews-section" style="padding: 80px 0; background: var(--bg-subtle);">
-        <div class="container">
-            <div class="badge-center"><span class="badge">Testimonials</span></div>
-            <h2 class="section-title" style="text-align: center;">Client <span class="gradient-text">Stories</span></h2>
+/* MOBILE MENU */
+.menu-btn { display: none; background: none; border: none; z-index: 5001; cursor: pointer; }
+.menu-btn span { display: block; width: 35px; height: 3px; background: var(--secondary); margin: 6px 0; transition: 0.3s; }
+.menu-btn.open span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); background: var(--accent); }
+.menu-btn.open span:nth-child(2) { opacity: 0; }
+.menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); background: var(--accent); }
 
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"RRP has been our go-to for steel transport from Bellary. Their fleet is reliable and the drivers are very professional."</p>
-                    <div class="client-info"><h5>Rajesh Kumar</h5><span>Plant Manager, Steel Corp</span></div>
-                </div>
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"Zero breakage record so far! The best FTL service for FMCG goods to Bangalore."</p>
-                    <div class="client-info"><h5>Suresh Reddy</h5><span>Distributor, FMCG Logistics</span></div>
-                </div>
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                    <p class="review-text">"Arranged a heavy-duty vehicle in 30 minutes. Speed and responsiveness are impressive."</p>
-                    <div class="client-info"><h5>Anil Mehta</h5><span>Head of Procurement, Infra Ltd</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
+@media (max-width: 992px) {
+  .menu-btn { display: block; }
+  .nav-links {
+    position: fixed; top: 0; right: 0; width: 100%; height: 100dvh; 
+    background: #fff; 
+    flex-direction: column; justify-content: center; gap: 30px;
+    transform: translateY(-100%); transition: 0.4s ease; 
+    z-index: 5000;
+  }
+  .nav-links.active { transform: translateY(0); }
+  .desktop-only { display: none !important; }
 
-    <footer class="footer-main">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <div class="logo-container">
-                    <img src="assets/logo.png" class="main-logo" alt="Logo">
-                    <div class="logo-text" style="color: #fff;">RRP <span>ENTERPRISES</span></div>
-                </div>
-                <p style="color: #cbd5e1; margin-top: 20px;">Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Services</h4>
-                <ul class="footer-links">
-                    <li><a href="services.html">FTL Transport</a></li>
-                    <li><a href="services.html">Bulk Cargo</a></li>
-                    <li><a href="services.html">Project Logistics</a></li>
-                    <li><a href="services.html">Supply Chain</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Track Shipment</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms & Conditions</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <div class="footer-contact-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <div style="color: #fff; font-weight: 700;">+91 94948 31803</div>
-                        <div style="font-size: 0.9rem; color: #94a3b8;">24/7 Support</div>
-                    </div>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <div style="color: #fff; font-weight: 700;">contact@rrpenterprises.co.in</div>
-                        <div style="font-size: 0.9rem; color: #94a3b8;">Official Email</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container footer-bottom">
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
-                <div style="color: #94a3b8; font-size: 0.85rem;">&copy; 2026 RRP Enterprises. All rights reserved.</div>
-                <div style="text-align: right;">
-                    <span style="display: block; color: #cbd5e1; font-size: 0.9rem;">Designed and Developed by <strong style="color: var(--accent);">RC's Anantha</strong></span>
-                    <span style="font-size: 0.75rem; letter-spacing: 0.05em; color: #64748b; text-transform: uppercase;">Infinite vision, driven results</span>
-                </div>
-            </div>
-        </div>
-    </footer>
+  /* Mobile Layout Fixes */
+  .hero-split-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .hero-btns { justify-content: center; }
+  .hero-img-mask { transform: rotate(0deg); max-height: 300px; object-fit: cover; }
+  
+  .stats-grid-cards { grid-template-columns: 1fr; }
+  
+  .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .bento-large { grid-column: span 1; grid-row: auto; min-height: 300px; }
+  .bento-item { min-height: 200px; }
+  
+  .roadmap-grid { grid-template-columns: 1fr; gap: 30px; }
+  .step-connector { display: none; }
+  
+  /* Footer Fixes */
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; } /* Stack footer columns */
+  .footer-col { text-align: left; }
+}
 
-    <div class="mobile-app-dock">
-        <a href="tel:+919494831803" class="dock-item"><i class="fas fa-phone"></i><span>Call</span></a>
-        <a href="https://wa.me/919494831803" class="dock-item"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
-        <a href="contact.html" class="dock-item"><i class="fas fa-map-marker-alt"></i><span>Track</span></a>
-    </div>
+@media (max-width: 768px) {
+  /* SHOW DOCK ONLY ON MOBILE */
+  .mobile-app-dock {
+    display: flex !important;
+    position: fixed; bottom: 20px; 
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    left: 50%; transform: translateX(-50%); width: 92%; max-width: 380px;
+    background: var(--secondary); 
+    border-radius: 50px;
+    justify-content: space-between; padding: 15px 30px;
+    z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  .dock-item {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    color: #94a3b8; text-decoration: none; font-size: 0.7rem; flex: 1;
+  }
+  .dock-item i { font-size: 1.4rem; color: #fff; }
+  .dock-item:active i { color: var(--accent); }
+  
+  body { padding-bottom: 140px; } /* Space for dock */
+}
 
-    <script>
-        const menuBtn = document.getElementById('mobile-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        if (menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                menuBtn.classList.toggle('open');
-                navLinks.classList.toggle('active');
-            });
-        }
-        function openWelcome() {
-            const modal = document.getElementById('welcomeModal');
-            modal.style.display = 'flex';
-            void modal.offsetWidth; 
-            modal.classList.add('active');
-        }
-        function closeWelcome() {
-            const modal = document.getElementById('welcomeModal');
-            modal.classList.remove('active');
-            setTimeout(() => { modal.style.display = 'none'; }, 300);
-        }
-        window.onclick = function(event) {
-            const modal = document.getElementById('welcomeModal');
-            if (event.target == modal) closeWelcome();
-        }
-    </script>
-</body>
-</html>
+/* Reviews */
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+.review-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 30px; transition: 0.3s; position: relative; }
+.review-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--shadow-pop); }
+.stars { color: var(--accent); margin-bottom: 15px; font-size: 0.9rem; }
+.review-text { color: #475569; font-size: 1rem; line-height: 1.6; margin-bottom: 20px; font-style: italic; }
+.client-info h5 { color: var(--secondary); font-weight: 800; margin-bottom: 2px; }
+.client-info span { color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+
+/* Letter Modal */
+.letter-modal-box {
+    background: #fff; color: var(--secondary); padding: 50px 30px; 
+    border-radius: 4px; max-width: 500px; width: 90%; position: relative;
+    box-shadow: 20px 20px 0px rgba(0,0,0,0.2); border: 2px solid var(--secondary);
+    transform: perspective(1000px) rotateX(90deg); transform-origin: top; opacity: 0;
+    transition: 0.6s ease;
+}
+.modal-overlay.active .letter-modal-box { transform: perspective(1000px) rotateX(0deg); opacity: 1; }
+.wax-seal {
+    position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 60px; background: var(--accent); border-radius: 50%;
+    border: 4px solid #fff; display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 1.2rem;
+}
+.modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(5px); z-index: 10000;
+    justify-content: center; align-items: center; padding: 20px;
+}
+.gift-truck-trigger {
+    position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
+    background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 9990; border: 2px solid #fff;
+    animation: truck-idle 2s ease-in-out infinite;
+}
+.fa-truck-fast-custom { font-size: 1.5rem; color: #fff; }
+.fa-gift-custom { font-size: 1rem; color: var(--secondary); position: absolute; top: 12px; left: 15px; }
+@keyframes truck-idle { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
