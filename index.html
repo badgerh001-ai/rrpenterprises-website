@@ -57,312 +57,10 @@
     }
     </script>
 
-    <link rel="stylesheet" href="style.css?v=99">
+    <link rel="stylesheet" href="style.css?v=30">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        /* === FINAL LAPTOP CENTER & SCROLL FIX === */
-        html, body {
-            overflow-x: hidden;
-            overflow-y: auto !important;
-            width: 100%;
-            height: auto !important;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            padding-left: 20px;
-            padding-right: 20px;
-            box-sizing: border-box;
-        }
-
-        /* 3. Hero Section Fix */
-        .hero-grid {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto; 
-            height: auto !important; 
-            min-height: 0 !important;
-            overflow: visible !important;
-        }
-
-        /* 4. Release internal scrolls */
-        section, .hero-main, main, .glass {
-            height: auto !important; 
-            max-height: none !important;
-            min-height: 0 !important;
-            overflow: visible !important; 
-        }
-
-        /* === BLINKING LIGHTS === */
-        .led-light {
-            display: inline-block;
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-        
-        .led-red {
-            background-color: #ef4444;
-            box-shadow: 0 0 8px #ef4444, 0 0 15px #ef4444;
-            animation: blink-red 1s infinite;
-        }
-        
-        .led-green {
-            background-color: #22c55e;
-            box-shadow: 0 0 8px #22c55e, 0 0 15px #22c55e;
-            animation: blink-green 2s infinite;
-        }
-
-        .radar-pulse {
-            position: relative;
-        }
-        .radar-pulse::after {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            border: 2px solid #ef4444;
-            animation: radar-ping 1.5s infinite;
-            z-index: -1;
-        }
-
-        @keyframes blink-red { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-        @keyframes blink-green { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-        @keyframes radar-ping { 
-            0% { width: 100%; height: 100%; opacity: 1; } 
-            100% { width: 200%; height: 200%; opacity: 0; } 
-        }
-
-        /* === FESTIVAL BADGE === */
-        .shiv-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 20px;
-            background: rgba(88, 28, 135, 0.4); 
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(168, 85, 247, 0.5); 
-            border-radius: 50px;
-            color: #d8b4fe; 
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 20px; 
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
-            animation: float-badge 3s ease-in-out infinite;
-        }
-        .shiv-icon {
-            margin-right: 10px;
-            font-size: 1.2rem;
-            text-shadow: 0 0 10px #d8b4fe;
-        }
-        @keyframes float-badge {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(168, 85, 247, 0.5); }
-            100% { transform: translateY(0); }
-        }
-
-        /* === REVIEWS CSS === */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        .review-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 30px;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .review-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: #0ea5e9;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .stars { color: #f59e0b; margin-bottom: 15px; font-size: 0.9rem; }
-        .review-text {
-            color: #cbd5e1;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-        .client-info h5 { color: #fff; font-weight: 700; margin-bottom: 2px; }
-        .client-info span { color: #0ea5e9; font-size: 0.85rem; font-weight: 600; }
-        .quote-icon {
-            position: absolute; top: 20px; right: 20px;
-            font-size: 3rem; color: rgba(255,255,255,0.05);
-        }
-
-        /* === ROYAL UNBOXING FEATURES === */
-        
-        /* 1. Nitro Truck Trigger */
-        .gift-truck-trigger {
-            position: fixed;
-            bottom: 30px; left: 30px;
-            width: 70px; height: 70px;
-            background: linear-gradient(135deg, #0ea5e9, #0284c7);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer;
-            z-index: 3500;
-            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.5);
-            border: 2px solid rgba(255,255,255,0.2);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: truck-idle 2s ease-in-out infinite;
-        }
-        .gift-truck-trigger:hover {
-            transform: scale(1.15) translateX(5px);
-            box-shadow: -10px 0 20px rgba(14, 165, 233, 0.8);
-        }
-
-        .truck-icon-stack { position: relative; width: 40px; height: 40px; }
-        .fa-truck-fast-custom {
-            font-size: 1.8rem; color: #fff;
-            position: absolute; bottom: 0; left: 0;
-        }
-        .fa-gift-custom {
-            font-size: 1.2rem; color: #f59e0b;
-            position: absolute; top: -8px; left: 8px;
-            transform: rotate(10deg);
-            animation: gift-bounce 2s infinite;
-        }
-
-        @keyframes truck-idle {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
-            100% { transform: translateY(0); }
-        }
-        @keyframes gift-bounce {
-            0%, 100% { transform: rotate(10deg) translateY(0); }
-            50% { transform: rotate(5deg) translateY(-2px); }
-        }
-
-        /* 2. Premium Letter Modal */
-        .letter-modal-box {
-            background: #fffdf5; /* Cream Paper */
-            color: #1e293b;
-            padding: 60px 40px 40px; /* Extra top padding for Seal */
-            border-radius: 8px;
-            max-width: 550px;
-            width: 90%;
-            position: relative;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            border: 1px solid #e2e8f0;
-            /* 3D Unfold Animation */
-            transform: perspective(1000px) rotateX(90deg);
-            transform-origin: top;
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .modal-overlay.active .letter-modal-box {
-            transform: perspective(1000px) rotateX(0deg);
-            opacity: 1;
-        }
-
-        /* 3. The Royal Wax Seal */
-        .wax-seal {
-            position: absolute;
-            top: -25px; left: 50%;
-            transform: translateX(-50%);
-            width: 60px; height: 60px;
-            background: #ef4444; /* Red Wax */
-            border-radius: 50%;
-            border: 4px solid #b91c1c;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            color: #fee2e2;
-            font-weight: 800;
-            font-size: 1.2rem;
-            font-family: 'Times New Roman', serif;
-            z-index: 10;
-        }
-
-        /* 4. Confetti Animation */
-        .confetti-piece {
-            position: absolute;
-            width: 10px; height: 10px;
-            background: #f59e0b;
-            top: -20px;
-            opacity: 0;
-        }
-        .modal-overlay.active .confetti-piece {
-            animation: confetti-fall 3s ease-out forwards;
-        }
-        @keyframes confetti-fall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
-
-        .letter-content h2 { 
-            color: #0f172a; 
-            font-family: 'Playfair Display', serif; 
-            margin-bottom: 20px; 
-            text-align: center;
-            border-bottom: 2px solid #cbd5e1;
-            padding-bottom: 15px;
-        }
-        .letter-content p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 15px; color: #334155; }
-        .signature { margin-top: 30px; font-family: 'Cursive', serif; font-size: 1.2rem; color: #0284c7; text-align: right; }
-        .close-letter {
-            position: absolute; top: 10px; right: 15px;
-            font-size: 2rem; color: #94a3b8; cursor: pointer; background: none; border: none;
-        }
-        .close-letter:hover { color: #ef4444; }
-
-        @media (max-width: 768px) {
-            .gift-truck-trigger { bottom: 100px; left: 20px; }
-        }
-
-        /* TRENDY FOOTER STYLE */
-        .footer-main { padding: 80px 0 40px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 60px; }
-        .footer-col h4 { color: #fff; margin-bottom: 24px; font-size: 1.1rem; letter-spacing: 0.05em; text-transform: uppercase; }
-        .footer-links li { margin-bottom: 12px; list-style: none; }
-        .footer-links a { color: #94a3b8; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
-        .footer-links a:hover { color: #0ea5e9; padding-left: 5px; }
-        
-        .footer-contact-item { display: flex; gap: 15px; margin-bottom: 20px; color: #94a3b8; align-items: flex-start; }
-        .footer-contact-item i { color: #0ea5e9; margin-top: 5px; }
-
-        @media (max-width: 992px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
-
-        /* MOBILE DOCK PILL */
-        .mobile-app-dock { display: none; } 
-        @media (max-width: 768px) {
-            .mobile-app-dock {
-                position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-                width: 90%; max-width: 350px;
-                background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(16px);
-                border: 1px solid rgba(255,255,255,0.15); border-radius: 50px;
-                display: flex; justify-content: space-evenly; padding: 12px 20px;
-                z-index: 9999; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            }
-            .dock-item {
-                display: flex; flex-direction: column; align-items: center;
-                color: #94a3b8; text-decoration: none; font-size: 0.7rem; gap: 4px; border: none; background: none;
-            }
-            .dock-item i { font-size: 1.4rem; color: #fff; }
-            .dock-item.active i { color: #0ea5e9; }
-        }
-    </style>
 </head>
 
 <body>
@@ -501,7 +199,7 @@
             <div class="badge-center">
                 <span class="badge">How It Works</span>
             </div>
-            <h2 class="section-title" style="text-align: center;">
+            <h2 class="section-title" style="text-align: center; color: #0f172a;">
                 Your Cargo's <span class="gradient-text">Journey</span>
             </h2>
 
@@ -593,11 +291,11 @@
     </section>
 
     <main class="container">
-        <section class="clients-section glass" style="margin-top: 40px;">
+        <section class="clients-section glass" style="margin-top: 40px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
             <div class="badge-center">
                 <span class="badge">Trusted Partners</span>
             </div>
-            <h2 class="section-title">
+            <h2 class="section-title" style="text-align: center; color: #0f172a;">
                 The Brands That <span class="gradient-text">Trust Us</span>
             </h2>
 
@@ -677,15 +375,15 @@
         </section>
     </main>
 
-    <section class="reviews-section" style="padding: 80px 0; background: #020617; position: relative;">
+    <section class="reviews-section" style="padding: 80px 0; background: var(--bg-body); position: relative;">
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05), transparent 70%); pointer-events: none;"></div>
         
         <div class="container">
             <div class="badge-center"><span class="badge">Client Testimonials</span></div>
-            <h2 class="section-title" style="text-align: center; margin-bottom: 20px;">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 20px; color: var(--text-main);">
                 Trusted by <span class="gradient-text">Leaders</span>
             </h2>
-            <p style="text-align: center; color: #94a3b8; max-width: 600px; margin: 0 auto;">
+            <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto;">
                 See what industry giants say about our precision, speed, and reliability.
             </p>
 
@@ -773,7 +471,7 @@
                     <img src="assets/logo.png" class="main-logo" alt="Logo">
                     <div class="logo-text">RRP <span>ENTERPRISES</span></div>
                 </div>
-                <p style="color: #94a3b8; margin-top: 20px; line-height: 1.6;">
+                <p style="color: #64748b; margin-top: 20px; line-height: 1.6;">
                     Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.
                 </p>
             </div>
@@ -805,7 +503,7 @@
                 <div class="footer-contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 600;">
+                        <div style="color: #475569; font-weight: 600;">
                             <span class="led-light led-green"></span> +91 94948 31803
                         </div>
                         <div style="font-size: 0.9rem;">24/7 Support</div>
@@ -814,21 +512,21 @@
                 <div class="footer-contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 600;">contact@rrpenterprises.co.in</div>
+                        <div style="color: #475569; font-weight: 600;">contact@rrpenterprises.co.in</div>
                         <div style="font-size: 0.9rem;">Drop us a mail</div>
                     </div>
                 </div>
             </div>
 
         </div>
-        <div class="container" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; padding-bottom: 20px; color: rgba(255,255,255,0.3); font-size: 0.85rem;">
+        <div class="container" style="border-top: 1px solid #e2e8f0; padding-top: 20px; padding-bottom: 20px; color: #64748b; font-size: 0.85rem;">
             <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px;">
                 <div>
                     &copy; 2026 RRP Enterprises. All rights reserved by RRP Enterprises.
                 </div>
                 <div style="text-align: right;">
-                    <span style="display: block; color: #64748b;">Designed and Developed by <strong style="color: #0ea5e9;">R C Avanta</strong></span>
-                    <span style="font-size: 0.75rem; letter-spacing: 0.05em; color: #475569;">Infinite Vision, Driven Results</span>
+                    <span style="display: block; color: #475569;">Designed and Developed by <strong style="color: #0284c7;">RC's Anantha</strong></span>
+                    <span style="font-size: 0.75rem; letter-spacing: 0.05em; color: #64748b;">Infinite vision, driven results</span>
                 </div>
             </div>
         </div>
