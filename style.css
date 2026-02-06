@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – PUNCHY BOLD THEME (v2026.v34)
-   Theme: "High-Voltage Logistics" (Mobile Stability & Layout Fixes)
+   RRP ENTERPRISES – PUNCHY BOLD THEME (v2026.v35)
+   Theme: "High-Voltage Logistics" (Gap Fixed, Original Colors)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (HIGH CONTRAST) ---------------- */
@@ -61,10 +61,10 @@ body {
   /* Tech Grid Background */
   background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
   background-size: 24px 24px;
-  background-attachment: fixed; /* Fixed on Desktop */
+  background-attachment: fixed; /* Default for Desktop */
   
-  /* Safe Area Padding for Mobile Dock */
-  padding-bottom: calc(120px + env(safe-area-inset-bottom));
+  /* REMOVED PADDING-BOTTOM FROM BODY TO FIX WHITE GAP */
+  padding-bottom: 0; 
 }
 
 /* ---------------- 2. UTILITIES ---------------- */
@@ -232,9 +232,10 @@ body {
     height: 70px; 
     background: #fff; padding: 10px; border-radius: 8px; 
     border: 1px solid #e2e8f0;
-    filter: grayscale(100%); transition: 0.3s;
+    /* REMOVED GRAYSCALE - Original Colors as requested */
+    transition: 0.3s;
 }
-.client-logo img:hover { filter: grayscale(0%); border-color: var(--primary); transform: scale(1.05); }
+.client-logo img:hover { border-color: var(--primary); transform: scale(1.05); }
 
 /* BENTO GRID */
 .bento-section { padding: 80px 0; background: var(--bg-subtle); }
@@ -281,12 +282,14 @@ body {
 }
 .step-connector { color: #cbd5e1; font-size: 1.5rem; }
 
-/* ---------------- 12. FOOTER (Refined) ---------------- */
+/* ---------------- 12. FOOTER (Fixed Gap) ---------------- */
 .footer-main { 
     padding: 80px 0 40px; 
     background: var(--secondary); 
     color: #fff; 
-    margin-top: 0; 
+    margin-top: 0;
+    /* Added padding to bottom to cover mobile dock area (Gap Fix) */
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
 }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 40px; }
 
@@ -295,18 +298,18 @@ body {
     text-transform: uppercase; border-left: 4px solid var(--accent); padding-left: 15px; 
 }
 
-/* QUICK LINKS LAYOUT FIX */
+/* QUICK LINKS LAYOUT */
 .footer-links { padding: 0; margin: 0; }
 .footer-links li { list-style: none; margin-bottom: 12px; }
 .footer-links a { 
-    color: #cbd5e1; /* Brighter grey for readability */
+    color: #cbd5e1; 
     text-decoration: none; 
     display: flex; align-items: center; gap: 10px;
     font-weight: 500; transition: 0.3s;
 }
-/* Chevron Icon for Links */
+/* Chevron Icon */
 .footer-links a::before {
-    content: '\f054'; /* FontAwesome chevron-right */
+    content: '\f054'; 
     font-family: 'Font Awesome 6 Free'; font-weight: 900;
     font-size: 0.7rem; color: var(--accent); opacity: 0.7;
 }
@@ -355,7 +358,7 @@ body {
   .step-connector { display: none; }
   
   /* Footer Fixes */
-  .footer-grid { grid-template-columns: 1fr; gap: 40px; } /* Stack footer columns */
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-col { text-align: left; }
 }
 
@@ -364,7 +367,8 @@ body {
   body {
       background-attachment: scroll; /* Disable fixed BG on mobile to stop bouncing */
       min-height: 100dvh;
-      padding-bottom: calc(100px + env(safe-area-inset-bottom));
+      /* Remove padding from body on mobile too, footer handles it */
+      padding-bottom: 0; 
   }
 
   /* SHOW DOCK ONLY ON MOBILE */
