@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – PUNCHY BOLD THEME (v2026.v32)
-   Theme: "High-Voltage Logistics" (Split Layouts, Bento Grids, High Contrast)
+   RRP ENTERPRISES – PUNCHY BOLD THEME (v2026.v33)
+   Theme: "High-Voltage Logistics" (Polished Layouts, Fixed Mobile)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (HIGH CONTRAST) ---------------- */
@@ -8,24 +8,21 @@
   /* PUNCHY PALETTE */
   --primary: #2563eb;       /* Electric Blue */
   --primary-dark: #1e40af;  /* Deep Blue */
-  --secondary: #0f172a;     /* Midnight Navy (Text/Headings) */
+  --secondary: #020617;     /* Midnight Navy (Deepest Dark) */
   --accent: #f97316;        /* PUNCHY ORANGE (Action Buttons) */
-  --accent-glow: #fdba74;
   
   /* Backgrounds */
   --bg-body: #ffffff;       /* Pure White */
-  --bg-subtle: #f1f5f9;     /* Light Grey for sections */
-  --bg-dark: #020617;       /* Almost Black for contrast sections */
+  --bg-subtle: #f8fafc;     /* Very Light Grey/Blue Tint */
+  --bg-dark: #0f172a;       /* Slate Dark */
   
   /* Typography */
   --font-main: 'Plus Jakarta Sans', sans-serif;
   
   /* UI Elements */
-  --glass: rgba(255, 255, 255, 0.9);
-  --border-bold: 2px solid #e2e8f0;
-  --border-accent: 2px solid #2563eb;
-  --shadow-card: 0 10px 30px -10px rgba(0,0,0,0.15);
-  --shadow-pop: 5px 5px 0px 0px #0f172a; /* Brutalist Pop Shadow */
+  --border-light: 1px solid #e2e8f0;
+  --shadow-card: 0 10px 30px -10px rgba(0,0,0,0.1);
+  --shadow-pop: 4px 4px 0px 0px var(--secondary); /* Brutalist Pop Shadow */
   
   --nav-height: 80px;
   --z-dock: 9999;
@@ -43,7 +40,7 @@ html {
 /* Scrollbar */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: #fff; }
-::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 0; }
+::-webkit-scrollbar-thumb { background: var(--secondary); }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 ::selection { background: var(--accent); color: #fff; }
@@ -56,13 +53,12 @@ body {
   overflow-x: hidden;
   background-color: var(--bg-body);
   font-family: var(--font-main);
-  color: var(--secondary);
-  line-height: 1.5;
+  color: #334155; /* Softer dark for body text */
+  line-height: 1.6;
   /* Tech Grid Background */
-  background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
-  background-size: 40px 40px;
-  background-attachment: fixed;
-  padding-bottom: 140px; /* Space for dock */
+  background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 24px 24px;
+  padding-bottom: 120px; /* Space for mobile dock */
 }
 
 /* ---------------- 2. UTILITIES ---------------- */
@@ -84,7 +80,7 @@ body {
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     line-height: 1.1;
     margin-bottom: 40px;
     color: var(--secondary);
@@ -96,122 +92,96 @@ body {
   background: var(--bg-dark);
   color: #fff;
   border-radius: 4px;
-  font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
   margin-bottom: 20px;
 }
-.badge i { color: var(--accent); }
 .badge-center { display: flex; justify-content: center; width: 100%; }
 
 /* ---------------- 3. SYSTEM BAR ---------------- */
 .top-system-bar {
-    background: var(--accent);
+    background: var(--secondary);
     color: #fff;
-    padding: 8px 0;
+    padding: 10px 0;
     font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 600;
     letter-spacing: 0.05em;
-    position: relative; z-index: 3001; 
+    border-bottom: 3px solid var(--accent);
 }
 .top-system-bar .container { display: flex; justify-content: center; align-items: center; gap: 10px; }
-.led-light { display: inline-block; width: 8px; height: 8px; background: #fff; border-radius: 50%; animation: blink 1s infinite; }
+.led-light { display: inline-block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: blink 1s infinite; }
 @keyframes blink { 50% { opacity: 0.4; } }
 
 /* ---------------- 4. NAVBAR (Glass) ---------------- */
 .navbar {
   height: var(--nav-height);
   position: sticky; top: 0; z-index: var(--z-nav);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
-  border-bottom: 2px solid #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 .navbar .container { display: flex; justify-content: space-between; align-items: center; width: 100%; height: 100%; }
 
 .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.main-logo { height: 45px; width: auto; background: transparent; padding: 0; box-shadow: none; border-radius: 0; }
+.main-logo { height: 45px; width: auto; }
 .logo-text { font-size: 1.4rem; font-weight: 900; color: var(--secondary); letter-spacing: -0.03em; line-height: 1; }
 .logo-text span { color: var(--primary); font-size: 0.8rem; display: block; letter-spacing: 0.1em; text-transform: uppercase; }
 
 .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
 .social-link { 
     color: var(--secondary); text-decoration: none; font-weight: 700; font-size: 0.95rem; 
-    text-transform: uppercase; letter-spacing: 0.02em; position: relative;
+    text-transform: uppercase; position: relative;
 }
-.social-link::after {
-    content: ''; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px;
-    background: var(--accent); transition: 0.3s;
-}
-.social-link:hover::after { width: 100%; }
-.social-link.active { color: var(--primary); }
+.social-link:hover { color: var(--primary); }
 
-/* Punchy CTA Button */
 .cta-btn {
   background: var(--accent);
   color: #fff;
-  padding: 14px 30px;
-  border-radius: 4px; /* Sharper corners */
+  padding: 12px 28px;
+  border-radius: 4px; 
   font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
   text-decoration: none; font-size: 0.9rem;
   transition: all 0.2s ease;
-  box-shadow: 4px 4px 0px var(--secondary); /* Brutalist Shadow */
+  box-shadow: 4px 4px 0px var(--secondary); 
   display: inline-flex; align-items: center; gap: 10px;
-  animation: none;
 }
 .cta-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--secondary); background: #ea580c; }
 .cta-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--secondary); }
 
-/* ---------------- 5. PUNCHY SPLIT HERO SECTION ---------------- */
+/* ---------------- 5. PUNCHY SPLIT HERO ---------------- */
 .truck-banner-section {
     position: relative; 
-    padding: 60px 0;
+    padding: 80px 0;
     background: #fff;
     overflow: hidden;
-    /* Removed old BG image from section to allow split layout */
 }
-
 .hero-split-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Split Layout */
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 60px;
 }
-
-.hero-text-content {
-    position: relative; z-index: 2;
-}
-
 .hero-text-content h1 {
-    font-size: clamp(3rem, 5vw, 5.5rem); /* Massive Text */
+    font-size: clamp(3rem, 5vw, 5rem);
     font-weight: 900;
     line-height: 1.05;
     color: var(--secondary);
     margin: 20px 0;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.03em;
 }
-
 .hero-text-content p {
-    font-size: 1.25rem;
-    color: #475569;
+    font-size: 1.2rem;
+    color: #64748b;
     max-width: 500px;
     margin-bottom: 40px;
-    font-weight: 500;
 }
-
-.hero-image-wrapper {
-    position: relative;
-    z-index: 1;
-}
-
-/* Dynamic Shape for Image */
 .hero-img-mask {
     width: 100%;
-    height: auto;
     border-radius: 20px;
-    box-shadow: 20px 20px 0px var(--bg-subtle); /* Offset Block */
+    box-shadow: 20px 20px 0px var(--bg-subtle);
     border: 2px solid var(--secondary);
-    background: #000;
     overflow: hidden;
-    transform: rotate(2deg); /* Fun tilt */
+    transform: rotate(2deg);
     transition: 0.3s;
 }
 .hero-img-mask:hover { transform: rotate(0deg); }
@@ -219,49 +189,48 @@ body {
 
 .hero-btns { display: flex; gap: 20px; align-items: center; }
 .outline-btn {
-    padding: 14px 30px;
+    padding: 12px 28px;
     border: 2px solid var(--secondary);
     color: var(--secondary);
     font-weight: 800; text-transform: uppercase; text-decoration: none;
     border-radius: 4px;
     transition: 0.3s;
-    display: flex; align-items: center; gap: 10px;
 }
 .outline-btn:hover { background: var(--secondary); color: #fff; }
 
-/* ---------------- 8. FLOATING STATS (Cards) ---------------- */
-.stats-bar-wrapper { padding: 40px 0; }
+/* ---------------- 8. FLOATING STATS ---------------- */
+.stats-bar-wrapper { padding: 20px 0 60px; }
 .stats-grid-cards {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
 }
 .stat-card {
     background: #fff;
-    border: 2px solid #e2e8f0;
+    border: 1px solid #e2e8f0;
     padding: 30px;
     border-radius: 12px;
     transition: 0.3s;
-    display: flex; flex-direction: column; gap: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
-.stat-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: var(--shadow-card); }
+.stat-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
 .stat-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 10px; }
 .stat-card h4 { font-size: 2.5rem; font-weight: 900; color: var(--secondary); line-height: 1; }
 .stat-card p { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
 
 /* ---------------- 9. MARQUEE & BENTO GRID ---------------- */
-.clients-marquee { margin: 20px 0; overflow: hidden; mask-image: none; }
-.clients-track { display: flex; gap: 30px; width: max-content; animation: scroll 40s linear infinite; }
+.clients-marquee { margin: 20px 0; overflow: hidden; }
+.clients-track { display: flex; gap: 40px; width: max-content; animation: scroll 40s linear infinite; }
 .clients-marquee.reverse .clients-track { animation-direction: reverse; }
 @keyframes scroll { to { transform: translateX(-50%); } }
 
 .client-logo img { 
-    height: 70px; /* Larger logos */
+    height: 70px; 
     background: #fff; padding: 10px; border-radius: 8px; 
-    border: 2px solid #f1f5f9;
+    border: 1px solid #e2e8f0;
     filter: grayscale(100%); transition: 0.3s;
 }
-.client-logo img:hover { filter: grayscale(0%); border-color: var(--primary); }
+.client-logo img:hover { filter: grayscale(0%); border-color: var(--primary); transform: scale(1.05); }
 
-/* BENTO GRID (Services) */
+/* BENTO GRID */
 .bento-section { padding: 80px 0; background: var(--bg-subtle); }
 .bento-grid {
     display: grid;
@@ -278,30 +247,25 @@ body {
     transition: 0.3s;
     position: relative; overflow: hidden;
 }
-.bento-item:hover { border-color: var(--primary); box-shadow: var(--shadow-card); }
-/* Specific Layouts */
+.bento-item:hover { border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
 .bento-large { grid-column: span 2; grid-row: span 2; background: var(--secondary); color: #fff; }
 .bento-large h3 { color: #fff !important; font-size: 2rem !important; }
 .bento-large p { color: #cbd5e1 !important; font-size: 1.1rem; }
-.bento-large i { color: var(--accent); }
-
-.bento-item h3 { font-size: 1.5rem; font-weight: 800; color: var(--secondary); margin-bottom: 10px; }
-.bento-item p { color: #64748b; line-height: 1.5; }
 .bento-icon-box {
     width: 60px; height: 60px; background: #f1f5f9; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     font-size: 1.5rem; color: var(--primary); margin-bottom: 20px;
 }
+.bento-large .bento-icon-box { background: rgba(255,255,255,0.1); color: #fff; }
 
-/* Roadmap Re-Style */
+/* Roadmap */
 .roadmap-section { padding: 80px 0; background: #fff; }
 .roadmap-grid { display: grid; grid-template-columns: repeat(7, 1fr); align-items: center; gap: 10px; text-align: center; }
 .roadmap-step { display: flex; flex-direction: column; align-items: center; gap: 15px; }
 .step-icon { 
     width: 80px; height: 80px; border-radius: 50%; border: 2px solid #e2e8f0; 
     display: flex; align-items: center; justify-content: center; 
-    font-size: 1.5rem; color: var(--secondary); position: relative;
-    transition: 0.3s;
+    font-size: 1.5rem; color: var(--secondary); transition: 0.3s;
 }
 .step-icon:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
 .step-number { 
@@ -309,73 +273,96 @@ body {
     width: 25px; height: 25px; border-radius: 50%; font-size: 0.8rem; font-weight: 800;
     display: flex; align-items: center; justify-content: center;
 }
-.step-connector { color: #cbd5e1; font-size: 1.5rem; display: flex; justify-content: center; }
+.step-connector { color: #cbd5e1; font-size: 1.5rem; }
 
-/* ---------------- 12. PUNCHY FOOTER ---------------- */
+/* ---------------- 12. FOOTER (Refined) ---------------- */
 .footer-main { 
     padding: 80px 0 40px; 
     background: var(--secondary); 
     color: #fff; 
     margin-top: 0; 
-    border-top: 5px solid var(--accent);
 }
-.footer-col h4 { color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; border-left: 4px solid var(--accent); padding-left: 15px; }
-.footer-links li { list-style: none; }
-.footer-links a { color: #94a3b8; padding: 8px 0; display: block; transition: 0.2s; font-weight: 500; text-decoration: none; }
-.footer-links a:hover { color: var(--accent); padding-left: 10px; }
-.footer-contact-item { display: flex; gap: 15px; margin-bottom: 20px; }
-.footer-contact-item i { color: var(--accent); margin-top: 5px; }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; margin-top: 50px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 40px; }
 
-/* ---------------- 13. MOBILE MENU ---------------- */
+.footer-col h4 { 
+    color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 25px; 
+    text-transform: uppercase; border-left: 4px solid var(--accent); padding-left: 15px; 
+}
+
+/* QUICK LINKS LAYOUT FIX */
+.footer-links { padding: 0; margin: 0; }
+.footer-links li { list-style: none; margin-bottom: 12px; }
+.footer-links a { 
+    color: #cbd5e1; /* Brighter grey for readability */
+    text-decoration: none; 
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 500; transition: 0.3s;
+}
+/* Chevron Icon for Links */
+.footer-links a::before {
+    content: '\f054'; /* FontAwesome chevron-right */
+    font-family: 'Font Awesome 6 Free'; font-weight: 900;
+    font-size: 0.7rem; color: var(--accent); opacity: 0.7;
+}
+.footer-links a:hover { color: #fff; padding-left: 5px; }
+.footer-links a:hover::before { opacity: 1; }
+
+.footer-contact-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
+.footer-contact-item i { color: var(--accent); margin-top: 5px; font-size: 1.2rem; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; margin-top: 20px; }
+
+/* ---------------- 13. MOBILE DOCK & RESPONSIVE ---------------- */
+/* STRICT HIDE ON DESKTOP */
+.mobile-app-dock { display: none !important; }
+
+/* MOBILE MENU */
 .menu-btn { display: none; background: none; border: none; z-index: 5001; cursor: pointer; }
-.menu-btn span { display: block; width: 35px; height: 4px; background: var(--secondary); margin: 6px 0; transition: 0.3s; }
-.menu-btn.open span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); background: var(--accent); }
+.menu-btn span { display: block; width: 35px; height: 3px; background: var(--secondary); margin: 6px 0; transition: 0.3s; }
+.menu-btn.open span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); background: var(--accent); }
 .menu-btn.open span:nth-child(2) { opacity: 0; }
-.menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); background: var(--accent); }
+.menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); background: var(--accent); }
 
-/* MOBILE RESPONSIVENESS */
 @media (max-width: 992px) {
   .menu-btn { display: block; }
   .nav-links {
     position: fixed; top: 0; right: 0; width: 100%; height: 100dvh; 
     background: #fff; 
-    flex-direction: column; justify-content: center; gap: 40px;
+    flex-direction: column; justify-content: center; gap: 30px;
     transform: translateY(-100%); transition: 0.4s ease; 
     z-index: 5000;
   }
   .nav-links.active { transform: translateY(0); }
-  .social-link { font-size: 1.5rem; color: var(--secondary); }
   .desktop-only { display: none !important; }
 
-  /* Split Hero Mobile -> Stacked */
+  /* Mobile Layout Fixes */
   .hero-split-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-  .hero-text-content h1 { font-size: 3rem; }
   .hero-btns { justify-content: center; }
   .hero-img-mask { transform: rotate(0deg); max-height: 300px; object-fit: cover; }
   
-  /* Stats Mobile */
   .stats-grid-cards { grid-template-columns: 1fr; }
   
-  /* Bento Mobile */
   .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
   .bento-large { grid-column: span 1; grid-row: auto; min-height: 300px; }
   .bento-item { min-height: 200px; }
   
-  /* Roadmap Mobile */
   .roadmap-grid { grid-template-columns: 1fr; gap: 30px; }
   .step-connector { display: none; }
+  
+  /* Footer Fixes */
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; } /* Stack footer columns */
+  .footer-col { text-align: left; }
 }
 
 @media (max-width: 768px) {
-  /* Dock Fix */
+  /* SHOW DOCK ONLY ON MOBILE */
   .mobile-app-dock {
+    display: flex !important;
     position: fixed; bottom: 20px; 
     padding-bottom: calc(12px + env(safe-area-inset-bottom));
     left: 50%; transform: translateX(-50%); width: 92%; max-width: 380px;
-    background: var(--secondary); /* Dark Dock for Contrast */
+    background: var(--secondary); 
     border-radius: 50px;
-    display: flex; justify-content: space-between; padding: 15px 30px;
+    justify-content: space-between; padding: 15px 30px;
     z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
   .dock-item {
@@ -385,12 +372,17 @@ body {
   .dock-item i { font-size: 1.4rem; color: #fff; }
   .dock-item:active i { color: var(--accent); }
   
-  .footer-col:nth-child(2) { display: none; }
+  body { padding-bottom: 140px; } /* Space for dock */
 }
 
-/* Default Hide Dock on Desktop */
-.mobile-app-dock { display: none; }
-@media (max-width: 768px) { .mobile-app-dock { display: flex; } }
+/* Reviews */
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+.review-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 30px; transition: 0.3s; position: relative; }
+.review-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--shadow-pop); }
+.stars { color: var(--accent); margin-bottom: 15px; font-size: 0.9rem; }
+.review-text { color: #475569; font-size: 1rem; line-height: 1.6; margin-bottom: 20px; font-style: italic; }
+.client-info h5 { color: var(--secondary); font-weight: 800; margin-bottom: 2px; }
+.client-info span { color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
 
 /* Letter Modal */
 .letter-modal-box {
@@ -421,13 +413,3 @@ body {
 .fa-truck-fast-custom { font-size: 1.5rem; color: #fff; }
 .fa-gift-custom { font-size: 1rem; color: var(--secondary); position: absolute; top: 12px; left: 15px; }
 @keyframes truck-idle { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-
-/* Review Cards */
-.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
-.review-card { background: #fff; border: 2px solid #e2e8f0; border-radius: 8px; padding: 30px; transition: 0.3s; position: relative; overflow: hidden; }
-.review-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--shadow-pop); }
-.stars { color: var(--accent); margin-bottom: 15px; font-size: 0.9rem; }
-.review-text { color: #475569; font-size: 1rem; line-height: 1.6; margin-bottom: 20px; font-style: italic; font-weight: 500; }
-.client-info h5 { color: var(--secondary); font-weight: 800; margin-bottom: 2px; }
-.client-info span { color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
-.quote-icon { position: absolute; top: 20px; right: 20px; font-size: 3rem; color: #f1f5f9; }
