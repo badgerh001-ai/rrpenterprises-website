@@ -61,6 +61,7 @@ body {
   /* Tech Grid Background */
   background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
   background-size: 40px 40px;
+  background-attachment: fixed;
   padding-bottom: 140px; /* Space for dock */
 }
 
@@ -127,7 +128,7 @@ body {
 .navbar .container { display: flex; justify-content: space-between; align-items: center; width: 100%; height: 100%; }
 
 .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.main-logo { height: 45px; }
+.main-logo { height: 45px; width: auto; background: transparent; padding: 0; box-shadow: none; border-radius: 0; }
 .logo-text { font-size: 1.4rem; font-weight: 900; color: var(--secondary); letter-spacing: -0.03em; line-height: 1; }
 .logo-text span { color: var(--primary); font-size: 0.8rem; display: block; letter-spacing: 0.1em; text-transform: uppercase; }
 
@@ -141,6 +142,7 @@ body {
     background: var(--accent); transition: 0.3s;
 }
 .social-link:hover::after { width: 100%; }
+.social-link.active { color: var(--primary); }
 
 /* Punchy CTA Button */
 .cta-btn {
@@ -153,6 +155,7 @@ body {
   transition: all 0.2s ease;
   box-shadow: 4px 4px 0px var(--secondary); /* Brutalist Shadow */
   display: inline-flex; align-items: center; gap: 10px;
+  animation: none;
 }
 .cta-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--secondary); background: #ea580c; }
 .cta-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px var(--secondary); }
@@ -163,6 +166,7 @@ body {
     padding: 60px 0;
     background: #fff;
     overflow: hidden;
+    /* Removed old BG image from section to allow split layout */
 }
 
 .hero-split-grid {
@@ -221,6 +225,7 @@ body {
     font-weight: 800; text-transform: uppercase; text-decoration: none;
     border-radius: 4px;
     transition: 0.3s;
+    display: flex; align-items: center; gap: 10px;
 }
 .outline-btn:hover { background: var(--secondary); color: #fff; }
 
@@ -243,7 +248,7 @@ body {
 .stat-card p { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
 
 /* ---------------- 9. MARQUEE & BENTO GRID ---------------- */
-.clients-marquee { margin: 20px 0; overflow: hidden; }
+.clients-marquee { margin: 20px 0; overflow: hidden; mask-image: none; }
 .clients-track { display: flex; gap: 30px; width: max-content; animation: scroll 40s linear infinite; }
 .clients-marquee.reverse .clients-track { animation-direction: reverse; }
 @keyframes scroll { to { transform: translateX(-50%); } }
@@ -288,17 +293,38 @@ body {
     font-size: 1.5rem; color: var(--primary); margin-bottom: 20px;
 }
 
+/* Roadmap Re-Style */
+.roadmap-section { padding: 80px 0; background: #fff; }
+.roadmap-grid { display: grid; grid-template-columns: repeat(7, 1fr); align-items: center; gap: 10px; text-align: center; }
+.roadmap-step { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.step-icon { 
+    width: 80px; height: 80px; border-radius: 50%; border: 2px solid #e2e8f0; 
+    display: flex; align-items: center; justify-content: center; 
+    font-size: 1.5rem; color: var(--secondary); position: relative;
+    transition: 0.3s;
+}
+.step-icon:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+.step-number { 
+    position: absolute; top: -5px; right: -5px; background: var(--accent); color: #fff; 
+    width: 25px; height: 25px; border-radius: 50%; font-size: 0.8rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+}
+.step-connector { color: #cbd5e1; font-size: 1.5rem; display: flex; justify-content: center; }
+
 /* ---------------- 12. PUNCHY FOOTER ---------------- */
 .footer-main { 
     padding: 80px 0 40px; 
     background: var(--secondary); 
     color: #fff; 
     margin-top: 0; 
+    border-top: 5px solid var(--accent);
 }
 .footer-col h4 { color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; border-left: 4px solid var(--accent); padding-left: 15px; }
-.footer-links a { color: #94a3b8; padding: 8px 0; display: block; transition: 0.2s; font-weight: 500; }
+.footer-links li { list-style: none; }
+.footer-links a { color: #94a3b8; padding: 8px 0; display: block; transition: 0.2s; font-weight: 500; text-decoration: none; }
 .footer-links a:hover { color: var(--accent); padding-left: 10px; }
-.footer-contact-item i { color: var(--accent); }
+.footer-contact-item { display: flex; gap: 15px; margin-bottom: 20px; }
+.footer-contact-item i { color: var(--accent); margin-top: 5px; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; margin-top: 50px; }
 
 /* ---------------- 13. MOBILE MENU ---------------- */
@@ -335,6 +361,10 @@ body {
   .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
   .bento-large { grid-column: span 1; grid-row: auto; min-height: 300px; }
   .bento-item { min-height: 200px; }
+  
+  /* Roadmap Mobile */
+  .roadmap-grid { grid-template-columns: 1fr; gap: 30px; }
+  .step-connector { display: none; }
 }
 
 @media (max-width: 768px) {
@@ -391,3 +421,13 @@ body {
 .fa-truck-fast-custom { font-size: 1.5rem; color: #fff; }
 .fa-gift-custom { font-size: 1rem; color: var(--secondary); position: absolute; top: 12px; left: 15px; }
 @keyframes truck-idle { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+/* Review Cards */
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+.review-card { background: #fff; border: 2px solid #e2e8f0; border-radius: 8px; padding: 30px; transition: 0.3s; position: relative; overflow: hidden; }
+.review-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--shadow-pop); }
+.stars { color: var(--accent); margin-bottom: 15px; font-size: 0.9rem; }
+.review-text { color: #475569; font-size: 1rem; line-height: 1.6; margin-bottom: 20px; font-style: italic; font-weight: 500; }
+.client-info h5 { color: var(--secondary); font-weight: 800; margin-bottom: 2px; }
+.client-info span { color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+.quote-icon { position: absolute; top: 20px; right: 20px; font-size: 3rem; color: #f1f5f9; }
