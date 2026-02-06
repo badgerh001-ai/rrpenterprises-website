@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – PUNCHY BOLD THEME (v2026.v33)
-   Theme: "High-Voltage Logistics" (Polished Layouts, Fixed Mobile)
+   RRP ENTERPRISES – PUNCHY BOLD THEME (v2026.v34)
+   Theme: "High-Voltage Logistics" (Mobile Stability & Layout Fixes)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (HIGH CONTRAST) ---------------- */
@@ -33,6 +33,7 @@ html {
   scroll-behavior: smooth; 
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  /* Stops elastic bouncing on iOS */
   overscroll-behavior-y: none;
   height: 100%;
 }
@@ -49,16 +50,21 @@ html {
 
 body {
   width: 100%;
-  min-height: 100%;
+  /* Fix for Mobile Jumping (Dynamic Viewport Height) */
+  min-height: 100dvh; 
   overflow-x: hidden;
   background-color: var(--bg-body);
   font-family: var(--font-main);
-  color: #334155; /* Softer dark for body text */
+  color: #334155; 
   line-height: 1.6;
+  
   /* Tech Grid Background */
   background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
   background-size: 24px 24px;
-  padding-bottom: 120px; /* Space for mobile dock */
+  background-attachment: fixed; /* Fixed on Desktop */
+  
+  /* Safe Area Padding for Mobile Dock */
+  padding-bottom: calc(120px + env(safe-area-inset-bottom));
 }
 
 /* ---------------- 2. UTILITIES ---------------- */
@@ -354,6 +360,13 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* BODY FIX FOR JUMPING MARGINS */
+  body {
+      background-attachment: scroll; /* Disable fixed BG on mobile to stop bouncing */
+      min-height: 100dvh;
+      padding-bottom: calc(100px + env(safe-area-inset-bottom));
+  }
+
   /* SHOW DOCK ONLY ON MOBILE */
   .mobile-app-dock {
     display: flex !important;
@@ -371,8 +384,6 @@ body {
   }
   .dock-item i { font-size: 1.4rem; color: #fff; }
   .dock-item:active i { color: var(--accent); }
-  
-  body { padding-bottom: 140px; } /* Space for dock */
 }
 
 /* Reviews */
