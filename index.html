@@ -57,39 +57,32 @@
     }
     </script>
 
-    <link rel="stylesheet" href="style.css?v=31">
+    <link rel="stylesheet" href="style.css?v=32">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="gift-truck-trigger" onclick="openWelcome()">
-        <div class="truck-icon-stack">
-            <i class="fas fa-gift fa-gift-custom"></i>
-            <i class="fas fa-truck-fast fa-truck-fast-custom"></i>
-        </div>
+        <i class="fas fa-truck-fast fa-truck-fast-custom"></i>
+        <i class="fas fa-gift fa-gift-custom"></i>
     </div>
 
     <div id="welcomeModal" class="modal-overlay">
         <div class="confetti-piece" style="left: 10%; background: #ef4444; animation-delay: 0s;"></div>
-        <div class="confetti-piece" style="left: 20%; background: #f59e0b; animation-delay: 0.2s;"></div>
         <div class="confetti-piece" style="left: 30%; background: #3b82f6; animation-delay: 0.4s;"></div>
-        <div class="confetti-piece" style="left: 50%; background: #10b981; animation-delay: 0.1s;"></div>
         <div class="confetti-piece" style="left: 70%; background: #8b5cf6; animation-delay: 0.3s;"></div>
         <div class="confetti-piece" style="left: 90%; background: #ec4899; animation-delay: 0.5s;"></div>
 
         <div class="letter-modal-box">
             <div class="wax-seal">RRP</div>
             <button class="close-letter" onclick="closeWelcome()">&times;</button>
-            
             <div class="letter-content">
                 <h2>Welcome Partner</h2>
                 <p>Dear Valued Client,</p>
                 <p>We are honored to welcome you to <strong>RRP Enterprises</strong>. As India's trusted logistics partner, we pledge to handle your business with integrity, speed, and precision.</p>
-                <p>Whether moving heavy machinery or bulk cargo, your success is our priority.</p>
-                
                 <div class="signature">
                     <p>Sincerely,</p>
                     <img src="assets/logo.png" style="height: 40px; opacity: 0.8; margin-top: 10px;" alt="Signature">
@@ -101,11 +94,8 @@
 
     <div class="top-system-bar">
         <div class="container">
-            <div class="system-text">
-                <span class="led-light led-red"></span> 
-                <strong>SYSTEM UPDATE IN PROGRESS</strong>
-                <span>We are currently upgrading our digital platform to serve you better.</span>
-            </div>
+            <span class="led-light"></span> 
+            SYSTEM UPDATE: PLATFORM UPGRADE IN PROGRESS
         </div>
     </div>
 
@@ -131,293 +121,188 @@
     </nav>
 
     <section class="truck-banner-section">
-        <div class="truck-overlay-content container">
-            <div class="truck-text-box" style="display: flex; flex-direction: column; align-items: flex-start;">
-                
-                <div class="shiv-badge">
-                    <i class="fas fa-om shiv-icon"></i> 
-                    Happy Mahashivratri 2026
+        <div class="container hero-split-grid">
+            
+            <div class="hero-text-content">
+                <div class="badge">
+                    <i class="fas fa-om"></i> Happy Mahashivratri 2026
                 </div>
-
-                <span class="badge">
-                    <span class="led-light led-green"></span> Premium Logistics Fleet
-                </span>
                 
                 <h1>
                     POWERING YOUR <br>
                     <span class="gradient-text">SUPPLY CHAIN</span>
                 </h1>
+                
                 <p>
-                    Experience the future of logistics with RRP Enterprises. 
-                    Reliable, technology-driven, and ready to move your business forward.
+                    Experience the future of logistics. Reliable, technology-driven, and ready to move your business forward with India's most trusted fleet.
                 </p>
-                <div class="hero-btns" style="margin-top: 30px;">
-                    <a href="contact.html" class="cta-btn">Book Load</a>
-                    <a href="services.html" class="explore-btn" style="color: #fff; margin-left: 20px;">
-                        Explore Fleet <i class="fas fa-arrow-right"></i>
-                    </a>
+                
+                <div class="hero-btns">
+                    <a href="contact.html" class="cta-btn">Book A Load <i class="fas fa-arrow-right"></i></a>
+                    <a href="services.html" class="outline-btn">Explore Fleet</a>
                 </div>
             </div>
-        </div>
 
-        <div class="side-sticky-nav desktop-only">
-            <a href="https://wa.me/919494831803" class="side-btn whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="tel:+919494831803" class="side-btn phone" aria-label="Call"><i class="fas fa-phone"></i></a>
+            <div class="hero-image-wrapper">
+                <div class="hero-img-mask">
+                    <img src="assets/home-banner.jpg" alt="RRP Logistics Truck Fleet">
+                </div>
+            </div>
+            
         </div>
     </section>
 
     <div class="stats-bar-wrapper">
-        <div class="container">
-            <div class="stats-flex-row">
-                <div class="stat-item">
-                    <i class="fas fa-truck-fast"></i>
-                    <div>
-                        <h4>500+</h4>
-                        <p>Verified Vehicles</p>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-map-location-dot"></i>
-                    <div>
-                        <h4>Pan India</h4>
-                        <p>Network Coverage</p>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <h4>99.9%</h4>
-                        <p>On-Time Delivery</p>
-                    </div>
-                </div>
+        <div class="container stats-grid-cards">
+            <div class="stat-card">
+                <i class="fas fa-truck-fast"></i>
+                <h4>500+</h4>
+                <p>Verified Vehicles</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-map-location-dot"></i>
+                <h4>Pan India</h4>
+                <p>Network Coverage</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <h4>99.9%</h4>
+                <p>On-Time Delivery</p>
             </div>
         </div>
     </div>
 
+    <section class="bento-section">
+        <div class="container">
+            <div class="badge-center"><span class="badge">Our Capabilities</span></div>
+            <h2 class="section-title" style="text-align: center;">
+                Logistics <span class="gradient-text">Redefined</span>
+            </h2>
+
+            <div class="bento-grid">
+                <div class="bento-item bento-large">
+                    <div>
+                        <div class="bento-icon-box" style="background: rgba(255,255,255,0.2); color: #fff;">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>End-to-End Supply Chain</h3>
+                        <p>From raw material handling to final mile delivery, we optimize every step of your logistics journey.</p>
+                    </div>
+                    <i class="fas fa-arrow-right" style="align-self: flex-end; font-size: 1.5rem;"></i>
+                </div>
+
+                <div class="bento-item">
+                    <div class="bento-icon-box"><i class="fas fa-truck"></i></div>
+                    <h3>FTL Transport</h3>
+                    <p>Full Truck Load services ensuring dedicated capacity and faster transit times.</p>
+                </div>
+
+                <div class="bento-item">
+                    <div class="bento-icon-box"><i class="fas fa-cubes"></i></div>
+                    <h3>Bulk Cargo</h3>
+                    <p>Specialized handling for coal, iron ore, and heavy industrial materials.</p>
+                </div>
+
+                <div class="bento-item">
+                    <div class="bento-icon-box"><i class="fas fa-project-diagram"></i></div>
+                    <h3>Project Logistics</h3>
+                    <p>Complex moves for heavy machinery and ODC consignments.</p>
+                </div>
+
+                <div class="bento-item">
+                    <div class="bento-icon-box"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Secure Transit</h3>
+                    <p>GPS-enabled fleet with 24/7 monitoring for high-value goods.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="roadmap-section">
         <div class="container">
-            <div class="badge-center">
-                <span class="badge">How It Works</span>
-            </div>
-            <h2 class="section-title" style="text-align: center; color: #0f172a;">
-                Your Cargo's <span class="gradient-text">Journey</span>
-            </h2>
-
+            <h2 class="section-title" style="text-align: center;">How It <span class="gradient-text">Works</span></h2>
             <div class="roadmap-grid">
                 <div class="roadmap-step">
-                    <div class="step-icon">
-                        <i class="fas fa-file-signature"></i>
-                        <div class="step-number">01</div>
-                    </div>
+                    <div class="step-icon"><i class="fas fa-file-signature"></i><div class="step-number">01</div></div>
                     <h3>Book Load</h3>
-                    <p>Submit your requirements online. We provide an instant confirmed vehicle.</p>
                 </div>
-
-                <div class="step-connector">
-                    <i class="fas fa-chevron-right"></i>
+                <div class="step-connector"><i class="fas fa-chevron-right"></i></div>
+                
+                <div class="roadmap-step">
+                    <div class="step-icon" style="border-color: var(--accent); color: var(--accent);"><i class="fas fa-map-location-dot"></i><div class="step-number">02</div></div>
+                    <h3>Live Track</h3>
                 </div>
+                <div class="step-connector"><i class="fas fa-chevron-right"></i></div>
 
                 <div class="roadmap-step">
-                    <div class="step-icon radar-pulse">
-                        <i class="fas fa-map-location-dot" style="color: #ef4444;"></i>
-                        <div class="step-number">02</div>
-                    </div>
-                    <h3>Live Tracking</h3>
-                    <p>Real-time GPS updates. Know exactly where your cargo is 24/7.</p>
-                </div>
-
-                <div class="step-connector">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-
-                <div class="roadmap-step">
-                    <div class="step-icon">
-                        <i class="fas fa-truck-fast"></i>
-                        <div class="step-number">03</div>
-                    </div>
+                    <div class="step-icon"><i class="fas fa-truck-fast"></i><div class="step-number">03</div></div>
                     <h3>Fast Transit</h3>
-                    <p>Optimized routes and experienced drivers ensure the fastest turnaround.</p>
                 </div>
-
-                <div class="step-connector">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
+                <div class="step-connector"><i class="fas fa-chevron-right"></i></div>
 
                 <div class="roadmap-step">
-                    <div class="step-icon">
-                        <i class="fas fa-clock"></i>
-                        <div class="step-number">04</div>
-                    </div>
-                    <h3>On-Time Delivery</h3>
-                    <p>Guaranteed doorstep delivery safely and strictly on schedule.</p>
+                    <div class="step-icon"><i class="fas fa-box-open"></i><div class="step-number">04</div></div>
+                    <h3>Delivery</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="industry-section">
-        <div class="container">
-            <div class="industry-header">Trusted Fleet Partners & Certifications</div>
-            <div class="clients-marquee">
-                <div class="clients-track">
-                    <div class="industry-item"><i class="fas fa-truck-front"></i> TATA Motors</div>
-                    <div class="industry-item"><i class="fas fa-truck"></i> Ashok Leyland</div>
-                    <div class="industry-item"><i class="fas fa-truck-moving"></i> BharatBenz</div>
-                    <div class="industry-item"><i class="fas fa-certificate"></i> ISO 9001:2015</div>
-                    <div class="industry-item"><i class="fas fa-road"></i> National Permit</div>
-                    <div class="industry-item"><i class="fas fa-truck-front"></i> TATA Motors</div>
-                    <div class="industry-item"><i class="fas fa-truck"></i> Ashok Leyland</div>
-                    <div class="industry-item"><i class="fas fa-truck-moving"></i> BharatBenz</div>
-                    <div class="industry-item"><i class="fas fa-certificate"></i> ISO Certified</div>
-                    
-                    <div class="industry-item"><i class="fas fa-truck-front"></i> TATA Motors</div>
-                    <div class="industry-item"><i class="fas fa-truck"></i> Ashok Leyland</div>
-                    <div class="industry-item"><i class="fas fa-truck-moving"></i> BharatBenz</div>
-                    <div class="industry-item"><i class="fas fa-certificate"></i> ISO 9001:2015</div>
-                    <div class="industry-item"><i class="fas fa-road"></i> National Permit</div>
-                    <div class="industry-item"><i class="fas fa-truck-front"></i> TATA Motors</div>
-                    <div class="industry-item"><i class="fas fa-truck"></i> Ashok Leyland</div>
-                    <div class="industry-item"><i class="fas fa-truck-moving"></i> BharatBenz</div>
-                    <div class="industry-item"><i class="fas fa-certificate"></i> ISO Certified</div>
+    <main class="container" style="padding: 60px 24px;">
+        <div class="badge-center"><span class="badge">Trusted Partners</span></div>
+        <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">The Brands That <span class="gradient-text">Trust Us</span></h2>
 
-                    <div class="industry-item"><i class="fas fa-truck-front"></i> TATA Motors</div>
-                    <div class="industry-item"><i class="fas fa-truck"></i> Ashok Leyland</div>
-                    <div class="industry-item"><i class="fas fa-truck-moving"></i> BharatBenz</div>
-                    <div class="industry-item"><i class="fas fa-certificate"></i> ISO 9001:2015</div>
-                    <div class="industry-item"><i class="fas fa-road"></i> National Permit</div>
-                </div>
+        <div class="clients-marquee">
+            <div class="clients-track">
+                <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
+                <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
+                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
+                <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
+                <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
+                <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
+                <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
+                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
+                <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
             </div>
         </div>
-    </section>
 
-    <main class="container">
-        <section class="clients-section glass" style="margin-top: 40px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-            <div class="badge-center">
-                <span class="badge">Trusted Partners</span>
+        <div class="clients-marquee reverse">
+            <div class="clients-track">
+                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
+                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
+                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
+                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
+                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
+                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
+                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
+                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
             </div>
-            <h2 class="section-title" style="text-align: center; color: #0f172a;">
-                The Brands That <span class="gradient-text">Trust Us</span>
-            </h2>
-
-            <div class="clients-marquee">
-                <div class="clients-track">
-                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
-                    <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
-                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                    <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
-                    <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
-                    <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
-                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
-                    <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
-                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                    <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
-                </div>
-            </div>
-
-            <div class="clients-marquee reverse">
-                <div class="clients-track">
-                    <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                    <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                    <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                    <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                    <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                    <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                    <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                    <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                    <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
-    <section class="reviews-section" style="padding: 80px 0; background: var(--bg-body); position: relative;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05), transparent 70%); pointer-events: none;"></div>
-        
+    <section class="reviews-section" style="padding: 80px 0; background: var(--bg-subtle);">
         <div class="container">
-            <div class="badge-center"><span class="badge">Client Testimonials</span></div>
-            <h2 class="section-title" style="text-align: center; margin-bottom: 20px; color: var(--text-main);">
-                Trusted by <span class="gradient-text">Leaders</span>
-            </h2>
-            <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto;">
-                See what industry giants say about our precision, speed, and reliability.
-            </p>
+            <div class="badge-center"><span class="badge">Testimonials</span></div>
+            <h2 class="section-title" style="text-align: center;">Client <span class="gradient-text">Stories</span></h2>
 
             <div class="reviews-grid">
                 <div class="review-card">
                     <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"RRP has been our go-to for steel transport from Bellary. Their fleet is reliable and the drivers are very professional. The live tracking helps us manage our plant inventory effortlessly."</p>
-                    <div class="client-info">
-                        <h5>Rajesh Kumar</h5>
-                        <span>Plant Manager, Steel Corp</span>
-                    </div>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">"RRP has been our go-to for steel transport from Bellary. Their fleet is reliable and the drivers are very professional."</p>
+                    <div class="client-info"><h5>Rajesh Kumar</h5><span>Plant Manager, Steel Corp</span></div>
                 </div>
-
                 <div class="review-card">
                     <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Excellent FTL service for our FMCG goods to Bangalore. We used to face delays with other vendors, but RRP's 'On-Time Delivery' promise is genuine. Zero breakage record so far!"</p>
-                    <div class="client-info">
-                        <h5>Suresh Reddy</h5>
-                        <span>Distributor, FMCG Logistics</span>
-                    </div>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">"Zero breakage record so far! The best FTL service for FMCG goods to Bangalore."</p>
+                    <div class="client-info"><h5>Suresh Reddy</h5><span>Distributor, FMCG Logistics</span></div>
                 </div>
-
                 <div class="review-card">
                     <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="review-text">"We needed urgent movement of construction material to Hyderabad. RRP arranged a heavy-duty vehicle in 30 minutes. The speed and responsiveness of their support team is impressive."</p>
-                    <div class="client-info">
-                        <h5>Anil Mehta</h5>
-                        <span>Head of Procurement, Infra Ltd</span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Transporting fragile glass loads is risky, but RRP handles it with such care. We have shipped over 50 truckloads this year with zero damage. Highly recommended for sensitive cargo."</p>
-                    <div class="client-info">
-                        <h5>Vikram Singh</h5>
-                        <span>Ops Manager, Glass World</span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Best logistics partner in Anantapur. Their bulk cargo rates for Iron Ore and Coal are very competitive, and their billing process is 100% transparent. A trustworthy partner."</p>
-                    <div class="client-info">
-                        <h5>Priya Desai</h5>
-                        <span>Director, Mining Corp</span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="review-text">"Professional team. They handled our project logistics for heavy machinery smoothly from Mumbai to Chennai. They handled all the permits and documentation seamlessly."</p>
-                    <div class="client-info">
-                        <h5>Karthik N</h5>
-                        <span>Project Lead, Industrial Solutions</span>
-                    </div>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p class="review-text">"Arranged a heavy-duty vehicle in 30 minutes. Speed and responsiveness are impressive."</p>
+                    <div class="client-info"><h5>Anil Mehta</h5><span>Head of Procurement, Infra Ltd</span></div>
                 </div>
             </div>
         </div>
@@ -425,86 +310,64 @@
 
     <footer class="footer-main">
         <div class="container footer-grid">
-            
             <div class="footer-col">
                 <div class="logo-container">
                     <img src="assets/logo.png" class="main-logo" alt="Logo">
-                    <div class="logo-text">RRP <span>ENTERPRISES</span></div>
+                    <div class="logo-text" style="color: #fff;">RRP <span>ENTERPRISES</span></div>
                 </div>
-                <p style="color: #64748b; margin-top: 20px; line-height: 1.6;">
-                    Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.
-                </p>
+                <p style="color: #cbd5e1; margin-top: 20px;">Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.</p>
             </div>
-
             <div class="footer-col">
-                <h4>Our Services</h4>
+                <h4>Services</h4>
                 <ul class="footer-links">
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> FTL Transport</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Bulk Cargo</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Project Logistics</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Supply Chain</a></li>
+                    <li><a href="services.html">FTL Transport</a></li>
+                    <li><a href="services.html">Bulk Cargo</a></li>
+                    <li><a href="services.html">Project Logistics</a></li>
+                    <li><a href="services.html">Supply Chain</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact Support</a></li>
                     <li><a href="contact.html">Track Shipment</a></li>
-                    <li style="margin-top: 10px;"><a href="privacy.html" style="color: #6366f1;">Privacy Policy</a></li>
-                    <li><a href="terms.html" style="color: #6366f1;">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
-                <h4>Get in Touch</h4>
+                <h4>Contact</h4>
                 <div class="footer-contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <div style="color: #475569; font-weight: 600;">
-                            <span class="led-light led-green"></span> +91 94948 31803
-                        </div>
-                        <div style="font-size: 0.9rem;">24/7 Support</div>
+                        <div style="color: #fff; font-weight: 700;">+91 94948 31803</div>
+                        <div style="font-size: 0.9rem; color: #94a3b8;">24/7 Support</div>
                     </div>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <div style="color: #475569; font-weight: 600;">contact@rrpenterprises.co.in</div>
-                        <div style="font-size: 0.9rem;">Drop us a mail</div>
+                        <div style="color: #fff; font-weight: 700;">contact@rrpenterprises.co.in</div>
+                        <div style="font-size: 0.9rem; color: #94a3b8;">Official Email</div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="container" style="border-top: 1px solid #e2e8f0; padding-top: 20px; padding-bottom: 20px; color: #64748b; font-size: 0.85rem;">
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px;">
-                <div>
-                    &copy; 2026 RRP Enterprises. All rights reserved by RRP Enterprises.
-                </div>
+        <div class="container footer-bottom">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
+                <div style="color: #94a3b8; font-size: 0.85rem;">&copy; 2026 RRP Enterprises. All rights reserved.</div>
                 <div style="text-align: right;">
-                    <span style="display: block; color: #475569;">Designed and Developed by <strong style="color: #0284c7;">RC's Anantha</strong></span>
-                    <span style="font-size: 0.75rem; letter-spacing: 0.05em; color: #64748b;">Infinite vision, driven results</span>
+                    <span style="display: block; color: #cbd5e1; font-size: 0.9rem;">Designed and Developed by <strong style="color: var(--accent);">RC's Anantha</strong></span>
+                    <span style="font-size: 0.75rem; letter-spacing: 0.05em; color: #64748b; text-transform: uppercase;">Infinite vision, driven results</span>
                 </div>
             </div>
         </div>
     </footer>
 
     <div class="mobile-app-dock">
-        <a href="tel:+919494831803" class="dock-item">
-            <i class="fas fa-phone"></i>
-            <span>Call</span>
-        </a>
-        <a href="https://wa.me/919494831803" class="dock-item">
-            <i class="fab fa-whatsapp"></i>
-            <span>Chat</span>
-        </a>
-        <a href="contact.html" class="dock-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Track</span>
-        </a>
+        <a href="tel:+919494831803" class="dock-item"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/919494831803" class="dock-item"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
+        <a href="contact.html" class="dock-item"><i class="fas fa-map-marker-alt"></i><span>Track</span></a>
     </div>
 
     <script>
@@ -516,30 +379,20 @@
                 navLinks.classList.toggle('active');
             });
         }
-
-        // === WELCOME MODAL LOGIC ===
         function openWelcome() {
             const modal = document.getElementById('welcomeModal');
             modal.style.display = 'flex';
-            // Force reflow to restart animation
             void modal.offsetWidth; 
             modal.classList.add('active');
         }
-        
         function closeWelcome() {
             const modal = document.getElementById('welcomeModal');
             modal.classList.remove('active');
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 300); // Wait for transition
+            setTimeout(() => { modal.style.display = 'none'; }, 300);
         }
-        
-        // Close if clicking outside the modal box
         window.onclick = function(event) {
             const modal = document.getElementById('welcomeModal');
-            if (event.target == modal) {
-                closeWelcome();
-            }
+            if (event.target == modal) closeWelcome();
         }
     </script>
 </body>
