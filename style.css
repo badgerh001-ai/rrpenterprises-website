@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v46)
-   Theme: "The Titan" (Mobile Polish, Hidden Truck on Mobile, Smooth Marquee)
+   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v47)
+   Theme: "The Titan" (Mobile Swipe Stats, Radar Scan, Glass Hero)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (TITAN DARK) ---------------- */
@@ -111,7 +111,7 @@ body {
 }
 .badge-center { display: flex; justify-content: center; width: 100%; }
 
-/* ---------------- 3. SYSTEM BAR ---------------- */
+/* ---------------- 3. SYSTEM BAR (Radar Scan) ---------------- */
 .top-system-bar {
     background: #020617;
     color: var(--primary);
@@ -120,8 +120,18 @@ body {
     border-bottom: 1px solid rgba(14, 165, 233, 0.2);
     text-transform: uppercase; text-align: center;
     overflow: hidden;
-    white-space: nowrap; /* Prevent wrapping on mobile */
+    white-space: nowrap;
+    position: relative; /* For scanner */
 }
+/* V47 NEW: Radar Scanner Animation */
+.top-system-bar::after {
+    content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.3), transparent);
+    animation: radar-sweep 4s infinite linear;
+    pointer-events: none;
+}
+@keyframes radar-sweep { 0% { left: -100%; } 100% { left: 200%; } }
+
 .led-light { 
     display: inline-block; width: 6px; height: 6px; 
     background: var(--primary); box-shadow: 0 0 10px var(--primary);
@@ -153,6 +163,7 @@ body {
 .social-link:hover { color: var(--primary); }
 .social-link.active { color: #fff; border-bottom: 2px solid var(--primary); }
 
+/* V47 NEW: Neon Pulse Button */
 .cta-btn {
   background: transparent; color: #fff; padding: 10px 24px;
   border: 1px solid var(--primary);
@@ -160,8 +171,15 @@ body {
   text-decoration: none; font-size: 0.8rem; transition: all 0.3s ease;
   display: inline-flex; align-items: center; gap: 10px;
   white-space: nowrap;
+  animation: neon-pulse 3s infinite;
 }
-.cta-btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); }
+.cta-btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 30px rgba(14, 165, 233, 0.6); }
+
+@keyframes neon-pulse {
+    0% { box-shadow: 0 0 5px rgba(14, 165, 233, 0.2); }
+    50% { box-shadow: 0 0 15px rgba(14, 165, 233, 0.5), 0 0 5px #fff; }
+    100% { box-shadow: 0 0 5px rgba(14, 165, 233, 0.2); }
+}
 
 /* ---------------- 5. HERO (Immersive) ---------------- */
 .truck-banner-section {
@@ -189,14 +207,12 @@ body {
     padding: 50px; max-width: 650px;
     border: 1px solid rgba(255,255,255,0.1); border-left: 5px solid var(--primary);
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    /* Mobile safety */
-    box-sizing: border-box; 
-    width: 100%;
+    box-sizing: border-box; width: 100%;
 }
 .hero-text-content h1 {
     font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; color: #fff;
     margin: 25px 0; letter-spacing: -0.02em;
-    word-wrap: break-word; /* Prevent overflow */
+    word-wrap: break-word; 
 }
 .hero-text-content p { font-size: 1.1rem; color: #cbd5e1; margin-bottom: 30px; }
 
@@ -222,7 +238,7 @@ body {
     background: transparent; border: none; box-shadow: none; text-align: left;
     display: flex; align-items: center; gap: 20px; padding: 0 20px;
     border-right: 1px solid rgba(255,255,255,0.05); flex: 1; justify-content: center;
-    min-width: 250px; /* Ensures stacking on small screens */
+    min-width: 250px; 
 }
 .stat-card:last-child { border-right: none; }
 .stat-card i { font-size: 2rem; color: var(--primary); margin: 0; }
@@ -332,7 +348,6 @@ body {
 .menu-btn { display: none; }
 
 @media (max-width: 992px) {
-  /* MOBILE SCROLL FIX: Force scroll attachment on mobile to stop zoom/jitter */
   body { 
       background-attachment: scroll !important; 
       height: auto;
@@ -340,7 +355,6 @@ body {
       overflow-x: hidden;
   }
   
-  /* Reduce Container Padding to prevent squeeze */
   .container { padding: 0 20px; }
 
   .menu-btn { display: block; background: none; border: none; cursor: pointer; z-index: 5001; }
@@ -351,27 +365,49 @@ body {
 
   .nav-links {
     position: fixed; top: 0; right: 0; width: 100%; height: 100dvh; 
-    background: #000; flex-direction: column; justify-content: center; gap: 30px;
+    background: rgba(0, 0, 0, 0.95); /* Better background */
+    flex-direction: column; justify-content: center; gap: 30px;
     transform: translateY(-100%); transition: 0.4s ease; z-index: 5000;
-    backdrop-filter: blur(20px); /* V46 FIX: Enhanced Blur */
+    backdrop-filter: blur(20px);
   }
   .nav-links.active { transform: translateY(0); }
   .desktop-only { display: none !important; }
 
-  /* Hero Mobile */
+  /* V47 FIX: Glassmorphic Hero on Mobile */
   .truck-banner-section { display: block; height: auto; padding-bottom: 0; }
   .hero-image-wrapper { position: relative; height: 50vh; opacity: 1; }
   .hero-img-mask img { opacity: 0.8; }
   .hero-text-content { 
-      background: #000; max-width: 100%; border: none; border-top: 1px solid var(--primary);
+      background: rgba(0, 0, 0, 0.65); /* Transparent Glass */
+      backdrop-filter: blur(15px);
+      max-width: 100%; border: none; border-top: 1px solid var(--primary);
       padding: 40px 20px; box-shadow: none;
+      margin-top: -20px; /* Overlap slightly */
+      position: relative; z-index: 5;
   }
-  .hero-text-content h1 { font-size: 2.2rem; } /* Smaller font for mobile */
+  .hero-text-content h1 { font-size: 2.2rem; }
 
-  .stats-grid-cards { flex-direction: column; gap: 0; }
-  .stat-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 30px; }
+  /* V47 FIX: Horizontal Swipe Stats for Mobile */
+  .stats-grid-cards { 
+      flex-direction: row; 
+      overflow-x: auto; 
+      scroll-snap-type: x mandatory;
+      gap: 15px; 
+      padding-bottom: 20px; 
+      justify-content: flex-start;
+      padding-left: 20px; padding-right: 20px;
+  }
+  .stat-card { 
+      min-width: 80%; /* Show mostly one card */
+      scroll-snap-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+      padding: 20px;
+  }
 
-  .bento-grid { grid-template-columns: 1fr; }
+  /* V47 FIX: Tighter Grid */
+  .bento-grid { grid-template-columns: 1fr; gap: 15px; }
   .bento-large { grid-column: auto; }
   .bento-item { flex-direction: column; text-align: center; align-items: center; }
 
@@ -379,7 +415,6 @@ body {
   .roadmap-grid::after { display: none; }
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
   
-  /* Footer Mobile Fix */
   .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
   .footer-links { grid-template-columns: 1fr 1fr; } 
 }
@@ -403,10 +438,7 @@ body {
   .dock-item i { font-size: 1.4rem; color: #fff; }
   .dock-item:active i { color: var(--primary); }
   
-  /* Adjust Footer Padding for Mobile Dock */
   .footer-bottom { padding-bottom: 100px; } 
-  
-  /* V46 FIX: Hide Gift Truck on Mobile to prevent overlap */
   .gift-truck-trigger { display: none !important; }
 }
 
@@ -423,7 +455,7 @@ body {
 .review-text { font-size: 1rem; color: #fff; margin-bottom: 25px; font-style: normal; opacity: 0.9; }
 .stars { color: #fbbf24; margin-bottom: 15px; }
 
-/* MARQUEE (V46 FIX: Smoother Animation) */
+/* MARQUEE */
 .clients-marquee { 
     background: #000; padding: 20px 0; border: none; margin-bottom: 20px;
     overflow: hidden; width: 100%;
@@ -437,7 +469,6 @@ body {
 .clients-track { 
     display: flex; gap: 50px; width: max-content; 
     animation: scroll 40s linear infinite;
-    /* V46 FIX: Hardware Acceleration */
     will-change: transform;
     transform: translate3d(0, 0, 0);
 }
