@@ -375,7 +375,6 @@ body {
 
   .roadmap-grid { flex-direction: column; gap: 40px; }
   .roadmap-grid::after { display: none; }
-  
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
   
   /* Footer Mobile Fix */
