@@ -1,11 +1,11 @@
 /* ===================================================================
    RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v39)
-   Theme: "The Titan" (Full Screen Immersive, Glass Panels, Command Style)
+   Theme: "The Titan" (Full Screen Immersive, Data Ribbon, Wide Panels)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (TITAN DARK) ---------------- */
 :root {
-  /* TITAN PALETTE */
+  /* TITAN PALETTE (Preserved Original Colors) */
   --primary: #0ea5e9;       /* Future Blue */
   --primary-dim: rgba(14, 165, 233, 0.1);
   --secondary: #ffffff;     /* White */
@@ -35,6 +35,7 @@ html {
   height: 100%;
 }
 
+/* Scrollbar (Titan Style) */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #000; }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 0; }
@@ -52,7 +53,7 @@ body {
   color: #94a3b8; 
   line-height: 1.7;
   
-  /* TITAN SCANLINE TEXTURE */
+  /* TITAN SCANLINE TEXTURE (New) */
   background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
   background-size: 100% 4px, 6px 100%;
   padding-bottom: 0; 
@@ -61,7 +62,7 @@ body {
 /* ---------------- 2. UTILITIES ---------------- */
 .container { 
     width: 100%;
-    max-width: 1500px; /* Ultra Wide */
+    max-width: 1500px; /* Ultra Wide for Dashboard feel */
     margin: 0 auto; 
     padding: 0 40px; 
 }
@@ -82,6 +83,14 @@ body {
     color: #fff;
     border-left: 5px solid var(--primary);
     padding-left: 20px;
+    position: relative;
+}
+/* Blinking status dot on titles */
+.section-title::after {
+    content: ''; position: absolute; top: 0; right: -20px;
+    width: 8px; height: 8px; background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+    animation: blink-soft 2s infinite;
 }
 
 .badge {
@@ -95,7 +104,7 @@ body {
 }
 .badge-center { display: flex; justify-content: center; width: 100%; }
 
-/* ---------------- 3. SYSTEM BAR ---------------- */
+/* ---------------- 3. SYSTEM BAR (Blinking) ---------------- */
 .top-system-bar {
     background: #020617;
     color: var(--primary);
@@ -113,6 +122,7 @@ body {
     margin-right: 10px; animation: pulse 2s infinite; 
 }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes blink-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
 /* ---------------- 4. NAVBAR (Solid Command Bar) ---------------- */
 .navbar {
@@ -149,7 +159,7 @@ body {
 }
 .cta-btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px rgba(14, 165, 233, 0.4); }
 
-/* ---------------- 5. TITAN FULL SCREEN HERO ---------------- */
+/* ---------------- 5. TITAN FULL SCREEN HERO (Immersive) ---------------- */
 .truck-banner-section {
     position: relative; 
     height: 90vh; /* Full Height */
@@ -161,7 +171,7 @@ body {
     padding-bottom: 80px;
 }
 
-/* 1. Image as Background (Absolute) */
+/* 1. Image as Background (Absolute & Full) */
 .hero-image-wrapper {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -175,7 +185,7 @@ body {
 .hero-img-mask img { 
     width: 100%; height: 100%; 
     object-fit: cover; 
-    opacity: 0.6; /* Dim the image */
+    opacity: 0.6; /* Dim the image for text pop */
     transform: scale(1.05);
     animation: zoom-slow 30s infinite alternate;
 }
@@ -224,7 +234,7 @@ body {
 }
 .outline-btn:hover { background: #fff; color: #000; }
 
-/* ---------------- 8. TITAN STATS RIBBON ---------------- */
+/* ---------------- 8. TITAN STATS RIBBON (Ticker Style) ---------------- */
 .stats-bar-wrapper { 
     position: relative; z-index: 10;
     background: var(--bg-panel);
