@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – CLASSIC DARK THEME (v2026.v36)
-   Theme: "Future Logistics" (Dark Navy, Cyan Blue, Glassmorphism)
+   RRP ENTERPRISES – CLASSIC DARK THEME (v2026.v37)
+   Theme: "Future Logistics" (Big Truck Layout, Text on Top)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (DARK THEME RESTORED) ---------------- */
@@ -155,46 +155,54 @@ body {
 .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5); }
 .cta-btn:active { transform: translateY(0); }
 
-/* ---------------- 5. DARK SPLIT HERO ---------------- */
+/* ---------------- 5. BIG TRUCK STACKED HERO (v37) ---------------- */
 .truck-banner-section {
     position: relative; 
-    padding: 80px 0;
+    padding: 60px 0 100px; /* More bottom padding for image overlap */
     background: transparent;
     overflow: hidden;
 }
+
+/* CHANGED TO STACKED LAYOUT */
 .hero-split-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 60px;
+    text-align: center;
+    gap: 40px;
 }
+
+/* Centered Text */
+.hero-text-content {
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
 .hero-text-content h1 {
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(3rem, 6vw, 5.5rem);
     font-weight: 800;
     line-height: 1.1;
     color: #fff;
     margin: 20px 0;
     letter-spacing: -0.02em;
 }
-.hero-text-content p {
-    font-size: 1.1rem;
-    color: #94a3b8;
-    max-width: 500px;
-    margin-bottom: 40px;
-}
-.hero-img-mask {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.1);
-    overflow: hidden;
-    transform: perspective(1000px) rotateY(-5deg);
-    transition: 0.5s ease;
-}
-.hero-img-mask:hover { transform: perspective(1000px) rotateY(0deg); border-color: var(--primary); }
-.hero-img-mask img { width: 100%; display: block; }
 
-.hero-btns { display: flex; gap: 20px; align-items: center; }
+.hero-text-content p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+/* Centered Buttons */
+.hero-btns { 
+    display: flex; 
+    gap: 20px; 
+    justify-content: center; 
+    width: 100%;
+}
+
 .outline-btn {
     padding: 12px 28px;
     border: 1px solid rgba(255,255,255,0.2);
@@ -204,6 +212,33 @@ body {
     transition: 0.3s;
 }
 .outline-btn:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+/* BIG TRUCK IMAGE */
+.hero-image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.hero-img-mask {
+    width: 100%;
+    max-width: 1100px; /* Limits width so it doesn't stretch too far on huge screens */
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6); /* Deep shadow */
+    border: 1px solid rgba(255,255,255,0.1);
+    overflow: hidden;
+    /* Removed rotation for cleaner "Big Picture" look */
+    transform: none; 
+    transition: 0.5s ease;
+}
+
+.hero-img-mask:hover { 
+    border-color: var(--primary); 
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.3);
+}
+.hero-img-mask img { width: 100%; display: block; }
 
 /* ---------------- 8. DARK STATS CARDS ---------------- */
 .stats-bar-wrapper { padding: 20px 0 60px; }
@@ -345,9 +380,9 @@ body {
   .social-link { font-size: 1.2rem; color: #fff; }
   .desktop-only { display: none !important; }
 
-  .hero-split-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-  .hero-btns { justify-content: center; }
-  .hero-img-mask { transform: rotate(0deg); max-height: 300px; object-fit: cover; }
+  /* Hero Mobile Fix */
+  .hero-text-content h1 { font-size: 3rem; } /* Smaller text on mobile */
+  .hero-img-mask { max-height: none; width: 100%; } /* Full width image */
   
   .stats-grid-cards { grid-template-columns: 1fr; }
   
