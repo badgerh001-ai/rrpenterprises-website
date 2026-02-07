@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v42)
-   Theme: "The Titan" (Added Roadmap Info Steps)
+   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v43)
+   Theme: "The Titan" (New Footer, 2-Col Links, Cyber Credits)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (TITAN DARK) ---------------- */
@@ -243,13 +243,12 @@ body {
 .bento-item h3 { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
 .bento-item p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
 
-/* ---------------- ROADMAP (Updated for Info Steps) ---------------- */
+/* ---------------- ROADMAP (With Info) ---------------- */
 .roadmap-section { padding: 100px 0; background: #050a14; }
 .roadmap-grid { 
     display: flex; justify-content: space-between; align-items: flex-start; 
     position: relative; margin-top: 50px;
 }
-/* Circuit Line - moved down to align with icons */
 .roadmap-grid::after {
     content: ''; position: absolute; top: 30px; left: 0; width: 100%; height: 1px;
     background: rgba(255,255,255,0.1); z-index: 0;
@@ -269,35 +268,78 @@ body {
     background: var(--primary); color: #000; padding: 2px 8px; font-size: 0.7rem; font-weight: 800;
 }
 .step-connector { display: none; }
-
-/* NEW STYLE FOR INFO TEXT */
 .roadmap-step p {
-    color: #94a3b8;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    max-width: 250px;
-    margin: 0 auto;
+    color: #94a3b8; font-size: 0.9rem; line-height: 1.6; max-width: 250px; margin: 0 auto;
 }
 
-/* ---------------- 12. FOOTER ---------------- */
+/* ---------------- 12. NEW FOOTER (Gradient + 2-Col Links) ---------------- */
 .footer-main { 
-    padding: 80px 0 40px; background: #000; border-top: 1px solid var(--primary);
-    padding-bottom: calc(100px + env(safe-area-inset-bottom));
+    padding: 80px 0 0; /* Padding bottom removed as it's handled by bottom bar */
+    background: linear-gradient(to bottom, #020617 0%, #000000 100%);
+    border-top: 1px solid rgba(14, 165, 233, 0.2);
+    position: relative;
+    overflow: hidden;
 }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; margin-bottom: 60px; }
+
+/* 2-Column Links Grid for "Quick Links" & "Services" */
+.footer-links { 
+    display: grid !important; 
+    grid-template-columns: 1fr 1fr; /* 2 Columns */
+    gap: 10px 20px;
+}
+
+.footer-grid { display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1.5fr; gap: 60px; margin-bottom: 60px; }
 .footer-col h4 { 
     color: var(--primary); font-size: 0.8rem; font-weight: 700; margin-bottom: 25px; 
     text-transform: uppercase; letter-spacing: 0.2em; 
 }
 .footer-links a { 
     color: #64748b; text-decoration: none; display: block; padding: 5px 0;
-    font-size: 0.9rem; transition: 0.3s; border-left: 2px solid transparent;
+    font-size: 0.9rem; transition: 0.3s;
 }
-.footer-links a:hover { color: #fff; padding-left: 10px; border-left-color: var(--primary); }
+.footer-links a:hover { color: #fff; transform: translateX(5px); color: var(--primary); }
+
+/* --- INTRIGUED BOTTOM BAR (Cyber Badge) --- */
 .footer-bottom { 
-    border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; 
+    background: rgba(14, 165, 233, 0.05);
+    border-top: 1px solid rgba(14, 165, 233, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px 40px; 
     display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom));
 }
+
+.copyright-text {
+    color: #64748b; font-size: 0.85rem; font-family: var(--font-main);
+}
+
+.dev-badge-container {
+    display: flex; align-items: center; gap: 10px;
+}
+
+.dev-badge {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--primary);
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: monospace; /* Tech Font */
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    display: flex; align-items: center; gap: 10px;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.1);
+}
+.dev-badge:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 20px var(--primary);
+}
+.dev-badge span { color: #94a3b8; }
+.dev-badge:hover span { color: #000; }
+.dev-badge strong { color: var(--primary); }
+.dev-badge:hover strong { color: #fff; }
 
 /* ---------------- 13. MOBILE RESPONSIVE (Strict Scroll Fix) ---------------- */
 .mobile-app-dock { display: none !important; }
@@ -344,7 +386,12 @@ body {
 
   .roadmap-grid { flex-direction: column; gap: 40px; }
   .roadmap-grid::after { display: none; }
+  
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  
+  /* Footer Mobile Fix */
+  .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+  .footer-links { grid-template-columns: 1fr 1fr; } /* Keep 2 cols even on mobile for compactness */
 }
 
 @media (max-width: 768px) {
@@ -365,12 +412,14 @@ body {
   }
   .dock-item i { font-size: 1.4rem; color: #fff; }
   .dock-item:active i { color: var(--primary); }
+  
+  /* Adjust Footer Padding for Mobile Dock */
+  .footer-bottom { padding-bottom: 100px; } 
 }
 
 /* REVIEWS (Colored Version) */
 .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px; }
 .review-card { 
-    /* COLORED BACKGROUND */
     background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(14, 165, 233, 0.15) 100%);
     border: 1px solid var(--primary);
     padding: 40px; position: relative; transition: 0.3s;
@@ -378,25 +427,17 @@ body {
 }
 .review-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px -10px rgba(14, 165, 233, 0.3); }
 .review-text { font-size: 1rem; color: #fff; margin-bottom: 25px; font-style: normal; opacity: 0.9; }
-.stars { color: #fbbf24; margin-bottom: 15px; } /* Gold stars pop against blue */
+.stars { color: #fbbf24; margin-bottom: 15px; }
 
-/* MARQUEE (Original Colors + Grid Fix) */
+/* MARQUEE */
 .clients-marquee { 
-    background: #000; padding: 20px 0; /* Reduced padding for tighter grid */
-    border: none;
-    margin-bottom: 20px;
+    background: #000; padding: 20px 0; border: none; margin-bottom: 20px;
 }
-/* Ensure logos are full color and visible */
 .client-logo img { 
-    height: 60px; 
-    filter: none; /* Removed grayscale */
-    opacity: 1; 
-    transition: 0.3s;
-    background: #fff; /* White bg for logos to pop */
-    padding: 5px; border-radius: 4px;
+    height: 60px; filter: none; opacity: 1; transition: 0.3s;
+    background: #fff; padding: 5px; border-radius: 4px;
 }
 .client-logo img:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.5); }
-
 .clients-track { display: flex; gap: 50px; width: max-content; animation: scroll 40s linear infinite; }
 .clients-marquee.reverse .clients-track { animation-direction: reverse; }
 @keyframes scroll { to { transform: translateX(-50%); } }
