@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v43)
-   Theme: "The Titan" (New Footer, 2-Col Links, Cyber Credits)
+   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v44)
+   Theme: "The Titan" (Fixed Truck Overlap, Final Polish)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (TITAN DARK) ---------------- */
@@ -462,10 +462,12 @@ body {
     background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(5px); z-index: 10000;
     justify-content: center; align-items: center; padding: 20px;
 }
+/* OVERLAP FIX: High Z-Index for Truck Button */
 .gift-truck-trigger {
     position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px;
     background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; z-index: 9990; border: 2px solid #fff; box-shadow: 0 0 30px var(--primary);
+    cursor: pointer; z-index: 10001; /* Above Everything */
+    border: 2px solid #fff; box-shadow: 0 0 30px var(--primary);
     animation: truck-idle 2s ease-in-out infinite;
 }
 .fa-truck-fast-custom { font-size: 1.5rem; color: #000; }
