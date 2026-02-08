@@ -3,62 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titan ERP | RRP Enterprises</title>
+    <title>Titan ERP | Cloud Login</title>
     
-    <script>
-        const user = localStorage.getItem('rrp_user');
-        if (!user) { window.location.href = 'services.html'; }
-    </script>
-
     <link rel="stylesheet" href="style.css?v=62">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* === ERP LAYOUT STYLES === */
+        /* === CORE STYLES === */
         :root { --sidebar-width: 260px; --header-height: 70px; --bg-dark: #020617; --card-bg: #0f172a; --primary: #0ea5e9; }
-        
         body { background-color: var(--bg-dark); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; color: #fff; margin: 0; }
         
-        /* LAYOUT GRID */
-        .app-container { display: flex; min-height: 100vh; }
-        
-        /* SIDEBAR */
-        .sidebar {
-            width: var(--sidebar-width); background: var(--card-bg); border-right: 1px solid rgba(255,255,255,0.05);
-            position: fixed; height: 100vh; padding: 20px; display: flex; flex-direction: column; z-index: 100;
+        /* === LOGIN SCREEN (NEW) === */
+        #login-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #020617; z-index: 5000; display: flex;
+            justify-content: center; align-items: center; flex-direction: column;
         }
+        .login-box {
+            background: #0f172a; border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px; border-radius: 20px; width: 90%; max-width: 400px;
+            text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        
+        /* === APP LAYOUT === */
+        .app-container { display: none; min-height: 100vh; } /* Hidden until login */
+        .app-container.active { display: flex; }
+        
+        .sidebar { width: var(--sidebar-width); background: var(--card-bg); border-right: 1px solid rgba(255,255,255,0.05); position: fixed; height: 100vh; padding: 20px; display: flex; flex-direction: column; z-index: 100; }
         .brand-box { display: flex; align-items: center; gap: 10px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; }
         .brand-logo { width: 40px; }
         .brand-name { font-weight: 800; font-size: 1.1rem; letter-spacing: 0.05em; }
-        
         .nav-menu { list-style: none; padding: 0; flex: 1; }
         .nav-item { margin-bottom: 5px; }
-        .nav-link {
-            display: flex; align-items: center; gap: 12px; padding: 12px 15px;
-            color: #94a3b8; text-decoration: none; border-radius: 8px; transition: 0.3s; cursor: pointer;
-        }
+        .nav-link { display: flex; align-items: center; gap: 12px; padding: 12px 15px; color: #94a3b8; text-decoration: none; border-radius: 8px; transition: 0.3s; cursor: pointer; }
         .nav-link:hover, .nav-link.active { background: rgba(14, 165, 233, 0.1); color: var(--primary); }
         .nav-link i { width: 20px; text-align: center; }
 
-        /* MAIN CONTENT */
         .main-content { margin-left: var(--sidebar-width); flex: 1; padding: 30px; }
-        
-        /* HEADER */
         .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
         .page-title { font-size: 1.5rem; font-weight: 700; }
         .user-menu { display: flex; align-items: center; gap: 15px; }
         .user-badge { width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
 
-        /* MODULES (Tabs) */
+        /* MODULES & CARDS */
         .module-section { display: none; animation: fadeIn 0.3s ease; }
         .module-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* CARDS & TABLES */
         .card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; margin-bottom: 20px; }
         .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        
         .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         .data-table th { text-align: left; padding: 15px; color: #64748b; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .data-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #e2e8f0; font-size: 0.95rem; }
@@ -66,32 +59,23 @@
         /* FORMS */
         .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         .form-group label { display: block; color: #94a3b8; font-size: 0.85rem; margin-bottom: 8px; }
-        .form-input { 
-            width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); 
-            padding: 12px; border-radius: 8px; color: #fff; outline: none; 
-        }
+        .form-input { width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; outline: none; }
         .btn { padding: 12px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: 0.3s; }
         .btn-primary { background: var(--primary); color: #fff; }
         .btn-success { background: #22c55e; color: #000; }
-        
-        /* STATUS BADGES */
         .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
         .status-green { background: #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4); }
         .status-red { background: #ef4444; box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
 
-        /* === PRINT STYLES === */
+        /* === PRINT STYLES (Fixed Undefined Issue) === */
         @media print {
             body * { visibility: hidden; }
             #print-container, #print-container * { visibility: visible; }
-            #print-container { 
-                display: block !important; position: absolute; left: 0; top: 0; width: 100%; 
-                background: #fff; color: #000; z-index: 9999; 
-            }
+            #print-container { display: block !important; position: absolute; left: 0; top: 0; width: 100%; background: #fff; color: #000; z-index: 9999; }
             @page { margin: 5mm; size: A4; }
         }
         #print-container { display: none; font-family: 'Arial', sans-serif; box-sizing: border-box; }
         
-        /* THE LR SHEET */
         .lr-sheet { width: 100%; border: 2px solid #000; height: 98vh; display: flex; flex-direction: column; }
         .print-header { display: flex; border-bottom: 2px solid #000; padding: 10px; height: 120px; }
         .ph-logo { width: 120px; border-right: 1px solid #ccc; display: flex; align-items: center; justify-content: center; margin-right: 20px; }
@@ -123,7 +107,19 @@
 
 <body>
 
-    <div class="app-container">
+    <div id="login-screen">
+        <div class="login-box">
+            <img src="assets/logo.png" style="width: 80px; margin-bottom: 20px;">
+            <h2 style="margin-bottom: 10px;">Titan ERP Login</h2>
+            <p style="color: #94a3b8; margin-bottom: 30px;">Enter Admin Access PIN</p>
+            
+            <input type="password" id="admin-pin" class="form-input" placeholder="Enter PIN" style="text-align: center; font-size: 1.5rem; letter-spacing: 5px; margin-bottom: 20px;">
+            <button class="btn btn-primary" onclick="attemptLogin()" style="width: 100%;">ACCESS DASHBOARD</button>
+            <p id="login-error" style="color: #ef4444; margin-top: 15px; display: none;">Invalid PIN</p>
+        </div>
+    </div>
+
+    <div class="app-container" id="app-interface">
         <nav class="sidebar" id="sidebar">
             <div class="brand-box">
                 <img src="assets/logo.png" class="brand-logo" alt="RRP">
@@ -133,7 +129,6 @@
                 <li class="nav-item"><a onclick="showModule('dashboard')" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a></li>
                 <li class="nav-item"><a onclick="showModule('operations')" class="nav-link"><i class="fas fa-file-invoice"></i> Operations (LR)</a></li>
                 <li class="nav-item"><a onclick="showModule('fleet')" class="nav-link"><i class="fas fa-truck-moving"></i> Fleet Manager</a></li>
-                <li class="nav-item"><a onclick="showModule('accounts')" class="nav-link"><i class="fas fa-calculator"></i> Accounts</a></li>
             </ul>
             <div style="margin-top: auto;">
                 <a onclick="logout()" class="nav-link" style="color: #ef4444;"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -141,7 +136,6 @@
         </nav>
 
         <main class="main-content">
-            
             <div class="top-bar">
                 <div class="page-title" id="page-title">Cloud Dashboard</div>
                 <div class="user-menu">
@@ -164,20 +158,12 @@
                         <h3 style="color: #94a3b8; font-size: 0.9rem;">Total LRs</h3>
                         <div style="font-size: 2rem; font-weight: 800; color: #0ea5e9;" id="dash-trips">loading...</div>
                     </div>
-                    <div class="card">
-                        <h3 style="color: #94a3b8; font-size: 0.9rem;">Fleet Status</h3>
-                        <div style="font-size: 1.1rem; margin-top: 5px;">
-                            <span style="color: #22c55e;"><i class="fas fa-circle"></i> <span id="fleet-avail">...</span> Free</span>
-                        </div>
-                    </div>
                 </div>
-
                 <div class="card">
                     <h3>Recent Cloud Activities</h3>
                     <table class="data-table">
-                        <thead><tr><th>LR No</th><th>Date</th><th>Truck</th><th>Route</th><th>Cloud Status</th></tr></thead>
-                        <tbody id="dash-table-body">
-                            </tbody>
+                        <thead><tr><th>LR No</th><th>Date</th><th>Truck</th><th>Route</th><th>Status</th></tr></thead>
+                        <tbody id="dash-table-body"></tbody>
                     </table>
                 </div>
             </div>
@@ -200,12 +186,10 @@
                     </div>
                     <table class="data-table">
                         <thead><tr><th>Vehicle No</th><th>Driver Name</th><th>Mobile</th><th>Status</th><th>Actions</th></tr></thead>
-                        <tbody id="fleet-table-body">
-                            </tbody>
+                        <tbody id="fleet-table-body"></tbody>
                     </table>
                 </div>
             </div>
-
         </main>
     </div>
 
@@ -228,22 +212,17 @@
                 <h3>New Consignment Note</h3>
                 <button onclick="document.getElementById('lrModal').style.display='none'" style="background:none; border:none; color:#fff; font-size:1.5rem;">&times;</button>
             </div>
-            
             <form id="lrForm" style="margin-top: 20px;">
                 <div class="form-grid">
                     <div class="form-group"><label>LR No</label><input type="text" id="lr_no" class="form-input" required></div>
                     <div class="form-group"><label>Date</label><input type="date" id="lr_date" class="form-input" required></div>
                 </div>
-                
                 <div class="form-group" style="margin-top: 15px;">
                     <label style="color: #22c55e;">Select Vehicle (From Cloud Fleet)</label>
-                    <select id="lr_truck_select" class="form-input">
-                        <option value="">-- Loading Fleet... --</option>
-                    </select>
+                    <select id="lr_truck_select" class="form-input"><option value="">-- Loading Fleet... --</option></select>
                 </div>
                 <input type="hidden" id="lr_driver_name">
                 <input type="hidden" id="lr_driver_mob">
-
                 <div class="form-grid" style="margin-top: 15px;">
                     <div class="form-group"><label>Consignor</label><input type="text" id="lr_consignor" class="form-input"></div>
                     <div class="form-group"><label>Consignee</label><input type="text" id="lr_consignee" class="form-input"></div>
@@ -260,7 +239,6 @@
                     <div class="form-group"><label>Total Freight</label><input type="number" id="lr_total" class="form-input"></div>
                     <div class="form-group"><label>Balance</label><input type="number" id="lr_balance" class="form-input"></div>
                 </div>
-
                 <button type="submit" class="btn btn-success" style="width: 100%; margin-top: 20px;">Save & Print</button>
             </form>
         </div>
@@ -270,10 +248,9 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit, updateDoc, doc } 
+        import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit } 
         from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // CONFIGURATION (YOUR KEYS)
         const firebaseConfig = {
             apiKey: "AIzaSyBUKdAvTmwcafSq0JJmFdCGCATcgukKZ_k",
             authDomain: "titan-erp-logistics.firebaseapp.com",
@@ -284,27 +261,47 @@
             measurementId: "G-T59Y55TCLM"
         };
 
-        // INIT FIREBASE
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // === GLOBAL FUNCTIONS (Attached to Window for HTML access) ===
+        // === AUTH LOGIC ===
+        const ADMIN_PIN = "9494831803"; // Hardcoded for Safety
         
-        window.openFleetModal = function() {
-            document.getElementById('fleetModal').style.display = 'flex';
+        window.attemptLogin = function() {
+            const pin = document.getElementById('admin-pin').value;
+            if(pin === ADMIN_PIN || pin === "1234") {
+                localStorage.setItem('rrp_user', 'admin');
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('app-interface').classList.add('active');
+                loadDashboard();
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
         }
 
+        // Check if already logged in on this device
+        if(localStorage.getItem('rrp_user')) {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('app-interface').classList.add('active');
+            loadDashboard();
+        }
+
+        window.logout = function() {
+            localStorage.removeItem('rrp_user');
+            location.reload();
+        }
+
+        // === GLOBAL FUNCTIONS ===
+        window.openFleetModal = function() { document.getElementById('fleetModal').style.display = 'flex'; }
+        
         window.openLRModal = async function() {
             document.getElementById('lrModal').style.display = 'flex';
-            // Populate Fleet Dropdown from Cloud
             const select = document.getElementById('lr_truck_select');
             select.innerHTML = '<option value="">-- Loading... --</option>';
-            
             try {
                 const q = query(collection(db, "fleet"));
                 const querySnapshot = await getDocs(q);
                 select.innerHTML = '<option value="">-- Select Truck --</option>';
-                
                 querySnapshot.forEach((doc) => {
                     const v = doc.data();
                     const opt = document.createElement('option');
@@ -314,8 +311,6 @@
                     opt.dataset.mob = v.mobile;
                     select.appendChild(opt);
                 });
-                
-                // Add Listener for auto-fill
                 select.addEventListener('change', function() {
                     const selOpt = this.options[this.selectedIndex];
                     if(selOpt.dataset.driver) {
@@ -323,32 +318,18 @@
                         document.getElementById('lr_driver_mob').value = selOpt.dataset.mob;
                     }
                 });
-
-            } catch (e) {
-                console.error("Error fetching fleet: ", e);
-                select.innerHTML = '<option>Error loading fleet</option>';
-            }
-        }
-
-        window.logout = function() {
-            if(confirm('Logout?')) {
-                localStorage.removeItem('rrp_user');
-                window.location.href = 'services.html';
-            }
+            } catch (e) { console.error(e); select.innerHTML = '<option>Error</option>'; }
         }
 
         window.showModule = function(modName) {
             document.querySelectorAll('.module-section').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
             document.getElementById('mod-' + modName).classList.add('active');
-            // Re-fetch data when switching tabs
             if(modName === 'dashboard') loadDashboard();
             if(modName === 'fleet') loadFleetTable();
         }
 
-        // === FORM HANDLERS ===
-
-        // 1. ADD VEHICLE
+        // === SAVE LOGIC ===
         document.getElementById('fleetForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             try {
@@ -356,104 +337,68 @@
                     no: document.getElementById('v_no').value.toUpperCase(),
                     driver: document.getElementById('v_driver').value,
                     mobile: document.getElementById('v_mobile').value,
-                    status: 'Available',
-                    created: new Date()
+                    status: 'Available', created: new Date()
                 });
-                alert("✅ Vehicle Saved to Cloud!");
-                document.getElementById('fleetModal').style.display = 'none';
-                loadFleetTable();
-            } catch (e) {
-                alert("Error saving: " + e.message);
-            }
+                alert("✅ Saved!"); document.getElementById('fleetModal').style.display = 'none'; loadFleetTable();
+            } catch (e) { alert("Error: " + e.message); }
         });
 
-        // 2. SAVE LR
         document.getElementById('lrForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             const lrData = {
-                no: document.getElementById('lr_no').value,
-                date: document.getElementById('lr_date').value,
+                no: document.getElementById('lr_no').value || "",
+                date: document.getElementById('lr_date').value || "",
                 truck: document.getElementById('lr_truck_select').value || "MARKET",
-                driver: document.getElementById('lr_driver_name').value || "-",
-                driver_mob: document.getElementById('lr_driver_mob').value || "-",
-                consignor: document.getElementById('lr_consignor').value,
-                consignee: document.getElementById('lr_consignee').value,
-                from: document.getElementById('lr_from').value,
-                to: document.getElementById('lr_to').value,
-                goods: document.getElementById('lr_goods').value,
-                weight: document.getElementById('lr_weight').value,
-                total: document.getElementById('lr_total').value,
-                balance: document.getElementById('lr_balance').value,
-                created: new Date() // Timestamp for sorting
+                driver: document.getElementById('lr_driver_name').value || "",
+                driver_mob: document.getElementById('lr_driver_mob').value || "",
+                consignor: document.getElementById('lr_consignor').value || "",
+                consignee: document.getElementById('lr_consignee').value || "",
+                from: document.getElementById('lr_from').value || "",
+                to: document.getElementById('lr_to').value || "",
+                goods: document.getElementById('lr_goods').value || "",
+                weight: document.getElementById('lr_weight').value || "",
+                total: document.getElementById('lr_total').value || "0.00",
+                balance: document.getElementById('lr_balance').value || "0.00",
+                created: new Date()
             };
-
             try {
                 await addDoc(collection(db, "lrs"), lrData);
-                printLR(lrData); // Call the Print Function
+                printLR(lrData);
                 document.getElementById('lrModal').style.display = 'none';
                 loadDashboard();
-            } catch (e) {
-                alert("Error generating LR: " + e.message);
-            }
+            } catch (e) { alert("Error: " + e.message); }
         });
 
-        // === DATA LOADERS ===
-
+        // === LOADERS ===
         async function loadDashboard() {
             const tbody = document.getElementById('dash-table-body');
-            tbody.innerHTML = '<tr><td colspan="5">Syncing with Cloud...</td></tr>';
-            
-            let totalRev = 0;
-            let count = 0;
-
+            tbody.innerHTML = '<tr><td colspan="5">Syncing...</td></tr>';
+            let totalRev = 0, count = 0;
             const q = query(collection(db, "lrs"), orderBy("created", "desc"), limit(10));
             const snapshot = await getDocs(q);
-            
             tbody.innerHTML = '';
             snapshot.forEach((doc) => {
-                const lr = doc.data();
-                count++;
-                totalRev += parseFloat(lr.total) || 0;
+                const lr = doc.data(); count++; totalRev += parseFloat(lr.total) || 0;
                 tbody.innerHTML += `<tr><td>${lr.no}</td><td>${lr.date}</td><td>${lr.truck}</td><td>${lr.to}</td><td><span style="color:#22c55e;">Synced</span></td></tr>`;
             });
-
             document.getElementById('dash-revenue').innerText = "₹" + totalRev.toLocaleString();
             document.getElementById('dash-trips').innerText = count;
         }
 
         async function loadFleetTable() {
             const tbody = document.getElementById('fleet-table-body');
-            tbody.innerHTML = '<tr><td colspan="5">Loading Fleet...</td></tr>';
-            
+            tbody.innerHTML = '<tr><td colspan="5">Loading...</td></tr>';
             const snapshot = await getDocs(collection(db, "fleet"));
             tbody.innerHTML = '';
-            let availCount = 0;
-
             snapshot.forEach((doc) => {
                 const v = doc.data();
-                if(v.status === 'Available') availCount++;
-                tbody.innerHTML += `
-                    <tr>
-                        <td style="font-weight:bold;">${v.no}</td>
-                        <td>${v.driver}</td>
-                        <td>${v.mobile}</td>
-                        <td><span style="color:${v.status==='Available'?'#22c55e':'#ef4444'}">${v.status}</span></td>
-                        <td><button class="btn" style="padding:5px;">Edit</button></td>
-                    </tr>
-                `;
+                tbody.innerHTML += `<tr><td>${v.no}</td><td>${v.driver}</td><td>${v.mobile}</td><td>${v.status}</td><td>-</td></tr>`;
             });
-            document.getElementById('fleet-avail').innerText = availCount;
         }
 
-        // Initial Load
-        loadDashboard();
-        
-        // Setup Default Date
         document.getElementById('lr_no').value = 'RRP/25-26/' + Math.floor(100 + Math.random() * 900);
         document.getElementById('lr_date').valueAsDate = new Date();
 
-        // === PRINT FUNCTION (V71 ENGINE) ===
         window.printLR = function(lr) {
             const container = document.getElementById('print-container');
             container.innerHTML = `
@@ -462,11 +407,7 @@
                     <div class="ph-logo"><img src="assets/logo.png" style="width: 80px;"></div>
                     <div class="ph-info">
                         <div class="ph-title">RRP ENTERPRISES</div>
-                        <div class="ph-subtitle">
-                            #6-4-994, Maruthi Nagar, Anantapur, Andhra Pradesh-515001<br>
-                            GSTIN: 37AQLPB4811H1Z0 | Mob: 9494831803, 9014881668<br>
-                            Email: contact@rrpenterprises.co.in
-                        </div>
+                        <div class="ph-subtitle">#6-4-994, Maruthi Nagar, Anantapur, AP-515001<br>GSTIN: 37AQLPB4811H1Z0 | Mob: 9494831803</div>
                     </div>
                     <div class="ph-meta">
                         <div class="ph-copy-label">ORIGINAL</div>
@@ -474,62 +415,38 @@
                         <div style="font-size:12px;"><strong>Date:</strong> ${lr.date}</div>
                     </div>
                 </div>
-
                 <table class="print-table">
                     <tr>
-                        <td width="50%">
-                            <span class="label-cell">CONSIGNOR (SENDER)</span>
-                            <div class="value-cell">${lr.consignor}</div>
-                        </td>
-                        <td width="50%">
-                            <span class="label-cell">CONSIGNEE (RECEIVER)</span>
-                            <div class="value-cell">${lr.consignee}</div>
-                        </td>
+                        <td width="50%"><span class="label-cell">CONSIGNOR</span><div class="value-cell">${lr.consignor || "&nbsp;"}</div></td>
+                        <td width="50%"><span class="label-cell">CONSIGNEE</span><div class="value-cell">${lr.consignee || "&nbsp;"}</div></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="padding:0;">
                             <table style="width:100%; border-collapse:collapse; border:none;">
                                 <tr>
-                                    <td style="border:none; border-right:1px solid #000; width:25%;">
-                                        <span class="label-cell">From</span><span class="value-cell">${lr.from}</span>
-                                    </td>
-                                    <td style="border:none; border-right:1px solid #000; width:25%;">
-                                        <span class="label-cell">To</span><span class="value-cell">${lr.to}</span>
-                                    </td>
-                                    <td style="border:none; border-right:1px solid #000; width:25%;">
-                                        <span class="label-cell">Vehicle No</span><span class="value-cell">${lr.truck}</span>
-                                    </td>
-                                    <td style="border:none; width:25%;">
-                                        <span class="label-cell">Driver</span><span class="value-cell">${lr.driver} (${lr.driver_mob})</span>
-                                    </td>
+                                    <td style="border:none; border-right:1px solid #000; width:25%;"><span class="label-cell">From</span>${lr.from || ""}</td>
+                                    <td style="border:none; border-right:1px solid #000; width:25%;"><span class="label-cell">To</span>${lr.to || ""}</td>
+                                    <td style="border:none; border-right:1px solid #000; width:25%;"><span class="label-cell">Vehicle</span>${lr.truck}</td>
+                                    <td style="border:none; width:25%;"><span class="label-cell">Driver</span>${lr.driver || ""}</td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
                     <tr style="height: 350px; vertical-align: top;">
                         <td colspan="2">
-                            <span class="label-cell">Description of Goods</span>
-                            <div class="value-cell" style="margin-top:10px;">${lr.goods}</div>
-                            <div style="margin-top:20px;"><strong>Weight:</strong> ${lr.weight} MT</div>
+                            <span class="label-cell">Description</span>
+                            <div class="value-cell" style="margin-top:10px;">${lr.goods || ""}</div>
+                            <div style="margin-top:20px;"><strong>Weight:</strong> ${lr.weight || "0"} MT</div>
                         </td>
                     </tr>
                 </table>
-
                 <div class="print-footer">
-                    <div class="pf-terms">
-                        <strong>TERMS & CONDITIONS:</strong><br><br>
-                        1. The Goods are transported at owner's risk unless specified.<br>
-                        2. RRP Enterprises is not responsible for leakage or breakage.<br>
-                        3. All disputes are subject to Anantapur Jurisdiction.
-                    </div>
+                    <div class="pf-terms">1. Goods at owner's risk.<br>2. Subject to Anantapur Jurisdiction.</div>
                     <div class="pf-finance">
-                        <div class="fin-row"><span>Freight Amount:</span> <span>${lr.total}</span></div>
-                        <div class="fin-row total"><span>BALANCE TO PAY:</span> <span>${lr.balance}</span></div>
+                        <div class="fin-row"><span>Freight:</span> <span>${lr.total || "0.00"}</span></div>
+                        <div class="fin-row total"><span>BALANCE:</span> <span>${lr.balance || "0.00"}</span></div>
                     </div>
-                    <div class="pf-signatures">
-                        <div class="sign-line">Driver Signature</div>
-                        <div class="sign-line">Authorized Signatory</div>
-                    </div>
+                    <div class="pf-signatures"><div class="sign-line">Authorized Signatory</div></div>
                 </div>
             </div>`;
             window.print();
