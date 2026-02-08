@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v48)
-   Theme: "The Titan" (Ultra-Modern, Holographic Cards, Entrance FX)
+   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v49)
+   Theme: "The Titan" (Grand Typography, Gold Accents, Refined Mobile)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (TITAN DARK) ---------------- */
@@ -8,6 +8,7 @@
   /* TITAN PALETTE */
   --primary: #0ea5e9;       /* Future Blue */
   --primary-dim: rgba(14, 165, 233, 0.1);
+  --accent-gold: #fbbf24;   /* Premium Gold Accent */
   --secondary: #ffffff;     /* White */
   
   /* Backgrounds */
@@ -80,22 +81,35 @@ body {
   font-weight: 800;
 }
 
+/* GRAND SECTION TITLES */
 .section-title {
-    font-size: clamp(2rem, 5vw, 3.5rem); /* Adjusted minimum size */
-    font-weight: 800;
+    font-size: clamp(2.5rem, 6vw, 4rem); /* Grand sizing */
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: -0.02em;
-    margin-bottom: 50px;
+    letter-spacing: -0.03em;
+    margin-bottom: 60px;
     color: #fff;
     border-left: 5px solid var(--primary);
-    padding-left: 20px;
+    padding-left: 30px;
     position: relative;
     word-wrap: break-word; 
+    z-index: 1;
+}
+/* Cinematic Watermark Text Behind Title */
+.section-title::before {
+    content: attr(data-text);
+    position: absolute;
+    top: -40px; left: 10px;
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.03);
+    z-index: -1;
+    white-space: nowrap;
+    pointer-events: none;
 }
 .section-title::after {
     content: ''; position: absolute; top: 0; right: -20px;
-    width: 8px; height: 8px; background: var(--primary);
-    box-shadow: 0 0 10px var(--primary);
+    width: 8px; height: 8px; background: var(--accent-gold); /* Gold Accent */
+    box-shadow: 0 0 10px var(--accent-gold);
     animation: blink-soft 2s infinite;
 }
 
