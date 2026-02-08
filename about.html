@@ -24,46 +24,20 @@
     <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/logo.png">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=53">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        /* TRENDY FOOTER STYLES */
-        .footer-main { padding: 80px 0 40px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 60px; }
-        .footer-col h4 { color: #fff; margin-bottom: 24px; font-size: 1.1rem; letter-spacing: 0.05em; text-transform: uppercase; }
-        .footer-links li { margin-bottom: 12px; list-style: none; }
-        .footer-links a { color: #94a3b8; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
-        .footer-links a:hover { color: #0ea5e9; padding-left: 5px; }
-        .footer-contact-item { display: flex; gap: 15px; margin-bottom: 20px; color: #94a3b8; align-items: flex-start; }
-        .footer-contact-item i { color: #0ea5e9; margin-top: 5px; }
-        
-        @media (max-width: 992px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
-
-        /* MOBILE DOCK PILL */
-        .mobile-app-dock { display: none; } 
-        @media (max-width: 768px) {
-            .mobile-app-dock {
-                position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-                width: 90%; max-width: 350px;
-                background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(16px);
-                border: 1px solid rgba(255,255,255,0.15); border-radius: 50px;
-                display: flex; justify-content: space-evenly; padding: 12px 20px;
-                z-index: 9999; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            }
-            .dock-item {
-                display: flex; flex-direction: column; align-items: center;
-                color: #94a3b8; text-decoration: none; font-size: 0.7rem; gap: 4px; border: none; background: none;
-            }
-            .dock-item i { font-size: 1.4rem; color: #fff; }
-            .dock-item.active i { color: #0ea5e9; }
-        }
-    </style>
 </head>
 
 <body>
+
+    <div class="top-system-bar">
+        <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span class="led-light"></span> 
+            <span>SYSTEM UPDATE: DIGITAL TRANSFORMATION IN PROCESS</span>
+            <img src="https://flagcdn.com/in.svg" alt="India Flag" style="height: 14px; border-radius: 2px;">
+        </div>
+    </div>
 
     <nav class="navbar">
         <div class="container">
@@ -76,133 +50,140 @@
                 <li><a href="index.html" class="social-link">Home</a></li>
                 <li><a href="about.html" class="social-link active">About Us</a></li>
                 <li><a href="services.html" class="social-link">Services</a></li>
-                <li><a href="contact.html" class="social-link">Tracking</a></li>
-                <li><a href="contact.html" class="cta-btn">Contact Us</a></li>
+                <li><a href="contact.html" class="social-link" style="display: flex; align-items: center; gap: 6px;">Tracking <span class="live-dot"></span></a></li>
+                <li><a href="contact.html" class="cta-btn">Contact Us <i class="fas fa-arrow-right"></i></a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="container">
-
-        <section class="hero-grid">
-            <div class="hero-main glass">
-                <span class="badge">Your Growth Partner</span>
-                <h1>About <span class="gradient-text">RRP ENTERPRISES</span></h1>
-                
-                <p style="font-size:1.1rem; line-height:1.8; color: var(--text-muted); margin-bottom: 20px;">
-                    RRP ENTERPRISES is a premier diversified logistics provider in India, specializing in the domestic B2B road transportation segment. 
-                    We don’t just move cargo; we power the supply chains that keep Indian businesses moving forward.
-                </p>
-                <p style="font-size:1rem; line-height:1.7; color: var(--text-muted);">
-                    We deliver reliable, end-to-end multimodal logistics solutions engineered around our customers’ unique requirements. 
-                    From FTL and Project Logistics to Freight Forwarding, we bridge the gap between where your products are and where they need to be.
-                </p>
+    <main>
+        <section class="truck-banner-section" style="height: 60vh;">
+            <div class="hero-image-wrapper">
+                <div class="hero-img-mask">
+                    <img src="assets/home-banner.jpg" alt="About RRP">
+                </div>
             </div>
+            <div class="container hero-split-grid">
+                <div class="hero-text-content">
+                    <div class="badge">Your Growth Partner</div>
+                    <h1 style="font-size: clamp(2rem, 5vw, 3.5rem);">About <span class="gradient-text">RRP ENTERPRISES</span></h1>
+                    <p style="font-size: 1.1rem; color: #cbd5e1;">
+                        RRP ENTERPRISES is a premier diversified logistics provider in India. We don’t just move cargo; we power the supply chains that keep Indian businesses moving forward.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-            <div class="stats-sidebar glass">
-                <h3 class="stats-title">Our Edge</h3>
-                
-                <div class="service-item">
+        <div class="stats-bar-wrapper">
+            <div class="container stats-grid-cards">
+                <div class="stat-card">
                     <i class="fas fa-award"></i>
                     <div>
-                        <h4>Unmatched Reliability</h4>
-                        <p class="text-dim">Meeting delivery commitments with absolute confidence.</p>
+                        <h4>Reliability</h4>
+                        <p>Absolute Confidence</p>
                     </div>
                 </div>
-
-                <div class="service-item">
+                <div class="stat-card">
                     <i class="fas fa-chart-line"></i>
                     <div>
-                        <h4>Scalable Growth</h4>
-                        <p class="text-dim">Logistics solutions that grow alongside your business.</p>
+                        <h4>Scalable</h4>
+                        <p>Growth Solutions</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-network-wired"></i>
+                    <div>
+                        <h4>End-to-End</h4>
+                        <p>Multimodal Logistics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="bento-section">
+            <div class="container">
+                <div class="badge-center"><span class="badge">Core Values</span></div>
+                <h2 class="section-title" style="text-align: center;" data-text="VALUES">
+                    Logistics <span class="gradient-text">Redefined</span>
+                </h2>
+
+                <div class="bento-grid">
+                    <div class="bento-item">
+                        <div class="bento-icon-box"><i class="fas fa-location-crosshairs"></i></div>
+                        <div>
+                            <h3>Real-Time Visibility</h3>
+                            <p>Stay informed with precision tracking and proactive updates.</p>
+                        </div>
+                    </div>
+
+                    <div class="bento-item">
+                        <div class="bento-icon-box"><i class="fas fa-arrows-spin"></i></div>
+                        <div>
+                            <h3>Cost Efficiency</h3>
+                            <p>Optimized routes and processes that protect your bottom line.</p>
+                        </div>
+                    </div>
+
+                    <div class="bento-item bento-large">
+                        <div class="bento-icon-box"><i class="fas fa-shield-halved"></i></div>
+                        <div>
+                            <h3>Precision & Safety</h3>
+                            <p>Cost-effective solutions without compromising timelines or security. We ensure your cargo arrives exactly as it left.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="glass" style="margin-top:60px; padding: 40px;">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <span class="badge">Core Values</span>
-                <h2 style="font-size: 2rem; margin-top: 10px;">Logistics <span class="gradient-text">Redefined</span></h2>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div class="service-item" style="border: 1px solid rgba(255,255,255,0.05);">
-                    <i class="fas fa-location-crosshairs"></i>
-                    <div>
-                        <h4>Real-Time Visibility</h4>
-                        <p class="text-dim">Stay informed with precision tracking and proactive updates.</p>
-                    </div>
-                </div>
-
-                <div class="service-item" style="border: 1px solid rgba(255,255,255,0.05);">
-                    <i class="fas fa-arrows-spin"></i>
-                    <div>
-                        <h4>Cost Efficiency</h4>
-                        <p class="text-dim">Optimized routes and processes that protect your bottom line.</p>
-                    </div>
-                </div>
-
-                <div class="service-item" style="border: 1px solid rgba(255,255,255,0.05);">
-                    <i class="fas fa-shield-halved"></i>
-                    <div>
-                        <h4>Precision & Safety</h4>
-                        <p class="text-dim">Cost-effective solutions without compromising timelines or security.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="hero-grid" style="margin-top:60px;">
-            <div class="glass" style="padding: 40px;">
-                <h2 style="margin-bottom: 20px; font-size: 1.5rem;"><i class="fas fa-eye" style="color: #0ea5e9; margin-right: 10px;"></i> Our Strategic Vision</h2>
-                <p style="line-height:1.7; color: var(--text-muted); font-size: 1.05rem;">
+        <section class="container" style="padding: 60px 24px; display: grid; gap: 40px;">
+            <div class="hero-text-content" style="max-width: 100%; border-left: 5px solid var(--accent-gold);">
+                <h2 style="margin-bottom: 20px; font-size: 1.8rem; color: #fff;"><i class="fas fa-eye" style="color: var(--primary); margin-right: 10px;"></i> Our Strategic Vision</h2>
+                <p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.7;">
                     To become India’s most trusted, technology-led logistics partner, enabling the seamless movement of goods and fueling the growth of our customers across every industry.
                 </p>
             </div>
 
-            <div class="glass" style="padding: 40px;">
-                <h2 style="margin-bottom: 20px; font-size: 1.5rem;"><i class="fas fa-bullseye" style="color: #0ea5e9; margin-right: 10px;"></i> Our Mission</h2>
-                <ul style="line-height:2; color: var(--text-muted); list-style: none; padding: 0;">
-                    <li><i class="fas fa-check" style="color: #0ea5e9; margin-right: 8px;"></i> Precision & Safety in every movement</li>
-                    <li><i class="fas fa-check" style="color: #0ea5e9; margin-right: 8px;"></i> Lasting partnerships through transparency</li>
-                    <li><i class="fas fa-check" style="color: #0ea5e9; margin-right: 8px;"></i> Innovation-first, technology-driven operations</li>
+            <div class="hero-text-content" style="max-width: 100%;">
+                <h2 style="margin-bottom: 20px; font-size: 1.8rem; color: #fff;"><i class="fas fa-bullseye" style="color: var(--primary); margin-right: 10px;"></i> Our Mission</h2>
+                <ul style="list-style: none; padding: 0; color: #cbd5e1; line-height: 2; font-size: 1.1rem;">
+                    <li><i class="fas fa-check" style="color: var(--festive-gold); margin-right: 10px;"></i> Precision & Safety in every movement</li>
+                    <li><i class="fas fa-check" style="color: var(--festive-gold); margin-right: 10px;"></i> Lasting partnerships through transparency</li>
+                    <li><i class="fas fa-check" style="color: var(--festive-gold); margin-right: 10px;"></i> Innovation-first, technology-driven operations</li>
                 </ul>
             </div>
         </section>
 
-        <section class="glass" style="margin: 80px 0; text-align: center; padding: 60px 20px;">
-            <h2 style="font-size: 2rem; margin-bottom: 20px;">
-                Ready to <span class="gradient-text">Streamline Your Supply Chain?</span>
-            </h2>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 30px;">
-                Whether it’s a complex project or a standard shipment, we bring the technology, fleet, and commitment to ensure your success.
-            </p>
-            <a href="contact.html" class="cta-btn">Contact Us Today</a>
+        <section style="padding: 100px 20px; text-align: center; background: linear-gradient(to bottom, #000, #0b1121);">
+            <div class="container">
+                <h2 style="font-size: clamp(2rem, 5vw, 3rem); color: #fff; margin-bottom: 20px; font-weight: 800;">
+                    Ready to <span class="gradient-text">Streamline Your Supply Chain?</span>
+                </h2>
+                <p style="color: #94a3b8; max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem;">
+                    Whether it’s a complex project or a standard shipment, we bring the technology, fleet, and commitment to ensure your success.
+                </p>
+                <a href="contact.html" class="cta-btn" style="display: inline-flex;">Contact Us Today <i class="fas fa-arrow-right"></i></a>
+            </div>
         </section>
 
     </main>
 
     <footer class="footer-main">
         <div class="container footer-grid">
-            
             <div class="footer-col">
                 <div class="logo-container">
                     <img src="assets/logo.png" class="main-logo" alt="Logo">
-                    <div class="logo-text">RRP <span>ENTERPRISES</span></div>
+                    <div class="logo-text" style="color: #fff;">RRP <span>ENTERPRISES</span></div>
                 </div>
-                <p style="color: #94a3b8; margin-top: 20px; line-height: 1.6;">
-                    Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.
-                </p>
+                <p style="color: #cbd5e1; margin-top: 20px;">Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.</p>
             </div>
 
             <div class="footer-col">
-                <h4>Our Services</h4>
+                <h4>Services</h4>
                 <ul class="footer-links">
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> FTL Transport</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Bulk Cargo</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Project Logistics</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Supply Chain</a></li>
+                    <li><a href="services.html">FTL Transport</a></li>
+                    <li><a href="services.html">Bulk Cargo</a></li>
+                    <li><a href="services.html">Project Logistics</a></li>
+                    <li><a href="services.html">Supply Chain</a></li>
                 </ul>
             </div>
 
@@ -211,57 +192,48 @@
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact Support</a></li>
-                    <li><a href="contact.html">Track Shipment</a></li>
+                    <li><a href="contact.html">Tracking</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4>Get in Touch</h4>
+                <h4>Contact</h4>
                 <div class="footer-contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 600;">+91 94948 31803</div>
-                        <div style="font-size: 0.9rem;">24/7 Support</div>
+                        <div style="color: #fff; font-weight: 700;">+91 94948 31803</div>
+                        <div style="font-size: 0.9rem; color: #94a3b8;">24/7 Support</div>
                     </div>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 600;">contact@rrpenterprises.co.in</div>
-                        <div style="font-size: 0.9rem;">Drop us a mail</div>
+                        <div style="color: #fff; font-weight: 700;">contact@rrpenterprises.co.in</div>
+                        <div style="font-size: 0.9rem; color: #94a3b8;">Official Email</div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="container" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; text-align: center; color: rgba(255,255,255,0.3);">
-            &copy; 2026 RRP Enterprises. All rights reserved.
+
+        <div class="footer-bottom">
+            <div class="copyright-text">
+                &copy; 2026 RRP Enterprises & Logistics. All Rights Reserved. <span style="opacity: 0.5;">|</span> Strategic Supply Chain Solutions.
+            </div>
+            <div class="dev-badge-container">
+                <div class="dev-badge">
+                    <span>DESIGNED BY</span>
+                    <strong>RC'S ANANTHA</strong>
+                </div>
+            </div>
         </div>
     </footer>
 
     <div class="mobile-app-dock">
-        <a href="tel:+919494831803" class="dock-item">
-            <i class="fas fa-phone"></i>
-            <span>Call</span>
-        </a>
-        <a href="https://wa.me/919494831803" class="dock-item">
-            <i class="fab fa-whatsapp"></i>
-            <span>Chat</span>
-        </a>
-        <a href="contact.html" class="dock-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Track</span>
-        </a>
-    </div>
-
-    <div class="floating-badges">
-        <a href="https://wa.me/919494831803" class="badge-round whatsapp" aria-label="Chat">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="tel:+919494831803" class="badge-round call" aria-label="Call">
-            <i class="fas fa-phone"></i>
-        </a>
+        <a href="tel:+919494831803" class="dock-item"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/919494831803" class="dock-item"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
+        <a href="contact.html" class="dock-item"><i class="fas fa-map-marker-alt"></i><span>Track</span></a>
     </div>
 
     <script>
