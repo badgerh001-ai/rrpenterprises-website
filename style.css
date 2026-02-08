@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v53)
-   Theme: "The Titan" (Festive, Grand, Live Tracking, Mobile Fixed)
+   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v57)
+   Theme: "The Titan" (System Bar Fixed, Live Tracking, Grand Visuals)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (TITAN DARK + FESTIVE) ---------------- */
@@ -275,8 +275,7 @@ body {
 
 .hero-btns { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
 .outline-btn {
-    padding: 12px 28px; border: 1px solid rgba(255,255,255,0.3); color: #fff;
-    font-weight: 700; text-transform: uppercase; text-decoration: none;
+    padding: 12px 28px; border: 1px solid rgba(255,255,255,0.3); color: #fff;<br>    font-weight: 700; text-transform: uppercase; text-decoration: none;
     font-size: 0.8rem; letter-spacing: 0.1em; transition: 0.3s;
     white-space: nowrap;
 }
@@ -446,14 +445,17 @@ body {
   .nav-links.active { transform: translateY(0); }
   .desktop-only { display: none !important; }
 
-  /* V53 FIX: Top System Bar Mobile Visibility */
+  /* V57 FIX: Top System Bar Mobile Visibility (Fixed Wrap) */
   .top-system-bar {
-      height: auto; /* Allow expansion */
-      padding: 10px 0;
+      height: auto !important;
+      padding: 12px 0 !important;
+      white-space: normal !important;
   }
   .top-system-bar .container {
-      white-space: normal; /* Allow text wrapping */
-      flex-wrap: wrap; /* Allow flex items to wrap */
+      flex-wrap: wrap !important;
+      justify-content: center;
+      row-gap: 5px;
+      white-space: normal !important;
       text-align: center;
       line-height: 1.4;
   }
