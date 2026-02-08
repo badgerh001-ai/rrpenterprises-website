@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v50)
-   Theme: "The Titan" (Festive Edition, Grand Gold, Mobile Elite)
+   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v53)
+   Theme: "The Titan" (Festive, Grand, Live Tracking, Mobile Fixed)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (TITAN DARK + FESTIVE) ---------------- */
@@ -100,6 +100,21 @@ body {
     width: 8px; height: 8px; background: var(--festive-gold); /* Gold Accent */
     box-shadow: 0 0 15px var(--festive-gold);
     animation: blink-soft 2s infinite;
+}
+
+/* --- V53 NEW: Blinking Live Dot --- */
+.live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e; /* Bright Green */
+    border-radius: 50%;
+    box-shadow: 0 0 5px #22c55e;
+    animation: blink-live 1.5s ease-in-out infinite alternate;
+}
+@keyframes blink-live {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0.4; transform: scale(0.8); }
 }
 
 /* --- FESTIVE BADGE OVERRIDE --- */
@@ -430,6 +445,21 @@ body {
   }
   .nav-links.active { transform: translateY(0); }
   .desktop-only { display: none !important; }
+
+  /* V53 FIX: Top System Bar Mobile Visibility */
+  .top-system-bar {
+      height: auto; /* Allow expansion */
+      padding: 10px 0;
+  }
+  .top-system-bar .container {
+      white-space: normal; /* Allow text wrapping */
+      flex-wrap: wrap; /* Allow flex items to wrap */
+      text-align: center;
+      line-height: 1.4;
+  }
+  /* Hide the radar sweep on mobile as it conflicts with wrapped text */
+  .top-system-bar::after { display: none; }
+
 
   /* V50 FIX: Glassmorphic Hero on Mobile (Transparent Text) */
   .truck-banner-section { display: block; height: auto; padding-bottom: 0; }
