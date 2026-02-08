@@ -20,7 +20,6 @@
         /* === DASHBOARD CORE STYLES === */
         body { padding-bottom: 100px; background-color: #000; }
         
-        /* Header & Stats */
         .dash-header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 20px 0; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -41,7 +40,6 @@
         .stat-number { font-size: 2.2rem; font-weight: 800; color: #fff; margin: 10px 0; }
         .stat-label { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; }
 
-        /* Toolbar & Filters */
         .toolbar {
             display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; background: rgba(255,255,255,0.03);
             padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); align-items: center;
@@ -61,7 +59,6 @@
         .tool-btn:hover { background: #0ea5e9; border-color: #0ea5e9; color: #000; }
         .tool-btn.primary { background: #22c55e; border-color: #22c55e; color: #000; font-weight: 700; }
 
-        /* Database Table */
         .db-container {
             background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.08);
             border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
@@ -79,7 +76,7 @@
         .status-paid { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
         .status-due { background: rgba(234, 179, 8, 0.15); color: #facc15; }
 
-        /* === ADVANCED MODAL === */
+        /* === MODAL === */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); z-index: 5000;
@@ -92,14 +89,12 @@
         }
         .close-modal { position: absolute; top: 20px; right: 20px; color: #94a3b8; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
         
-        /* Form Sections */
         .form-section-title { 
             color: #0ea5e9; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; 
             margin: 25px 0 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; 
         }
         .form-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        
         .form-group { margin-bottom: 15px; }
         .form-label { display: block; color: #94a3b8; font-size: 0.75rem; margin-bottom: 5px; text-transform: uppercase; }
         .form-input { 
@@ -108,22 +103,33 @@
             font-family: monospace; font-size: 0.95rem;
         }
         .form-input:focus { border-color: #0ea5e9; background: rgba(0,0,0,0.3); }
+        .submit-btn { width: 100%; padding: 14px; background: #0ea5e9; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px; font-size: 1rem; }
 
-        /* === PRINT STYLES (PROFESSIONAL HALF-PAGE) === */
+        /* === PRINT STYLES (FIXED) === */
         @media print {
+            /* 1. HIDE EVERYTHING ELSE */
             body * { visibility: hidden; }
-            #print-container, #print-container * { visibility: visible; }
-            #print-container { 
-                position: absolute; left: 0; top: 0; width: 100%; 
-                background: white; color: black;
+            .navbar, .dash-header, .stat-grid, .toolbar, .db-container, .modal-overlay, .mobile-app-dock { display: none !important; }
+            
+            /* 2. SHOW PRINT CONTAINER */
+            #print-container, #print-container * { 
+                visibility: visible; 
+            }
+            #print-container {
+                display: block !important;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white;
+                color: black;
+                z-index: 9999;
             }
             @page { margin: 0; size: A4; }
-            .no-print { display: none !important; }
         }
 
         #print-container { display: none; font-family: 'Arial', sans-serif; }
         
-        /* The Receipt Card (Half Page) */
         .lr-copy-card {
             width: 100%; height: 49vh; /* Half Page */
             border-bottom: 2px dashed #000;
@@ -238,7 +244,7 @@
         <div class="modal-box">
             <button class="close-modal" onclick="closeLRModal()">&times;</button>
             <h2 style="color: #fff;">Generate Lorry Receipt</h2>
-            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Fill in details to generate a legal transport document.</p>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Rate field has been removed as per request.</p>
             
             <form onsubmit="saveLR(event)">
                 
@@ -289,43 +295,34 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label">Actual Weight (MT)</label>
-                        <input type="number" id="weight_act" class="form-input" oninput="calcTotal()" required>
+                        <input type="number" id="weight_act" class="form-input" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Charged Weight (MT)</label>
-                        <input type="number" id="weight_chg" class="form-input" oninput="calcTotal()" required>
+                        <input type="number" id="weight_chg" class="form-input" required>
                     </div>
                 </div>
 
                 <div class="form-section-title">Billing & Tax</div>
+                
                 <div class="form-grid-3">
                     <div class="form-group">
-                        <label class="form-label">Rate (Per MT)</label>
-                        <input type="number" id="rate" class="form-input" oninput="calcTotal()" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Basic Freight</label>
-                        <input type="number" id="freight_base" class="form-input" readonly>
+                        <label class="form-label">Total Freight Amount</label>
+                        <input type="number" id="total_amt" class="form-input" placeholder="0.00" oninput="calcTotal()" style="font-weight: bold; color: #facc15;" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Other Charges</label>
-                        <input type="number" id="charges" class="form-input" placeholder="Hamali/Halt" oninput="calcTotal()">
-                    </div>
-                </div>
-
-                <div class="form-grid-3">
-                    <div class="form-group">
-                        <label class="form-label">Total Amount</label>
-                        <input type="number" id="total_amt" class="form-input" style="font-weight: bold; color: #facc15;" readonly>
+                        <input type="number" id="charges" class="form-input" placeholder="0.00" oninput="calcTotal()">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Advance Paid</label>
-                        <input type="number" id="advance" class="form-input" oninput="calcTotal()">
+                        <input type="number" id="advance" class="form-input" placeholder="0.00" oninput="calcTotal()">
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Balance To Pay</label>
-                        <input type="number" id="balance" class="form-input" style="font-weight: bold; color: #ef4444;" readonly>
-                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Balance To Pay</label>
+                    <input type="number" id="balance" class="form-input" style="font-weight: bold; color: #ef4444;" readonly>
                 </div>
 
                 <div class="form-group">
@@ -378,20 +375,18 @@
                     <td rowspan="2" style="width: 15%;"><strong>Truck No:</strong><br><span class="p-truck"></span></td>
                     <th>Description</th>
                     <th>Weight</th>
-                    <th>Rate</th>
-                    <th>Freight</th>
+                    <th>Total Freight</th>
                 </tr>
                 <tr>
                     <td><span class="p-goods"></span></td>
                     <td><span class="p-weight"></span> MT</td>
-                    <td><span class="p-rate"></span></td>
-                    <td><span class="p-freight"></span></td>
+                    <td><span class="p-total"></span></td>
                 </tr>
                 <tr>
                     <td colspan="3" style="text-align: left; font-size: 10px;">
                         <strong>GST Note:</strong> <span class="p-gst-note"></span>
                     </td>
-                    <td colspan="3" style="text-align: right;"><strong>Other Charges:</strong></td>
+                    <td colspan="2" style="text-align: right;"><strong>Other Charges:</strong></td>
                     <td><span class="p-charges"></span></td>
                 </tr>
                 <tr>
@@ -399,19 +394,17 @@
                         <span class="box-title">Bank Details</span>
                         HDFC Bank | A/C: 502000...<br>IFSC: HDFC000... | Branch: Anantapur
                     </td>
-                    <td colspan="3" style="text-align: right;"><strong>Total:</strong></td>
-                    <td><strong><span class="p-total"></span></strong></td>
-                </tr>
-                <tr>
-                    <td colspan="3" style="text-align: right;">Advance:</td>
+                    <td colspan="2" style="text-align: right;"><strong>Advance:</strong></td>
                     <td><span class="p-advance"></span></td>
                 </tr>
                 <tr>
-                    <td colspan="3" style="font-size: 10px; text-align: left;">
+                    <td colspan="2" style="text-align: right; background: #eee;"><strong>BALANCE:</strong></td>
+                    <td style="background: #eee;"><strong><span class="p-balance"></span></strong></td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="font-size: 10px; text-align: left; border: none;">
                         Subject to Anantapur Jurisdiction.
                     </td>
-                    <td colspan="3" style="text-align: right; background: #eee;"><strong>BALANCE:</strong></td>
-                    <td style="background: #eee;"><strong><span class="p-balance"></span></strong></td>
                 </tr>
             </table>
 
@@ -461,20 +454,18 @@
                     <td rowspan="2" style="width: 15%;"><strong>Truck No:</strong><br><span class="p-truck-2"></span></td>
                     <th>Description</th>
                     <th>Weight</th>
-                    <th>Rate</th>
-                    <th>Freight</th>
+                    <th>Total Freight</th>
                 </tr>
                 <tr>
                     <td><span class="p-goods-2"></span></td>
                     <td><span class="p-weight-2"></span> MT</td>
-                    <td><span class="p-rate-2"></span></td>
-                    <td><span class="p-freight-2"></span></td>
+                    <td><span class="p-total-2"></span></td>
                 </tr>
                 <tr>
                     <td colspan="3" style="text-align: left; font-size: 10px;">
                         <strong>GST Note:</strong> <span class="p-gst-note-2"></span>
                     </td>
-                    <td colspan="3" style="text-align: right;"><strong>Other Charges:</strong></td>
+                    <td colspan="2" style="text-align: right;"><strong>Other Charges:</strong></td>
                     <td><span class="p-charges-2"></span></td>
                 </tr>
                 <tr>
@@ -482,19 +473,17 @@
                         <span class="box-title">Bank Details</span>
                         HDFC Bank | A/C: 502000...<br>IFSC: HDFC000... | Branch: Anantapur
                     </td>
-                    <td colspan="3" style="text-align: right;"><strong>Total:</strong></td>
-                    <td><strong><span class="p-total-2"></span></strong></td>
-                </tr>
-                <tr>
-                    <td colspan="3" style="text-align: right;">Advance:</td>
+                    <td colspan="2" style="text-align: right;"><strong>Advance:</strong></td>
                     <td><span class="p-advance-2"></span></td>
                 </tr>
                 <tr>
-                    <td colspan="3" style="font-size: 10px; text-align: left;">
+                    <td colspan="2" style="text-align: right; background: #eee;"><strong>BALANCE:</strong></td>
+                    <td style="background: #eee;"><strong><span class="p-balance-2"></span></strong></td>
+                </tr>
+                <tr>
+                    <td colspan="6" style="font-size: 10px; text-align: left; border: none;">
                         Subject to Anantapur Jurisdiction.
                     </td>
-                    <td colspan="3" style="text-align: right; background: #eee;"><strong>BALANCE:</strong></td>
-                    <td style="background: #eee;"><strong><span class="p-balance-2"></span></strong></td>
                 </tr>
             </table>
 
@@ -511,7 +500,6 @@
     </div>
 
     <script>
-        // === 1. INIT & AUTH ===
         document.addEventListener('DOMContentLoaded', () => {
             const userData = JSON.parse(localStorage.getItem('rrp_user_data'));
             if(userData) {
@@ -519,7 +507,7 @@
             }
             renderTable();
             
-            // Default LR
+            // Random LR
             document.getElementById('lr_no').value = 'LR-' + new Date().getFullYear() + '-' + Math.floor(100 + Math.random() * 900);
             document.getElementById('lr_date').valueAsDate = new Date();
         });
@@ -531,27 +519,21 @@
             }
         }
 
-        // === 2. MODAL & CALCS ===
         const modal = document.getElementById('lrModal');
         function openLRModal() { modal.style.display = 'flex'; }
         function closeLRModal() { modal.style.display = 'none'; }
         
+        // REVISED CALCULATION (Total Input)
         function calcTotal() {
-            const weight = parseFloat(document.getElementById('weight_chg').value) || 0;
-            const rate = parseFloat(document.getElementById('rate').value) || 0;
+            const total = parseFloat(document.getElementById('total_amt').value) || 0;
             const charges = parseFloat(document.getElementById('charges').value) || 0;
             const advance = parseFloat(document.getElementById('advance').value) || 0;
 
-            const baseFreight = weight * rate;
-            const total = baseFreight + charges;
-            const balance = total - advance;
-
-            document.getElementById('freight_base').value = baseFreight.toFixed(2);
-            document.getElementById('total_amt').value = total.toFixed(2);
+            // Balance = (Total + Charges) - Advance
+            const balance = (total + charges) - advance;
             document.getElementById('balance').value = balance.toFixed(2);
         }
 
-        // === 3. DATABASE OPERATIONS ===
         function saveLR(e) {
             e.preventDefault();
             
@@ -567,7 +549,7 @@
                 consignee_gst: document.getElementById('consignee_gst').value,
                 goods: document.getElementById('goods_desc').value,
                 weight: document.getElementById('weight_chg').value,
-                rate: document.getElementById('rate').value,
+                // RATE REMOVED FROM DATA OBJECT
                 charges: document.getElementById('charges').value || 0,
                 total: document.getElementById('total_amt').value,
                 advance: document.getElementById('advance').value || 0,
@@ -592,7 +574,6 @@
             let totalRev = 0, pendingCount = 0;
 
             db.forEach((lr, index) => {
-                // Filter Logic
                 if(filter && !JSON.stringify(lr).toLowerCase().includes(filter.toLowerCase())) return;
 
                 totalRev += parseFloat(lr.total);
@@ -619,7 +600,6 @@
                 tbody.innerHTML += row;
             });
 
-            // Update Stats
             document.getElementById('stat-total').innerText = db.length;
             document.getElementById('stat-revenue').innerText = "₹" + totalRev.toLocaleString();
             document.getElementById('stat-pending').innerText = pendingCount;
@@ -638,32 +618,22 @@
             }
         }
 
-        // === 4. EXPORT TO CSV ===
         function exportToCSV() {
             const db = JSON.parse(localStorage.getItem('rrp_lr_master'));
             if(!db || db.length === 0) { alert("No data to export"); return; }
-
-            let csv = 'LR No,Date,Consignor,Consignee,Truck,Destination,Total Amount,Balance\n';
-            db.forEach(row => {
-                csv += `${row.no},${row.date},"${row.consignor}","${row.consignee}",${row.truck},"${row.to}",${row.total},${row.balance}\n`;
-            });
-
+            let csv = 'LR No,Date,Consignor,Consignee,Truck,Total,Balance\n';
+            db.forEach(row => { csv += `${row.no},${row.date},"${row.consignor}","${row.consignee}",${row.truck},${row.total},${row.balance}\n`; });
             const blob = new Blob([csv], { type: 'text/csv' });
             const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'RRP_Shipments_Export.csv';
-            a.click();
+            const a = document.createElement('a'); a.href = url; a.download = 'RRP_Export.csv'; a.click();
         }
 
-        // === 5. PRINT ENGINE ===
         function printFromDB(index) {
             const db = JSON.parse(localStorage.getItem('rrp_lr_master'));
             printLR(db[index]);
         }
 
         function printLR(lr) {
-            // Function to fill a set of fields (Original & Duplicate)
             const fill = (suffix) => {
                 document.querySelector(`.p-lrno${suffix}`).innerText = lr.no;
                 document.querySelector(`.p-date${suffix}`).innerText = lr.date;
@@ -676,10 +646,10 @@
                 document.querySelector(`.p-to${suffix}`).innerText = lr.to;
                 document.querySelector(`.p-goods${suffix}`).innerText = lr.goods;
                 document.querySelector(`.p-weight${suffix}`).innerText = lr.weight;
-                document.querySelector(`.p-rate${suffix}`).innerText = lr.rate;
-                document.querySelector(`.p-freight${suffix}`).innerText = (lr.weight * lr.rate).toFixed(2);
-                document.querySelector(`.p-charges${suffix}`).innerText = lr.charges;
+                
+                // NO RATE - FREIGHT IS TOTAL
                 document.querySelector(`.p-total${suffix}`).innerText = lr.total;
+                document.querySelector(`.p-charges${suffix}`).innerText = lr.charges;
                 document.querySelector(`.p-advance${suffix}`).innerText = lr.advance;
                 document.querySelector(`.p-balance${suffix}`).innerText = lr.balance;
                 
@@ -689,10 +659,8 @@
                 document.querySelector(`.p-gst-note${suffix}`).innerText = gstText;
             };
 
-            // Fill Copy 1 and Copy 2
             fill("");
             fill("-2");
-
             window.print();
         }
     </script>
