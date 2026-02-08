@@ -24,44 +24,12 @@
     <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/logo.png">
 
-    <link rel="stylesheet" href="style.css?v=13">
-    
+    <link rel="stylesheet" href="style.css?v=53">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* TRENDY FOOTER STYLE */
-        .footer-main { padding: 80px 0 40px; background: #000; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 60px; }
-        .footer-col h4 { color: #fff; margin-bottom: 24px; font-size: 1.1rem; letter-spacing: 0.05em; text-transform: uppercase; }
-        .footer-links li { margin-bottom: 12px; list-style: none; }
-        .footer-links a { color: #94a3b8; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
-        .footer-links a:hover { color: #0ea5e9; padding-left: 5px; }
-        .footer-contact-item { display: flex; gap: 15px; margin-bottom: 20px; color: #94a3b8; align-items: flex-start; }
-        .footer-contact-item i { color: #0ea5e9; margin-top: 5px; }
-        @media (max-width: 992px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
-
-        /* FIXED MOBILE DOCK */
-        .mobile-app-dock { display: none; } 
-        @media (max-width: 768px) {
-            .mobile-app-dock {
-                position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-                width: 90%; max-width: 350px;
-                background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(16px);
-                border: 1px solid rgba(255,255,255,0.15); border-radius: 50px;
-                display: flex; justify-content: space-evenly; padding: 12px 20px;
-                z-index: 9999; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            }
-            .dock-item {
-                display: flex; flex-direction: column; align-items: center;
-                color: #94a3b8; text-decoration: none; font-size: 0.7rem; gap: 4px; border: none; background: none; cursor: pointer;
-            }
-            .dock-item i { font-size: 1.4rem; color: #fff; }
-            .dock-item.active i { color: #0ea5e9; }
-        }
-
-        /* === NEW FEATURES CSS (Quick Track & Modal) === */
+        /* PAGE SPECIFIC STYLES (Kept for unique features) */
         
         /* Quick Track Bar */
         .quick-track-box {
@@ -75,126 +43,81 @@
             margin-top: 20px;
             margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
         }
         .track-input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 10px 20px;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
+            flex: 1; background: transparent; border: none; padding: 10px 20px;
+            color: #fff; font-size: 1rem; outline: none; font-family: var(--font-main);
         }
         .track-btn {
-            background: #0ea5e9;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
+            background: var(--primary); color: #fff; border: none; padding: 10px 25px;
+            border-radius: 40px; cursor: pointer; font-weight: 700; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 0.05em;
         }
-        .track-btn:hover { background: #0284c7; }
+        .track-btn:hover { background: #fff; color: #000; box-shadow: 0 0 15px var(--primary); }
 
         /* Modal Popup */
         .modal-overlay {
-            display: none; /* Hidden by default */
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(8px);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+            z-index: 10000; justify-content: center; align-items: center; padding: 20px;
         }
         .modal-box {
-            background: #0f172a;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 24px;
-            width: 100%; max-width: 400px;
-            padding: 30px;
-            position: relative;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            background: #0b1121; border: 1px solid var(--primary);
+            border-radius: 24px; width: 100%; max-width: 400px; padding: 30px;
+            position: relative; box-shadow: 0 0 50px rgba(14, 165, 233, 0.2);
         }
         .close-modal {
-            position: absolute; top: 20px; right: 20px;
-            color: #94a3b8; background: none; border: none; font-size: 1.5rem; cursor: pointer;
+            position: absolute; top: 20px; right: 20px; color: #94a3b8; 
+            background: none; border: none; font-size: 1.5rem; cursor: pointer;
         }
         
         /* Tabs */
         .auth-tabs { display: flex; gap: 20px; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
-        .tab-btn { background: none; border: none; color: #64748b; font-size: 1.1rem; font-weight: 600; cursor: pointer; padding-bottom: 5px; }
-        .tab-btn.active { color: #fff; border-bottom: 2px solid #0ea5e9; }
+        .tab-btn { background: none; border: none; color: #64748b; font-size: 1rem; font-weight: 700; cursor: pointer; padding-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .tab-btn.active { color: #fff; border-bottom: 2px solid var(--primary); }
 
         .auth-form { display: none; }
         .auth-form.active { display: block; }
 
-        .form-group { margin-bottom: 15px; }
-        .form-label { display: block; color: #94a3b8; font-size: 0.85rem; margin-bottom: 8px; }
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; color: var(--primary); font-size: 0.75rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
         .form-input { 
-            width: 100%; padding: 12px; background: rgba(255,255,255,0.05); 
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; outline: none;
+            width: 100%; padding: 14px; background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; outline: none;
+            transition: 0.3s;
         }
-        .form-input:focus { border-color: #0ea5e9; }
+        .form-input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(14, 165, 233, 0.1); }
         
-        .full-btn { width: 100%; padding: 12px; background: #0ea5e9; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px; }
-        .full-btn:hover { background: #0284c7; }
+        .full-btn { width: 100%; padding: 14px; background: var(--primary); color: #000; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; margin-top: 10px; text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; }
+        .full-btn:hover { background: #fff; box-shadow: 0 0 20px var(--primary); }
 
-        /* === 2x2 SLOW SCROLL GRID STYLES (ALIGNMENT FIX v18) === */
+        /* Reference Grid (Slow Scroll) */
         .reference-grid-wrapper {
-            height: 650px; 
-            overflow: hidden;
-            position: relative;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 20px;
-            /* Added Fade Mask for Smoothness */
+            height: 650px; overflow: hidden; position: relative;
+            background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px; padding: 20px;
             mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
         }
-        
-        /* The scrolling container */
         .reference-track {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 Columns Fixed */
-            gap: 20px;
-            /* SLOW VERTICAL SCROLL ANIMATION */
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
             animation: verticalScroll 40s linear infinite; 
         }
+        .reference-track:hover { animation-play-state: paused; }
         
-        .reference-track:hover {
-            animation-play-state: paused; /* Pause on hover */
-        }
-        
-        /* The Item Card */
         .grid-cargo-card {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: 0.3s;
+            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s;
         }
-        .grid-cargo-card:hover {
-            border-color: #0ea5e9;
-            transform: scale(1.02);
-        }
+        .grid-cargo-card:hover { border-color: var(--primary); transform: scale(1.02); }
         .grid-cargo-card img {
-            width: 100%;
-            height: auto; 
-            aspect-ratio: 16/9; /* Widescreen shape */
-            object-fit: cover;
+            width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .grid-cargo-card span {
-            padding: 12px;
-            text-align: center;
-            font-weight: 700;
-            color: #fff;
-            background: rgba(0,0,0,0.2);
+            padding: 12px; text-align: center; font-weight: 700; color: #fff; background: rgba(0,0,0,0.2);
+            text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.85rem;
         }
 
         @keyframes verticalScroll {
@@ -202,19 +125,10 @@
             100% { transform: translateY(-50%); }
         }
 
-        /* Mobile Adjustment: Stack to 1 column */
         @media (max-width: 768px) {
-            .reference-track {
-                grid-template-columns: 1fr; /* 1 Column on phones */
-            }
-            .reference-grid-wrapper {
-                height: 500px; /* Better height for mobile */
-            }
-            h2.section-title {
-                font-size: 1.8rem; /* Smaller title on mobile */
-            }
+            .reference-track { grid-template-columns: 1fr; }
+            .reference-grid-wrapper { height: 500px; }
         }
-
     </style>
 </head>
 
@@ -223,7 +137,6 @@
     <div class="modal-overlay" id="authModal">
         <div class="modal-box">
             <button class="close-modal" onclick="closeModal()">&times;</button>
-            
             <div class="auth-tabs">
                 <button class="tab-btn active" onclick="switchTab('login')" id="tab-login">Login</button>
                 <button class="tab-btn" onclick="switchTab('signup')" id="tab-signup">Sign Up</button>
@@ -265,6 +178,14 @@
         </div>
     </div>
 
+    <div class="top-system-bar">
+        <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span class="led-light"></span> 
+            <span>SYSTEM UPDATE: DIGITAL TRANSFORMATION IN PROCESS</span>
+            <img src="https://flagcdn.com/in.svg" alt="India Flag" style="height: 14px; border-radius: 2px;">
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo-container">
@@ -282,120 +203,121 @@
         </div>
     </nav>
 
-    <main class="container">
+    <main>
         
-        <section class="hero-grid">
-            <div class="hero-main glass">
-                <span class="badge">Our Expertise</span>
-                <h1>Reliable Cargo <span class="gradient-text">Solutions</span></h1>
-                <p>From heavy raw materials to delicate finished goods, we handle diverse cargo with precision.</p>
-                
-                <div class="quick-track-box">
-                    <i class="fas fa-search" style="color: #94a3b8; margin-left: 10px;"></i>
-                    <input type="text" id="trackInput" class="track-input" placeholder="Enter Tracking ID (e.g. RRP001)">
-                    <button onclick="quickTrack()" class="track-btn">Track</button>
-                </div>
-
-                <div class="hero-btns">
-                    <a href="contact.html" class="cta-btn">Book a Load</a>
+        <section class="truck-banner-section" style="height: 70vh;">
+            <div class="hero-image-wrapper">
+                <div class="hero-img-mask">
+                    <img src="assets/home-banner.jpg" alt="RRP Services">
                 </div>
             </div>
             
-            <div class="stats-sidebar glass">
-                <h3 class="stats-title">Highlights</h3>
-                <div class="service-item">
+            <div class="container hero-split-grid">
+                <div class="hero-text-content">
+                    <span class="badge">Our Expertise</span>
+                    <h1 style="font-size: clamp(2rem, 5vw, 3.5rem);">Reliable Cargo <span class="gradient-text">Solutions</span></h1>
+                    <p style="font-size: 1.1rem; color: #cbd5e1;">From heavy raw materials to delicate finished goods, we handle diverse cargo with precision.</p>
+                    
+                    <div class="quick-track-box">
+                        <i class="fas fa-search" style="color: #94a3b8; margin-left: 15px;"></i>
+                        <input type="text" id="trackInput" class="track-input" placeholder="Enter Tracking ID (e.g. RRP001)">
+                        <button onclick="quickTrack()" class="track-btn">Track</button>
+                    </div>
+
+                    <div class="hero-btns">
+                        <a href="contact.html" class="cta-btn">Book a Load <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="stats-bar-wrapper">
+            <div class="container stats-grid-cards">
+                <div class="stat-card">
                     <i class="fas fa-truck-moving"></i>
-                    <div><h4>FTL Services</h4><p class="text-dim">Pan-India Transport</p></div>
+                    <div><h4>FTL Services</h4><p>Pan-India Transport</p></div>
                 </div>
-                <div class="service-item">
+                <div class="stat-card">
                     <i class="fas fa-boxes-packing"></i>
-                    <div><h4>Bulk Cargo</h4><p class="text-dim">Coal, Iron, Minerals</p></div>
+                    <div><h4>Bulk Cargo</h4><p>Coal, Iron, Minerals</p></div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-ship"></i>
+                    <div><h4>Forwarding</h4><p>Multi-Modal Solutions</p></div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="glass" style="margin-bottom: 50px; padding: 40px;">
-            <h2 class="section-title" style="margin-bottom: 30px;">Specialized <span class="gradient-text">Logistics</span></h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <section class="bento-section">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center;" data-text="SOLUTIONS">Specialized <span class="gradient-text">Logistics</span></h2>
                 
-                <div class="info-card" style="margin:0; background: rgba(255,255,255,0.03);">
-                    <div class="icon-box"><i class="fas fa-ship"></i></div>
-                    <div class="info-content">
-                        <h3>Freight Forwarding</h3>
-                        <p style="color: #94a3b8; margin-bottom:15px;">
-                            We provide multi-modal transport solutions (Road, Rail, Sea) to ensure your goods move seamlessly across regions.
-                        </p>
-                        <ul style="color: #94a3b8; padding-left: 20px; font-size: 0.9rem;">
-                            <li>Route Optimization</li>
-                            <li>Documentation Handling</li>
-                            <li>Real-time Tracking</li>
-                        </ul>
+                <div class="bento-grid">
+                    <div class="bento-item">
+                        <div class="bento-icon-box"><i class="fas fa-ship"></i></div>
+                        <div class="info-content">
+                            <h3>Freight Forwarding</h3>
+                            <p style="color: #94a3b8; margin-bottom:15px;">
+                                We provide multi-modal transport solutions (Road, Rail, Sea) to ensure your goods move seamlessly across regions.
+                            </p>
+                            <ul style="color: #64748b; padding-left: 20px; font-size: 0.9rem; list-style: square;">
+                                <li>Route Optimization</li>
+                                <li>Documentation Handling</li>
+                                <li>Real-time Tracking</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="info-card" style="margin:0; background: rgba(255,255,255,0.03);">
-                    <div class="icon-box"><i class="fas fa-file-contract"></i></div>
-                    <div class="info-content">
-                        <h3>Contract Logistics</h3>
-                        <p style="color: #94a3b8; margin-bottom:15px;">
-                            Long-term supply chain partnerships. We manage your warehousing, inventory, and final-mile distribution.
-                        </p>
-                        <ul style="color: #94a3b8; padding-left: 20px; font-size: 0.9rem;">
-                            <li>Dedicated Fleets</li>
-                            <li>Inventory Management</li>
-                            <li>Cost-Effective Planning</li>
-                        </ul>
+                    <div class="bento-item">
+                        <div class="bento-icon-box"><i class="fas fa-file-contract"></i></div>
+                        <div class="info-content">
+                            <h3>Contract Logistics</h3>
+                            <p style="color: #94a3b8; margin-bottom:15px;">
+                                Long-term supply chain partnerships. We manage your warehousing, inventory, and final-mile distribution.
+                            </p>
+                            <ul style="color: #64748b; padding-left: 20px; font-size: 0.9rem; list-style: square;">
+                                <li>Dedicated Fleets</li>
+                                <li>Inventory Management</li>
+                                <li>Cost-Effective Planning</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="clients-section glass" style="margin-bottom: 80px;">
-            <div class="badge-center"><span class="badge">Reference Loads</span></div>
-            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">
-                Types of Cargo We <span class="gradient-text">Handle</span>
-            </h2>
+        <section class="clients-section" style="padding: 60px 0; background: var(--bg-subtle);">
+            <div class="container">
+                <div class="badge-center"><span class="badge">Reference Loads</span></div>
+                <h2 class="section-title" style="text-align: center; margin-bottom: 40px;" data-text="CARGO">
+                    Types of Cargo We <span class="gradient-text">Handle</span>
+                </h2>
 
-            <div class="reference-grid-wrapper">
-                <div class="reference-track">
-                    <div class="grid-cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/metalpipe.png.jpeg" alt="Pipes"><span>Metal Pipes</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire Mesh"><span>Wire Mesh</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood"><span>Plywood</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Drums"><span>Cable Drums</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/appolopipes.png.jpeg" alt="PVC"><span>PVC Pipes</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/plasticgranulesbags.png.jpeg" alt="Granules"><span>Granules</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Scrap"><span>Battery Scrap</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/books.png.jpeg" alt="Books"><span>Paper/Books</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartz"><span>Quartzite</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/daburproducts.png.jpeg" alt="FMCG"><span>FMCG</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/maricoproducts.png.jpeg" alt="Oil"><span>Edible Oil</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Metal"><span>Metal Scrap</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper"><span>Paper Reels</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Pellet"><span>Iron Pellets</span></div>
-
-                    <div class="grid-cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/metalpipe.png.jpeg" alt="Pipes"><span>Metal Pipes</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire Mesh"><span>Wire Mesh</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood"><span>Plywood</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Drums"><span>Cable Drums</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/appolopipes.png.jpeg" alt="PVC"><span>PVC Pipes</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/plasticgranulesbags.png.jpeg" alt="Granules"><span>Granules</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Scrap"><span>Battery Scrap</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/books.png.jpeg" alt="Books"><span>Paper/Books</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartz"><span>Quartzite</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/daburproducts.png.jpeg" alt="FMCG"><span>FMCG</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/maricoproducts.png.jpeg" alt="Oil"><span>Edible Oil</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Metal"><span>Metal Scrap</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper"><span>Paper Reels</span></div>
-                    <div class="grid-cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Pellet"><span>Iron Pellets</span></div>
+                <div class="reference-grid-wrapper">
+                    <div class="reference-track">
+                        <div class="grid-cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/metalpipe.png.jpeg" alt="Pipes"><span>Metal Pipes</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire Mesh"><span>Wire Mesh</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood"><span>Plywood</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Drums"><span>Cable Drums</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/appolopipes.png.jpeg" alt="PVC"><span>PVC Pipes</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/plasticgranulesbags.png.jpeg" alt="Granules"><span>Granules</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Scrap"><span>Battery Scrap</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/books.png.jpeg" alt="Books"><span>Paper/Books</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartz"><span>Quartzite</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/daburproducts.png.jpeg" alt="FMCG"><span>FMCG</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/maricoproducts.png.jpeg" alt="Oil"><span>Edible Oil</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Metal"><span>Metal Scrap</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper"><span>Paper Reels</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Pellet"><span>Iron Pellets</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -403,24 +325,21 @@
 
     <footer class="footer-main">
         <div class="container footer-grid">
-            
             <div class="footer-col">
                 <div class="logo-container">
                     <img src="assets/logo.png" class="main-logo" alt="Logo">
-                    <div class="logo-text">RRP <span>ENTERPRISES</span></div>
+                    <div class="logo-text" style="color: #fff;">RRP <span>ENTERPRISES</span></div>
                 </div>
-                <p style="color: #94a3b8; margin-top: 20px; line-height: 1.6;">
-                    Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.
-                </p>
+                <p style="color: #cbd5e1; margin-top: 20px;">Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.</p>
             </div>
 
             <div class="footer-col">
-                <h4>Our Services</h4>
+                <h4>Services</h4>
                 <ul class="footer-links">
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> FTL Transport</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Bulk Cargo</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Project Logistics</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Supply Chain</a></li>
+                    <li><a href="services.html">FTL Transport</a></li>
+                    <li><a href="services.html">Bulk Cargo</a></li>
+                    <li><a href="services.html">Project Logistics</a></li>
+                    <li><a href="services.html">Supply Chain</a></li>
                 </ul>
             </div>
 
@@ -429,50 +348,48 @@
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact Support</a></li>
-                    <li><a href="contact.html">Track Shipment</a></li>
-                    <li style="margin-top: 10px;"><a href="privacy.html" style="color: #6366f1;">Privacy Policy</a></li>
-                    <li><a href="terms.html" style="color: #6366f1;">Terms & Conditions</a></li>
+                    <li><a href="contact.html">Tracking</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4>Get in Touch</h4>
+                <h4>Contact</h4>
                 <div class="footer-contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 600;">+91 94948 31803</div>
-                        <div style="font-size: 0.9rem;">24/7 Support</div>
+                        <div style="color: #fff; font-weight: 700;">+91 94948 31803</div>
+                        <div style="font-size: 0.9rem; color: #94a3b8;">24/7 Support</div>
                     </div>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 600;">contact@rrpenterprises.co.in</div>
-                        <div style="font-size: 0.9rem;">Drop us a mail</div>
+                        <div style="color: #fff; font-weight: 700;">contact@rrpenterprises.co.in</div>
+                        <div style="font-size: 0.9rem; color: #94a3b8;">Official Email</div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="container" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; text-align: center; color: rgba(255,255,255,0.3);">
-            &copy; 2026 RRP Enterprises. All rights reserved.
+
+        <div class="footer-bottom">
+            <div class="copyright-text">
+                &copy; 2026 RRP Enterprises & Logistics. All Rights Reserved. <span style="opacity: 0.5;">|</span> Strategic Supply Chain Solutions.
+            </div>
+            <div class="dev-badge-container">
+                <div class="dev-badge">
+                    <span>DESIGNED BY</span>
+                    <strong>RC'S ANANTHA</strong>
+                </div>
+            </div>
         </div>
     </footer>
 
     <div class="mobile-app-dock">
-        <a href="tel:+919494831803" class="dock-item">
-            <i class="fas fa-phone"></i>
-            <span>Call</span>
-        </a>
-        <a href="https://wa.me/919494831803" class="dock-item">
-            <i class="fab fa-whatsapp"></i>
-            <span>Chat</span>
-        </a>
-        <a href="#" onclick="openModal('login')" class="dock-item">
-            <i class="fas fa-user-circle"></i>
-            <span>Login</span>
-        </a>
+        <a href="tel:+919494831803" class="dock-item"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/919494831803" class="dock-item"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
+        <a href="#" onclick="openModal('login')" class="dock-item"><i class="fas fa-user-circle"></i><span>Login</span></a>
     </div>
 
     <script>
@@ -486,100 +403,56 @@
         }
 
         /* === LOGIC FOR LOGIN / TRACK APP === */
-
-        // 1. Modal Control
         const modal = document.getElementById('authModal');
-        
         function openModal(tab) {
             modal.style.display = 'flex';
             switchTab(tab);
         }
-
         function closeModal() {
             modal.style.display = 'none';
         }
-
-        // Close if clicked outside
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
         }
-
-        // 2. Tab Switching
         function switchTab(tabName) {
-            // Reset buttons
             document.getElementById('tab-login').classList.remove('active');
             document.getElementById('tab-signup').classList.remove('active');
-            
-            // Reset Forms
             document.getElementById('view-login').classList.remove('active');
             document.getElementById('view-signup').classList.remove('active');
-
-            // Activate Selected
             document.getElementById('tab-' + tabName).classList.add('active');
             document.getElementById('view-' + tabName).classList.add('active');
         }
-
-        // 3. Quick Track Logic (Demo)
         function quickTrack() {
             const id = document.getElementById('trackInput').value.toUpperCase();
             if(!id) { alert("Please enter a Tracking ID"); return; }
-
-            if(id === 'RRP001') {
-                alert("📦 Shipment RRP001\nStatus: Delivered\nLocation: Hyderabad, TS");
-            } else if (id === 'RRP002') {
-                alert("🚛 Shipment RRP002\nStatus: In Transit\nLocation: Anantapur Highway");
-            } else {
-                alert("❌ ID Not Found.\nTry 'RRP001' for a demo.");
-            }
+            if(id === 'RRP001') { alert("📦 Shipment RRP001\nStatus: Delivered\nLocation: Hyderabad, TS"); } 
+            else if (id === 'RRP002') { alert("🚛 Shipment RRP002\nStatus: In Transit\nLocation: Anantapur Highway"); } 
+            else { alert("❌ ID Not Found.\nTry 'RRP001' for a demo."); }
         }
-
-        // 4. Handle Sign Up (Saves User to Browser Memory)
         function handleSignup(e) {
             e.preventDefault();
-            
-            // Get values
             const name = e.target.querySelector('input[placeholder="Enter Name"]').value;
             const company = e.target.querySelector('input[placeholder="Business Name"]').value;
             const mobile = e.target.querySelector('input[placeholder="+91..."]').value;
-
-            // Save to "Database" (LocalStorage)
-            const userObj = {
-                name: name,
-                company: company,
-                mobile: mobile,
-                joined: new Date().toLocaleDateString()
-            };
-
-            localStorage.setItem('rrp_db_' + mobile, JSON.stringify(userObj)); // Save User
-
+            const userObj = { name: name, company: company, mobile: mobile, joined: new Date().toLocaleDateString() };
+            localStorage.setItem('rrp_db_' + mobile, JSON.stringify(userObj)); 
             alert("✅ Registration Successful!\n\nYou can now Login with mobile number: " + mobile);
-            switchTab('login'); // Switch to Login tab automatically
+            switchTab('login'); 
         }
-
-        // 5. Handle Login (Checks Browser Memory)
         function handleLogin(e) {
             e.preventDefault();
             const phoneInput = e.target.querySelector('input[type="tel"]').value;
-            
-            // Check if user exists
             const storedUser = localStorage.getItem('rrp_db_' + phoneInput);
-
             if(storedUser || phoneInput === '9999999999') {
-                // Save session
                 localStorage.setItem('rrp_user', phoneInput);
-                if(storedUser) {
-                    localStorage.setItem('rrp_user_data', storedUser);
-                }
-                
-                // Redirect to Dashboard
+                if(storedUser) { localStorage.setItem('rrp_user_data', storedUser); }
                 window.location.href = 'dashboard.html';
             } else {
                 alert("⚠️ Number not found!\nPlease Register first or use Admin Demo: 9999999999");
             }
         }
-
     </script>
 </body>
 </html>
