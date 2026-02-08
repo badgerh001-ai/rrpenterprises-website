@@ -24,115 +24,73 @@
     <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/logo.png">
 
-    <link rel="stylesheet" href="style.css?v=12">
-    
+    <link rel="stylesheet" href="style.css?v=53">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* 1. FORCE GRID LAYOUT (Laptop vs Mobile) */
+        /* PAGE SPECIFIC STYLES */
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.4fr; /* Side-by-Side on Laptop */
-            gap: 40px;
-            margin-top: 40px;
-            margin-bottom: 80px;
-            align-items: start;
+            display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px;
+            margin-top: 40px; margin-bottom: 80px; align-items: start;
         }
-
-        /* 2. CARD STYLING */
+        
+        /* Holographic Info Card Override */
         .info-card {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 24px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            margin-bottom: 20px;
-            transition: 0.3s;
+            display: flex; align-items: center; gap: 20px; padding: 24px;
+            background: rgba(11, 17, 33, 0.6); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px; margin-bottom: 20px; transition: 0.3s;
+            position: relative; overflow: hidden;
         }
         .info-card:hover {
-            transform: translateY(-5px);
-            background: rgba(14, 165, 233, 0.1);
-            border-color: #0ea5e9;
+            transform: translateY(-5px); border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15);
         }
         .icon-box {
-            width: 50px; height: 50px;
-            background: rgba(14, 165, 233, 0.2);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; color: #38bdf8;
-            flex-shrink: 0;
+            width: 50px; height: 50px; background: rgba(14, 165, 233, 0.1);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: var(--primary); flex-shrink: 0;
+            border: 1px solid rgba(14, 165, 233, 0.2);
         }
-        .info-content h3 { color: #fff; font-size: 1.1rem; margin-bottom: 5px; }
+        .info-content h3 { color: #fff; font-size: 1.1rem; margin-bottom: 5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
         .info-content p, .info-content a { color: #94a3b8; font-size: 0.95rem; text-decoration: none; }
+        .white-link { color: #fff !important; font-weight: 600; transition: 0.3s; }
+        .white-link:hover { color: var(--primary) !important; }
 
-        /* 3. FORM BOX STYLING */
+        /* Form Box */
         .contact-form-box {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 40px;
-            border-radius: 24px;
+            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px);
+            padding: 40px; border-radius: 24px;
             border: 1px solid rgba(56, 189, 248, 0.3);
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
         }
         .form-group { margin-bottom: 20px; }
-        .form-label { display: block; color: #fff; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
+        .form-label { display: block; color: var(--festive-gold); margin-bottom: 8px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; }
         .form-input {
-            width: 100%;
-            padding: 14px 18px;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
-            font-family: inherit;
+            width: 100%; padding: 14px 18px; background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+            color: #fff; font-size: 1rem; outline: none; font-family: inherit;
+            transition: 0.3s;
         }
-        .form-input:focus { border-color: #0ea5e9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.2); }
+        .form-input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(14, 165, 233, 0.2); }
         textarea.form-input { resize: vertical; min-height: 120px; }
 
-        /* 4. MOBILE DOCK STYLES (FIXED: Hides on Desktop, Shows on Mobile) */
-        .mobile-app-dock { display: none; } /* HIDDEN ON LAPTOP */
-
-        /* 5. MOBILE RESPONSIVENESS */
         @media (max-width: 992px) {
-            .contact-grid {
-                grid-template-columns: 1fr; /* Stack on Mobile */
-                gap: 50px;
-            }
+            .contact-grid { grid-template-columns: 1fr; gap: 50px; }
             .contact-form-box { padding: 25px; }
-            h1 { font-size: 2.5rem !important; }
-        }
-
-        @media (max-width: 768px) {
-            /* SHOW DOCK ON MOBILE ONLY */
-            .mobile-app-dock {
-                position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-                width: 90%; max-width: 350px;
-                background: rgba(15, 23, 42, 0.95);
-                backdrop-filter: blur(16px);
-                border: 1px solid rgba(255,255,255,0.15);
-                border-radius: 50px;
-                display: flex; justify-content: space-evenly;
-                padding: 12px 20px;
-                z-index: 9999;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            }
-            .dock-item {
-                display: flex; flex-direction: column; align-items: center;
-                color: #94a3b8; text-decoration: none; font-size: 0.7rem; gap: 4px;
-                border: none; background: none;
-            }
-            .dock-item i { font-size: 1.4rem; color: #fff; }
-            .dock-item.active i { color: #0ea5e9; }
         }
     </style>
 </head>
 
 <body>
+
+    <div class="top-system-bar">
+        <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span class="led-light"></span> 
+            <span>SYSTEM UPDATE: DIGITAL TRANSFORMATION IN PROCESS</span>
+            <img src="https://flagcdn.com/in.svg" alt="India Flag" style="height: 14px; border-radius: 2px;">
+        </div>
+    </div>
 
     <nav class="navbar">
         <div class="container">
@@ -145,7 +103,7 @@
                 <li><a href="index.html" class="social-link">Home</a></li>
                 <li><a href="about.html" class="social-link">About Us</a></li>
                 <li><a href="services.html" class="social-link">Services</a></li>
-                <li><a href="contact.html" class="social-link active">Contact</a></li>
+                <li><a href="contact.html" class="social-link active" style="display: flex; align-items: center; gap: 6px;">Tracking <span class="live-dot"></span></a></li>
                 <li><a href="contact.html" class="cta-btn">Contact Us</a></li>
             </ul>
         </div>
@@ -153,12 +111,12 @@
 
     <main class="container">
         
-        <div style="text-align: center; padding: 60px 0 30px;">
-            <span class="badge">24/7 Support</span>
-            <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px;">
+        <div style="text-align: center; padding: 80px 0 40px;">
+            <div class="badge-center"><span class="badge">24/7 Support</span></div>
+            <h1 class="section-title" style="text-align: center; margin-bottom: 20px; border: none; padding: 0;" data-text="CONTACT">
                 Get in <span class="gradient-text">Touch</span>
             </h1>
-            <p style="color: #94a3b8; max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+            <p style="color: #94a3b8; max-width: 600px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">
                 Whether you need a freight quote, long-term logistics support, or project transportation expertise — our team is ready.
             </p>
         </div>
@@ -167,64 +125,64 @@
             
             <div class="contact-info">
                 
-                <div class="info-card phone">
+                <div class="info-card">
                     <div class="icon-box"><i class="fas fa-phone"></i></div>
                     <div class="info-content">
                         <h3>Call Us Directly</h3>
-                        <p>24/7 Operations Support</p>
+                        <p style="margin-bottom: 5px;">24/7 Operations Support</p>
                         <a href="tel:+919494831803" class="white-link" style="font-size: 1.1rem; display:block;">+91 94948 31803</a>
                         <a href="tel:+919014884668" class="white-link" style="font-size: 1.1rem;">+91 90148 84668</a>
                     </div>
                 </div>
 
-                <div class="info-card whatsapp">
+                <div class="info-card">
                     <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
                     <div class="info-content">
                         <h3>Chat on WhatsApp</h3>
                         <p>Instant Quotes & Tracking</p>
-                        <a href="https://wa.me/919494831803" style="color: #fff;">Start Chat Now <i class="fas fa-arrow-right" style="font-size:0.8rem; margin-left:5px;"></i></a>
+                        <a href="https://wa.me/919494831803" style="color: var(--primary); font-weight: 700;">Start Chat Now <i class="fas fa-arrow-right" style="font-size:0.8rem; margin-left:5px;"></i></a>
                     </div>
                 </div>
 
-                <div class="info-card email">
+                <div class="info-card">
                     <div class="icon-box"><i class="fas fa-envelope"></i></div>
                     <div class="info-content">
                         <h3>General Inquiry</h3>
                         <p>For bookings & support</p>
-                        <a href="mailto:contact@rrpenterprises.co.in">contact@rrpenterprises.co.in</a>
+                        <a href="mailto:contact@rrpenterprises.co.in" class="white-link">contact@rrpenterprises.co.in</a>
                     </div>
                 </div>
 
-                <div class="info-card email" style="border: 1px solid rgba(14, 165, 233, 0.3); background: rgba(14, 165, 233, 0.05);">
-                    <div class="icon-box"><i class="fas fa-user-tie" style="color: #38bdf8;"></i></div>
+                <div class="info-card" style="border: 1px solid rgba(251, 191, 36, 0.3); background: rgba(251, 191, 36, 0.05);">
+                    <div class="icon-box" style="color: var(--festive-gold); border-color: var(--festive-gold);"><i class="fas fa-user-tie"></i></div>
                     <div class="info-content">
-                        <h3>CEO Contact</h3>
+                        <h3 style="color: var(--festive-gold);">CEO Contact</h3>
                         <p>Direct Management Line</p>
-                        <a href="mailto:ramesh@rrpenterprises.co.in" style="color: #38bdf8;">ramesh@rrpenterprises.co.in</a>
+                        <a href="mailto:ramesh@rrpenterprises.co.in" style="color: #fff;">ramesh@rrpenterprises.co.in</a>
                     </div>
                 </div>
 
-                <div class="info-card address">
+                <div class="info-card">
                     <div class="icon-box"><i class="fas fa-map-location-dot"></i></div>
                     <div class="info-content">
                         <h3>Head Office</h3>
                         <p>
-                            # 6-4-994, Maruthi Nagar,
+                            # 6-4-994, Maruthi Nagar,<br>
                             80ft Road, Anantapuramu - 515001. (A.P)
                         </p>
                     </div>
                 </div>
 
-                <div class="info-card address">
+                <div class="info-card">
                     <div class="icon-box"><i class="fas fa-code-branch"></i></div>
                     <div class="info-content">
                         <h3>Our Branches</h3>
                         <p style="margin-bottom: 12px;">
-                            <strong>Anantapur:</strong>
+                            <strong style="color: #fff;">Anantapur:</strong><br>
                             Beside MG Car Show Room, Bangalore NH.
                         </p>
                         <p>
-                            <strong>Tadipatri:</strong>
+                            <strong style="color: #fff;">Tadipatri:</strong><br>
                             Yallanur Road - 515411.
                         </p>
                     </div>
@@ -233,7 +191,7 @@
             </div>
 
             <div class="contact-form-box">
-                <h3 style="margin-bottom: 30px; font-size: 1.5rem; color:#fff;">Send a Message</h3>
+                <h3 style="margin-bottom: 30px; font-size: 1.8rem; color:#fff; text-transform: uppercase; letter-spacing: -0.02em;">Send a Message</h3>
                 <form action="https://formspree.io/f/mpqwlvba" method="POST">
                     <div class="form-group">
                         <label class="form-label">Full Name</label>
@@ -267,24 +225,21 @@
 
     <footer class="footer-main">
         <div class="container footer-grid">
-            
             <div class="footer-col">
                 <div class="logo-container">
                     <img src="assets/logo.png" class="main-logo" alt="Logo">
-                    <div class="logo-text">RRP <span>ENTERPRISES</span></div>
+                    <div class="logo-text" style="color: #fff;">RRP <span>ENTERPRISES</span></div>
                 </div>
-                <p style="color: #94a3b8; margin-top: 20px; line-height: 1.6;">
-                    Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.
-                </p>
+                <p style="color: #cbd5e1; margin-top: 20px;">Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.</p>
             </div>
 
             <div class="footer-col">
-                <h4>Our Services</h4>
+                <h4>Services</h4>
                 <ul class="footer-links">
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> FTL Transport</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Bulk Cargo</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Project Logistics</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Supply Chain</a></li>
+                    <li><a href="services.html">FTL Transport</a></li>
+                    <li><a href="services.html">Bulk Cargo</a></li>
+                    <li><a href="services.html">Project Logistics</a></li>
+                    <li><a href="services.html">Supply Chain</a></li>
                 </ul>
             </div>
 
@@ -293,48 +248,48 @@
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact Support</a></li>
-                    <li><a href="contact.html">Track Shipment</a></li>
+                    <li><a href="contact.html">Tracking</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4>Get in Touch</h4>
+                <h4>Contact</h4>
                 <div class="footer-contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 600;">+91 94948 31803</div>
-                        <div style="font-size: 0.9rem;">24/7 Support</div>
+                        <div style="color: #fff; font-weight: 700;">+91 94948 31803</div>
+                        <div style="font-size: 0.9rem; color: #94a3b8;">24/7 Support</div>
                     </div>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 600;">contact@rrpenterprises.co.in</div>
-                        <div style="font-size: 0.9rem;">Drop us a mail</div>
+                        <div style="color: #fff; font-weight: 700;">contact@rrpenterprises.co.in</div>
+                        <div style="font-size: 0.9rem; color: #94a3b8;">Official Email</div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="container" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; text-align: center; color: rgba(255,255,255,0.3);">
-            &copy; 2026 RRP Enterprises. All rights reserved.
+
+        <div class="footer-bottom">
+            <div class="copyright-text">
+                &copy; 2026 RRP Enterprises & Logistics. All Rights Reserved. <span style="opacity: 0.5;">|</span> Strategic Supply Chain Solutions.
+            </div>
+            <div class="dev-badge-container">
+                <div class="dev-badge">
+                    <span>DESIGNED BY</span>
+                    <strong>RC'S ANANTHA</strong>
+                </div>
+            </div>
         </div>
     </footer>
 
     <div class="mobile-app-dock">
-        <a href="tel:+919494831803" class="dock-item">
-            <i class="fas fa-phone"></i>
-            <span>Call</span>
-        </a>
-        <a href="https://wa.me/919494831803" class="dock-item">
-            <i class="fab fa-whatsapp"></i>
-            <span>Chat</span>
-        </a>
-        <a href="contact.html" class="dock-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Track</span>
-        </a>
+        <a href="tel:+919494831803" class="dock-item"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/919494831803" class="dock-item"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
+        <a href="contact.html" class="dock-item"><i class="fas fa-map-marker-alt"></i><span>Track</span></a>
     </div>
 
     <script>
