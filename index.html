@@ -39,7 +39,8 @@
         "@type": "PostalAddress",
         "streetAddress": "# 6-4-994, Maruthi Nagar, 80ft Road",
         "addressLocality": "Anantapuramu",
-        "addressRegion": "Andhra Pradesh",<br>        "postalCode": "515001",
+        "addressRegion": "Andhra Pradesh",
+        "postalCode": "515001",
         "addressCountry": "IN"
       },
       "contactPoint": {
@@ -92,9 +93,10 @@
     </div>
 
     <div class="top-system-bar">
-        <div class="container">
+        <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
             <span class="led-light"></span> 
-            SYSTEM UPDATE: DIGITAL TRANSFORMATION IN PROCESS 🇮🇳
+            <span>SYSTEM UPDATE: DIGITAL TRANSFORMATION IN PROCESS</span>
+            <img src="https://flagcdn.com/in.svg" alt="India Flag" style="height: 14px; border-radius: 2px;">
         </div>
     </div>
 
@@ -424,7 +426,8 @@
         const navLinks = document.querySelector('.nav-links');
         if (menuBtn) {
             menuBtn.addEventListener('click', () => {
-                menuBtn.classList.toggle('open');<br>                navLinks.classList.toggle('active');
+                menuBtn.classList.toggle('open');
+                navLinks.classList.toggle('active');
             });
         }
         function openWelcome() {
