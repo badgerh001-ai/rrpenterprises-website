@@ -56,67 +56,83 @@
         .form-input { width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; outline: none; }
         .submit-btn { width: 100%; padding: 14px; background: #0ea5e9; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px; font-size: 1rem; }
 
-        /* === INDUSTRIAL PRINT STYLES (STRICT GRID) === */
+        /* === IMPROVED SINGLE COPY PRINT STYLES === */
         @media print {
             body * { visibility: hidden; }
             .navbar, .dash-header, .stat-grid, .toolbar, .db-container, .modal-overlay, .mobile-app-dock { display: none !important; }
             
             #print-container, #print-container * { visibility: visible; }
-            #print-container { display: block !important; position: absolute; left: 0; top: 0; width: 100%; background: white; color: black; z-index: 9999; }
-            @page { margin: 5mm; size: A4; }
+            #print-container { 
+                display: block !important; 
+                position: absolute; 
+                left: 0; 
+                top: 0; 
+                width: 100%; 
+                background: white; 
+                color: black; 
+                z-index: 9999; 
+            }
+            @page { 
+                margin: 10mm; /* Standard 1cm margin */
+                size: A4; 
+            }
         }
 
         #print-container { display: none; font-family: 'Arial', sans-serif; color: #000; }
         
-        /* THE LR BOX */
+        /* The Single Large LR Box */
         .lr-box {
-            width: 100%; height: 32vh; /* Fits 3 on page */
+            width: 100%; 
+            /* Fixed height or auto, 'auto' is safer for varying content lengths */
+            min-height: 500px; 
             border: 2px solid #000;
-            margin-bottom: 15px;
             box-sizing: border-box;
-            display: flex; flex-direction: column;
+            display: flex; 
+            flex-direction: column;
+            background: #fff;
         }
 
-        /* ROW 1: HEADER */
-        .lr-row-header { display: flex; border-bottom: 1px solid #000; height: 65px; }
-        .lr-logo-area { width: 70px; display: flex; align-items: center; justify-content: center; border-right: 1px solid #000; }
-        .lr-company-area { flex: 1; padding: 5px 10px; }
-        .lr-company-title { font-size: 18px; font-weight: 900; margin: 0; text-transform: uppercase; color: #000; }
-        .lr-company-details { font-size: 10px; line-height: 1.2; margin: 2px 0 0 0; }
-        .lr-copy-area { width: 120px; border-left: 1px solid #000; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; background: #eee; }
+        /* HEADER */
+        .lr-row-header { display: flex; border-bottom: 2px solid #000; padding: 10px; align-items: center; }
+        .lr-logo-area { width: 80px; display: flex; align-items: center; justify-content: center; border-right: 1px solid #ccc; padding-right: 15px; margin-right: 15px; }
+        .lr-company-area { flex: 1; }
+        .lr-company-title { font-size: 24px; font-weight: 900; margin: 0; text-transform: uppercase; color: #0ea5e9 !important; /* RRP BLUE */ -webkit-print-color-adjust: exact; }
+        .lr-company-details { font-size: 12px; line-height: 1.4; margin-top: 5px; color: #333; }
+        .lr-copy-area { text-align: right; font-size: 14px; font-weight: bold; text-transform: uppercase; }
 
-        /* ROW 2: META DATA BAR */
-        .lr-row-meta { display: flex; border-bottom: 1px solid #000; font-size: 11px; }
-        .lr-meta-item { flex: 1; padding: 4px 8px; border-right: 1px solid #000; }
+        /* META BAR */
+        .lr-row-meta { display: flex; border-bottom: 1px solid #000; background: #f9f9f9; -webkit-print-color-adjust: exact; }
+        .lr-meta-item { flex: 1; padding: 8px 12px; border-right: 1px solid #000; font-size: 12px; }
         .lr-meta-item:last-child { border-right: none; }
-        .meta-label { font-weight: bold; margin-right: 5px; }
+        .meta-label { font-weight: bold; display: block; font-size: 10px; color: #555; text-transform: uppercase; }
+        .meta-value { font-size: 13px; font-weight: 700; }
 
-        /* ROW 3: CONSIGNOR / CONSIGNEE SPLIT */
-        .lr-row-parties { display: flex; border-bottom: 1px solid #000; height: 75px; }
-        .lr-party-box { flex: 1; padding: 5px; font-size: 11px; line-height: 1.3; }
+        /* CONSIGNOR / CONSIGNEE */
+        .lr-row-parties { display: flex; border-bottom: 1px solid #000; min-height: 100px; }
+        .lr-party-box { flex: 1; padding: 10px; font-size: 12px; line-height: 1.5; }
         .lr-party-box:first-child { border-right: 1px solid #000; }
-        .party-header { font-weight: bold; text-decoration: underline; display: block; margin-bottom: 2px; font-size: 10px; }
+        .party-header { font-weight: bold; text-decoration: underline; display: block; margin-bottom: 5px; font-size: 11px; color: #000; }
 
-        /* ROW 4: ROUTE & VEHICLE */
-        .lr-row-transport { display: flex; border-bottom: 1px solid #000; font-size: 11px; }
-        .lr-trans-item { flex: 1; padding: 4px 8px; border-right: 1px solid #000; }
+        /* TRANSPORT DETAILS */
+        .lr-row-transport { display: flex; border-bottom: 1px solid #000; font-size: 12px; }
+        .lr-trans-item { flex: 1; padding: 8px; border-right: 1px solid #000; }
         .lr-trans-item:last-child { border-right: none; }
 
-        /* ROW 5: GOODS TABLE (Fixed Height) */
-        .lr-goods-table { width: 100%; border-collapse: collapse; font-size: 11px; flex: 1; }
-        .lr-goods-table th { border-bottom: 1px solid #000; border-right: 1px solid #000; background: #eee; padding: 4px; text-align: center; }
-        .lr-goods-table td { border-right: 1px solid #000; padding: 4px; text-align: center; vertical-align: top; }
+        /* GOODS TABLE */
+        .lr-goods-table { width: 100%; border-collapse: collapse; font-size: 12px; flex: 1; }
+        .lr-goods-table th { border-bottom: 1px solid #000; border-right: 1px solid #000; background: #eee; padding: 8px; text-align: center; font-weight: bold; -webkit-print-color-adjust: exact; }
+        .lr-goods-table td { border-right: 1px solid #000; padding: 10px; text-align: center; vertical-align: top; min-height: 100px; }
         .lr-goods-table th:last-child, .lr-goods-table td:last-child { border-right: none; }
 
-        /* ROW 6: FOOTER */
-        .lr-footer { border-top: 1px solid #000; display: flex; height: 60px; }
-        .lr-terms { flex: 2; padding: 5px; font-size: 9px; line-height: 1.2; border-right: 1px solid #000; }
-        .lr-amounts { flex: 1; font-size: 11px; display: flex; flex-direction: column; }
-        .amount-row { display: flex; justify-content: space-between; padding: 2px 5px; border-bottom: 1px solid #ccc; }
-        .amount-row:last-child { border-bottom: none; font-weight: bold; background: #eee; }
+        /* FOOTER */
+        .lr-footer { border-top: 2px solid #000; display: flex; min-height: 100px; }
+        .lr-terms { flex: 2; padding: 10px; font-size: 10px; line-height: 1.4; border-right: 1px solid #000; color: #444; }
+        .lr-amounts { flex: 1; font-size: 12px; display: flex; flex-direction: column; border-right: 1px solid #000; }
+        .amount-row { display: flex; justify-content: space-between; padding: 5px 10px; border-bottom: 1px solid #ccc; }
+        .amount-row:last-child { border-bottom: none; font-weight: bold; background: #eee; font-size: 14px; -webkit-print-color-adjust: exact; }
         
-        .lr-signatures { display: flex; justify-content: space-around; align-items: flex-end; padding: 5px; flex: 1; border-left: 1px solid #000; }
-        .sign-place { text-align: center; font-size: 9px; font-weight: bold; border-top: 1px dashed #000; width: 40%; padding-top: 2px; }
+        .lr-signatures { display: flex; justify-content: space-around; align-items: flex-end; padding: 10px; flex: 1; flex-direction: column; align-items: center; gap: 30px; }
+        .sign-place { text-align: center; font-size: 10px; font-weight: bold; border-top: 1px solid #000; width: 80%; padding-top: 5px; }
 
         @media (max-width: 992px) {
             .form-grid-3, .form-grid-2 { grid-template-columns: 1fr; }
@@ -385,94 +401,88 @@
 
         function printLR(lr) {
             const container = document.getElementById('print-container');
-            container.innerHTML = ''; 
-
-            const createCopy = (label) => {
-                return `
-                <div class="lr-box">
-                    <div class="lr-row-header">
-                        <div class="lr-logo-area"><img src="assets/logo.png" style="width: 50px;"></div>
-                        <div class="lr-company-area">
-                            <div class="lr-company-title">RRP ENTERPRISES</div>
-                            <div class="lr-company-details">
-                                #6-4-994, Maruthi Nagar, Anantapur, Andhra Pradesh-515001<br>
-                                GSTIN: 37AQLPB4811H1Z0 | Email: contact@rrpenterprises.co.in<br>
-                                Mobile: 9494831803, 9014881668
-                            </div>
-                        </div>
-                        <div class="lr-copy-area">
-                            CONSIGNMENT NOTE<br>
-                            <span style="font-size: 9px; margin-top:5px; font-weight:normal;">${label}</span>
+            
+            // SINGLE COPY TEMPLATE
+            container.innerHTML = `
+            <div class="lr-box">
+                <div class="lr-row-header">
+                    <div class="lr-logo-area"><img src="assets/logo.png" style="width: 60px;"></div>
+                    <div class="lr-company-area">
+                        <div class="lr-company-title">RRP ENTERPRISES</div>
+                        <div class="lr-company-details">
+                            #6-4-994, Maruthi Nagar, Anantapur, Andhra Pradesh-515001<br>
+                            GSTIN: 37AQLPB4811H1Z0 | Email: contact@rrpenterprises.co.in<br>
+                            Mobile: 9494831803, 9014881668
                         </div>
                     </div>
-
-                    <div class="lr-row-meta">
-                        <div class="lr-meta-item"><span class="meta-label">LR No:</span> ${lr.no}</div>
-                        <div class="lr-meta-item"><span class="meta-label">Date:</span> ${lr.date}</div>
-                        <div class="lr-meta-item"><span class="meta-label">E-Way Bill:</span> ${lr.eway}</div>
-                    </div>
-
-                    <div class="lr-row-parties">
-                        <div class="lr-party-box">
-                            <span class="party-header">CONSIGNOR (SENDER)</span>
-                            <strong>${lr.consignor}</strong><br>
-                            ${lr.consignor_addr}<br>
-                            GST: ${lr.consignor_gst}
-                        </div>
-                        <div class="lr-party-box">
-                            <span class="party-header">CONSIGNEE (RECEIVER)</span>
-                            <strong>${lr.consignee}</strong><br>
-                            ${lr.consignee_addr}<br>
-                            GST: ${lr.consignee_gst}
-                        </div>
-                    </div>
-
-                    <div class="lr-row-transport">
-                        <div class="lr-trans-item"><span class="meta-label">From:</span> ${lr.from}</div>
-                        <div class="lr-trans-item"><span class="meta-label">To:</span> ${lr.to}</div>
-                        <div class="lr-trans-item"><span class="meta-label">Vehicle:</span> ${lr.truck}</div>
-                        <div class="lr-trans-item"><span class="meta-label">Driver:</span> ${lr.driver}</div>
-                    </div>
-
-                    <table class="lr-goods-table">
-                        <tr>
-                            <th style="width: 10%;">S.No</th>
-                            <th style="width: 50%;">Description of Goods</th>
-                            <th style="width: 20%;">Qty/Bags</th>
-                            <th style="width: 20%;">Weight</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>${lr.goods}</td>
-                            <td>${lr.qty}</td>
-                            <td>${lr.weight}</td>
-                        </tr>
-                    </table>
-
-                    <div class="lr-footer">
-                        <div class="lr-terms">
-                            <strong>Terms & Conditions:</strong><br>
-                            • Goods transported at owner's risk unless declared otherwise.<br>
-                            • RRP Enterprises is not responsible for leakage/damage.<br>
-                            • Subject to Anantapur Jurisdiction.
-                        </div>
-                        <div class="lr-amounts">
-                            <div class="amount-row"><span>Freight:</span> <span>${lr.total}</span></div>
-                            <div class="amount-row"><span>Advance:</span> <span>${lr.advance}</span></div>
-                            <div class="amount-row"><span>Balance:</span> <span>${lr.balance}</span></div>
-                        </div>
-                        <div class="lr-signatures">
-                            <div class="sign-place">Driver Sign</div>
-                            <div class="sign-place">Auth Sign</div>
-                        </div>
+                    <div class="lr-copy-area">
+                        CONSIGNMENT NOTE<br>
+                        <span style="font-size: 10px; margin-top:5px; font-weight:normal;">ORIGINAL</span>
                     </div>
                 </div>
-                `;
-            };
 
-            container.innerHTML += createCopy("CONSIGNOR COPY");
-            container.innerHTML += createCopy("CONSIGNEE COPY");
-            container.innerHTML += createCopy("DRIVER COPY");
+                <div class="lr-row-meta">
+                    <div class="lr-meta-item"><span class="meta-label">LR No:</span> <span class="meta-value">${lr.no}</span></div>
+                    <div class="lr-meta-item"><span class="meta-label">Date:</span> <span class="meta-value">${lr.date}</span></div>
+                    <div class="lr-meta-item"><span class="meta-label">E-Way Bill:</span> <span class="meta-value">${lr.eway}</span></div>
+                </div>
+
+                <div class="lr-row-parties">
+                    <div class="lr-party-box">
+                        <span class="party-header">CONSIGNOR (SENDER)</span>
+                        <strong>${lr.consignor}</strong><br>
+                        ${lr.consignor_addr}<br>
+                        <strong>GSTIN:</strong> ${lr.consignor_gst}
+                    </div>
+                    <div class="lr-party-box">
+                        <span class="party-header">CONSIGNEE (RECEIVER)</span>
+                        <strong>${lr.consignee}</strong><br>
+                        ${lr.consignee_addr}<br>
+                        <strong>GSTIN:</strong> ${lr.consignee_gst}
+                    </div>
+                </div>
+
+                <div class="lr-row-transport">
+                    <div class="lr-trans-item"><span class="meta-label">From:</span> <strong>${lr.from}</strong></div>
+                    <div class="lr-trans-item"><span class="meta-label">To:</span> <strong>${lr.to}</strong></div>
+                    <div class="lr-trans-item"><span class="meta-label">Vehicle:</span> <strong>${lr.truck}</strong></div>
+                    <div class="lr-trans-item"><span class="meta-label">Driver:</span> ${lr.driver}</div>
+                </div>
+
+                <table class="lr-goods-table">
+                    <tr>
+                        <th style="width: 10%;">S.No</th>
+                        <th style="width: 50%;">Description of Goods</th>
+                        <th style="width: 20%;">Qty/Bags</th>
+                        <th style="width: 20%;">Weight</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>${lr.goods}</td>
+                        <td>${lr.qty}</td>
+                        <td>${lr.weight}</td>
+                    </tr>
+                </table>
+
+                <div class="lr-footer">
+                    <div class="lr-terms">
+                        <strong>Terms & Conditions:</strong><br>
+                        • Goods transported at owner's risk unless declared otherwise.<br>
+                        • RRP Enterprises is not responsible for leakage/damage.<br>
+                        • Subject to Anantapur Jurisdiction.
+                    </div>
+                    <div class="lr-amounts">
+                        <div class="amount-row"><span>Freight:</span> <span>${lr.total}</span></div>
+                        <div class="amount-row"><span>Advance:</span> <span>${lr.advance}</span></div>
+                        <div class="amount-row"><span>Balance:</span> <span>${lr.balance}</span></div>
+                    </div>
+                    <div class="lr-signatures">
+                        <div class="sign-place">Driver Signature</div>
+                        <div class="sign-place">Authorized Signatory</div>
+                    </div>
+                </div>
+            </div>
+            `;
 
             window.print();
         }
