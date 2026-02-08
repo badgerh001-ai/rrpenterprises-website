@@ -1,15 +1,19 @@
 /* ===================================================================
-   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v49)
-   Theme: "The Titan" (Grand Typography, Gold Accents, Refined Mobile)
+   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v50)
+   Theme: "The Titan" (Festive Edition, Grand Gold, Mobile Elite)
    =================================================================== */
 
-/* ---------------- 1. VARIABLES (TITAN DARK) ---------------- */
+/* ---------------- 1. VARIABLES (TITAN DARK + FESTIVE) ---------------- */
 :root {
   /* TITAN PALETTE */
   --primary: #0ea5e9;       /* Future Blue */
   --primary-dim: rgba(14, 165, 233, 0.1);
-  --accent-gold: #fbbf24;   /* Premium Gold Accent */
   --secondary: #ffffff;     /* White */
+  
+  /* FESTIVE & GRAND ACCENTS */
+  --festive-orange: #ff9933; /* Saffron */
+  --festive-gold: #ffb700;   /* Gold */
+  --grand-border: rgba(255, 183, 0, 0.3); /* Premium Border */
   
   /* Backgrounds */
   --bg-body: #000000;       /* Pure Black */
@@ -49,9 +53,9 @@ html {
 
 body {
   width: 100%;
-  max-width: 100%; /* CRITICAL: Prevents Overflow */
+  max-width: 100%; 
   min-height: 100dvh; 
-  overflow-x: hidden; /* Double Lock */
+  overflow-x: hidden; 
   background-color: var(--bg-body);
   font-family: var(--font-main);
   color: #94a3b8; 
@@ -60,8 +64,6 @@ body {
   /* TITAN TEXTURE */
   background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
   background-size: 100% 4px, 6px 100%;
-  
-  /* Default Desktop Attachment */
   background-attachment: fixed;
   padding-bottom: 0; 
 }
@@ -81,38 +83,49 @@ body {
   font-weight: 800;
 }
 
-/* GRAND SECTION TITLES */
 .section-title {
-    font-size: clamp(2.5rem, 6vw, 4rem); /* Grand sizing */
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Grand Sizing */
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: -0.03em;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     color: #fff;
     border-left: 5px solid var(--primary);
     padding-left: 30px;
     position: relative;
     word-wrap: break-word; 
-    z-index: 1;
-}
-/* Cinematic Watermark Text Behind Title */
-.section-title::before {
-    content: attr(data-text);
-    position: absolute;
-    top: -40px; left: 10px;
-    font-size: 4rem;
-    color: rgba(255, 255, 255, 0.03);
-    z-index: -1;
-    white-space: nowrap;
-    pointer-events: none;
 }
 .section-title::after {
     content: ''; position: absolute; top: 0; right: -20px;
-    width: 8px; height: 8px; background: var(--accent-gold); /* Gold Accent */
-    box-shadow: 0 0 10px var(--accent-gold);
+    width: 8px; height: 8px; background: var(--festive-gold); /* Gold Accent */
+    box-shadow: 0 0 15px var(--festive-gold);
     animation: blink-soft 2s infinite;
 }
 
+/* --- FESTIVE BADGE OVERRIDE --- */
+/* This specifically targets the badge in the Hero to make it Special */
+.hero-text-content .badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, var(--festive-orange), var(--festive-gold)); /* Saffron Gradient */
+  color: #2a0a00; /* Deep Dark Red Text */
+  border: 1px solid #fff;
+  font-size: 0.8rem; font-weight: 800; 
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 25px;
+  border-radius: 4px;
+  box-shadow: 0 0 25px rgba(255, 153, 51, 0.5); /* Holy Glow */
+  animation: divine-pulse 3s infinite ease-in-out;
+}
+.hero-text-content .badge i { color: #800000; font-size: 1.1rem; } /* Om Icon */
+
+@keyframes divine-pulse {
+    0% { box-shadow: 0 0 15px rgba(255, 153, 51, 0.4); transform: scale(1); }
+    50% { box-shadow: 0 0 30px rgba(255, 183, 0, 0.8); transform: scale(1.02); }
+    100% { box-shadow: 0 0 15px rgba(255, 153, 51, 0.4); transform: scale(1); }
+}
+
+/* Standard Badge */
 .badge {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 6px 12px;
@@ -134,10 +147,9 @@ body {
     border-bottom: 1px solid rgba(14, 165, 233, 0.2);
     text-transform: uppercase; text-align: center;
     overflow: hidden;
-    white-space: nowrap;
+    white-space: nowrap; 
     position: relative; 
 }
-/* V47 Radar Scanner Animation */
 .top-system-bar::after {
     content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
     background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.3), transparent);
@@ -177,7 +189,6 @@ body {
 .social-link:hover { color: var(--primary); }
 .social-link.active { color: #fff; border-bottom: 2px solid var(--primary); }
 
-/* V47 Neon Pulse Button */
 .cta-btn {
   background: transparent; color: #fff; padding: 10px 24px;
   border: 1px solid var(--primary);
@@ -195,13 +206,13 @@ body {
     100% { box-shadow: 0 0 5px rgba(14, 165, 233, 0.2); }
 }
 
-/* ---------------- 5. HERO (Immersive & V48 Animated) ---------------- */
+/* ---------------- 5. HERO (Immersive & Grand) ---------------- */
 .truck-banner-section {
     position: relative; height: 90vh; width: 100%;
     display: flex; align-items: flex-end; background: #000;
     overflow: hidden; padding-bottom: 80px;
 }
-/* V48 NEW: Scroll Indicator (Pure CSS) */
+/* Scroll Indicator */
 .truck-banner-section::after {
     content: ''; position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
     width: 24px; height: 40px; border: 2px solid rgba(255,255,255,0.3);
@@ -234,14 +245,14 @@ body {
     border: 1px solid rgba(255,255,255,0.1); border-left: 5px solid var(--primary);
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     box-sizing: border-box; width: 100%;
-    /* V48: Entrance Animation */
+    /* Entrance Animation */
     opacity: 0; transform: translateY(30px);
     animation: fadeUpEntrance 1s ease-out forwards 0.5s;
 }
 @keyframes fadeUpEntrance { to { opacity: 1; transform: translateY(0); } }
 
 .hero-text-content h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; color: #fff;
+    font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; color: #fff;
     margin: 25px 0; letter-spacing: -0.02em;
     word-wrap: break-word; 
 }
@@ -256,12 +267,11 @@ body {
 }
 .outline-btn:hover { background: #fff; color: #000; }
 
-/* ---------------- 8. STATS RIBBON (V48 Entrance) ---------------- */
+/* ---------------- 8. STATS RIBBON (Entrance) ---------------- */
 .stats-bar-wrapper { 
     position: relative; z-index: 10; background: var(--bg-panel);
     border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0;
     overflow: hidden;
-    /* Entrance Animation */
     opacity: 0;
     animation: fadeUpEntrance 1s ease-out forwards 1s;
 }
@@ -280,7 +290,7 @@ body {
 .stat-card h4 { font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1; margin: 0; }
 .stat-card p { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; margin: 0; }
 
-/* ---------------- 9. WIDE PANELS (Bento - V48 Holographic) ---------------- */
+/* ---------------- 9. WIDE PANELS (Grand Holographic) ---------------- */
 .bento-section { padding: 100px 0; background: var(--bg-body); overflow: hidden; }
 .bento-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;
@@ -289,7 +299,6 @@ body {
     background: var(--bg-panel); border: var(--border-faint); padding: 40px;
     display: flex; flex-direction: row; align-items: flex-start; gap: 25px;
     transition: 0.3s; position: relative; overflow: hidden;
-    /* V48: 3D Prep */
     transform-style: preserve-3d;
 }
 .bento-item:hover { 
@@ -297,7 +306,7 @@ body {
     transform: translateY(-5px) scale(1.01);
     box-shadow: 0 10px 40px rgba(14, 165, 233, 0.1);
 }
-/* V48: Holographic Sheen */
+/* Holographic Sheen */
 .bento-item::after {
     content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
@@ -306,7 +315,6 @@ body {
 .bento-item:hover::after {
     left: 150%; transition: 0.7s ease-in-out;
 }
-/* Top Line Marker */
 .bento-item::before {
     content: ''; position: absolute; top: 0; left: 0; width: 0; height: 2px;
     background: var(--primary); transition: 0.5s;
@@ -353,7 +361,7 @@ body {
     color: #94a3b8; font-size: 0.9rem; line-height: 1.6; max-width: 250px; margin: 0 auto;
 }
 
-/* ---------------- 12. FOOTER (Vertical Stack Mobile) ---------------- */
+/* ---------------- 12. FOOTER ---------------- */
 .footer-main { 
     padding: 80px 0 0; background: linear-gradient(to bottom, #020617 0%, #000000 100%);
     border-top: 1px solid rgba(14, 165, 233, 0.2); position: relative; overflow: hidden;
@@ -423,7 +431,7 @@ body {
   .nav-links.active { transform: translateY(0); }
   .desktop-only { display: none !important; }
 
-  /* V47 FIX: Glassmorphic Hero on Mobile */
+  /* V50 FIX: Glassmorphic Hero on Mobile (Transparent Text) */
   .truck-banner-section { display: block; height: auto; padding-bottom: 0; }
   .hero-image-wrapper { position: relative; height: 50vh; opacity: 1; }
   .hero-img-mask img { opacity: 0.8; }
@@ -437,7 +445,7 @@ body {
   }
   .hero-text-content h1 { font-size: 2.2rem; }
 
-  /* V47 FIX: Horizontal Swipe Stats for Mobile */
+  /* V50 FIX: Horizontal Swipe Stats for Mobile */
   .stats-grid-cards { 
       flex-direction: row; 
       overflow-x: auto; 
@@ -456,7 +464,7 @@ body {
       padding: 20px;
   }
 
-  /* V47 FIX: Tighter Grid */
+  /* V50 FIX: Tighter Grid */
   .bento-grid { grid-template-columns: 1fr; gap: 15px; }
   .bento-large { grid-column: auto; }
   .bento-item { flex-direction: column; text-align: center; align-items: center; }
