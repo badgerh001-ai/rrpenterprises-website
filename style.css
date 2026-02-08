@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v59)
-   Theme: "The Titan" (Transparent Hero, Force-Visible Mobile Bar)
+   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v61)
+   Theme: "The Titan" (Absolute Transparent Hero & Vertical System Bar)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (TITAN DARK + FESTIVE) ---------------- */
@@ -102,7 +102,7 @@ body {
     animation: blink-soft 2s infinite;
 }
 
-/* --- V53: Blinking Live Dot --- */
+/* --- V53 NEW: Blinking Live Dot --- */
 .live-dot {
     display: inline-block;
     width: 8px;
@@ -118,6 +118,7 @@ body {
 }
 
 /* --- FESTIVE BADGE OVERRIDE --- */
+/* This specifically targets the badge in the Hero to make it Special */
 .hero-text-content .badge {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 8px 20px;
@@ -131,7 +132,7 @@ body {
   box-shadow: 0 0 25px rgba(255, 153, 51, 0.5); /* Holy Glow */
   animation: divine-pulse 3s infinite ease-in-out;
 }
-.hero-text-content .badge i { color: #800000; font-size: 1.1rem; } 
+.hero-text-content .badge i { color: #800000; font-size: 1.1rem; } /* Om Icon */
 
 @keyframes divine-pulse {
     0% { box-shadow: 0 0 15px rgba(255, 153, 51, 0.4); transform: scale(1); }
@@ -220,12 +221,13 @@ body {
     100% { box-shadow: 0 0 5px rgba(14, 165, 233, 0.2); }
 }
 
-/* ---------------- 5. HERO (V59: Transparent Layout) ---------------- */
+/* ---------------- 5. HERO (V61: ABSOLUTE TRANSPARENT) ---------------- */
 .truck-banner-section {
     position: relative; height: 90vh; width: 100%;
     display: flex; align-items: flex-end; background: #000;
     overflow: hidden; padding-bottom: 80px;
 }
+/* Scroll Indicator */
 .truck-banner-section::after {
     content: ''; position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
     width: 24px; height: 40px; border: 2px solid rgba(255,255,255,0.3);
@@ -252,17 +254,14 @@ body {
 
 .hero-split-grid { position: relative; z-index: 2; display: block; width: 100%; }
 
-/* --- V59 NEW: Transparent Glass Layout --- */
+/* --- V61 CHANGE: ABSOLUTE TRANSPARENCY --- */
 .hero-text-content {
-    background: rgba(0, 0, 0, 0.25) !important; /* Transparent Dark Glass */
-    backdrop-filter: blur(10px);
-    padding: 50px; max-width: 650px;
-    border: 1px solid rgba(255,255,255,0.15); border-left: 5px solid var(--primary);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    box-sizing: border-box; width: 100%;
-    /* Entrance Animation */
-    opacity: 0; transform: translateY(30px);
-    animation: fadeUpEntrance 1s ease-out forwards 0.5s;
+    background: transparent !important; /* NO COLOR */
+    backdrop-filter: none !important;   /* NO BLUR */
+    border: none !important;            /* NO BORDER */
+    box-shadow: none !important;        /* NO SHADOW */
+    padding: 20px 0; max-width: 700px; width: 100%;
+    opacity: 0; transform: translateY(30px); animation: fadeUpEntrance 1s ease-out forwards 0.5s;
 }
 @keyframes fadeUpEntrance { to { opacity: 1; transform: translateY(0); } }
 
@@ -270,8 +269,12 @@ body {
     font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; color: #fff;
     margin: 25px 0; letter-spacing: -0.02em;
     word-wrap: break-word; 
+    text-shadow: 0 4px 15px rgba(0,0,0,0.9); /* Strong shadow for readability */
 }
-.hero-text-content p { font-size: 1.1rem; color: #cbd5e1; margin-bottom: 30px; }
+.hero-text-content p { 
+    font-size: 1.1rem; color: #cbd5e1; margin-bottom: 30px; 
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+}
 
 .hero-btns { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
 .outline-btn {
@@ -446,39 +449,35 @@ body {
   .nav-links.active { transform: translateY(0); }
   .desktop-only { display: none !important; }
 
-  /* V59 FIX: Top System Bar Mobile Visibility (Forced Block Layout) */
-  .top-system-bar {
-      height: auto !important;
-      padding: 12px 0 !important;
-      white-space: normal !important;
+  /* V61: FORCE MOBILE SYSTEM BAR TO STACK */
+  .top-system-bar { 
+      height: auto !important; 
+      white-space: normal !important; 
+      padding: 10px 0 !important;
       overflow: visible !important;
   }
   .top-system-bar .container {
-      display: block !important; /* Forces vertical stack, ignores flex */
+      display: flex !important;
+      flex-direction: column !important; /* VERTICAL STACK */
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
       text-align: center !important;
       white-space: normal !important;
-      line-height: 1.6 !important;
   }
   .top-system-bar span, .top-system-bar img {
-      display: inline-block !important; /* Ensures text and icons sit naturally */
-      margin: 0 5px !important;
-      vertical-align: middle !important;
+      display: inline-block !important; /* Force items to be visible */
   }
-  /* Hide the radar sweep on mobile as it conflicts with wrapped text */
-  .top-system-bar::after { display: none !important; }
+  .top-system-bar::after { display: none !important; } /* Hide radar on mobile */
 
 
-  /* V59 FIX: Glassmorphic Hero on Mobile (Transparent Text) */
+  /* V61 FIX: Glassmorphic Hero on Mobile (Transparent Text) */
   .truck-banner-section { display: block; height: auto; padding-bottom: 0; }
   .hero-image-wrapper { position: relative; height: 50vh; opacity: 1; }
   .hero-img-mask img { opacity: 0.8; }
   .hero-text-content { 
-      background: rgba(0, 0, 0, 0.3) !important; /* Transparent Glass Fix */
-      backdrop-filter: blur(15px);
-      max-width: 100%; border: none; border-top: 1px solid var(--primary);
-      padding: 40px 20px; box-shadow: none;
-      margin-top: -20px; /* Overlap slightly */
-      position: relative; z-index: 5;
+      background: transparent !important; 
+      backdrop-filter: none !important; border: none; padding: 40px 20px; box-shadow: none; margin-top: -20px; position: relative; z-index: 5;
   }
   .hero-text-content h1 { font-size: 2.2rem; }
 
