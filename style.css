@@ -1,6 +1,6 @@
 /* ===================================================================
-   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v57)
-   Theme: "The Titan" (System Bar Fixed, Live Tracking, Grand Visuals)
+   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v58)
+   Theme: "The Titan" (System Bar Force Visible Fix)
    =================================================================== */
 
 /* ---------------- 1. VARIABLES (TITAN DARK + FESTIVE) ---------------- */
@@ -275,7 +275,8 @@ body {
 
 .hero-btns { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
 .outline-btn {
-    padding: 12px 28px; border: 1px solid rgba(255,255,255,0.3); color: #fff;<br>    font-weight: 700; text-transform: uppercase; text-decoration: none;
+    padding: 12px 28px; border: 1px solid rgba(255,255,255,0.3); color: #fff;
+    font-weight: 700; text-transform: uppercase; text-decoration: none;
     font-size: 0.8rem; letter-spacing: 0.1em; transition: 0.3s;
     white-space: nowrap;
 }
@@ -445,22 +446,32 @@ body {
   .nav-links.active { transform: translateY(0); }
   .desktop-only { display: none !important; }
 
-  /* V57 FIX: Top System Bar Mobile Visibility (Fixed Wrap) */
+  /* V58 FORCE VISIBLE FIX: Vertical Stack on Mobile */
   .top-system-bar {
       height: auto !important;
-      padding: 12px 0 !important;
+      min-height: 50px !important; /* Force physical height */
+      padding: 15px 0 !important;
       white-space: normal !important;
+      overflow: visible !important; /* CRITICAL: Allow content out */
+      background: #020617 !important;
   }
   .top-system-bar .container {
-      flex-wrap: wrap !important;
-      justify-content: center;
-      row-gap: 5px;
+      display: flex !important;
+      flex-direction: column !important; /* Stack items vertically */
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 10px !important;
       white-space: normal !important;
-      text-align: center;
-      line-height: 1.4;
+      text-align: center !important;
+      line-height: 1.5 !important;
   }
-  /* Hide the radar sweep on mobile as it conflicts with wrapped text */
-  .top-system-bar::after { display: none; }
+  /* Ensure text is the right color and display type */
+  .top-system-bar span {
+      color: var(--primary) !important;
+      display: block;
+  }
+  /* Hide the radar sweep on mobile */
+  .top-system-bar::after { display: none !important; }
 
 
   /* V50 FIX: Glassmorphic Hero on Mobile (Transparent Text) */
