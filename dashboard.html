@@ -14,217 +14,40 @@
 
     <style>
         /* === CORE VARIABLES === */
-        :root { 
-            --sidebar-width: 260px; 
-            --bg-dark: #020617; 
-            --card-bg: #0f172a; 
-            --primary: #0ea5e9; 
-            --text-main: #fff;
-            --text-muted: #94a3b8;
-        }
+        :root { --sidebar-width: 260px; --bg-dark: #020617; --card-bg: #0f172a; --primary: #0ea5e9; }
+        body { background-color: var(--bg-dark); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; color: #fff; margin: 0; }
         
-        body { 
-            background-color: var(--bg-dark); 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            overflow-x: hidden; 
-            color: var(--text-main); 
-            margin: 0; 
-        }
-        
-        /* === AUTH SCREEN STYLES === */
-        #auth-screen { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: #020617; 
-            z-index: 5000; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            flex-direction: column; 
-        }
-        
-        .auth-box { 
-            background: #0f172a; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            padding: 40px; 
-            border-radius: 20px; 
-            width: 90%; 
-            max-width: 400px; 
-            text-align: center; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
-        }
-        
-        .auth-toggle { 
-            color: var(--primary); 
-            cursor: pointer; 
-            font-size: 0.9rem; 
-            margin-top: 20px; 
-            text-decoration: underline; 
-        }
+        /* === AUTH SCREEN === */
+        #auth-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #020617; z-index: 5000; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+        .auth-box { background: #0f172a; border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .auth-toggle { color: var(--primary); cursor: pointer; font-size: 0.9rem; margin-top: 20px; text-decoration: underline; }
         
         /* === APP LAYOUT === */
-        .app-container { 
-            display: none; /* Hidden until login */
-            min-height: 100vh; 
-        }
-        
-        .app-container.active { 
-            display: flex; 
-        }
-        
-        /* SIDEBAR */
-        .sidebar { 
-            width: var(--sidebar-width); 
-            background: var(--card-bg); 
-            border-right: 1px solid rgba(255,255,255,0.05); 
-            position: fixed; 
-            height: 100vh; 
-            padding: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            z-index: 100; 
-            transition: 0.3s;
-        }
-        
-        .brand-box {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            margin-bottom: 20px;
-        }
-
-        .nav-link { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            padding: 12px 15px; 
-            color: var(--text-muted); 
-            text-decoration: none; 
-            border-radius: 8px; 
-            margin-bottom: 5px; 
-            cursor: pointer; 
-            transition: 0.2s;
-        }
-        
-        .nav-link:hover, .nav-link.active { 
-            background: rgba(14, 165, 233, 0.1); 
-            color: var(--primary); 
-        }
-
-        /* MAIN CONTENT */
-        .main-content { 
-            margin-left: var(--sidebar-width); 
-            flex: 1; 
-            padding: 30px; 
-        }
-        
-        .top-bar { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            margin-bottom: 30px; 
-        }
+        .app-container { display: none; min-height: 100vh; }
+        .app-container.active { display: flex; }
+        .sidebar { width: var(--sidebar-width); background: var(--card-bg); border-right: 1px solid rgba(255,255,255,0.05); position: fixed; height: 100vh; padding: 20px; display: flex; flex-direction: column; z-index: 100; transition: 0.3s; }
+        .main-content { margin-left: var(--sidebar-width); flex: 1; padding: 30px; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
         
         /* MODULES & CARDS */
-        .module-section { 
-            display: none; 
-        }
+        .module-section { display: none; }
+        .module-section.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; margin-bottom: 20px; }
         
-        .module-section.active { 
-            display: block; 
-            animation: fadeIn 0.3s ease; 
-        }
-        
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(10px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-        
-        .card { 
-            background: var(--card-bg); 
-            border: 1px solid rgba(255,255,255,0.05); 
-            border-radius: 16px; 
-            padding: 25px; 
-            margin-bottom: 20px; 
-        }
-        
-        /* DATA TABLES */
-        .data-table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            margin-top: 15px; 
-        }
-        
-        .data-table th, .data-table td { 
-            padding: 15px; 
-            border-bottom: 1px solid rgba(255,255,255,0.05); 
-            text-align: left; 
-            color: #e2e8f0;
-        }
-        
-        .data-table th {
-            color: #64748b;
-            font-size: 0.85rem;
-        }
-        
-        /* FORMS */
-        .form-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 20px; 
-        }
-        
-        .form-input { 
-            width: 100%; 
-            background: #020617; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            padding: 12px; 
-            border-radius: 8px; 
-            color: #fff; 
-            margin-bottom: 15px; 
-            outline: none;
-            box-sizing: border-box; /* Fixes padding issues */
-        }
-        
-        .btn { 
-            padding: 12px 25px; 
-            border-radius: 8px; 
-            border: none; 
-            font-weight: 600; 
-            cursor: pointer; 
-            width: 100%; 
-            margin-top: 10px; 
-            transition: 0.3s;
-        }
-        
-        .btn-primary { 
-            background: var(--primary); 
-            color: #fff; 
-        }
-        
-        .btn-success {
-            background: #22c55e;
-            color: #000;
-        }
+        /* TABLES & FORMS */
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .data-table th, .data-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; color: #e2e8f0; }
+        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .form-input { width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; margin-bottom: 15px; outline: none; box-sizing: border-box; }
+        .btn { padding: 12px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; transition: 0.3s; }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-success { background: #22c55e; color: #000; }
 
-        /* MOBILE RESPONSIVE */
-        @media (max-width: 992px) {
-            .sidebar { transform: translateX(-100%); }
-            .sidebar.open { transform: translateX(0); }
-            .main-content { margin-left: 0; }
-        }
-
-        /* PRINT STYLES */
-        @media print { 
-            body * { visibility: hidden; } 
-            #print-container, #print-container * { visibility: visible; } 
-            #print-container { position: absolute; top:0; left:0; width:100%; background: white; color: black; } 
-        }
+        @media (max-width: 992px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); } .main-content { margin-left: 0; } }
+        
+        /* PRINT */
+        @media print { body * { visibility: hidden; } #print-container, #print-container * { visibility: visible; } #print-container { position: absolute; top:0; left:0; width:100%; background: white; color: black; } }
         #print-container { display: none; }
     </style>
 </head>
@@ -232,103 +55,72 @@
 <body>
 
     <div id="auth-screen">
-        
         <div class="auth-box" id="login-form">
-            <img src="assets/logo.png" style="width: 80px; margin-bottom: 20px;" alt="Logo">
+            <img src="assets/logo.png" style="width: 80px; margin-bottom: 20px;">
             <h2 style="margin-bottom: 20px;">Titan ERP Login</h2>
-            <p style="color: #94a3b8; margin-bottom: 20px;">Secure Cloud Access</p>
-            
             <input type="tel" id="login-mobile" class="form-input" placeholder="Mobile Number">
             <input type="password" id="login-pin" class="form-input" placeholder="4-Digit PIN" style="text-align:center; letter-spacing: 5px;">
-            
-            <button class="btn btn-primary" onclick="handleLogin()">LOGIN</button>
-            <p id="login-msg" style="color: #ef4444; margin-top: 15px; font-size: 0.9rem;"></p>
-            
+            <button class="btn btn-primary" onclick="handleLogin(this)">LOGIN</button>
+            <p id="login-msg" style="color: #ef4444; margin-top: 15px;"></p>
             <div class="auth-toggle" onclick="toggleAuth('register')">New User? Register Here</div>
         </div>
 
         <div class="auth-box" id="register-form" style="display: none;">
             <h2 style="margin-bottom: 20px;">New Registration</h2>
-            <p style="color: #94a3b8; margin-bottom: 20px;">Create Admin Account</p>
-            
             <input type="text" id="reg-name" class="form-input" placeholder="Your Name">
             <input type="tel" id="reg-mobile" class="form-input" placeholder="Mobile Number">
             <input type="password" id="reg-pin" class="form-input" placeholder="Set 4-Digit PIN" style="text-align:center; letter-spacing: 5px;">
-            
-            <button class="btn btn-success" onclick="handleRegister()">REGISTER NOW</button>
-            <p id="reg-msg" style="color: #ef4444; margin-top: 15px; font-size: 0.9rem;"></p>
-            
+            <button class="btn btn-success" onclick="handleRegister(this)">REGISTER NOW</button>
+            <p id="reg-msg" style="color: #ef4444; margin-top: 15px;"></p>
             <div class="auth-toggle" onclick="toggleAuth('login')">Back to Login</div>
         </div>
     </div>
 
     <div class="app-container" id="app-interface">
-        
         <nav class="sidebar" id="sidebar">
-            <div class="brand-box">
-                <img src="assets/logo.png" style="width: 30px; margin-right: 10px;">
+            <div style="padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                <img src="assets/logo.png" style="width: 30px;">
                 <div style="font-weight: 800; font-size: 1.2rem;">TITAN ERP</div>
             </div>
-            
-            <a onclick="showModule('dashboard')" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
-            <a onclick="showModule('operations')" class="nav-link"><i class="fas fa-file-invoice"></i> Operations</a>
-            <a onclick="showModule('fleet')" class="nav-link"><i class="fas fa-truck-moving"></i> Fleet Manager</a>
-            
-            <div style="margin-top: auto;">
-                <a onclick="logout()" class="nav-link" style="color: #ef4444;"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            </div>
+            <a onclick="showModule('dashboard')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a onclick="showModule('operations')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-file-invoice"></i> Operations</a>
+            <a onclick="showModule('fleet')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-truck-moving"></i> Fleet</a>
+            <div style="margin-top: auto;"><a onclick="logout()" class="btn" style="background:transparent; text-align:left; color:#ef4444; margin:0;">Logout</a></div>
         </nav>
 
         <main class="main-content">
             <div class="top-bar">
-                <button class="btn" onclick="document.getElementById('sidebar').classList.toggle('open')" style="width:auto; display: block; background:none; color: white; font-size: 1.5rem;"><i class="fas fa-bars"></i></button>
-                <div style="font-weight: bold; font-size: 1.2rem;">Cloud Connected</div>
-                <div class="user-badge" style="background: var(--primary); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">A</div>
+                <button onclick="document.getElementById('sidebar').classList.toggle('open')" style="background:none; border:none; color:white; font-size:1.5rem;"><i class="fas fa-bars"></i></button>
+                <div style="font-weight: bold;">Cloud Connected</div>
+                <div style="background: var(--primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">A</div>
             </div>
 
             <div id="mod-dashboard" class="module-section active">
                 <div class="card">
-                    <h3>Recent LRs (Live)</h3>
+                    <h3>Recent LRs</h3>
                     <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>LR No</th>
-                                <th>Date</th>
-                                <th>Truck</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="dash-table-body">
-                            </tbody>
+                        <thead><tr><th>LR No</th><th>Date</th><th>Truck</th><th>Status</th></tr></thead>
+                        <tbody id="dash-table-body"></tbody>
                     </table>
                 </div>
             </div>
 
             <div id="mod-operations" class="module-section">
                 <div class="card">
-                    <h3>Operations Command</h3>
-                    <p style="color: #94a3b8; margin-bottom: 20px;">Generate and Print Lorry Receipts.</p>
-                    <button class="btn btn-primary" onclick="openLRModal()" style="width: auto;">+ New Consignment Note</button>
+                    <h3>Operations</h3>
+                    <button class="btn btn-primary" onclick="openLRModal()" style="width: auto;">+ New LR</button>
                 </div>
             </div>
 
             <div id="mod-fleet" class="module-section">
                 <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <h3>Fleet Master</h3>
-                        <button class="btn btn-primary" onclick="openFleetModal()" style="width: auto;">+ Add Vehicle</button>
+                    <div style="display:flex; justify-content:space-between;">
+                        <h3>Fleet</h3>
+                        <button class="btn btn-primary" onclick="openFleetModal()" style="width: auto;">+ Add</button>
                     </div>
                     <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Driver</th>
-                                <th>Mobile</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="fleet-table-body">
-                            </tbody>
+                        <thead><tr><th>No</th><th>Driver</th><th>Mobile</th></tr></thead>
+                        <tbody id="fleet-table-body"></tbody>
                     </table>
                 </div>
             </div>
@@ -336,62 +128,28 @@
     </div>
 
     <div id="fleetModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center;">
-        <div class="card" style="width:90%; max-width: 400px; border: 1px solid #333;">
-            <h3 style="margin-bottom: 20px;">Add New Vehicle</h3>
-            <input id="v_no" class="form-input" placeholder="Vehicle No (e.g. AP02...)">
+        <div class="card" style="width:90%; max-width:400px;">
+            <h3>Add Vehicle</h3>
+            <input id="v_no" class="form-input" placeholder="Vehicle No">
             <input id="v_driver" class="form-input" placeholder="Driver Name">
-            <input id="v_mobile" class="form-input" placeholder="Driver Mobile">
-            
-            <button class="btn btn-primary" onclick="saveFleet()">Save to Cloud</button>
-            <button class="btn" onclick="document.getElementById('fleetModal').style.display='none'" style="background:transparent; color:#ccc; border: 1px solid #333;">Close</button>
+            <input id="v_mobile" class="form-input" placeholder="Mobile">
+            <button class="btn btn-primary" onclick="saveFleet()">Save</button>
+            <button class="btn" onclick="document.getElementById('fleetModal').style.display='none'" style="background:transparent; border:1px solid #333; color:#ccc;">Close</button>
         </div>
     </div>
 
     <div id="lrModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; overflow-y:auto; padding:20px;">
-        <div class="card" style="width: 100%; max-width:800px; margin: 50px auto; border: 1px solid #333;">
-            <div style="display: flex; justify-content: space-between;">
-                <h3>New Consignment Note</h3>
-                <button onclick="document.getElementById('lrModal').style.display='none'" style="background:none; border:none; color:white; font-size: 1.5rem;">&times;</button>
+        <div class="card" style="width:100%; max-width:800px; margin:50px auto;">
+            <div style="display:flex; justify-content:space-between;"><h3>New LR</h3><button onclick="document.getElementById('lrModal').style.display='none'" style="background:none; border:none; color:white; font-size:1.5rem;">&times;</button></div>
+            <div class="form-grid" style="margin-top:20px;">
+                <input id="lr_no" class="form-input" placeholder="LR No">
+                <input id="lr_date" type="date" class="form-input">
             </div>
-            
-            <div style="margin-top: 20px;">
-                <div class="form-grid">
-                    <div>
-                        <label style="color: #94a3b8; font-size: 0.8rem;">LR Number</label>
-                        <input id="lr_no" class="form-input">
-                    </div>
-                    <div>
-                        <label style="color: #94a3b8; font-size: 0.8rem;">Date</label>
-                        <input id="lr_date" type="date" class="form-input">
-                    </div>
-                </div>
-
-                <label style="color: #94a3b8; font-size: 0.8rem;">Select Vehicle</label>
-                <select id="lr_truck" class="form-input">
-                    <option>Loading Fleet...</option>
-                </select>
-
-                <div class="form-grid">
-                    <input id="lr_consignor" class="form-input" placeholder="Consignor Name">
-                    <input id="lr_consignee" class="form-input" placeholder="Consignee Name">
-                </div>
-                
-                <div class="form-grid">
-                    <input id="lr_from" class="form-input" placeholder="From Location">
-                    <input id="lr_to" class="form-input" placeholder="To Location">
-                </div>
-
-                <div class="form-grid">
-                    <input id="lr_goods" class="form-input" placeholder="Description of Goods">
-                    <input id="lr_weight" class="form-input" placeholder="Weight (MT)">
-                </div>
-                
-                <div class="form-grid">
-                    <input id="lr_total" class="form-input" placeholder="Total Freight Amount">
-                    <input id="lr_balance" class="form-input" placeholder="Balance to Pay">
-                </div>
-            </div>
-
+            <select id="lr_truck" class="form-input"><option>Loading...</option></select>
+            <div class="form-grid"><input id="lr_consignor" class="form-input" placeholder="Consignor"><input id="lr_consignee" class="form-input" placeholder="Consignee"></div>
+            <div class="form-grid"><input id="lr_from" class="form-input" placeholder="From"><input id="lr_to" class="form-input" placeholder="To"></div>
+            <div class="form-grid"><input id="lr_goods" class="form-input" placeholder="Goods"><input id="lr_weight" class="form-input" placeholder="Weight"></div>
+            <div class="form-grid"><input id="lr_total" class="form-input" placeholder="Total"><input id="lr_balance" class="form-input" placeholder="Balance"></div>
             <button class="btn btn-primary" onclick="saveLR()">Save & Print</button>
         </div>
     </div>
@@ -399,7 +157,7 @@
     <div id="print-container"></div>
 
     <script>
-        // 1. INITIALIZE FIREBASE (Compat Mode - Stable)
+        // 1. INIT FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyBUKdAvTmwcafSq0JJmFdCGCATcgukKZ_k",
             authDomain: "titan-erp-logistics.firebaseapp.com",
@@ -409,26 +167,19 @@
             appId: "1:114849355675:web:e309f335ae2fc0af39f33e",
             measurementId: "G-T59Y55TCLM"
         };
-        
-        // Initialize App
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // 2. AUTHENTICATION LOGIC
+        // 2. AUTH LOGIC
         function toggleAuth(mode) {
-            if (mode === 'register') {
-                document.getElementById('login-form').style.display = 'none';
-                document.getElementById('register-form').style.display = 'block';
-            } else {
-                document.getElementById('register-form').style.display = 'none';
-                document.getElementById('login-form').style.display = 'block';
-            }
+            document.getElementById('login-form').style.display = mode === 'register' ? 'none' : 'block';
+            document.getElementById('register-form').style.display = mode === 'register' ? 'block' : 'none';
         }
 
-        function handleRegister() {
-            const btn = event.target;
-            const originalText = btn.innerText;
-            btn.innerText = "Processing...";
+        // FIXED REGISTER FUNCTION
+        function handleRegister(btnElement) {
+            const originalText = btnElement.innerText;
+            btnElement.innerText = "Processing...";
             
             const mobile = document.getElementById('reg-mobile').value;
             const pin = document.getElementById('reg-pin').value;
@@ -436,159 +187,92 @@
             const msg = document.getElementById('reg-msg');
 
             if (!mobile || !pin || !name) {
-                msg.innerText = "Please fill all fields.";
-                btn.innerText = originalText;
+                msg.innerText = "All fields required.";
+                btnElement.innerText = originalText;
                 return;
             }
-            
-            // Check if user exists
-            db.collection('users').where('mobile', '==', mobile).get().then((querySnapshot) => {
-                if (!querySnapshot.empty) {
-                    alert("This mobile number is already registered. Please Login.");
+
+            db.collection('users').where('mobile', '==', mobile).get().then((snap) => {
+                if (!snap.empty) {
+                    alert("User exists! Please Login.");
                     toggleAuth('login');
                 } else {
-                    // Create new user
-                    db.collection('users').add({
-                        name: name,
-                        mobile: mobile,
-                        pin: pin,
-                        created: new Date()
-                    }).then(() => {
-                        alert("Registration Successful! Please Login.");
+                    db.collection('users').add({ name, mobile, pin, created: new Date() }).then(() => {
+                        alert("Registered! Please Login.");
                         toggleAuth('login');
-                    }).catch((error) => {
-                        msg.innerText = "Error: " + error.message;
                     });
                 }
-                btn.innerText = originalText;
+                btnElement.innerText = originalText;
+            }).catch((e) => {
+                msg.innerText = "Error: " + e.message;
+                btnElement.innerText = originalText;
             });
         }
 
-        function handleLogin() {
+        function handleLogin(btnElement) {
+            const originalText = btnElement.innerText;
+            btnElement.innerText = "Verifying...";
             const mobile = document.getElementById('login-mobile').value;
             const pin = document.getElementById('login-pin').value;
-            const msg = document.getElementById('login-msg');
             
-            if (!mobile || !pin) {
-                msg.innerText = "Please enter Mobile and PIN";
-                return;
-            }
-            
-            db.collection('users').where('mobile', '==', mobile).where('pin', '==', pin).get().then((querySnapshot) => {
-                if (querySnapshot.empty) {
-                    msg.innerText = "Invalid Mobile Number or PIN.";
+            db.collection('users').where('mobile', '==', mobile).where('pin', '==', pin).get().then((snap) => {
+                if (snap.empty) {
+                    document.getElementById('login-msg').innerText = "Invalid Login";
+                    btnElement.innerText = originalText;
                 } else {
-                    // Success
-                    const userData = querySnapshot.docs[0].data();
-                    localStorage.setItem('titan_session', JSON.stringify(userData));
-                    initApp(userData);
+                    localStorage.setItem('titan_session', JSON.stringify(snap.docs[0].data()));
+                    initApp();
                 }
-            }).catch((error) => {
-                msg.innerText = "Login Error: " + error.message;
             });
         }
 
-        function initApp(userData) {
+        function initApp() {
             document.getElementById('auth-screen').style.display = 'none';
             document.getElementById('app-interface').classList.add('active');
-            loadDashboardData();
+            loadDash();
         }
+        
+        if (localStorage.getItem('titan_session')) initApp();
 
-        function logout() {
-            if(confirm("Are you sure you want to logout?")) {
-                localStorage.removeItem('titan_session');
-                location.reload();
-            }
-        }
+        function logout() { localStorage.removeItem('titan_session'); location.reload(); }
 
-        // Check for existing session on load
-        const session = localStorage.getItem('titan_session');
-        if (session) {
-            initApp(JSON.parse(session));
-        }
-
-        // 3. NAVIGATION LOGIC
-        function showModule(moduleId) {
-            // Hide all modules
+        // 3. APP LOGIC
+        function showModule(id) {
             document.querySelectorAll('.module-section').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-            
-            // Show selected
-            document.getElementById('mod-' + moduleId).classList.add('active');
-            
-            // Update Data
-            if(moduleId === 'dashboard') loadDashboardData();
-            if(moduleId === 'fleet') loadFleetData();
+            document.getElementById('mod-' + id).classList.add('active');
+            if(id === 'dashboard') loadDash();
+            if(id === 'fleet') loadFleet();
         }
 
-        // 4. FLEET LOGIC
-        function openFleetModal() {
-            document.getElementById('fleetModal').style.display = 'flex';
-        }
-
+        function openFleetModal() { document.getElementById('fleetModal').style.display='flex'; }
         function saveFleet() {
-            const no = document.getElementById('v_no').value.toUpperCase();
-            const driver = document.getElementById('v_driver').value;
-            const mobile = document.getElementById('v_mobile').value;
-
-            if(!no) return alert("Vehicle Number is required");
-
             db.collection('fleet').add({
-                no: no,
-                driver: driver,
-                mobile: mobile,
-                status: 'Available',
-                created: new Date()
-            }).then(() => {
-                alert("Vehicle Saved!");
-                document.getElementById('fleetModal').style.display = 'none';
-                loadFleetData();
-            });
+                no: document.getElementById('v_no').value.toUpperCase(),
+                driver: document.getElementById('v_driver').value,
+                mobile: document.getElementById('v_mobile').value,
+                status: 'Available'
+            }).then(() => { alert("Saved!"); document.getElementById('fleetModal').style.display='none'; loadFleet(); });
         }
-
-        function loadFleetData() {
-            const tbody = document.getElementById('fleet-table-body');
-            tbody.innerHTML = '<tr><td colspan="4">Loading...</td></tr>';
-            
-            db.collection('fleet').get().then((querySnapshot) => {
+        function loadFleet() {
+            db.collection('fleet').get().then(snap => {
                 let html = '';
-                querySnapshot.forEach((doc) => {
-                    const d = doc.data();
-                    html += `<tr>
-                        <td style="font-weight:bold; color:#fff;">${d.no}</td>
-                        <td>${d.driver}</td>
-                        <td>${d.mobile}</td>
-                        <td style="color: #22c55e;">${d.status}</td>
-                    </tr>`;
-                });
-                tbody.innerHTML = html;
+                snap.forEach(doc => { const d = doc.data(); html += `<tr><td>${d.no}</td><td>${d.driver}</td><td>${d.mobile}</td></tr>`; });
+                document.getElementById('fleet-table-body').innerHTML = html;
             });
         }
 
-        // 5. OPERATIONS (LR) LOGIC
         function openLRModal() {
-            document.getElementById('lrModal').style.display = 'flex';
-            
-            // Set Default Values
+            document.getElementById('lrModal').style.display='flex';
             document.getElementById('lr_no').value = 'RRP/25-26/' + Math.floor(1000 + Math.random() * 9000);
-            document.getElementById('lr_date').valueAsDate = new Date();
-
-            // Load Truck Dropdown
-            const select = document.getElementById('lr_truck');
-            select.innerHTML = '<option>Loading...</option>';
-            
-            db.collection('fleet').where('status', '==', 'Available').get().then((querySnapshot) => {
-                let html = '<option value="">-- Select Vehicle --</option>';
-                querySnapshot.forEach((doc) => {
-                    const d = doc.data();
-                    html += `<option value="${d.no}">${d.no} - ${d.driver}</option>`;
-                });
-                select.innerHTML = html;
+            db.collection('fleet').where('status','==','Available').get().then(snap => {
+                let html = '<option>Select Truck</option>';
+                snap.forEach(doc => { html += `<option value="${doc.data().no}">${doc.data().no}</option>`; });
+                document.getElementById('lr_truck').innerHTML = html;
             });
         }
-
+        
         function saveLR() {
-            const lrData = {
+            const data = {
                 no: document.getElementById('lr_no').value,
                 date: document.getElementById('lr_date').value,
                 truck: document.getElementById('lr_truck').value,
@@ -602,113 +286,35 @@
                 balance: document.getElementById('lr_balance').value,
                 created: new Date()
             };
-
-            db.collection('lrs').add(lrData).then(() => {
-                alert("LR Generated Successfully!");
-                document.getElementById('lrModal').style.display = 'none';
-                printLR(lrData);
-                loadDashboardData();
+            db.collection('lrs').add(data).then(() => {
+                alert("Saved!"); document.getElementById('lrModal').style.display='none';
+                printLR(data); loadDash();
             });
         }
 
-        function loadDashboardData() {
-            const tbody = document.getElementById('dash-table-body');
-            
-            db.collection('lrs').orderBy('created', 'desc').limit(10).get().then((querySnapshot) => {
+        function loadDash() {
+            db.collection('lrs').orderBy('created','desc').limit(10).get().then(snap => {
                 let html = '';
-                querySnapshot.forEach((doc) => {
-                    const d = doc.data();
-                    html += `<tr>
-                        <td>${d.no}</td>
-                        <td>${d.date}</td>
-                        <td>${d.truck}</td>
-                        <td><span style="color:#22c55e;">● Generated</span></td>
-                    </tr>`;
-                });
-                tbody.innerHTML = html;
+                snap.forEach(doc => { const d = doc.data(); html += `<tr><td>${d.no}</td><td>${d.date}</td><td>${d.truck}</td><td style="color:#22c55e;">Generated</td></tr>`; });
+                document.getElementById('dash-table-body').innerHTML = html;
             });
         }
 
-        // 6. PRINT ENGINE
         function printLR(lr) {
-            const safe = (val) => val ? val : "";
             const c = document.getElementById('print-container');
-            
             c.innerHTML = `
-            <div style="border: 2px solid #000; height: 98vh; font-family: Arial, sans-serif; padding: 0; box-sizing: border-box;">
-                
-                <div style="border-bottom: 2px solid #000; padding: 15px; display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center;">
-                        <img src="assets/logo.png" style="width: 80px; margin-right: 20px;">
-                        <div>
-                            <h1 style="margin: 0; font-size: 28px; font-weight: 900; color: #000;">RRP ENTERPRISES</h1>
-                            <p style="margin: 5px 0 0 0; font-size: 12px;">
-                                #6-4-994, Maruthi Nagar, Anantapur, AP - 515001<br>
-                                Mob: 9494831803 | GSTIN: 37AQLPB4811H1Z0
-                            </p>
-                        </div>
-                    </div>
-                    <div style="text-align: right;">
-                        <h3 style="margin: 0;">CONSIGNMENT NOTE</h3>
-                        <p style="margin: 5px 0 0 0;">LR No: <strong>${safe(lr.no)}</strong></p>
-                        <p style="margin: 0;">Date: <strong>${safe(lr.date)}</strong></p>
-                    </div>
+            <div style="border:2px solid black; padding:20px; font-family:Arial; height:95vh;">
+                <div style="border-bottom:2px solid black; padding-bottom:10px; margin-bottom:20px;">
+                    <h1 style="margin:0;">RRP ENTERPRISES</h1>
+                    <p>Anantapur | Mob: 9494831803</p>
+                    <p><strong>LR No: ${lr.no}</strong> | Date: ${lr.date}</p>
                 </div>
-
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr>
-                        <td style="width: 50%; border: 1px solid #000; padding: 10px; vertical-align: top;">
-                            <strong style="font-size: 10px; color: #555;">CONSIGNOR (FROM)</strong><br>
-                            <span style="font-size: 14px; font-weight: bold;">${safe(lr.consignor)}</span><br>
-                            <span style="font-size: 12px;">${safe(lr.from)}</span>
-                        </td>
-                        <td style="width: 50%; border: 1px solid #000; padding: 10px; vertical-align: top;">
-                            <strong style="font-size: 10px; color: #555;">CONSIGNEE (TO)</strong><br>
-                            <span style="font-size: 14px; font-weight: bold;">${safe(lr.consignee)}</span><br>
-                            <span style="font-size: 12px;">${safe(lr.to)}</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #000; padding: 10px;">
-                            <strong>Vehicle No:</strong> ${safe(lr.truck)}
-                        </td>
-                        <td style="border: 1px solid #000; padding: 10px;">
-                            <strong>Contents:</strong> ${safe(lr.goods)}
-                        </td>
-                    </tr>
-                    <tr style="height: 100px;">
-                        <td style="border: 1px solid #000; padding: 10px;">
-                            <strong>Weight:</strong> ${safe(lr.weight)} MT
-                        </td>
-                        <td style="border: 1px solid #000; padding: 10px; vertical-align: top;">
-                            <strong>Notes:</strong><br>
-                            Goods transported at owner's risk.
-                        </td>
-                    </tr>
+                <table style="width:100%; border-collapse:collapse;">
+                    <tr><td style="border:1px solid black; padding:10px;"><strong>From:</strong> ${lr.from}</td><td style="border:1px solid black; padding:10px;"><strong>To:</strong> ${lr.to}</td></tr>
+                    <tr><td style="border:1px solid black; padding:10px;"><strong>Consignor:</strong> ${lr.consignor}</td><td style="border:1px solid black; padding:10px;"><strong>Consignee:</strong> ${lr.consignee}</td></tr>
+                    <tr><td style="border:1px solid black; padding:10px;"><strong>Truck:</strong> ${lr.truck}</td><td style="border:1px solid black; padding:10px;"><strong>Goods:</strong> ${lr.goods}</td></tr>
                 </table>
-
-                <div style="border-top: 2px solid #000; display: flex;">
-                    <div style="width: 60%; padding: 15px; border-right: 1px solid #000;">
-                        <p style="font-size: 10px;">TERMS & CONDITIONS:</p>
-                        <ul style="font-size: 10px; padding-left: 15px;">
-                            <li>Subject to Anantapur Jurisdiction.</li>
-                            <li>The company is not responsible for leakage or breakage.</li>
-                        </ul>
-                    </div>
-                    <div style="width: 40%; padding: 0;">
-                        <div style="padding: 10px; border-bottom: 1px solid #000; display: flex; justify-content: space-between;">
-                            <span>Freight Amount:</span>
-                            <strong>Rs. ${safe(lr.total)}</strong>
-                        </div>
-                         <div style="padding: 10px; display: flex; justify-content: space-between; font-size: 16px;">
-                            <span>BALANCE:</span>
-                            <strong>Rs. ${safe(lr.balance)}</strong>
-                        </div>
-                        <div style="margin-top: 40px; text-align: center; font-size: 10px;">
-                            For RRP ENTERPRISES
-                        </div>
-                    </div>
-                </div>
+                <div style="margin-top:20px;"><strong>Total:</strong> ${lr.total} | <strong>Balance:</strong> ${lr.balance}</div>
             </div>`;
             window.print();
         }
