@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titan ERP | DEBUG MODE</title>
+    <title>Titan ERP | CONNECTION FIX</title>
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <style>
         :root { --sidebar-width: 260px; --bg-dark: #020617; --card-bg: #0f172a; --primary: #0ea5e9; }
         body { background-color: var(--bg-dark); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; color: #fff; margin: 0; }
         
         #auth-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #020617; z-index: 5000; display: flex; justify-content: center; align-items: center; flex-direction: column; }
-        .auth-box { background: #0f172a; border: 1px solid rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; }
+        .auth-box { background: #0f172a; border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; }
         
-        /* DEBUG BOX STYLE */
-        #system-log {
-            width: 90%; max-width: 400px; height: 100px; 
-            background: #000; border: 1px solid #333; 
-            color: #0f0; font-family: monospace; font-size: 10px; 
-            padding: 10px; margin-top: 20px; overflow-y: auto; text-align: left;
-        }
-
-        .form-input { width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; margin-bottom: 15px; box-sizing: border-box; }
+        .form-input { width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; margin-bottom: 15px; outline: none; box-sizing: border-box; }
         .btn { padding: 12px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; }
         .btn-primary { background: var(--primary); color: #fff; }
         .btn-success { background: #22c55e; color: #000; }
-        
+
         .app-container { display: none; min-height: 100vh; }
         .app-container.active { display: flex; }
         .sidebar { width: var(--sidebar-width); background: var(--card-bg); border-right: 1px solid rgba(255,255,255,0.05); position: fixed; height: 100vh; padding: 20px; display: flex; flex-direction: column; z-index: 100; }
         .main-content { margin-left: var(--sidebar-width); flex: 1; padding: 30px; }
+        
+        /* LOG BOX */
+        #debug-log { 
+            margin-top: 20px; font-family: monospace; font-size: 10px; color: #0f0; 
+            background: #000; padding: 10px; width: 90%; max-width: 400px; 
+            height: 80px; overflow-y: auto; text-align: left; border: 1px solid #333;
+        }
+
         @media (max-width: 992px) { .sidebar { display:none; } .main-content { margin-left: 0; } }
     </style>
 </head>
@@ -43,50 +43,37 @@
 <body>
 
     <div id="auth-screen">
-        <div class="auth-box" id="login-form">
+        <div class="auth-box">
             <h2 style="margin-bottom: 20px;">Titan ERP Login</h2>
+            <div style="color: #64748b; font-size: 0.8rem; margin-bottom: 15px;">v84: Force Connection Mode</div>
+
             <input type="tel" id="login-mobile" class="form-input" placeholder="Mobile Number">
             <input type="password" id="login-pin" class="form-input" placeholder="PIN" style="text-align:center;">
+            
             <button class="btn btn-primary" onclick="handleLogin(this)">LOGIN</button>
-            <div onclick="toggleAuth('register')" style="color: var(--primary); cursor: pointer; margin-top: 20px; text-decoration: underline;">New User? Register Here</div>
+            <p id="login-msg" style="color: #ef4444; margin-top: 15px;"></p>
         </div>
-
-        <div class="auth-box" id="register-form" style="display: none;">
-            <h2 style="margin-bottom: 20px;">New Registration</h2>
-            <input type="text" id="reg-name" class="form-input" placeholder="Name">
-            <input type="tel" id="reg-mobile" class="form-input" placeholder="Mobile">
-            <input type="password" id="reg-pin" class="form-input" placeholder="Set PIN">
-            <button class="btn btn-success" onclick="handleRegister(this)">REGISTER NOW</button>
-            <div onclick="toggleAuth('login')" style="color: var(--primary); cursor: pointer; margin-top: 20px; text-decoration: underline;">Back to Login</div>
-        </div>
-
-        <div id="system-log">System Ready... Waiting for input.</div>
+        <div id="debug-log">System Ready.</div>
     </div>
 
     <div class="app-container" id="app-interface">
         <nav class="sidebar">
             <div style="font-weight: 800; font-size: 1.2rem; margin-bottom: 30px;">TITAN ERP</div>
-            <div style="color: #22c55e;">● Cloud Connected</div>
-            <button onclick="logout()" class="btn" style="background: #ef4444; margin-top: 50px;">Logout</button>
+            <button onclick="logout()" class="btn" style="background: #ef4444;">Logout</button>
         </nav>
         <main class="main-content">
-            <h1>Welcome to Dashboard</h1>
-            <p>If you see this, Login worked!</p>
+            <h1>Login Successful!</h1>
+            <p>You are connected to the database.</p>
         </main>
     </div>
 
     <script>
-        // === LOGGING FUNCTION ===
         function log(msg) {
-            const box = document.getElementById('system-log');
-            box.innerHTML += "<div>> " + msg + "</div>";
-            box.scrollTop = box.scrollHeight;
+            const box = document.getElementById('debug-log');
+            box.innerHTML = "> " + msg + "<br>" + box.innerHTML;
             console.log(msg);
         }
 
-        log("Initializing Firebase...");
-
-        // === YOUR KEY ===
         const firebaseConfig = {
             apiKey: "AIzaSyBUKdAvTmwcafSq0JJmFdCGCATcgukKZ_k",
             authDomain: "titan-erp-logistics.firebaseapp.com",
@@ -95,88 +82,54 @@
             messagingSenderId: "114849355675",
             appId: "1:114849355675:web:e309f335ae2fc0af39f33e"
         };
-        
+
+        // 1. INITIALIZE
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // 2. FORCE CONNECTION SETTINGS (The Fix for "Hanging")
         try {
-            firebase.initializeApp(firebaseConfig);
-            const db = firebase.firestore();
-            log("Firebase Initialized.");
+            db.settings({ experimentalForceLongPolling: true });
+            log("Connection Mode: Long Polling Enforced");
         } catch (e) {
-            log("CRITICAL ERROR: Firebase Failed - " + e.message);
-        }
-
-        function toggleAuth(mode) {
-            document.getElementById('login-form').style.display = mode === 'register' ? 'none' : 'block';
-            document.getElementById('register-form').style.display = mode === 'register' ? 'block' : 'none';
-        }
-
-        // === REGISTER DEBUGGER ===
-        function handleRegister(btn) {
-            const mobile = document.getElementById('reg-mobile').value.trim();
-            const pin = document.getElementById('reg-pin').value.trim();
-            const name = document.getElementById('reg-name').value.trim();
-
-            if (!mobile || !pin) { log("Error: Empty fields"); return; }
-
-            log("Step 1: Checking if user exists...");
-            btn.innerText = "Checking...";
-
-            db.collection('users').where('mobile', '==', mobile).get()
-            .then(snap => {
-                if (!snap.empty) {
-                    log("User already exists in DB.");
-                    alert("User Exists! Please Login.");
-                } else {
-                    log("Step 2: User new. Attempting to write to Cloud...");
-                    
-                    db.collection('users').add({
-                        name: name,
-                        mobile: mobile,
-                        pin: pin,
-                        joined: new Date().toString()
-                    })
-                    .then((docRef) => {
-                        log("✅ SUCCESS! Written to ID: " + docRef.id);
-                        alert("Registration Successful! Now Login.");
-                        toggleAuth('login');
-                    })
-                    .catch((error) => {
-                        log("❌ WRITE FAILED: " + error.message);
-                        log("Hint: Check Database Rules in Firebase Console.");
-                        alert("Error: " + error.message);
-                    });
-                }
-                btn.innerText = "REGISTER NOW";
-            })
-            .catch((error) => {
-                log("❌ NETWORK/READ ERROR: " + error.message);
-                btn.innerText = "REGISTER NOW";
-            });
+            log("Settings Error: " + e.message);
         }
 
         function handleLogin(btn) {
             const mobile = document.getElementById('login-mobile').value.trim();
             const pin = document.getElementById('login-pin').value.trim();
             
-            log("Attempting Login for: " + mobile);
+            if(!mobile || !pin) { alert("Enter Mobile & PIN"); return; }
 
-            if(mobile === "9494831803" && pin === "1234") {
-                log("Master Admin Access Granted");
-                initApp(); return;
-            }
+            btn.innerText = "Connecting...";
+            log("Checking DB for: " + mobile + "...");
+
+            // TIMEOUT SAFETY: If DB doesn't answer in 5 seconds, tell us.
+            const timeout = setTimeout(() => {
+                btn.innerText = "LOGIN";
+                log("❌ TIMEOUT: Database is not responding.");
+                alert("Connection Timed Out. Please check internet.");
+            }, 8000);
 
             db.collection('users').where('mobile', '==', mobile).where('pin', '==', pin).get()
             .then(snap => {
+                clearTimeout(timeout); // Stop the timer
+                
                 if (snap.empty) {
-                    log("Login Failed: No match found in DB.");
-                    alert("Invalid Credentials");
+                    btn.innerText = "LOGIN";
+                    log("❌ Result: No User Found.");
+                    alert("Invalid Mobile or PIN");
                 } else {
-                    log("✅ Login Success! Found User.");
-                    localStorage.setItem('titan_v3_session', JSON.stringify(snap.docs[0].data()));
+                    log("✅ Result: USER FOUND!");
+                    localStorage.setItem('titan_v84_session', JSON.stringify(snap.docs[0].data()));
                     initApp();
                 }
             })
             .catch(e => {
-                log("❌ Login Error: " + e.message);
+                clearTimeout(timeout);
+                btn.innerText = "LOGIN";
+                log("❌ ERROR: " + e.message);
+                alert("Error: " + e.message);
             });
         }
 
@@ -185,9 +138,9 @@
             document.getElementById('app-interface').classList.add('active');
         }
 
-        function logout() { localStorage.removeItem('titan_v3_session'); location.reload(); }
+        function logout() { localStorage.removeItem('titan_v84_session'); location.reload(); }
         
-        if (localStorage.getItem('titan_v3_session')) initApp();
+        if (localStorage.getItem('titan_v84_session')) initApp();
     </script>
 </body>
 </html>
