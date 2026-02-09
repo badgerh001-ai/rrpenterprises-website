@@ -35,6 +35,7 @@
         
         .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         .data-table th, .data-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; color: #e2e8f0; }
+        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         .form-input { width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; margin-bottom: 15px; outline: none; box-sizing: border-box; }
         .btn { padding: 12px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; transition: 0.3s; }
         .btn-primary { background: var(--primary); color: #fff; }
@@ -381,6 +382,7 @@
             const email = document.getElementById('u_email').value;
             const role = document.getElementById('u_role').value;
             
+            // ERROR HANDLING ADDED HERE
             db.collection('users').add({
                 name: name, email: email, role: role, created: new Date().toString()
             }).then(() => {
@@ -388,7 +390,7 @@
                 document.getElementById('userModal').style.display='none';
                 loadUsers();
             }).catch(error => {
-                alert("ERROR: Database Locked!\n\nReason: " + error.message + "\n\nPlease Enable Database Rules in Firebase Console.");
+                alert("ERROR: Could not save!\n\nDetails: " + error.message);
             });
         }
 
