@@ -3,77 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titan ERP | DATA INSPECTOR</title>
+    <title>Titan ERP | REPAIR TOOL</title>
     
     <link rel="stylesheet" href="style.css">
     
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <style>
         body { background-color: #020617; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
-        
-        #results-box {
-            background: #000; border: 1px solid #333; 
-            color: #0f0; font-family: monospace; 
-            padding: 20px; text-align: left; 
-            margin: 20px auto; max-width: 600px; min-height: 200px;
-            white-space: pre-wrap;
-        }
-
-        button { padding: 15px 30px; font-size: 18px; background: #0ea5e9; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        .box { max-width: 500px; margin: 30px auto; background: #0f172a; padding: 30px; border-radius: 15px; border: 1px solid #333; }
+        button { padding: 15px 30px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; border:none; width: 100%; margin-bottom: 10px; }
+        .btn-green { background: #22c55e; color: #000; }
+        .btn-blue { background: #0ea5e9; color: #fff; }
+        #log { text-align: left; background: #000; color: #0f0; padding: 10px; font-family: monospace; font-size: 11px; margin-top: 20px; min-height: 100px; border: 1px solid #333; }
     </style>
 </head>
 
 <body>
 
-    <h1>Database Inspector</h1>
-    <p>Click below to see EXACTLY what is inside your "users" folder.</p>
+    <div class="box">
+        <h2>DATABASE REPAIR</h2>
+        <p style="color: #94a3b8; font-size: 0.9rem;">This will force-create the Admin User directly from the App, fixing any connection mismatches.</p>
+        
+        <br>
 
-    <button onclick="inspectDB()">🔍 READ DATABASE NOW</button>
-
-    <div id="results-box">Waiting...</div>
-    
-    <div style="margin-top: 30px;">
-        <a href="dashboard.html" style="color: #666;">Back to Login</a>
+        <button class="btn-green" onclick="repairDB()">1. REPAIR DATABASE</button>
+        <button class="btn-blue" onclick="tryLogin()">2. TRY LOGIN NOW</button>
+        
+        <div id="log">System Ready...</div>
     </div>
 
     <script>
+        function log(msg) {
+            const box = document.getElementById('log');
+            box.innerHTML += "<div>> " + msg + "</div>";
+            console.log(msg);
+        }
+
+        // === YOUR EXACT KEYS ===
         const firebaseConfig = {
             apiKey: "AIzaSyBUKdAvTmwcafSq0JJmFdCGCATcgukKZ_k",
             authDomain: "titan-erp-logistics.firebaseapp.com",
             projectId: "titan-erp-logistics",
             storageBucket: "titan-erp-logistics.firebasestorage.app",
             messagingSenderId: "114849355675",
-            appId: "1:114849355675:web:e309f335ae2fc0af39f33e"
+            appId: "1:114849355675:web:e309f335ae2fc0af39f33e",
+            measurementId: "G-T59Y55TCLM"
         };
+
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        function inspectDB() {
-            const box = document.getElementById('results-box');
-            box.innerText = "Connecting to Google Cloud...";
+        // FORCE LONG POLLING (Fixes Network Blocks)
+        try {
+            db.settings({ experimentalForceLongPolling: true });
+            log("Mode: Long Polling Active");
+        } catch(e) {}
 
-            // GET ALL USERS (No Filters)
-            db.collection('users').get().then(snap => {
-                if(snap.empty) {
-                    box.innerText = "❌ RESULT: The 'users' collection is EMPTY.\n\nThis means the database is blank. You must Create a User again.";
-                } else {
-                    let output = "✅ FOUND " + snap.size + " USER(S):\n\n";
-                    snap.forEach(doc => {
-                        const d = doc.data();
-                        output += "--------------------------------\n";
-                        output += "ID: " + doc.id + "\n";
-                        output += "Name:   '" + d.name + "'\n";
-                        output += "Mobile: '" + d.mobile + "'  <-- CHECK SPACES!\n";
-                        output += "PIN:    '" + d.pin + "'\n";
-                        output += "--------------------------------\n";
-                    });
-                    box.innerText = output;
-                }
-            }).catch(e => {
-                box.innerText = "❌ ERROR: " + e.message + "\n\n(If error is 'Missing permissions', check Firestore Rules).";
+        function repairDB() {
+            log("Starting Repair...");
+            
+            const user = {
+                name: "Chandan Admin",
+                mobile: "9113806037",
+                pin: "1234",
+                role: "admin",
+                created: new Date().toString()
+            };
+
+            // FORCE WRITE TO A SPECIFIC ID
+            db.collection('users').doc('ADMIN_01').set(user)
+            .then(() => {
+                log("✅ SUCCESS! User Created.");
+                log("ID: ADMIN_01");
+                log("Mobile: 9113806037");
+                log("PIN: 1234");
+                alert("Repair Successful! You can now Login.");
+            })
+            .catch((error) => {
+                log("❌ FAILED: " + error.message);
+                alert("Error: " + error.message);
             });
+        }
+
+        function tryLogin() {
+            const mobile = "9113806037";
+            const pin = "1234";
+            
+            log("Testing Login...");
+            
+            db.collection('users').where('mobile', '==', mobile).where('pin', '==', pin).get()
+            .then(snap => {
+                if(snap.empty) {
+                    log("❌ Login Failed. (Still Empty)");
+                    alert("Login Failed. Did you click Repair?");
+                } else {
+                    log("✅ LOGIN SUCCESS! User Found.");
+                    alert("IT WORKS! Redirecting...");
+                    // Redirect to main dashboard code if needed, or just confirm it works
+                    window.location.href = "dashboard.html"; 
+                }
+            })
+            .catch(e => log("❌ Error: " + e.message));
         }
     </script>
 </body>
