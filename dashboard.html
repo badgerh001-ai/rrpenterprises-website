@@ -3,95 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titan ERP | Enterprise</title>
+    <title>Titan ERP | Smart Logistics</title>
+    
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <style>
         :root { --sidebar-width: 260px; --bg-dark: #020617; --card-bg: #0f172a; --primary: #0ea5e9; }
-        body { background-color: var(--bg-dark); font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; color: #fff; overflow-x: hidden; }
+        body { background-color: var(--bg-dark); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; color: #fff; margin: 0; }
         
         /* AUTH SCREEN */
-        #auth-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #020617; z-index: 5000; display: flex; justify-content: center; align-items: center; }
-        .auth-box { background: #0f172a; border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; }
-        
+        #auth-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #020617; z-index: 5000; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+        .auth-box { background: #0f172a; border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .link { color: var(--primary); text-decoration: underline; cursor: pointer; font-size: 0.9rem; margin-top: 15px; display: inline-block; }
+
         /* APP LAYOUT */
         .app-container { display: none; min-height: 100vh; }
         .app-container.active { display: flex; }
-        .sidebar { width: var(--sidebar-width); background: var(--card-bg); border-right: 1px solid rgba(255,255,255,0.05); position: fixed; height: 100vh; padding: 20px; display: flex; flex-direction: column; }
+        .sidebar { width: var(--sidebar-width); background: var(--card-bg); border-right: 1px solid rgba(255,255,255,0.05); position: fixed; height: 100vh; padding: 20px; display: flex; flex-direction: column; z-index: 100; transition: 0.3s; }
         .main-content { margin-left: var(--sidebar-width); flex: 1; padding: 30px; }
         .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
         
-        /* MODULES */
         .module-section { display: none; }
         .module-section.active { display: block; animation: fadeIn 0.3s ease; }
         .card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; margin-bottom: 20px; }
         
-        /* UI ELEMENTS */
+        /* DATA TABLES & FORMS */
         .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        .data-table th, .data-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-input { width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; margin-bottom: 15px; box-sizing: border-box; }
-        
+        .data-table th, .data-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; color: #e2e8f0; }
+        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .form-input { width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; margin-bottom: 15px; outline: none; box-sizing: border-box; }
         .btn { padding: 12px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; transition: 0.3s; }
         .btn-primary { background: var(--primary); color: #fff; }
-        .btn-danger { background: #ef4444; color: #fff; padding: 5px 10px; width: auto; font-size: 0.8rem; margin-left: 5px; }
-        .btn-edit { background: #3b82f6; color: #fff; padding: 5px 10px; width: auto; font-size: 0.8rem; }
+        .btn-danger { background: #ef4444; color: #fff; width: auto; padding: 5px 10px; font-size: 0.8rem; margin-left: 5px; cursor: pointer; border-radius: 4px; border: none; }
+        .btn-edit { background: #3b82f6; color: #fff; width: auto; padding: 5px 10px; font-size: 0.8rem; cursor: pointer; border-radius: 4px; border: none; }
         
         /* TABS */
         .tab-btn { background: transparent; border: 1px solid #334155; color: #94a3b8; padding: 8px 16px; border-radius: 20px; cursor: pointer; margin-right: 10px; }
         .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
+        /* ROLES & STATUS */
         .badge { padding: 5px 10px; border-radius: 5px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
-        .role-admin { background: #dc2626; } .role-client { background: #22c55e; color: black; }
+        .role-admin { background: #dc2626; color: white; }
+        .role-manager { background: #9333ea; color: white; }
+        .role-fleet { background: #eab308; color: black; }
+        .role-client { background: #22c55e; color: black; }
+        
         .row-green { border-left: 4px solid #22c55e; background: rgba(34, 197, 94, 0.1); }
         .row-red { border-left: 4px solid #ef4444; background: rgba(239, 68, 68, 0.1); opacity: 0.7; }
+        .status-Pending { color: #facc15; }
+        .status-Approved { color: #22c55e; font-weight: bold; }
 
         .admin-only { display: none !important; }
         .show-admin .admin-only { display: inline-block !important; }
-        
-        @media (max-width: 992px) { .sidebar { transform: translateX(-100%); } .main-content { margin-left: 0; } }
+
+        @media (max-width: 992px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); } .main-content { margin-left: 0; } }
+        @media print { body * { visibility: hidden; } #print-container, #print-container * { visibility: visible; } #print-container { position: absolute; top:0; left:0; width:100%; background: white; color: black; } }
+        #print-container { display: none; }
     </style>
 </head>
 
 <body>
 
     <div id="auth-screen">
-        <div class="auth-box">
-            <h2 style="margin-bottom: 20px;">Titan ERP</h2>
+        <div class="auth-box" id="login-box">
+            <img src="assets/logo.png" style="width: 80px; margin-bottom: 20px;">
+            <h2 style="margin-bottom: 10px;">Titan ERP</h2>
             <input type="email" id="email" class="form-input" placeholder="Email Address">
             <input type="password" id="password" class="form-input" placeholder="Password">
             <button class="btn btn-primary" onclick="handleLogin(this)">LOGIN</button>
+            <p id="login-msg" style="color: #ef4444; margin-top: 10px; font-size: 0.8rem;"></p>
         </div>
     </div>
 
     <div class="app-container" id="app-interface">
         <nav class="sidebar" id="sidebar">
-            <div style="padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px;">
+            <div style="padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                <img src="assets/logo.png" style="width: 30px;">
                 <div style="font-weight: 800; font-size: 1.2rem;">TITAN ERP</div>
             </div>
+            
             <a id="nav-dash" onclick="showModule('dashboard')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-th-large"></i> Dashboard</a>
             <a id="nav-ops" onclick="showModule('operations')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-file-invoice"></i> Operations</a>
             <a id="nav-fleet" onclick="showModule('fleet')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-truck-moving"></i> Fleet</a>
             <a id="nav-users" onclick="showModule('users')" class="btn admin-only" style="background:transparent; text-align:left; color:#ef4444; margin:0; border-top: 1px solid #333; margin-top: 10px;"><i class="fas fa-users-cog"></i> Users & Clients</a>
-            <div style="margin-top: auto;"><a onclick="logout()" class="btn" style="background:transparent; text-align:left; color:#ef4444; margin:0;">Logout</a></div>
+            
+            <div style="margin-top: auto;">
+                <a onclick="logout()" class="btn" style="background:transparent; text-align:left; color:#ef4444; margin:0;">Logout</a>
+            </div>
         </nav>
 
         <main class="main-content">
             <div class="top-bar">
-                <div></div>
-                <div id="role-display" class="badge role-client">Loading...</div>
+                <button onclick="document.getElementById('sidebar').classList.toggle('open')" style="background:none; border:none; color:white; font-size:1.5rem;"><i class="fas fa-bars"></i></button>
+                <div><span id="role-display" class="badge role-client">Loading...</span></div>
+                <div id="user-initial" style="background: var(--primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">U</div>
             </div>
 
             <div id="mod-dashboard" class="module-section">
                 <div class="card">
-                    <h3>Financial Overview</h3>
+                    <h3>Financial & Shipment Overview</h3>
                     <table class="data-table">
-                        <thead><tr><th>LR No</th><th>Truck</th><th>Freight</th><th>Exp (Dsl+Cash)</th><th>Profit</th><th>Status</th></tr></thead>
+                        <thead><tr><th>LR No</th><th>Truck</th><th>Freight</th><th>Exp (Dsl+Cash)</th><th>Profit</th><th>Status</th><th>Action</th></tr></thead>
                         <tbody id="dash-table-body"></tbody>
                     </table>
                 </div>
@@ -106,9 +124,12 @@
 
             <div id="mod-fleet" class="module-section">
                 <div class="card">
-                    <div style="display:flex; justify-content:space-between;"><h3>Fleet</h3><button class="btn btn-primary admin-only" onclick="openFleetModal()" style="width:auto;">+ Add</button></div>
+                    <div style="display:flex; justify-content:space-between; align-items: center;">
+                        <h3>Fleet Status</h3>
+                        <button class="btn btn-primary admin-only" onclick="openFleetModal()" style="width: auto;">+ Add Vehicle</button>
+                    </div>
                     <table class="data-table">
-                        <thead><tr><th>No</th><th>Driver</th><th>Status</th><th>Action</th></tr></thead>
+                        <thead><tr><th>Vehicle No</th><th>Driver</th><th>Status</th><th>Action</th></tr></thead>
                         <tbody id="fleet-table-body"></tbody>
                     </table>
                 </div>
@@ -116,10 +137,10 @@
 
             <div id="mod-users" class="module-section">
                 <div class="card">
-                    <div style="display:flex; justify-content:space-between; margin-bottom: 20px;">
+                    <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 20px;">
                         <div>
                             <button class="tab-btn active" onclick="filterUsers('client', this)">Clients</button>
-                            <button class="tab-btn" onclick="filterUsers('staff', this)">Team</button>
+                            <button class="tab-btn" onclick="filterUsers('staff', this)">Team (Drivers/Admin)</button>
                         </div>
                         <button class="btn btn-primary" onclick="openUserModal()" style="width: auto;">+ Add New</button>
                     </div>
@@ -134,13 +155,14 @@
 
     <div id="userModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center;">
         <div class="card" style="width:90%; max-width:400px;">
-            <h3 id="u_modal_title">Profile</h3>
+            <h3 id="u_modal_title">User / Client Profile</h3>
             <input type="hidden" id="u_id"> 
-            <input id="u_name" class="form-input" placeholder="Name / Company">
-            <input id="u_email" class="form-input" placeholder="Email / Contact">
+            
+            <input id="u_name" class="form-input" placeholder="Name / Company Name">
+            <input id="u_email" class="form-input" placeholder="Email / Contact ID">
             <select id="u_role" class="form-input">
-                <option value="client">Client</option>
-                <option value="fleet">Driver</option>
+                <option value="client">Client (Consignor/Consignee)</option>
+                <option value="fleet">Fleet Owner/Driver</option>
                 <option value="manager">Manager</option>
                 <option value="admin">Admin</option>
             </select>
@@ -157,6 +179,7 @@
             <select id="v_status" class="form-input">
                 <option value="Available">Available (Green)</option>
                 <option value="On Trip">On Trip (Red)</option>
+                <option value="Maintenance">Maintenance (Orange)</option>
             </select>
             <button class="btn btn-primary" onclick="saveFleet()">Save</button>
             <button class="btn" onclick="document.getElementById('fleetModal').style.display='none'" style="color:#ccc;">Cancel</button>
@@ -165,24 +188,38 @@
 
     <div id="lrModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; overflow-y:auto; padding:20px;">
         <div class="card" style="width:100%; max-width:800px; margin:50px auto;">
-            <h3>New LR</h3>
-            <div class="form-grid"><input id="lr_no" class="form-input" placeholder="LR No"><input id="lr_date" type="date" class="form-input"></div>
-            <select id="lr_truck" class="form-input"><option>Loading Trucks...</option></select>
+            <div style="display:flex; justify-content:space-between;"><h3>New LR</h3><button onclick="document.getElementById('lrModal').style.display='none'" style="background:none; border:none; color:white; font-size:1.5rem;">&times;</button></div>
+            <div class="form-grid" style="margin-top:20px;"><input id="lr_no" class="form-input" placeholder="LR No"><input id="lr_date" type="date" class="form-input"></div>
+            
+            <label style="color:#94a3b8; font-size:0.8rem;">Select Truck</label>
+            <select id="lr_truck" class="form-input"><option>Loading...</option></select>
+            
+            <label style="color:#94a3b8; font-size:0.8rem;">Select Client (Push LR)</label>
             <div class="form-grid">
-                <select id="lr_consignor" class="form-input"><option value="">Consignor</option></select>
-                <select id="lr_consignee" class="form-input"><option value="">Consignee</option></select>
+                <select id="lr_consignor" class="form-input"><option value="">Consignor (From Client Master)</option></select>
+                <select id="lr_consignee" class="form-input"><option value="">Consignee (From Client Master)</option></select>
             </div>
+            
             <div class="form-grid"><input id="lr_from" class="form-input" placeholder="From"><input id="lr_to" class="form-input" placeholder="To"></div>
             <div class="form-grid"><input id="lr_goods" class="form-input" placeholder="Goods"><input id="lr_weight" class="form-input" placeholder="Weight"></div>
-            <div class="form-grid"><input id="lr_total" class="form-input" placeholder="Total" type="number"><input id="lr_balance" class="form-input" placeholder="Balance" type="number"></div>
-            <div class="form-grid"><input id="lr_diesel" class="form-input" placeholder="Diesel" type="number"><input id="lr_cash" class="form-input" placeholder="Cash" type="number"></div>
+            
+            <h4 style="border-top:1px solid #333; padding-top:15px; margin-top:10px;">Financials</h4>
+            <div class="form-grid">
+                <input id="lr_total" class="form-input" placeholder="Total Freight" type="number">
+                <input id="lr_balance" class="form-input" placeholder="Balance" type="number">
+            </div>
+            <div class="form-grid">
+                <input id="lr_diesel" class="form-input" placeholder="Diesel Adv" type="number">
+                <input id="lr_cash" class="form-input" placeholder="Driver Cash" type="number">
+            </div>
+
             <button class="btn btn-primary" onclick="saveLR()">Save & Assign</button>
-            <button class="btn" onclick="document.getElementById('lrModal').style.display='none'" style="color:#ccc;">Cancel</button>
         </div>
     </div>
+    <div id="print-container"></div>
 
     <script>
-        // === CONNECTION CONFIG ===
+        // === CONFIG ===
         const firebaseConfig = {
             apiKey: "AIzaSyBUKdAvTmwcafSq0JJmFdCGCATcgukKZ_k",
             authDomain: "titan-erp-logistics.firebaseapp.com",
@@ -195,38 +232,55 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
         
-        // === THE FIX: FORCE CONNECTION ===
-        try { db.settings({ experimentalForceLongPolling: true, merge: true }); } catch(e) { console.log(e); }
+        // === THE FIX: Use Valid Settings Only ===
+        try { db.settings({ experimentalForceLongPolling: true }); } catch(e) { console.log("Config Info:", e); }
 
         let currentUser = null;
-        let currentTab = 'client';
+        let currentTab = 'client'; // For User filtering
 
+        // === 1. ROLE LOGIC ===
+        function getRoleFromEmail(email) {
+            email = email.toLowerCase();
+            if(email.includes("contact@rrp")) return "admin";
+            if(email.includes("rrp.services")) return "manager";
+            if(email.includes("badger")) return "client";
+            if(email.includes("anke")) return "fleet";
+            return "client";
+        }
+
+        // === 2. LOGIN ===
         function handleLogin(btn) {
             const email = document.getElementById('email').value.trim();
             const pass = document.getElementById('password').value.trim();
-            if(!email || !pass) return alert("Fill fields");
+            if(!email || !pass) return alert("Fill all fields");
             btn.innerText = "Verifying...";
-            auth.signInWithEmailAndPassword(email, pass).then(() => {
-                let role = 'client';
-                if(email.includes('contact@rrp')) role = 'admin';
-                else if(email.includes('rrp.services')) role = 'manager';
-                else if(email.includes('anke')) role = 'fleet';
-                enterApp({ name: "User", role: role, email: email });
-            }).catch(e => { btn.innerText = "LOGIN"; alert(e.message); });
+            auth.signInWithEmailAndPassword(email, pass)
+                .then((cred) => {
+                    const role = getRoleFromEmail(email);
+                    enterApp({ name: "User", role: role, email: email });
+                })
+                .catch(e => { btn.innerText = "LOGIN"; alert(e.message); });
         }
 
         function enterApp(user) {
             currentUser = user;
             document.getElementById('auth-screen').style.display = 'none';
             document.getElementById('app-interface').classList.add('active');
+            document.getElementById('user-initial').innerText = user.role.charAt(0).toUpperCase();
             document.getElementById('role-display').innerText = user.role.toUpperCase();
-            document.body.classList.remove('show-admin');
-            if(user.role === 'admin') document.body.classList.add('show-admin');
+            document.getElementById('role-display').className = "badge role-" + user.role;
+            applyPermissions(user.role);
+        }
+
+        function applyPermissions(role) {
+            document.body.classList.remove('show-admin', 'show-manager');
+            if(role === 'admin') document.body.classList.add('show-admin');
             
             ['nav-dash','nav-ops','nav-fleet','nav-users'].forEach(id => document.getElementById(id).style.display = 'none');
-            if(user.role === 'admin') {
+
+            if(role === 'admin') {
                 ['nav-dash','nav-ops','nav-fleet','nav-users'].forEach(id => document.getElementById(id).style.display = 'block');
-                showModule('users'); 
+                showModule('users'); // Open Users first to clean up
             } else {
                 document.getElementById('nav-dash').style.display = 'block';
                 showModule('dashboard');
@@ -241,6 +295,7 @@
             if(id === 'users') loadUsers();
         }
 
+        // === USERS (CLEANUP & SEPARATION) ===
         function filterUsers(type, btn) {
             currentTab = type;
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -253,52 +308,132 @@
                 let html = '';
                 snap.forEach(doc => {
                     const u = doc.data();
-                    let show = (currentTab === 'client' && u.role === 'client') || (currentTab === 'staff' && u.role !== 'client');
+                    
+                    // Filter Logic
+                    let show = false;
+                    if(currentTab === 'client' && u.role === 'client') show = true;
+                    if(currentTab === 'staff' && u.role !== 'client') show = true;
+
                     if(show) {
-                        html += `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.role}</td>
-                        <td><button class="btn-edit" onclick="openUserModal('${doc.id}','${u.name}','${u.email}','${u.role}')"><i class="fas fa-edit"></i></button>
-                        <button class="btn-danger" onclick="deleteUser('${doc.id}')"><i class="fas fa-trash"></i></button></td></tr>`;
+                        const buttons = `
+                            <button class="btn-edit" onclick="openUserModal('${doc.id}', '${u.name}', '${u.email}', '${u.role}')"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="btn-danger" onclick="deleteUser('${doc.id}')"><i class="fas fa-trash"></i></button>
+                        `;
+                        html += `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.role}</td><td>${buttons}</td></tr>`;
                     }
                 });
                 document.getElementById('users-table-body').innerHTML = html;
             });
         }
 
-        function openUserModal(id='', name='', email='', role='client') {
-            document.getElementById('u_modal_title').innerText = id ? "Edit Profile" : "Add New";
-            document.getElementById('u_id').value = id;
+        function openUserModal(id=null, name='', email='', role='') { 
+            document.getElementById('u_modal_title').innerText = id ? "Edit Profile" : "Add New Profile";
+            document.getElementById('u_id').value = id || ''; // CRITICAL FIX
             document.getElementById('u_name').value = name;
             document.getElementById('u_email').value = email;
-            document.getElementById('u_role').value = role;
-            document.getElementById('btn-save-user').innerText = id ? "Update" : "Save";
-            document.getElementById('userModal').style.display = 'flex';
+            document.getElementById('u_role').value = role || 'client';
+            document.getElementById('btn-save-user').innerText = id ? "Update" : "Save to Database";
+            document.getElementById('userModal').style.display='flex'; 
         }
 
         function saveUser() {
             const btn = document.getElementById('btn-save-user');
-            const id = document.getElementById('u_id').value;
+            const id = document.getElementById('u_id').value; // This was missing in your old code
             const data = {
                 name: document.getElementById('u_name').value,
                 email: document.getElementById('u_email').value,
                 role: document.getElementById('u_role').value,
                 created: new Date().toString()
             };
-            btn.innerText = "Saving...";
-            
-            // TIMEOUT SAFETY
-            setTimeout(() => { if(btn.innerText === "Saving...") { alert("Network Timeout! Check connection."); btn.innerText = "Save"; } }, 8000);
+
+            btn.innerText = "Saving..."; // Feedback
 
             if(id) {
-                db.collection('users').doc(id).update(data).then(() => { alert("Updated!"); document.getElementById('userModal').style.display='none'; loadUsers(); })
-                .catch(err => { alert("Error: " + err.message); btn.innerText = "Try Again"; });
+                // UPDATE
+                db.collection('users').doc(id).update(data).then(() => {
+                    alert("Updated Successfully!");
+                    document.getElementById('userModal').style.display='none';
+                    loadUsers();
+                }).catch(err => { alert(err.message); btn.innerText = "Try Again"; });
             } else {
-                db.collection('users').add(data).then(() => { alert("Added!"); document.getElementById('userModal').style.display='none'; loadUsers(); })
-                .catch(err => { alert("Error: " + err.message); btn.innerText = "Try Again"; });
+                // CREATE
+                db.collection('users').add(data).then(() => {
+                    alert("Added Successfully!");
+                    document.getElementById('userModal').style.display='none';
+                    loadUsers();
+                }).catch(err => { alert(err.message); btn.innerText = "Try Again"; });
             }
         }
 
-        function deleteUser(id) { if(confirm("Delete?")) db.collection('users').doc(id).delete().then(loadUsers); }
+        function deleteUser(id) {
+            if(confirm("Permanently Delete?")) {
+                db.collection('users').doc(id).delete().then(() => loadUsers());
+            }
+        }
 
+        // === OPS (PUSH LR) ===
+        function openLRModal() { 
+            document.getElementById('lrModal').style.display='flex';
+            
+            // Populate Trucks
+            db.collection('fleet').where('status','==','Available').get().then(snap => {
+                let html = '<option value="">Select Available Truck</option>';
+                snap.forEach(doc => { html += `<option value="${doc.data().no}">${doc.data().no}</option>`; });
+                document.getElementById('lr_truck').innerHTML = html;
+            });
+
+            // Populate Clients (The "Push" Feature)
+            db.collection('users').where('role','==','client').get().then(snap => {
+                let html = '<option value="">Select Client</option>';
+                snap.forEach(doc => { 
+                    html += `<option value="${doc.data().name}">${doc.data().name}</option>`; 
+                });
+                document.getElementById('lr_consignor').innerHTML = html;
+                document.getElementById('lr_consignee').innerHTML = html;
+            });
+        }
+
+        function saveLR() {
+            const truckNo = document.getElementById('lr_truck').value;
+            if(!truckNo) return alert("Select a Truck!");
+
+            db.collection('lrs').add({
+                no: document.getElementById('lr_no').value,
+                date: document.getElementById('lr_date').value,
+                truck: truckNo,
+                consignor: document.getElementById('lr_consignor').value,
+                consignee: document.getElementById('lr_consignee').value,
+                from: document.getElementById('lr_from').value,
+                to: document.getElementById('lr_to').value,
+                goods: document.getElementById('lr_goods').value,
+                weight: document.getElementById('lr_weight').value,
+                total: document.getElementById('lr_total').value,
+                balance: document.getElementById('lr_balance').value,
+                diesel: document.getElementById('lr_diesel').value,
+                cash: document.getElementById('lr_cash').value,
+                status: 'Pending', created: new Date()
+            }).then(() => { 
+                db.collection('fleet').where('no','==',truckNo).get().then(snap => {
+                    snap.forEach(doc => { db.collection('fleet').doc(doc.id).update({ status: 'On Trip' }); });
+                });
+                document.getElementById('lrModal').style.display='none'; alert("Created"); loadDash(); 
+            }).catch(error => alert("Error: " + error.message));
+        }
+
+        // === OTHER MODULES ===
+        function loadDash() {
+            db.collection('lrs').orderBy('created','desc').limit(20).get().then(snap => {
+                let html = '';
+                snap.forEach(doc => { 
+                    const d = doc.data(); 
+                    const profit = (parseFloat(d.total)||0) - ((parseFloat(d.diesel)||0) + (parseFloat(d.cash)||0));
+                    const color = profit >= 0 ? '#22c55e' : '#ef4444';
+                    html += `<tr><td>${d.no}</td><td>${d.truck}</td><td>${d.total}</td><td>${(parseFloat(d.diesel)||0)+(parseFloat(d.cash)||0)}</td><td style="color:${color}">${profit}</td><td>${d.status}</td><td>View</td></tr>`; 
+                });
+                document.getElementById('dash-table-body').innerHTML = html;
+            });
+        }
+        
         function openFleetModal() { document.getElementById('fleetModal').style.display='flex'; }
         function saveFleet() {
             db.collection('fleet').add({
@@ -312,64 +447,13 @@
                 let html = '';
                 snap.forEach(doc => { 
                     const btn = `<button class="btn-danger" onclick="deleteFleet('${doc.id}')">Del</button>`;
-                    let rowClass = doc.data().status === 'Available' ? 'row-green' : 'row-red';
-                    html += `<tr class="${rowClass}"><td>${doc.data().no}</td><td>${doc.data().driver}</td><td>${doc.data().status}</td><td>${btn}</td></tr>`; 
+                    html += `<tr><td>${doc.data().no}</td><td>${doc.data().driver}</td><td>${doc.data().status}</td><td>${btn}</td></tr>`; 
                 });
                 document.getElementById('fleet-table-body').innerHTML = html;
             });
         }
         function deleteFleet(id) { if(confirm("Delete?")) db.collection('fleet').doc(id).delete().then(loadFleet); }
 
-        function openLRModal() { 
-            document.getElementById('lrModal').style.display='flex';
-            db.collection('fleet').where('status','==','Available').get().then(snap => {
-                let html = '<option value="">Select Available Truck</option>';
-                snap.forEach(doc => { html += `<option value="${doc.data().no}">${doc.data().no}</option>`; });
-                document.getElementById('lr_truck').innerHTML = html;
-            });
-            db.collection('users').where('role','==','client').get().then(snap => {
-                let html = '<option value="">Select Client</option>';
-                snap.forEach(doc => { html += `<option value="${doc.data().name}">${doc.data().name}</option>`; });
-                document.getElementById('lr_consignor').innerHTML = html;
-                document.getElementById('lr_consignee').innerHTML = html;
-            });
-        }
-
-        function saveLR() {
-            const truckNo = document.getElementById('lr_truck').value;
-            if(!truckNo) return alert("Select Truck");
-            db.collection('lrs').add({
-                no: document.getElementById('lr_no').value,
-                date: document.getElementById('lr_date').value,
-                truck: truckNo,
-                consignor: document.getElementById('lr_consignor').value,
-                consignee: document.getElementById('lr_consignee').value,
-                from: document.getElementById('lr_from').value,
-                to: document.getElementById('lr_to').value,
-                goods: document.getElementById('lr_goods').value,
-                total: document.getElementById('lr_total').value,
-                diesel: document.getElementById('lr_diesel').value,
-                cash: document.getElementById('lr_cash').value,
-                status: 'Pending', created: new Date()
-            }).then(() => { 
-                db.collection('fleet').where('no','==',truckNo).get().then(snap => {
-                    snap.forEach(doc => db.collection('fleet').doc(doc.id).update({ status: 'On Trip' }));
-                });
-                document.getElementById('lrModal').style.display='none'; alert("Created"); loadDash(); 
-            }).catch(e => alert(e.message));
-        }
-
-        function loadDash() {
-            db.collection('lrs').orderBy('created','desc').limit(20).get().then(snap => {
-                let html = '';
-                snap.forEach(doc => { 
-                    const d = doc.data(); 
-                    const profit = (parseFloat(d.total)||0) - ((parseFloat(d.diesel)||0) + (parseFloat(d.cash)||0));
-                    html += `<tr><td>${d.no}</td><td>${d.truck}</td><td>${d.total}</td><td>${(parseFloat(d.diesel)||0)+(parseFloat(d.cash)||0)}</td><td>${profit}</td><td>${d.status}</td></tr>`; 
-                });
-                document.getElementById('dash-table-body').innerHTML = html;
-            });
-        }
         function logout() { auth.signOut().then(() => location.reload()); }
     </script>
 </body>
