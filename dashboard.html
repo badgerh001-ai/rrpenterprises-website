@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titan ERP | Smart Logistics</title>
+    <title>Titan ERP | Enterprise</title>
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -35,7 +35,6 @@
         
         .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         .data-table th, .data-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; color: #e2e8f0; }
-        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         .form-input { width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; margin-bottom: 15px; outline: none; box-sizing: border-box; }
         .btn { padding: 12px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; transition: 0.3s; }
         .btn-primary { background: var(--primary); color: #fff; }
@@ -47,11 +46,10 @@
         .role-fleet { background: #eab308; color: black; }
         .role-client { background: #22c55e; color: black; }
         
-        /* TRAFFIC LIGHT SYSTEM (Fleet) */
+        /* TRAFFIC LIGHT SYSTEM */
         .row-green { border-left: 4px solid #22c55e; background: rgba(34, 197, 94, 0.1); }
         .row-red { border-left: 4px solid #ef4444; background: rgba(239, 68, 68, 0.1); opacity: 0.7; }
         
-        /* STATUS */
         .status-Pending { color: #facc15; }
         .status-Approved { color: #22c55e; font-weight: bold; }
 
@@ -175,7 +173,7 @@
             <input id="u_email" class="form-input" placeholder="Email (e.g. anke...)">
             <select id="u_role" class="form-input">
                 <option value="client">Client</option>
-                <option value="driver">Fleet Owner/Driver</option>
+                <option value="fleet">Fleet Owner/Driver</option>
                 <option value="manager">Manager</option>
                 <option value="admin">Admin</option>
             </select>
@@ -324,13 +322,10 @@
                 let html = '';
                 snap.forEach(doc => { 
                     const d = doc.data(); 
-                    // Profit Calc
                     const freight = parseFloat(d.total) || 0;
                     const diesel = parseFloat(d.diesel) || 0;
                     const cash = parseFloat(d.cash) || 0;
                     const profit = freight - (diesel + cash);
-                    
-                    // Logic: Green Profit, Red Loss
                     const profitColor = profit >= 0 ? '#22c55e' : '#ef4444';
 
                     const status = d.status || 'Pending';
@@ -340,15 +335,7 @@
                         if(currentUser.role === 'admin') actions += ` <i class="fas fa-trash" style="color:red;cursor:pointer;margin-left:10px;" onclick="deleteLR('${doc.id}')"></i>`;
                     } else actions = 'View Only';
 
-                    html += `<tr>
-                        <td>${d.no}</td>
-                        <td>${d.truck}</td>
-                        <td>${freight}</td>
-                        <td>${diesel + cash}</td>
-                        <td style="color:${profitColor}; font-weight:bold;">${profit}</td>
-                        <td class="status-${status}">${status}</td>
-                        <td>${actions}</td>
-                    </tr>`; 
+                    html += `<tr><td>${d.no}</td><td>${d.truck}</td><td>${freight}</td><td>${diesel + cash}</td><td style="color:${profitColor}; font-weight:bold;">${profit}</td><td class="status-${status}">${status}</td><td>${actions}</td></tr>`; 
                 });
                 document.getElementById('dash-table-body').innerHTML = html;
             });
@@ -363,8 +350,13 @@
             db.collection('fleet').add({
                 no: document.getElementById('v_no').value.toUpperCase(),
                 driver: document.getElementById('v_driver').value,
-                status: document.getElementById('v_status').value // Save Green/Red Status
-            }).then(() => { document.getElementById('fleetModal').style.display='none'; loadFleet(); });
+                status: document.getElementById('v_status').value
+            }).then(() => { 
+                document.getElementById('fleetModal').style.display='none'; 
+                loadFleet(); 
+            }).catch(error => {
+                alert("ERROR: Database Locked!\n" + error.message);
+            });
         }
         
         function loadFleet() {
@@ -372,11 +364,9 @@
                 let html = '';
                 snap.forEach(doc => { 
                     const d = doc.data();
-                    // Color Rows based on Status
                     let rowClass = '';
                     if(d.status === 'Available') rowClass = 'row-green';
                     if(d.status === 'On Trip') rowClass = 'row-red';
-                    
                     html += `<tr class="${rowClass}"><td>${d.no}</td><td>${d.driver}</td><td>${d.status}</td></tr>`; 
                 });
                 document.getElementById('fleet-table-body').innerHTML = html;
@@ -387,7 +377,6 @@
         function openUserModal() { document.getElementById('userModal').style.display='flex'; }
         
         function saveUser() {
-            // Manual Add to DB
             const name = document.getElementById('u_name').value;
             const email = document.getElementById('u_email').value;
             const role = document.getElementById('u_role').value;
@@ -398,6 +387,8 @@
                 alert("User Added to Database!");
                 document.getElementById('userModal').style.display='none';
                 loadUsers();
+            }).catch(error => {
+                alert("ERROR: Database Locked!\n\nReason: " + error.message + "\n\nPlease Enable Database Rules in Firebase Console.");
             });
         }
 
@@ -412,15 +403,12 @@
             });
         }
 
-        // --- OPS (SMART TRUCK SELECT) ---
+        // --- OPS ---
         function openLRModal() { 
             document.getElementById('lrModal').style.display='flex';
-            // Only Load AVAILABLE trucks
             db.collection('fleet').where('status','==','Available').get().then(snap => {
                 let html = '<option value="">Select Available Truck</option>';
-                snap.forEach(doc => { 
-                    html += `<option value="${doc.data().no}">${doc.data().no}</option>`; 
-                });
+                snap.forEach(doc => { html += `<option value="${doc.data().no}">${doc.data().no}</option>`; });
                 document.getElementById('lr_truck').innerHTML = html;
             });
         }
@@ -429,7 +417,6 @@
             const truckNo = document.getElementById('lr_truck').value;
             if(!truckNo) return alert("Select a Truck!");
 
-            // 1. Save LR
             db.collection('lrs').add({
                 no: document.getElementById('lr_no').value,
                 date: document.getElementById('lr_date').value,
@@ -446,17 +433,12 @@
                 cash: document.getElementById('lr_cash').value,
                 status: 'Pending', created: new Date()
             }).then(() => { 
-                // 2. LOCK THE TRUCK (Turn Red)
-                // We need to find the truck doc ID first
                 db.collection('fleet').where('no','==',truckNo).get().then(snap => {
-                    snap.forEach(doc => {
-                        db.collection('fleet').doc(doc.id).update({ status: 'On Trip' });
-                    });
+                    snap.forEach(doc => { db.collection('fleet').doc(doc.id).update({ status: 'On Trip' }); });
                 });
-
-                document.getElementById('lrModal').style.display='none'; 
-                alert("LR Created & Truck Locked!"); 
-                loadDash(); 
+                document.getElementById('lrModal').style.display='none'; alert("Created"); loadDash(); 
+            }).catch(error => {
+                alert("ERROR: Database Locked!\n" + error.message);
             });
         }
 
