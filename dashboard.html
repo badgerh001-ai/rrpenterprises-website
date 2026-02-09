@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titan ERP | Enterprise</title>
+    <title>Titan ERP | Smart Logistics</title>
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -39,6 +39,8 @@
         .form-input { width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; margin-bottom: 15px; outline: none; box-sizing: border-box; }
         .btn { padding: 12px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; transition: 0.3s; }
         .btn-primary { background: var(--primary); color: #fff; }
+        .btn-danger { background: #ef4444; color: #fff; width: auto; display: inline-block; padding: 5px 10px; font-size: 0.8rem; margin-left: 5px; }
+        .btn-edit { background: #3b82f6; color: #fff; width: auto; display: inline-block; padding: 5px 10px; font-size: 0.8rem; }
         
         /* ROLES */
         .badge { padding: 5px 10px; border-radius: 5px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
@@ -145,7 +147,7 @@
                         <button class="btn btn-primary admin-only" onclick="openFleetModal()" style="width: auto;">+ Add Vehicle</button>
                     </div>
                     <table class="data-table">
-                        <thead><tr><th>Vehicle No</th><th>Driver</th><th>Status</th></tr></thead>
+                        <thead><tr><th>Vehicle No</th><th>Driver</th><th>Status</th><th>Action</th></tr></thead>
                         <tbody id="fleet-table-body"></tbody>
                     </table>
                 </div>
@@ -154,11 +156,11 @@
             <div id="mod-users" class="module-section">
                 <div class="card">
                     <div style="display:flex; justify-content:space-between; align-items: center;">
-                        <h3>User Access Control</h3>
-                        <button class="btn btn-primary" onclick="openUserModal()" style="width: auto;">+ Add User Profile</button>
+                        <h3>Client & User Master</h3>
+                        <button class="btn btn-primary" onclick="openUserModal()" style="width: auto;">+ Add User/Client</button>
                     </div>
                     <table class="data-table">
-                        <thead><tr><th>Name</th><th>Email</th><th>Role</th></tr></thead>
+                        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Action</th></tr></thead>
                         <tbody id="users-table-body"></tbody>
                     </table>
                 </div>
@@ -168,17 +170,16 @@
 
     <div id="userModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center;">
         <div class="card" style="width:90%; max-width:400px;">
-            <h3>Add User Profile</h3>
-            <p style="color:#64748b; font-size:0.8rem;">Manually add users to the database.</p>
-            <input id="u_name" class="form-input" placeholder="Name (e.g. Ramesh)">
-            <input id="u_email" class="form-input" placeholder="Email (e.g. anke...)">
+            <h3>User / Client Profile</h3>
+            <input type="hidden" id="u_id"> <input id="u_name" class="form-input" placeholder="Name / Company Name">
+            <input id="u_email" class="form-input" placeholder="Email / Contact ID">
             <select id="u_role" class="form-input">
-                <option value="client">Client</option>
+                <option value="client">Client (Consignor/Consignee)</option>
                 <option value="fleet">Fleet Owner/Driver</option>
                 <option value="manager">Manager</option>
                 <option value="admin">Admin</option>
             </select>
-            <button class="btn btn-primary" onclick="saveUser()">Add to Database</button>
+            <button class="btn btn-primary" onclick="saveUser()">Save to Database</button>
             <button class="btn" onclick="document.getElementById('userModal').style.display='none'" style="color:#ccc;">Cancel</button>
         </div>
     </div>
@@ -203,24 +204,29 @@
             <div style="display:flex; justify-content:space-between;"><h3>New LR</h3><button onclick="document.getElementById('lrModal').style.display='none'" style="background:none; border:none; color:white; font-size:1.5rem;">&times;</button></div>
             <div class="form-grid" style="margin-top:20px;"><input id="lr_no" class="form-input" placeholder="LR No"><input id="lr_date" type="date" class="form-input"></div>
             
-            <label style="color:#94a3b8; font-size:0.8rem;">Select Available Truck (Red trucks hidden)</label>
-            <select id="lr_truck" class="form-input"><option>Loading Trucks...</option></select>
+            <label style="color:#94a3b8; font-size:0.8rem;">Select Truck</label>
+            <select id="lr_truck" class="form-input"><option>Loading...</option></select>
             
-            <div class="form-grid"><input id="lr_consignor" class="form-input" placeholder="Consignor"><input id="lr_consignee" class="form-input" placeholder="Consignee"></div>
+            <label style="color:#94a3b8; font-size:0.8rem;">Select Client (Push LR)</label>
+            <div class="form-grid">
+                <select id="lr_consignor" class="form-input"><option>Select Consignor...</option></select>
+                <select id="lr_consignee" class="form-input"><option>Select Consignee...</option></select>
+            </div>
+            
             <div class="form-grid"><input id="lr_from" class="form-input" placeholder="From"><input id="lr_to" class="form-input" placeholder="To"></div>
             <div class="form-grid"><input id="lr_goods" class="form-input" placeholder="Goods"><input id="lr_weight" class="form-input" placeholder="Weight"></div>
             
-            <h4 style="border-top:1px solid #333; padding-top:15px; margin-top:10px;">Financials (For Profit Calc)</h4>
+            <h4 style="border-top:1px solid #333; padding-top:15px; margin-top:10px;">Financials</h4>
             <div class="form-grid">
-                <input id="lr_total" class="form-input" placeholder="Total Freight (e.g. 10000)" type="number">
-                <input id="lr_balance" class="form-input" placeholder="Balance to Collect" type="number">
+                <input id="lr_total" class="form-input" placeholder="Total Freight" type="number">
+                <input id="lr_balance" class="form-input" placeholder="Balance" type="number">
             </div>
             <div class="form-grid">
-                <input id="lr_diesel" class="form-input" placeholder="Diesel Advance" type="number">
+                <input id="lr_diesel" class="form-input" placeholder="Diesel Adv" type="number">
                 <input id="lr_cash" class="form-input" placeholder="Driver Cash" type="number">
             </div>
 
-            <button class="btn btn-primary" onclick="saveLR()">Save & Assign Truck</button>
+            <button class="btn btn-primary" onclick="saveLR()">Save & Assign</button>
         </div>
     </div>
     <div id="print-container"></div>
@@ -355,9 +361,7 @@
             }).then(() => { 
                 document.getElementById('fleetModal').style.display='none'; 
                 loadFleet(); 
-            }).catch(error => {
-                alert("ERROR: Database Locked!\n" + error.message);
-            });
+            }).catch(error => alert("Error: " + error.message));
         }
         
         function loadFleet() {
@@ -368,30 +372,60 @@
                     let rowClass = '';
                     if(d.status === 'Available') rowClass = 'row-green';
                     if(d.status === 'On Trip') rowClass = 'row-red';
-                    html += `<tr class="${rowClass}"><td>${d.no}</td><td>${d.driver}</td><td>${d.status}</td></tr>`; 
+                    
+                    // Added Delete Button for Fleet
+                    const delBtn = currentUser.role === 'admin' ? `<button onclick="deleteFleet('${doc.id}')" class="btn-danger"><i class="fas fa-trash"></i></button>` : '';
+
+                    html += `<tr class="${rowClass}"><td>${d.no}</td><td>${d.driver}</td><td>${d.status}</td><td>${delBtn}</td></tr>`; 
                 });
                 document.getElementById('fleet-table-body').innerHTML = html;
             });
         }
+        function deleteFleet(id) { if(confirm("Delete Vehicle?")) db.collection('fleet').doc(id).delete().then(loadFleet); }
 
-        // --- USERS (THE FIX) ---
-        function openUserModal() { document.getElementById('userModal').style.display='flex'; }
+        // --- USERS (EDIT & DELETE ADDED) ---
+        function openUserModal(id=null, name='', email='', role='') { 
+            // Reset Form
+            document.getElementById('u_id').value = id || '';
+            document.getElementById('u_name').value = name;
+            document.getElementById('u_email').value = email;
+            document.getElementById('u_role').value = role || 'client';
+            document.getElementById('userModal').style.display='flex'; 
+        }
         
         function saveUser() {
-            const name = document.getElementById('u_name').value;
-            const email = document.getElementById('u_email').value;
-            const role = document.getElementById('u_role').value;
-            
-            // ERROR HANDLING ADDED HERE
-            db.collection('users').add({
-                name: name, email: email, role: role, created: new Date().toString()
-            }).then(() => {
-                alert("User Added to Database!");
-                document.getElementById('userModal').style.display='none';
-                loadUsers();
-            }).catch(error => {
-                alert("ERROR: Could not save!\n\nDetails: " + error.message);
-            });
+            const id = document.getElementById('u_id').value;
+            const data = {
+                name: document.getElementById('u_name').value,
+                email: document.getElementById('u_email').value,
+                role: document.getElementById('u_role').value,
+                created: new Date().toString()
+            };
+
+            if(id) {
+                // EDIT EXISTING
+                db.collection('users').doc(id).update(data).then(() => {
+                    alert("User Updated!");
+                    document.getElementById('userModal').style.display='none';
+                    loadUsers();
+                });
+            } else {
+                // CREATE NEW
+                db.collection('users').add(data).then(() => {
+                    alert("User Added!");
+                    document.getElementById('userModal').style.display='none';
+                    loadUsers();
+                }).catch(error => alert("Error: " + error.message));
+            }
+        }
+        
+        function deleteUser(id) {
+            if(confirm("Permanently Delete User?")) {
+                db.collection('users').doc(id).delete().then(() => {
+                    alert("User Deleted");
+                    loadUsers();
+                });
+            }
         }
 
         function loadUsers() {
@@ -399,19 +433,34 @@
                 let html = '';
                 snap.forEach(doc => {
                     const u = doc.data();
-                    html += `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.role}</td></tr>`;
+                    const buttons = `
+                        <button class="btn-edit" onclick="openUserModal('${doc.id}', '${u.name}', '${u.email}', '${u.role}')"><i class="fas fa-edit"></i></button>
+                        <button class="btn-danger" onclick="deleteUser('${doc.id}')"><i class="fas fa-trash"></i></button>
+                    `;
+                    html += `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.role}</td><td>${buttons}</td></tr>`;
                 });
                 document.getElementById('users-table-body').innerHTML = html;
             });
         }
 
-        // --- OPS ---
+        // --- OPS (PUSH LR FEATURE) ---
         function openLRModal() { 
             document.getElementById('lrModal').style.display='flex';
+            
+            // 1. Fetch Available Trucks
             db.collection('fleet').where('status','==','Available').get().then(snap => {
                 let html = '<option value="">Select Available Truck</option>';
                 snap.forEach(doc => { html += `<option value="${doc.data().no}">${doc.data().no}</option>`; });
                 document.getElementById('lr_truck').innerHTML = html;
+            });
+
+            // 2. Fetch Clients for Dropdown
+            db.collection('users').where('role','==','client').get().then(snap => {
+                let html = '<option value="">Select Client</option>';
+                snap.forEach(doc => { html += `<option value="${doc.data().name}">${doc.data().name}</option>`; });
+                
+                document.getElementById('lr_consignor').innerHTML = html;
+                document.getElementById('lr_consignee').innerHTML = html;
             });
         }
 
@@ -439,9 +488,7 @@
                     snap.forEach(doc => { db.collection('fleet').doc(doc.id).update({ status: 'On Trip' }); });
                 });
                 document.getElementById('lrModal').style.display='none'; alert("Created"); loadDash(); 
-            }).catch(error => {
-                alert("ERROR: Database Locked!\n" + error.message);
-            });
+            }).catch(error => alert("Error: " + error.message));
         }
 
         // AUTH PERSISTENCE
