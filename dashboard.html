@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titan ERP | Logistics Cloud</title>
+    <title>Titan ERP | Secure Login</title>
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <style>
@@ -27,13 +28,11 @@
         .main-content { margin-left: var(--sidebar-width); flex: 1; padding: 30px; }
         .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
         
-        /* MODULES */
         .module-section { display: none; }
         .module-section.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; margin-bottom: 20px; }
         
-        /* TABLES & FORMS */
         .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         .data-table th, .data-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; color: #e2e8f0; }
         .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -42,8 +41,6 @@
         .btn-primary { background: var(--primary); color: #fff; }
 
         @media (max-width: 992px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); } .main-content { margin-left: 0; } }
-        
-        /* PRINT STYLES */
         @media print { body * { visibility: hidden; } #print-container, #print-container * { visibility: visible; } #print-container { position: absolute; top:0; left:0; width:100%; background: white; color: black; } }
         #print-container { display: none; }
     </style>
@@ -52,16 +49,28 @@
 <body>
 
     <div id="auth-screen">
-        <div class="auth-box">
+        <div class="auth-box" id="step-1">
             <img src="assets/logo.png" style="width: 80px; margin-bottom: 20px;">
             <h2 style="margin-bottom: 10px;">Titan ERP Login</h2>
-            <p style="color: #64748b; font-size: 0.8rem; margin-bottom: 20px;">Secure Cloud Access</p>
+            <p style="color: #64748b; font-size: 0.8rem; margin-bottom: 20px;">Enter Mobile for OTP</p>
 
-            <input type="tel" id="login-mobile" class="form-input" placeholder="Mobile Number">
-            <input type="password" id="login-pin" class="form-input" placeholder="4-Digit PIN" style="text-align:center; letter-spacing: 5px;">
+            <input type="tel" id="login-mobile" class="form-input" placeholder="+91 9999999999" value="+91 ">
             
-            <button class="btn btn-primary" onclick="handleLogin(this)">SECURE LOGIN</button>
-            <p id="login-msg" style="color: #ef4444; margin-top: 15px; font-size: 0.9rem;"></p>
+            <div id="recaptcha-container"></div>
+            
+            <button class="btn btn-primary" onclick="sendOTP()" id="btn-get-otp">GET OTP</button>
+            <p id="msg-1" style="color: #ef4444; margin-top: 15px; font-size: 0.9rem;"></p>
+        </div>
+
+        <div class="auth-box" id="step-2" style="display: none;">
+            <h2 style="margin-bottom: 10px;">Verify OTP</h2>
+            <p style="color: #64748b; font-size: 0.8rem; margin-bottom: 20px;">Enter the 6-digit code sent to your phone</p>
+
+            <input type="number" id="login-otp" class="form-input" placeholder="123456" style="text-align: center; letter-spacing: 5px; font-size: 1.2rem;">
+            
+            <button class="btn btn-primary" onclick="verifyOTP()" id="btn-verify">VERIFY & LOGIN</button>
+            <p id="msg-2" style="color: #ef4444; margin-top: 15px; font-size: 0.9rem;"></p>
+            <div onclick="location.reload()" style="margin-top:20px; color:#64748b; cursor:pointer; font-size:0.8rem;">Change Number</div>
         </div>
     </div>
 
@@ -81,7 +90,7 @@
             <div class="top-bar">
                 <button onclick="document.getElementById('sidebar').classList.toggle('open')" style="background:none; border:none; color:white; font-size:1.5rem;"><i class="fas fa-bars"></i></button>
                 <div style="font-weight: bold; color: #22c55e;">● Cloud Connected</div>
-                <div style="background: var(--primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">A</div>
+                <div style="background: var(--primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">U</div>
             </div>
 
             <div id="mod-dashboard" class="module-section active">
@@ -97,7 +106,6 @@
             <div id="mod-operations" class="module-section">
                 <div class="card">
                     <h3>Operations</h3>
-                    <p style="color: #94a3b8; margin-bottom: 20px;">Create new Lorry Receipts and manage consignments.</p>
                     <button class="btn btn-primary" onclick="openLRModal()" style="width: auto;">+ New LR</button>
                 </div>
             </div>
@@ -120,7 +128,7 @@
     <div id="fleetModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center;">
         <div class="card" style="width:90%; max-width:400px;">
             <h3>Add Vehicle</h3>
-            <input id="v_no" class="form-input" placeholder="Vehicle No (e.g. AP02...)">
+            <input id="v_no" class="form-input" placeholder="Vehicle No">
             <input id="v_driver" class="form-input" placeholder="Driver Name">
             <input id="v_mobile" class="form-input" placeholder="Driver Mobile">
             <button class="btn btn-primary" onclick="saveFleet()">Save Vehicle</button>
@@ -147,7 +155,7 @@
     <div id="print-container"></div>
 
     <script>
-        // 1. FIREBASE CONFIG (YOUR KEYS)
+        // === CONFIG ===
         const firebaseConfig = {
             apiKey: "AIzaSyBUKdAvTmwcafSq0JJmFdCGCATcgukKZ_k",
             authDomain: "titan-erp-logistics.firebaseapp.com",
@@ -158,70 +166,108 @@
             measurementId: "G-T59Y55TCLM"
         };
         firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
         const db = firebase.firestore();
-
-        // 2. FORCE CONNECTION (Crucial for Mobile)
         try { db.settings({ experimentalForceLongPolling: true }); } catch(e) {}
 
-        // 3. SMART LOGIN LOGIC
-        function handleLogin(btn) {
-            const mobile = document.getElementById('login-mobile').value.trim();
-            const pin = document.getElementById('login-pin').value.trim();
-            const msg = document.getElementById('login-msg');
-            
-            if(!mobile || !pin) { msg.innerText = "Please enter Mobile and PIN"; return; }
+        // === OTP LOGIC ===
+        
+        // 1. Setup Invisible Recaptcha (Required by Google)
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+            'size': 'invisible',
+            'callback': (response) => { sendOTP(); }
+        });
 
-            btn.innerText = "Verifying...";
+        // 2. Send SMS
+        function sendOTP() {
+            const mobile = document.getElementById('login-mobile').value.trim();
+            const btn = document.getElementById('btn-get-otp');
+            const msg = document.getElementById('msg-1');
+
+            if(mobile.length < 13) { msg.innerText = "Please enter full number: +91 99..."; return; }
+            
+            btn.innerText = "Sending...";
             msg.innerText = "";
 
-            // MASTER KEY (Emergency)
-            if(mobile === "9494831803" && pin === "1234") {
-                completeLogin({ name: "Admin", mobile: mobile });
-                return;
-            }
+            const appVerifier = window.recaptchaVerifier;
+            
+            auth.signInWithPhoneNumber(mobile, appVerifier)
+                .then((confirmationResult) => {
+                    window.confirmationResult = confirmationResult;
+                    document.getElementById('step-1').style.display = 'none';
+                    document.getElementById('step-2').style.display = 'block';
+                    alert("OTP Sent! (Use 123456 if testing)");
+                }).catch((error) => {
+                    btn.innerText = "GET OTP";
+                    msg.innerText = "Error: " + error.message;
+                    console.error(error);
+                    if(error.code === 'auth/operation-not-allowed') {
+                        alert("ERROR: You must Enable Phone Auth in Firebase Console!");
+                    }
+                });
+        }
 
-            // CHECK DB
-            db.collection('users').where('mobile', '==', mobile).where('pin', '==', pin).get()
-            .then(snap => {
-                if(!snap.empty) {
-                    // USER FOUND
-                    completeLogin(snap.docs[0].data());
-                } else {
-                    // USER NOT FOUND -> AUTO-CREATE (Cloud Sync)
-                    // This is the "Self-Healing" part that saves you to the cloud.
-                    db.collection('users').add({
-                        mobile: mobile,
-                        pin: pin,
-                        name: "User " + mobile.slice(-4),
-                        created: new Date().toString()
-                    }).then(() => {
-                        completeLogin({ name: "User", mobile: mobile });
-                    });
-                }
-            })
-            .catch(e => {
-                btn.innerText = "LOGIN";
-                msg.innerText = "Network Error. Please retry.";
+        // 3. Verify Code
+        function verifyOTP() {
+            const code = document.getElementById('login-otp').value.trim();
+            const btn = document.getElementById('btn-verify');
+            const msg = document.getElementById('msg-2');
+
+            if(code.length !== 6) { msg.innerText = "Enter 6-digit code"; return; }
+
+            btn.innerText = "Verifying...";
+            
+            window.confirmationResult.confirm(code).then((result) => {
+                // User signed in successfully.
+                const user = result.user;
+                checkUserInDB(user);
+            }).catch((error) => {
+                btn.innerText = "VERIFY & LOGIN";
+                msg.innerText = "Invalid OTP";
             });
         }
 
-        function completeLogin(user) {
-            localStorage.setItem('titan_session_final', JSON.stringify(user));
+        // 4. Check/Create DB Entry
+        function checkUserInDB(user) {
+            const mobile = user.phoneNumber;
+            
+            db.collection('users').where('mobile', '==', mobile).get().then(snap => {
+                if(snap.empty) {
+                    // NEW USER? AUTO-REGISTER
+                    db.collection('users').add({
+                        mobile: mobile,
+                        uid: user.uid,
+                        created: new Date().toString(),
+                        role: 'user'
+                    }).then(() => {
+                        initApp();
+                    });
+                } else {
+                    // EXISTING USER
+                    initApp();
+                }
+            });
+        }
+
+        function initApp() {
             document.getElementById('auth-screen').style.display = 'none';
             document.getElementById('app-interface').classList.add('active');
             loadDash();
         }
 
-        // CHECK SESSION
-        if (localStorage.getItem('titan_session_final')) {
-            document.getElementById('auth-screen').style.display = 'none';
-            document.getElementById('app-interface').classList.add('active');
-            loadDash();
-        }
+        // 5. SESSION PERSISTENCE (Keeps you logged in)
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in.
+                document.getElementById('auth-screen').style.display = 'none';
+                document.getElementById('app-interface').classList.add('active');
+                loadDash();
+            }
+        });
 
-        function logout() { localStorage.removeItem('titan_session_final'); location.reload(); }
+        function logout() { auth.signOut().then(() => location.reload()); }
 
-        // 4. MODULE LOGIC
+        // === APP MODULES (Same as before) ===
         function showModule(id) {
             document.querySelectorAll('.module-section').forEach(el => el.classList.remove('active'));
             document.getElementById('mod-' + id).classList.add('active');
@@ -229,7 +275,6 @@
             if(id === 'fleet') loadFleet();
         }
 
-        // FLEET
         function openFleetModal() { document.getElementById('fleetModal').style.display='flex'; }
         function saveFleet() {
             db.collection('fleet').add({
@@ -247,7 +292,6 @@
             });
         }
 
-        // LR SYSTEM
         function openLRModal() {
             document.getElementById('lrModal').style.display='flex';
             document.getElementById('lr_no').value = 'RRP/26/' + Math.floor(1000 + Math.random() * 9000);
@@ -287,7 +331,6 @@
             });
         }
 
-        // PRINTING
         function printLR(lr) {
             const c = document.getElementById('print-container');
             c.innerHTML = `
