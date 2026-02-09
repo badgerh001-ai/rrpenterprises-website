@@ -230,7 +230,7 @@
                 });
         }
 
-        // 2. LOGIN
+        // 2. LOGIN (ROBUST VERSION)
         function handleLogin(btn) {
             const email = document.getElementById('email').value.trim();
             const pass = document.getElementById('password').value.trim();
@@ -242,10 +242,28 @@
             
             auth.signInWithEmailAndPassword(email, pass)
                 .then((cred) => {
-                    // Fetch Name from DB
-                    db.collection('users').doc(cred.user.uid).get().then(doc => {
+                    // SUCCESS! Password is correct.
+                    // Now try to get the name, but DON'T WAIT FOREVER.
+                    const uid = cred.user.uid;
+                    
+                    let isLoaded = false;
+                    
+                    // 2-Second Safety Timer
+                    setTimeout(() => {
+                        if(!isLoaded) {
+                            console.log("Database slow. Forcing entry.");
+                            enterApp("Admin"); // Assume Admin if DB hangs
+                        }
+                    }, 2000);
+
+                    db.collection('users').doc(uid).get().then(doc => {
+                        isLoaded = true;
                         const name = doc.exists ? doc.data().name : "User";
                         enterApp(name);
+                    }).catch(e => {
+                         // Even if DB fails, let them in!
+                         isLoaded = true;
+                         enterApp("User");
                     });
                 })
                 .catch(e => {
@@ -302,7 +320,12 @@
         // PERSISTENCE
         auth.onAuthStateChanged(user => {
             if(user) {
+                // Auto-login logic with same safety timer
+                let isLoaded = false;
+                setTimeout(() => { if(!isLoaded) enterApp("User"); }, 2000);
+                
                 db.collection('users').doc(user.uid).get().then(doc => {
+                    isLoaded = true;
                     const name = doc.exists ? doc.data().name : "User";
                     enterApp(name);
                 });
