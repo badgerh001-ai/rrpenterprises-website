@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titan ERP | Cloud Access v82</title>
+    <title>Titan ERP | LIVE SYSTEM</title>
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <style>
         :root { --sidebar-width: 260px; --bg-dark: #020617; --card-bg: #0f172a; --primary: #0ea5e9; }
@@ -49,40 +49,35 @@
     <div id="auth-screen">
         <div class="auth-box" id="login-form">
             <h2 style="margin-bottom: 20px;">Titan ERP Login</h2>
-            
+            <div style="color: #64748b; font-size: 0.8rem; margin-bottom: 15px;">Secure Cloud Access</div>
+
             <input type="tel" id="login-mobile" class="form-input" placeholder="Mobile Number">
             <input type="password" id="login-pin" class="form-input" placeholder="PIN" style="text-align:center;">
             
             <button class="btn btn-primary" onclick="handleLogin(this)">LOGIN</button>
             <p id="login-msg" style="color: #ef4444; margin-top: 15px;"></p>
             
-            <div onclick="toggleAuth('register')" style="color: var(--primary); cursor: pointer; margin-top: 20px; text-decoration: underline;">New User? Register Here</div>
-        </div>
-
-        <div class="auth-box" id="register-form" style="display: none;">
-            <h2 style="margin-bottom: 20px;">New Registration</h2>
-            <input type="text" id="reg-name" class="form-input" placeholder="Name">
-            <input type="tel" id="reg-mobile" class="form-input" placeholder="Mobile">
-            <input type="password" id="reg-pin" class="form-input" placeholder="Set PIN">
-            <button class="btn btn-success" onclick="handleRegister(this)">REGISTER NOW</button>
-            <p id="reg-msg" style="color: #ef4444; margin-top: 15px;"></p>
-            <div onclick="toggleAuth('login')" style="color: var(--primary); cursor: pointer; margin-top: 20px; text-decoration: underline;">Back to Login</div>
+            <div onclick="hardReset()" style="color: #475569; cursor: pointer; margin-top: 30px; font-size: 0.8rem; text-decoration: underline;">Reset App Session</div>
         </div>
     </div>
 
     <div class="app-container" id="app-interface">
         <nav class="sidebar" id="sidebar">
-            <div style="font-weight: 800; font-size: 1.2rem; margin-bottom: 30px;">TITAN ERP</div>
-            <a onclick="showModule('dashboard')" class="btn" style="background:transparent; text-align:left; color:#ccc;">Dashboard</a>
-            <a onclick="showModule('operations')" class="btn" style="background:transparent; text-align:left; color:#ccc;">Operations</a>
-            <a onclick="showModule('fleet')" class="btn" style="background:transparent; text-align:left; color:#ccc;">Fleet</a>
-            <div style="margin-top: auto;"><a onclick="logout()" class="btn" style="background:transparent; text-align:left; color:#ef4444;">Logout</a></div>
+            <div style="padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                <img src="assets/logo.png" style="width: 30px;">
+                <div style="font-weight: 800; font-size: 1.2rem;">TITAN ERP</div>
+            </div>
+            <a onclick="showModule('dashboard')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a onclick="showModule('operations')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-file-invoice"></i> Operations</a>
+            <a onclick="showModule('fleet')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-truck-moving"></i> Fleet</a>
+            <div style="margin-top: auto;"><a onclick="logout()" class="btn" style="background:transparent; text-align:left; color:#ef4444; margin:0;">Logout</a></div>
         </nav>
 
         <main class="main-content">
             <div class="top-bar">
                 <button onclick="document.getElementById('sidebar').classList.toggle('open')" style="background:none; border:none; color:white; font-size:1.5rem;"><i class="fas fa-bars"></i></button>
-                <div style="font-weight: bold;">Cloud Online</div>
+                <div style="font-weight: bold;">Cloud Connected</div>
+                <div style="background: var(--primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">A</div>
             </div>
 
             <div id="mod-dashboard" class="module-section active">
@@ -98,13 +93,16 @@
             <div id="mod-operations" class="module-section">
                 <div class="card">
                     <h3>Operations</h3>
-                    <button class="btn btn-primary" onclick="openLRModal()">+ New LR</button>
+                    <button class="btn btn-primary" onclick="openLRModal()" style="width: auto;">+ New LR</button>
                 </div>
             </div>
 
             <div id="mod-fleet" class="module-section">
                 <div class="card">
-                    <div style="display:flex; justify-content:space-between;"><h3>Fleet</h3><button class="btn btn-primary" onclick="openFleetModal()" style="width:auto;">+ Add</button></div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <h3>Fleet</h3>
+                        <button class="btn btn-primary" onclick="openFleetModal()" style="width: auto;">+ Add</button>
+                    </div>
                     <table class="data-table">
                         <thead><tr><th>No</th><th>Driver</th><th>Mobile</th></tr></thead>
                         <tbody id="fleet-table-body"></tbody>
@@ -118,7 +116,7 @@
         <div class="card" style="width:90%; max-width:400px;">
             <h3>Add Vehicle</h3>
             <input id="v_no" class="form-input" placeholder="Vehicle No">
-            <input id="v_driver" class="form-input" placeholder="Driver">
+            <input id="v_driver" class="form-input" placeholder="Driver Name">
             <input id="v_mobile" class="form-input" placeholder="Mobile">
             <button class="btn btn-primary" onclick="saveFleet()">Save</button>
             <button class="btn" onclick="document.getElementById('fleetModal').style.display='none'" style="background:transparent; border:1px solid #333; color:#ccc;">Close</button>
@@ -128,27 +126,23 @@
     <div id="lrModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; overflow-y:auto; padding:20px;">
         <div class="card" style="width:100%; max-width:800px; margin:50px auto;">
             <div style="display:flex; justify-content:space-between;"><h3>New LR</h3><button onclick="document.getElementById('lrModal').style.display='none'" style="background:none; border:none; color:white; font-size:1.5rem;">&times;</button></div>
-            <div style="margin-top: 20px;">
+            <div class="form-grid" style="margin-top:20px;">
                 <input id="lr_no" class="form-input" placeholder="LR No">
                 <input id="lr_date" type="date" class="form-input">
-                <select id="lr_truck" class="form-input"><option>Loading...</option></select>
-                <input id="lr_consignor" class="form-input" placeholder="Consignor">
-                <input id="lr_consignee" class="form-input" placeholder="Consignee">
-                <input id="lr_from" class="form-input" placeholder="From">
-                <input id="lr_to" class="form-input" placeholder="To">
-                <input id="lr_goods" class="form-input" placeholder="Goods">
-                <input id="lr_weight" class="form-input" placeholder="Weight">
-                <input id="lr_total" class="form-input" placeholder="Total">
-                <input id="lr_balance" class="form-input" placeholder="Balance">
-                <button class="btn btn-primary" onclick="saveLR()">Save & Print</button>
             </div>
+            <select id="lr_truck" class="form-input"><option>Loading...</option></select>
+            <div class="form-grid"><input id="lr_consignor" class="form-input" placeholder="Consignor"><input id="lr_consignee" class="form-input" placeholder="Consignee"></div>
+            <div class="form-grid"><input id="lr_from" class="form-input" placeholder="From"><input id="lr_to" class="form-input" placeholder="To"></div>
+            <div class="form-grid"><input id="lr_goods" class="form-input" placeholder="Goods"><input id="lr_weight" class="form-input" placeholder="Weight"></div>
+            <div class="form-grid"><input id="lr_total" class="form-input" placeholder="Total"><input id="lr_balance" class="form-input" placeholder="Balance"></div>
+            <button class="btn btn-primary" onclick="saveLR()">Save & Print</button>
         </div>
     </div>
 
     <div id="print-container"></div>
 
     <script>
-        // === YOUR EXACT FIREBASE KEY ===
+        // === YOUR EXACT KEYS ===
         const firebaseConfig = {
             apiKey: "AIzaSyBUKdAvTmwcafSq0JJmFdCGCATcgukKZ_k",
             authDomain: "titan-erp-logistics.firebaseapp.com",
@@ -161,49 +155,35 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // === AUTH ===
-        function toggleAuth(mode) {
-            document.getElementById('login-form').style.display = mode === 'register' ? 'none' : 'block';
-            document.getElementById('register-form').style.display = mode === 'register' ? 'block' : 'none';
-        }
+        // FORCE LONG POLLING (This was the secret to making it work)
+        try { db.settings({ experimentalForceLongPolling: true }); } catch(e) {}
 
-        function handleRegister(btn) {
-            btn.innerText = "Processing...";
-            const mobile = document.getElementById('reg-mobile').value.trim();
-            const pin = document.getElementById('reg-pin').value.trim();
-            const name = document.getElementById('reg-name').value.trim();
-
-            if (!mobile || !pin) { alert("Missing Fields"); btn.innerText = "REGISTER"; return; }
-
-            db.collection('users').where('mobile', '==', mobile).get().then(snap => {
-                if (!snap.empty) { alert("User Exists"); toggleAuth('login'); }
-                else {
-                    db.collection('users').add({ name, mobile, pin }).then(() => {
-                        alert("Registered Successfully!"); toggleAuth('login');
-                    }).catch(e => alert("WRITE ERROR: " + e.message + " (Check Rules!)"));
-                }
-                btn.innerText = "REGISTER";
-            }).catch(e => { alert("READ ERROR: " + e.message + " (Check Rules!)"); btn.innerText = "REGISTER"; });
-        }
-
+        // === AUTH LOGIC ===
         function handleLogin(btn) {
-            btn.innerText = "Checking...";
-            const mobile = document.getElementById('login-mobile').value.trim();
-            const pin = document.getElementById('login-pin').value.trim();
+            btn.innerText = "Verifying...";
             
-            // MASTER KEY
+            // AUTO-CLEANER: Removes hidden spaces from inputs
+            const mobile = document.getElementById('login-mobile').value.toString().trim();
+            const pin = document.getElementById('login-pin').value.toString().trim();
+            
+            // MASTER KEY (Just in case)
             if(mobile === "9494831803" && pin === "1234") {
-                localStorage.setItem('titan_session', JSON.stringify({ name: "Admin", mobile: mobile }));
+                localStorage.setItem('titan_session_v87', JSON.stringify({ name: "Admin", mobile: mobile }));
                 initApp(); return;
             }
 
             db.collection('users').where('mobile', '==', mobile).where('pin', '==', pin).get().then(snap => {
-                if (snap.empty) { alert("Invalid Credentials"); btn.innerText = "LOGIN"; }
-                else {
-                    localStorage.setItem('titan_session', JSON.stringify(snap.docs[0].data()));
+                if (snap.empty) { 
+                    document.getElementById('login-msg').innerText = "Invalid Mobile or PIN"; 
+                    btn.innerText = "LOGIN"; 
+                } else {
+                    localStorage.setItem('titan_session_v87', JSON.stringify(snap.docs[0].data()));
                     initApp();
                 }
-            }).catch(e => { alert("LOGIN ERROR: " + e.message); btn.innerText = "LOGIN"; });
+            }).catch(e => { 
+                document.getElementById('login-msg').innerText = "Network Error: " + e.message; 
+                btn.innerText = "LOGIN"; 
+            });
         }
 
         function initApp() {
@@ -211,10 +191,23 @@
             document.getElementById('app-interface').classList.add('active');
             loadDash();
         }
-        if (localStorage.getItem('titan_session')) initApp();
-        function logout() { localStorage.removeItem('titan_session'); location.reload(); }
+        
+        // SESSION CHECK
+        if (localStorage.getItem('titan_session_v87')) initApp();
 
-        // === APP ===
+        function logout() { 
+            localStorage.removeItem('titan_session_v87'); 
+            location.reload(); 
+        }
+
+        function hardReset() {
+            if(confirm("This will clear all saved data on this device and refresh. Continue?")) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+
+        // === APP MODULES ===
         function showModule(id) {
             document.querySelectorAll('.module-section').forEach(el => el.classList.remove('active'));
             document.getElementById('mod-' + id).classList.add('active');
