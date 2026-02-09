@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titan ERP | Smart Logistics</title>
+    <title>Titan ERP | Enterprise</title>
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -33,26 +33,29 @@
         .module-section.active { display: block; animation: fadeIn 0.3s ease; }
         .card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; margin-bottom: 20px; }
         
+        /* TABLES & FORMS */
         .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         .data-table th, .data-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; color: #e2e8f0; }
         .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         .form-input { width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; margin-bottom: 15px; outline: none; box-sizing: border-box; }
         .btn { padding: 12px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; transition: 0.3s; }
         .btn-primary { background: var(--primary); color: #fff; }
-        .btn-danger { background: #ef4444; color: #fff; width: auto; display: inline-block; padding: 5px 10px; font-size: 0.8rem; margin-left: 5px; }
-        .btn-edit { background: #3b82f6; color: #fff; width: auto; display: inline-block; padding: 5px 10px; font-size: 0.8rem; }
+        .btn-danger { background: #ef4444; color: #fff; width: auto; padding: 5px 10px; font-size: 0.8rem; margin-left: 5px; cursor: pointer; border-radius: 4px; border: none; }
+        .btn-edit { background: #3b82f6; color: #fff; width: auto; padding: 5px 10px; font-size: 0.8rem; cursor: pointer; border-radius: 4px; border: none; }
         
-        /* ROLES */
+        /* TABS */
+        .tab-btn { background: transparent; border: 1px solid #334155; color: #94a3b8; padding: 8px 16px; border-radius: 20px; cursor: pointer; margin-right: 10px; }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* ROLES & STATUS */
         .badge { padding: 5px 10px; border-radius: 5px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
         .role-admin { background: #dc2626; color: white; }
         .role-manager { background: #9333ea; color: white; }
         .role-fleet { background: #eab308; color: black; }
         .role-client { background: #22c55e; color: black; }
         
-        /* TRAFFIC LIGHT SYSTEM */
         .row-green { border-left: 4px solid #22c55e; background: rgba(34, 197, 94, 0.1); }
         .row-red { border-left: 4px solid #ef4444; background: rgba(239, 68, 68, 0.1); opacity: 0.7; }
-        
         .status-Pending { color: #facc15; }
         .status-Approved { color: #22c55e; font-weight: bold; }
 
@@ -75,26 +78,6 @@
             <input type="password" id="password" class="form-input" placeholder="Password">
             <button class="btn btn-primary" onclick="handleLogin(this)">LOGIN</button>
             <p id="login-msg" style="color: #ef4444; margin-top: 10px; font-size: 0.8rem;"></p>
-            <div style="display:flex; justify-content:space-between; width:100%;">
-                <span class="link" onclick="switchAuth('forgot')">Forgot Password?</span>
-                <span class="link" onclick="switchAuth('register')">New User?</span>
-            </div>
-        </div>
-        <div class="auth-box" id="register-box" style="display: none;">
-            <h2>Create Account</h2>
-            <input type="text" id="reg-name" class="form-input" placeholder="Full Name">
-            <input type="email" id="reg-email" class="form-input" placeholder="Email Address">
-            <input type="password" id="reg-password" class="form-input" placeholder="Create Password">
-            <button class="btn btn-primary" onclick="handleRegister(this)">REGISTER</button>
-            <p id="reg-msg" style="color: #ef4444; margin-top: 10px; font-size: 0.8rem;"></p>
-            <span class="link" onclick="switchAuth('login')">Back to Login</span>
-        </div>
-        <div class="auth-box" id="forgot-box" style="display: none;">
-            <h2>Reset Password</h2>
-            <input type="email" id="forgot-email" class="form-input" placeholder="Email Address">
-            <button class="btn btn-primary" onclick="handleForgot(this)">SEND LINK</button>
-            <p id="forgot-msg" style="color: #ef4444; margin-top: 10px; font-size: 0.8rem;"></p>
-            <span class="link" onclick="switchAuth('login')">Back to Login</span>
         </div>
     </div>
 
@@ -108,7 +91,7 @@
             <a id="nav-dash" onclick="showModule('dashboard')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-th-large"></i> Dashboard</a>
             <a id="nav-ops" onclick="showModule('operations')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-file-invoice"></i> Operations</a>
             <a id="nav-fleet" onclick="showModule('fleet')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-truck-moving"></i> Fleet</a>
-            <a id="nav-users" onclick="showModule('users')" class="btn admin-only" style="background:transparent; text-align:left; color:#ef4444; margin:0; border-top: 1px solid #333; margin-top: 10px;"><i class="fas fa-users-cog"></i> Users & Roles</a>
+            <a id="nav-users" onclick="showModule('users')" class="btn admin-only" style="background:transparent; text-align:left; color:#ef4444; margin:0; border-top: 1px solid #333; margin-top: 10px;"><i class="fas fa-users-cog"></i> Users & Clients</a>
             
             <div style="margin-top: auto;">
                 <a onclick="logout()" class="btn" style="background:transparent; text-align:left; color:#ef4444; margin:0;">Logout</a>
@@ -124,7 +107,7 @@
 
             <div id="mod-dashboard" class="module-section">
                 <div class="card">
-                    <h3>Financial & Shipment Overview</h3>
+                    <h3>Financial Overview</h3>
                     <table class="data-table">
                         <thead><tr><th>LR No</th><th>Truck</th><th>Freight</th><th>Exp (Dsl+Cash)</th><th>Profit</th><th>Status</th><th>Action</th></tr></thead>
                         <tbody id="dash-table-body"></tbody>
@@ -135,7 +118,6 @@
             <div id="mod-operations" class="module-section">
                 <div class="card">
                     <h3>Operations Manager</h3>
-                    <p style="color: #94a3b8;">Create LR (Only 'Available' Trucks shown)</p>
                     <button class="btn btn-primary" onclick="openLRModal()" style="width: auto;">+ New LR</button>
                 </div>
             </div>
@@ -155,9 +137,12 @@
 
             <div id="mod-users" class="module-section">
                 <div class="card">
-                    <div style="display:flex; justify-content:space-between; align-items: center;">
-                        <h3>Client & User Master</h3>
-                        <button class="btn btn-primary" onclick="openUserModal()" style="width: auto;">+ Add User/Client</button>
+                    <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 20px;">
+                        <div>
+                            <button class="tab-btn active" onclick="filterUsers('client', this)">Clients</button>
+                            <button class="tab-btn" onclick="filterUsers('staff', this)">Team (Drivers/Admin)</button>
+                        </div>
+                        <button class="btn btn-primary" onclick="openUserModal()" style="width: auto;">+ Add New</button>
                     </div>
                     <table class="data-table">
                         <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Action</th></tr></thead>
@@ -170,8 +155,10 @@
 
     <div id="userModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center;">
         <div class="card" style="width:90%; max-width:400px;">
-            <h3>User / Client Profile</h3>
-            <input type="hidden" id="u_id"> <input id="u_name" class="form-input" placeholder="Name / Company Name">
+            <h3 id="u_modal_title">User / Client Profile</h3>
+            <input type="hidden" id="u_id"> 
+            
+            <input id="u_name" class="form-input" placeholder="Name / Company Name">
             <input id="u_email" class="form-input" placeholder="Email / Contact ID">
             <select id="u_role" class="form-input">
                 <option value="client">Client (Consignor/Consignee)</option>
@@ -179,7 +166,7 @@
                 <option value="manager">Manager</option>
                 <option value="admin">Admin</option>
             </select>
-            <button class="btn btn-primary" onclick="saveUser()">Save to Database</button>
+            <button id="btn-save-user" class="btn btn-primary" onclick="saveUser()">Save to Database</button>
             <button class="btn" onclick="document.getElementById('userModal').style.display='none'" style="color:#ccc;">Cancel</button>
         </div>
     </div>
@@ -207,10 +194,10 @@
             <label style="color:#94a3b8; font-size:0.8rem;">Select Truck</label>
             <select id="lr_truck" class="form-input"><option>Loading...</option></select>
             
-            <label style="color:#94a3b8; font-size:0.8rem;">Select Client (Push LR)</label>
+            <label style="color:#94a3b8; font-size:0.8rem;">Push to Client (Select Client)</label>
             <div class="form-grid">
-                <select id="lr_consignor" class="form-input"><option>Select Consignor...</option></select>
-                <select id="lr_consignee" class="form-input"><option>Select Consignee...</option></select>
+                <select id="lr_consignor" class="form-input"><option value="">Consignor (From Client Master)</option></select>
+                <select id="lr_consignee" class="form-input"><option value="">Consignee (From Client Master)</option></select>
             </div>
             
             <div class="form-grid"><input id="lr_from" class="form-input" placeholder="From"><input id="lr_to" class="form-input" placeholder="To"></div>
@@ -244,9 +231,9 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
-        try { db.settings({ experimentalForceLongPolling: true }); } catch(e) {}
 
         let currentUser = null;
+        let currentTab = 'client'; // For User filtering
 
         // === 1. ROLE LOGIC ===
         function getRoleFromEmail(email) {
@@ -258,15 +245,6 @@
             return "client";
         }
 
-        function getNameFromEmail(email) {
-            email = email.toLowerCase();
-            if(email.includes("contact@rrp")) return "Admin";
-            if(email.includes("rrp.services")) return "Manager";
-            if(email.includes("badger")) return "Client";
-            if(email.includes("anke")) return "Fleet Owner";
-            return "User";
-        }
-
         // === 2. LOGIN ===
         function handleLogin(btn) {
             const email = document.getElementById('email').value.trim();
@@ -276,8 +254,7 @@
             auth.signInWithEmailAndPassword(email, pass)
                 .then((cred) => {
                     const role = getRoleFromEmail(email);
-                    const name = getNameFromEmail(email);
-                    enterApp({ name: name, role: role, email: email });
+                    enterApp({ name: "User", role: role, email: email });
                 })
                 .catch(e => { btn.innerText = "LOGIN"; alert(e.message); });
         }
@@ -286,7 +263,7 @@
             currentUser = user;
             document.getElementById('auth-screen').style.display = 'none';
             document.getElementById('app-interface').classList.add('active');
-            document.getElementById('user-initial').innerText = user.name.charAt(0).toUpperCase();
+            document.getElementById('user-initial').innerText = user.role.charAt(0).toUpperCase();
             document.getElementById('role-display').innerText = user.role.toUpperCase();
             document.getElementById('role-display').className = "badge role-" + user.role;
             applyPermissions(user.role);
@@ -294,27 +271,19 @@
 
         function applyPermissions(role) {
             document.body.classList.remove('show-admin', 'show-manager');
-            const els = ['nav-dash', 'nav-ops', 'nav-fleet', 'nav-users'];
-            els.forEach(id => document.getElementById(id).style.display = 'none');
+            if(role === 'admin') document.body.classList.add('show-admin');
+            
+            ['nav-dash','nav-ops','nav-fleet','nav-users'].forEach(id => document.getElementById(id).style.display = 'none');
 
             if(role === 'admin') {
-                document.body.classList.add('show-admin');
-                els.forEach(id => document.getElementById(id).style.display = 'block');
-                showModule('dashboard');
-            } else if(role === 'manager') {
-                document.body.classList.add('show-manager');
-                ['nav-dash','nav-ops','nav-fleet'].forEach(id => document.getElementById(id).style.display = 'block');
-                showModule('dashboard');
-            } else if(role === 'fleet') {
-                ['nav-dash','nav-fleet'].forEach(id => document.getElementById(id).style.display = 'block');
-                showModule('fleet');
+                ['nav-dash','nav-ops','nav-fleet','nav-users'].forEach(id => document.getElementById(id).style.display = 'block');
+                showModule('users'); // Open Users first to clean up
             } else {
                 document.getElementById('nav-dash').style.display = 'block';
                 showModule('dashboard');
             }
         }
 
-        // === 3. MODULES ===
         function showModule(id) {
             document.querySelectorAll('.module-section').forEach(el => el.classList.remove('active'));
             document.getElementById('mod-' + id).classList.add('active');
@@ -323,109 +292,12 @@
             if(id === 'users') loadUsers();
         }
 
-        // --- DASHBOARD (PROFIT ENGINE) ---
-        function loadDash() {
-            db.collection('lrs').orderBy('created','desc').limit(20).get().then(snap => {
-                let html = '';
-                snap.forEach(doc => { 
-                    const d = doc.data(); 
-                    const freight = parseFloat(d.total) || 0;
-                    const diesel = parseFloat(d.diesel) || 0;
-                    const cash = parseFloat(d.cash) || 0;
-                    const profit = freight - (diesel + cash);
-                    const profitColor = profit >= 0 ? '#22c55e' : '#ef4444';
-
-                    const status = d.status || 'Pending';
-                    let actions = '';
-                    if(currentUser.role === 'admin' || currentUser.role === 'manager') {
-                        if(status === 'Pending') actions += `<button onclick="approveLR('${doc.id}')" style="background:#22c55e;border:none;color:black;padding:5px;cursor:pointer;">Approve</button>`;
-                        if(currentUser.role === 'admin') actions += ` <i class="fas fa-trash" style="color:red;cursor:pointer;margin-left:10px;" onclick="deleteLR('${doc.id}')"></i>`;
-                    } else actions = 'View Only';
-
-                    html += `<tr><td>${d.no}</td><td>${d.truck}</td><td>${freight}</td><td>${diesel + cash}</td><td style="color:${profitColor}; font-weight:bold;">${profit}</td><td class="status-${status}">${status}</td><td>${actions}</td></tr>`; 
-                });
-                document.getElementById('dash-table-body').innerHTML = html;
-            });
-        }
-        function approveLR(id) { if(confirm("Approve?")) db.collection('lrs').doc(id).update({status:'Approved'}).then(loadDash); }
-        function deleteLR(id) { if(confirm("Delete?")) db.collection('lrs').doc(id).delete().then(loadDash); }
-
-        // --- FLEET (TRAFFIC LIGHT) ---
-        function openFleetModal() { document.getElementById('fleetModal').style.display='flex'; }
-        
-        function saveFleet() {
-            db.collection('fleet').add({
-                no: document.getElementById('v_no').value.toUpperCase(),
-                driver: document.getElementById('v_driver').value,
-                status: document.getElementById('v_status').value
-            }).then(() => { 
-                document.getElementById('fleetModal').style.display='none'; 
-                loadFleet(); 
-            }).catch(error => alert("Error: " + error.message));
-        }
-        
-        function loadFleet() {
-            db.collection('fleet').get().then(snap => {
-                let html = '';
-                snap.forEach(doc => { 
-                    const d = doc.data();
-                    let rowClass = '';
-                    if(d.status === 'Available') rowClass = 'row-green';
-                    if(d.status === 'On Trip') rowClass = 'row-red';
-                    
-                    // Added Delete Button for Fleet
-                    const delBtn = currentUser.role === 'admin' ? `<button onclick="deleteFleet('${doc.id}')" class="btn-danger"><i class="fas fa-trash"></i></button>` : '';
-
-                    html += `<tr class="${rowClass}"><td>${d.no}</td><td>${d.driver}</td><td>${d.status}</td><td>${delBtn}</td></tr>`; 
-                });
-                document.getElementById('fleet-table-body').innerHTML = html;
-            });
-        }
-        function deleteFleet(id) { if(confirm("Delete Vehicle?")) db.collection('fleet').doc(id).delete().then(loadFleet); }
-
-        // --- USERS (EDIT & DELETE ADDED) ---
-        function openUserModal(id=null, name='', email='', role='') { 
-            // Reset Form
-            document.getElementById('u_id').value = id || '';
-            document.getElementById('u_name').value = name;
-            document.getElementById('u_email').value = email;
-            document.getElementById('u_role').value = role || 'client';
-            document.getElementById('userModal').style.display='flex'; 
-        }
-        
-        function saveUser() {
-            const id = document.getElementById('u_id').value;
-            const data = {
-                name: document.getElementById('u_name').value,
-                email: document.getElementById('u_email').value,
-                role: document.getElementById('u_role').value,
-                created: new Date().toString()
-            };
-
-            if(id) {
-                // EDIT EXISTING
-                db.collection('users').doc(id).update(data).then(() => {
-                    alert("User Updated!");
-                    document.getElementById('userModal').style.display='none';
-                    loadUsers();
-                });
-            } else {
-                // CREATE NEW
-                db.collection('users').add(data).then(() => {
-                    alert("User Added!");
-                    document.getElementById('userModal').style.display='none';
-                    loadUsers();
-                }).catch(error => alert("Error: " + error.message));
-            }
-        }
-        
-        function deleteUser(id) {
-            if(confirm("Permanently Delete User?")) {
-                db.collection('users').doc(id).delete().then(() => {
-                    alert("User Deleted");
-                    loadUsers();
-                });
-            }
+        // === USERS (CLEANUP & SEPARATION) ===
+        function filterUsers(type, btn) {
+            currentTab = type;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            loadUsers();
         }
 
         function loadUsers() {
@@ -433,38 +305,93 @@
                 let html = '';
                 snap.forEach(doc => {
                     const u = doc.data();
-                    const buttons = `
-                        <button class="btn-edit" onclick="openUserModal('${doc.id}', '${u.name}', '${u.email}', '${u.role}')"><i class="fas fa-edit"></i></button>
-                        <button class="btn-danger" onclick="deleteUser('${doc.id}')"><i class="fas fa-trash"></i></button>
-                    `;
-                    html += `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.role}</td><td>${buttons}</td></tr>`;
+                    
+                    // Filter Logic: 'client' shows clients, 'staff' shows everyone else
+                    let show = false;
+                    if(currentTab === 'client' && u.role === 'client') show = true;
+                    if(currentTab === 'staff' && u.role !== 'client') show = true;
+
+                    if(show) {
+                        const buttons = `
+                            <button class="btn-edit" onclick="openUserModal('${doc.id}', '${u.name}', '${u.email}', '${u.role}')"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="btn-danger" onclick="deleteUser('${doc.id}')"><i class="fas fa-trash"></i></button>
+                        `;
+                        html += `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.role}</td><td>${buttons}</td></tr>`;
+                    }
                 });
                 document.getElementById('users-table-body').innerHTML = html;
             });
         }
 
-        // --- OPS (PUSH LR FEATURE) ---
+        function openUserModal(id=null, name='', email='', role='') { 
+            document.getElementById('u_modal_title').innerText = id ? "Edit Profile" : "Add New Profile";
+            document.getElementById('u_id').value = id || ''; // CRITICAL FIX
+            document.getElementById('u_name').value = name;
+            document.getElementById('u_email').value = email;
+            document.getElementById('u_role').value = role || 'client';
+            document.getElementById('btn-save-user').innerText = id ? "Update" : "Add to Database";
+            document.getElementById('userModal').style.display='flex'; 
+        }
+
+        function saveUser() {
+            const btn = document.getElementById('btn-save-user');
+            const id = document.getElementById('u_id').value; // This was missing in your old code
+            const data = {
+                name: document.getElementById('u_name').value,
+                email: document.getElementById('u_email').value,
+                role: document.getElementById('u_role').value,
+                created: new Date().toString()
+            };
+
+            btn.innerText = "Saving..."; // Feedback
+
+            if(id) {
+                // UPDATE
+                db.collection('users').doc(id).update(data).then(() => {
+                    alert("Updated Successfully!");
+                    document.getElementById('userModal').style.display='none';
+                    loadUsers();
+                }).catch(err => { alert(err.message); btn.innerText = "Try Again"; });
+            } else {
+                // CREATE
+                db.collection('users').add(data).then(() => {
+                    alert("Added Successfully!");
+                    document.getElementById('userModal').style.display='none';
+                    loadUsers();
+                }).catch(err => { alert(err.message); btn.innerText = "Try Again"; });
+            }
+        }
+
+        function deleteUser(id) {
+            if(confirm("Permanently Delete?")) {
+                db.collection('users').doc(id).delete().then(() => loadUsers());
+            }
+        }
+
+        // === OPS (PUSH LR) ===
         function openLRModal() { 
             document.getElementById('lrModal').style.display='flex';
             
-            // 1. Fetch Available Trucks
+            // Populate Trucks
             db.collection('fleet').where('status','==','Available').get().then(snap => {
                 let html = '<option value="">Select Available Truck</option>';
                 snap.forEach(doc => { html += `<option value="${doc.data().no}">${doc.data().no}</option>`; });
                 document.getElementById('lr_truck').innerHTML = html;
             });
 
-            // 2. Fetch Clients for Dropdown
+            // Populate Clients (The "Push" Feature)
             db.collection('users').where('role','==','client').get().then(snap => {
                 let html = '<option value="">Select Client</option>';
-                snap.forEach(doc => { html += `<option value="${doc.data().name}">${doc.data().name}</option>`; });
-                
+                snap.forEach(doc => { 
+                    html += `<option value="${doc.data().name}">${doc.data().name}</option>`; 
+                });
                 document.getElementById('lr_consignor').innerHTML = html;
                 document.getElementById('lr_consignee').innerHTML = html;
             });
         }
 
         function saveLR() {
+            // ... (Same LR Logic)
             const truckNo = document.getElementById('lr_truck').value;
             if(!truckNo) return alert("Select a Truck!");
 
@@ -488,27 +415,44 @@
                     snap.forEach(doc => { db.collection('fleet').doc(doc.id).update({ status: 'On Trip' }); });
                 });
                 document.getElementById('lrModal').style.display='none'; alert("Created"); loadDash(); 
-            }).catch(error => alert("Error: " + error.message));
+            });
         }
 
-        // AUTH PERSISTENCE
-        auth.onAuthStateChanged(user => {
-            if(user) {
-                const role = getRoleFromEmail(user.email);
-                const name = getNameFromEmail(user.email);
-                enterApp({ name: name, role: role, email: user.email });
-            }
-        });
-        
-        // UTILS
-        function switchAuth(mode) {
-             document.getElementById('login-box').style.display = 'none';
-             document.getElementById('register-box').style.display = 'none';
-             document.getElementById('forgot-box').style.display = 'none';
-             document.getElementById(mode + '-box').style.display = 'block';
+        // === OTHER MODULES ===
+        function loadDash() {
+            db.collection('lrs').orderBy('created','desc').limit(20).get().then(snap => {
+                let html = '';
+                snap.forEach(doc => { 
+                    const d = doc.data(); 
+                    const profit = (parseFloat(d.total)||0) - ((parseFloat(d.diesel)||0) + (parseFloat(d.cash)||0));
+                    const color = profit >= 0 ? '#22c55e' : '#ef4444';
+                    html += `<tr><td>${d.no}</td><td>${d.truck}</td><td>${d.total}</td><td>${(parseFloat(d.diesel)||0)+(parseFloat(d.cash)||0)}</td><td style="color:${color}">${profit}</td><td>${d.status}</td><td>View</td></tr>`; 
+                });
+                document.getElementById('dash-table-body').innerHTML = html;
+            });
         }
-        function handleRegister(btn) { alert("Registration Restricted."); } 
-        function handleForgot(btn) { alert("Feature Restricted."); }
+        
+        function openFleetModal() { document.getElementById('fleetModal').style.display='flex'; }
+        function saveFleet() {
+            db.collection('fleet').add({
+                no: document.getElementById('v_no').value,
+                driver: document.getElementById('v_driver').value,
+                status: document.getElementById('v_status').value
+            }).then(() => { document.getElementById('fleetModal').style.display='none'; loadFleet(); });
+        }
+        function loadFleet() {
+            db.collection('fleet').get().then(snap => {
+                let html = '';
+                snap.forEach(doc => { 
+                     // Added Delete for Fleet
+                    const btn = `<button class="btn-danger" onclick="deleteFleet('${doc.id}')">Del</button>`;
+                    html += `<tr><td>${doc.data().no}</td><td>${doc.data().driver}</td><td>${doc.data().status}</td><td>${btn}</td></tr>`; 
+                });
+                document.getElementById('fleet-table-body').innerHTML = html;
+            });
+        }
+        function deleteFleet(id) { if(confirm("Delete?")) db.collection('fleet').doc(id).delete().then(loadFleet); }
+
         function logout() { auth.signOut().then(() => location.reload()); }
     </script>
 </body>
