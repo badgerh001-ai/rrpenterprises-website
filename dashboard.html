@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titan ERP | Secure Login</title>
+    <title>Titan ERP | Logistics Cloud</title>
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -49,29 +49,32 @@
 <body>
 
     <div id="auth-screen">
+        
         <div class="auth-box" id="step-1">
             <img src="assets/logo.png" style="width: 80px; margin-bottom: 20px;">
             <h2 style="margin-bottom: 10px;">Titan ERP Login</h2>
             <p style="color: #64748b; font-size: 0.8rem; margin-bottom: 20px;">Enter Mobile for OTP</p>
-
             <input type="tel" id="login-mobile" class="form-input" placeholder="+91 9999999999" value="+91 ">
-            
             <div id="recaptcha-container"></div>
-            
             <button class="btn btn-primary" onclick="sendOTP()" id="btn-get-otp">GET OTP</button>
             <p id="msg-1" style="color: #ef4444; margin-top: 15px; font-size: 0.9rem;"></p>
         </div>
 
         <div class="auth-box" id="step-2" style="display: none;">
             <h2 style="margin-bottom: 10px;">Verify OTP</h2>
-            <p style="color: #64748b; font-size: 0.8rem; margin-bottom: 20px;">Enter the 6-digit code sent to your phone</p>
-
+            <p style="color: #64748b; font-size: 0.8rem; margin-bottom: 20px;">Enter the 6-digit code</p>
             <input type="number" id="login-otp" class="form-input" placeholder="123456" style="text-align: center; letter-spacing: 5px; font-size: 1.2rem;">
-            
-            <button class="btn btn-primary" onclick="verifyOTP()" id="btn-verify">VERIFY & LOGIN</button>
+            <button class="btn btn-primary" onclick="verifyOTP()" id="btn-verify">VERIFY</button>
             <p id="msg-2" style="color: #ef4444; margin-top: 15px; font-size: 0.9rem;"></p>
-            <div onclick="location.reload()" style="margin-top:20px; color:#64748b; cursor:pointer; font-size:0.8rem;">Change Number</div>
         </div>
+
+        <div class="auth-box" id="step-3" style="display: none;">
+            <h2 style="margin-bottom: 10px;">Welcome to Titan</h2>
+            <p style="color: #64748b; font-size: 0.8rem; margin-bottom: 20px;">Please enter your name to complete registration</p>
+            <input type="text" id="reg-name" class="form-input" placeholder="Your Full Name">
+            <button class="btn btn-primary" onclick="completeRegistration()">START DASHBOARD</button>
+        </div>
+
     </div>
 
     <div class="app-container" id="app-interface">
@@ -90,7 +93,7 @@
             <div class="top-bar">
                 <button onclick="document.getElementById('sidebar').classList.toggle('open')" style="background:none; border:none; color:white; font-size:1.5rem;"><i class="fas fa-bars"></i></button>
                 <div style="font-weight: bold; color: #22c55e;">● Cloud Connected</div>
-                <div style="background: var(--primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">U</div>
+                <div id="user-avatar" style="background: var(--primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">U</div>
             </div>
 
             <div id="mod-dashboard" class="module-section active">
@@ -170,111 +173,109 @@
         const db = firebase.firestore();
         try { db.settings({ experimentalForceLongPolling: true }); } catch(e) {}
 
-        // === OTP LOGIC ===
-        
-        // 1. Setup Invisible Recaptcha (Required by Google)
+        // Global User Var
+        let currentUserMobile = null;
+        let currentUserUid = null;
+
+        // 1. SETUP RECAPTCHA
         window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
             'size': 'invisible',
             'callback': (response) => { sendOTP(); }
         });
 
-        // 2. Send SMS
+        // 2. SEND OTP
         function sendOTP() {
             const mobile = document.getElementById('login-mobile').value.trim();
             const btn = document.getElementById('btn-get-otp');
             const msg = document.getElementById('msg-1');
 
-            if(mobile.length < 13) { msg.innerText = "Please enter full number: +91 99..."; return; }
+            if(mobile.length < 13) { msg.innerText = "Check Format: +91 99..."; return; }
             
             btn.innerText = "Sending...";
             msg.innerText = "";
 
-            const appVerifier = window.recaptchaVerifier;
-            
-            auth.signInWithPhoneNumber(mobile, appVerifier)
+            auth.signInWithPhoneNumber(mobile, window.recaptchaVerifier)
                 .then((confirmationResult) => {
                     window.confirmationResult = confirmationResult;
                     document.getElementById('step-1').style.display = 'none';
                     document.getElementById('step-2').style.display = 'block';
-                    alert("OTP Sent! (Use 123456 if testing)");
+                    alert("OTP Sent! (Use 123456 for Test Number)");
                 }).catch((error) => {
                     btn.innerText = "GET OTP";
                     msg.innerText = "Error: " + error.message;
-                    console.error(error);
-                    if(error.code === 'auth/operation-not-allowed') {
-                        alert("ERROR: You must Enable Phone Auth in Firebase Console!");
-                    }
+                    if(error.code === 'auth/operation-not-allowed') alert("Please enable Phone Auth in Firebase Console!");
                 });
         }
 
-        // 3. Verify Code
+        // 3. VERIFY OTP
         function verifyOTP() {
             const code = document.getElementById('login-otp').value.trim();
-            const btn = document.getElementById('btn-verify');
-            const msg = document.getElementById('msg-2');
+            if(code.length !== 6) return alert("Enter 6 digit code");
 
-            if(code.length !== 6) { msg.innerText = "Enter 6-digit code"; return; }
-
-            btn.innerText = "Verifying...";
-            
             window.confirmationResult.confirm(code).then((result) => {
-                // User signed in successfully.
-                const user = result.user;
-                checkUserInDB(user);
+                currentUserMobile = result.user.phoneNumber;
+                currentUserUid = result.user.uid;
+                checkUserStatus();
             }).catch((error) => {
-                btn.innerText = "VERIFY & LOGIN";
-                msg.innerText = "Invalid OTP";
+                alert("Invalid OTP");
             });
         }
 
-        // 4. Check/Create DB Entry
-        function checkUserInDB(user) {
-            const mobile = user.phoneNumber;
-            
-            db.collection('users').where('mobile', '==', mobile).get().then(snap => {
+        // 4. CHECK USER STATUS (New vs Old)
+        function checkUserStatus() {
+            db.collection('users').where('mobile', '==', currentUserMobile).get().then(snap => {
                 if(snap.empty) {
-                    // NEW USER? AUTO-REGISTER
-                    db.collection('users').add({
-                        mobile: mobile,
-                        uid: user.uid,
-                        created: new Date().toString(),
-                        role: 'user'
-                    }).then(() => {
-                        initApp();
-                    });
+                    // NEW USER -> GO TO NAME SETUP
+                    document.getElementById('step-2').style.display = 'none';
+                    document.getElementById('step-3').style.display = 'block';
                 } else {
-                    // EXISTING USER
-                    initApp();
+                    // OLD USER -> LOGIN DIRECTLY
+                    enterApp(snap.docs[0].data().name);
                 }
             });
         }
 
-        function initApp() {
+        // 5. SAVE NEW USER
+        function completeRegistration() {
+            const name = document.getElementById('reg-name').value.trim();
+            if(!name) return alert("Please enter your name");
+
+            db.collection('users').add({
+                mobile: currentUserMobile,
+                uid: currentUserUid,
+                name: name,
+                role: 'user',
+                created: new Date().toString()
+            }).then(() => {
+                enterApp(name);
+            });
+        }
+
+        function enterApp(name) {
             document.getElementById('auth-screen').style.display = 'none';
             document.getElementById('app-interface').classList.add('active');
+            // Set Avatar Name
+            document.getElementById('user-avatar').innerText = name.charAt(0).toUpperCase();
             loadDash();
         }
 
-        // 5. SESSION PERSISTENCE (Keeps you logged in)
+        // AUTO-LOGIN CHECK
         auth.onAuthStateChanged((user) => {
             if (user) {
-                // User is signed in.
-                document.getElementById('auth-screen').style.display = 'none';
-                document.getElementById('app-interface').classList.add('active');
-                loadDash();
+                currentUserMobile = user.phoneNumber;
+                checkUserStatus();
             }
         });
 
         function logout() { auth.signOut().then(() => location.reload()); }
 
-        // === APP MODULES (Same as before) ===
+        // === APP LOGIC (Same as before) ===
         function showModule(id) {
             document.querySelectorAll('.module-section').forEach(el => el.classList.remove('active'));
             document.getElementById('mod-' + id).classList.add('active');
             if(id === 'dashboard') loadDash();
             if(id === 'fleet') loadFleet();
         }
-
         function openFleetModal() { document.getElementById('fleetModal').style.display='flex'; }
         function saveFleet() {
             db.collection('fleet').add({
@@ -291,7 +292,6 @@
                 document.getElementById('fleet-table-body').innerHTML = html;
             });
         }
-
         function openLRModal() {
             document.getElementById('lrModal').style.display='flex';
             document.getElementById('lr_no').value = 'RRP/26/' + Math.floor(1000 + Math.random() * 9000);
@@ -301,7 +301,6 @@
                 document.getElementById('lr_truck').innerHTML = html;
             });
         }
-        
         function saveLR() {
             const data = {
                 no: document.getElementById('lr_no').value,
@@ -322,7 +321,6 @@
                 printLR(data); loadDash();
             });
         }
-
         function loadDash() {
             db.collection('lrs').orderBy('created','desc').limit(10).get().then(snap => {
                 let html = '';
@@ -330,22 +328,16 @@
                 document.getElementById('dash-table-body').innerHTML = html;
             });
         }
-
         function printLR(lr) {
             const c = document.getElementById('print-container');
             c.innerHTML = `
             <div style="border:2px solid black; padding:20px; font-family:Arial; height:95vh;">
-                <div style="border-bottom:2px solid black; padding-bottom:10px; margin-bottom:20px;">
-                    <h1 style="margin:0;">RRP ENTERPRISES</h1>
-                    <p>Anantapur | Mob: 9494831803</p>
-                    <p><strong>LR No: ${lr.no}</strong> | Date: ${lr.date}</p>
-                </div>
-                <table style="width:100%; border-collapse:collapse;">
-                    <tr><td style="border:1px solid black; padding:10px;"><strong>From:</strong> ${lr.from}</td><td style="border:1px solid black; padding:10px;"><strong>To:</strong> ${lr.to}</td></tr>
-                    <tr><td style="border:1px solid black; padding:10px;"><strong>Consignor:</strong> ${lr.consignor}</td><td style="border:1px solid black; padding:10px;"><strong>Consignee:</strong> ${lr.consignee}</td></tr>
-                    <tr><td style="border:1px solid black; padding:10px;"><strong>Truck:</strong> ${lr.truck}</td><td style="border:1px solid black; padding:10px;"><strong>Goods:</strong> ${lr.goods}</td></tr>
+                <h1>RRP ENTERPRISES</h1><p>LR: ${lr.no} | Date: ${lr.date}</p>
+                <table style="width:100%; border-collapse:collapse; margin-top:20px;">
+                    <tr><td style="border:1px solid black; padding:10px;">From: ${lr.from}</td><td style="border:1px solid black; padding:10px;">To: ${lr.to}</td></tr>
+                    <tr><td style="border:1px solid black; padding:10px;">Truck: ${lr.truck}</td><td style="border:1px solid black; padding:10px;">Goods: ${lr.goods}</td></tr>
                 </table>
-                <div style="margin-top:20px;"><strong>Total:</strong> ${lr.total} | <strong>Balance:</strong> ${lr.balance}</div>
+                <div style="margin-top:20px;">Total: ${lr.total} | Balance: ${lr.balance}</div>
             </div>`;
             window.print();
         }
