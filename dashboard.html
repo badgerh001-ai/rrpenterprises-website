@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titan ERP | Secure Access</title>
+    <title>Titan ERP | Enterprise</title>
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -21,7 +21,7 @@
         #auth-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #020617; z-index: 5000; display: flex; justify-content: center; align-items: center; flex-direction: column; }
         .auth-box { background: #0f172a; border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .link { color: var(--primary); text-decoration: underline; cursor: pointer; font-size: 0.9rem; margin-top: 15px; display: inline-block; }
-        
+
         /* APP LAYOUT */
         .app-container { display: none; min-height: 100vh; }
         .app-container.active { display: flex; }
@@ -31,15 +31,27 @@
         
         .module-section { display: none; }
         .module-section.active { display: block; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; margin-bottom: 20px; }
         
         .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         .data-table th, .data-table td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; color: #e2e8f0; }
-        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         .form-input { width: 100%; background: #020617; border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; margin-bottom: 15px; outline: none; box-sizing: border-box; }
         .btn { padding: 12px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; transition: 0.3s; }
         .btn-primary { background: var(--primary); color: #fff; }
+        
+        /* ROLE BADGES */
+        .badge { padding: 5px 10px; border-radius: 5px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
+        .role-admin { background: #dc2626; color: white; }
+        .role-driver { background: #eab308; color: black; }
+        .role-client { background: #22c55e; color: black; }
+        
+        /* ACCESS CONTROL CLASSES */
+        .admin-only { display: none !important; }
+        .show-admin .admin-only { display: inline-block !important; } /* Only show if parent has .show-admin */
+        
+        /* Status Badges */
+        .status-Pending { color: #facc15; }
+        .status-Approved { color: #22c55e; font-weight: bold; }
 
         @media (max-width: 992px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); } .main-content { margin-left: 0; } }
         @media print { body * { visibility: hidden; } #print-container, #print-container * { visibility: visible; } #print-container { position: absolute; top:0; left:0; width:100%; background: white; color: black; } }
@@ -50,38 +62,30 @@
 <body>
 
     <div id="auth-screen">
-        
         <div class="auth-box" id="login-box">
             <img src="assets/logo.png" style="width: 80px; margin-bottom: 20px;">
-            <h2 style="margin-bottom: 10px;">Titan ERP Login</h2>
+            <h2 style="margin-bottom: 10px;">Titan ERP</h2>
             <input type="email" id="email" class="form-input" placeholder="Email Address">
             <input type="password" id="password" class="form-input" placeholder="Password">
-            
             <button class="btn btn-primary" onclick="handleLogin(this)">LOGIN</button>
             <p id="login-msg" style="color: #ef4444; margin-top: 10px; font-size: 0.8rem;"></p>
-            
             <div style="display:flex; justify-content:space-between; width:100%;">
                 <span class="link" onclick="switchAuth('forgot')">Forgot Password?</span>
                 <span class="link" onclick="switchAuth('register')">New User?</span>
             </div>
         </div>
-
         <div class="auth-box" id="register-box" style="display: none;">
             <h2>Create Account</h2>
             <input type="text" id="reg-name" class="form-input" placeholder="Full Name">
             <input type="email" id="reg-email" class="form-input" placeholder="Email Address">
             <input type="password" id="reg-password" class="form-input" placeholder="Create Password">
-            
             <button class="btn btn-primary" onclick="handleRegister(this)">REGISTER</button>
             <p id="reg-msg" style="color: #ef4444; margin-top: 10px; font-size: 0.8rem;"></p>
             <span class="link" onclick="switchAuth('login')">Back to Login</span>
         </div>
-
         <div class="auth-box" id="forgot-box" style="display: none;">
             <h2>Reset Password</h2>
-            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Enter your email to receive a reset link.</p>
             <input type="email" id="forgot-email" class="form-input" placeholder="Email Address">
-            
             <button class="btn btn-primary" onclick="handleForgot(this)">SEND LINK</button>
             <p id="forgot-msg" style="color: #ef4444; margin-top: 10px; font-size: 0.8rem;"></p>
             <span class="link" onclick="switchAuth('login')">Back to Login</span>
@@ -94,11 +98,14 @@
                 <img src="assets/logo.png" style="width: 30px;">
                 <div style="font-weight: 800; font-size: 1.2rem;">TITAN ERP</div>
             </div>
-            <a onclick="showModule('dashboard')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-th-large"></i> Dashboard</a>
-            <a onclick="showModule('operations')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-file-invoice"></i> Operations</a>
-            <a onclick="showModule('fleet')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-truck-moving"></i> Fleet</a>
+            
+            <a id="nav-dash" onclick="showModule('dashboard')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a id="nav-ops" onclick="showModule('operations')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-file-invoice"></i> Operations</a>
+            <a id="nav-fleet" onclick="showModule('fleet')" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-truck-moving"></i> Fleet</a>
+            
+            <a id="nav-users" onclick="showModule('users')" class="btn admin-only" style="background:transparent; text-align:left; color:#ef4444; margin:0; border-top: 1px solid #333; margin-top: 10px;"><i class="fas fa-users-cog"></i> Users & Roles</a>
+            
             <div style="margin-top: auto;">
-                <a onclick="openSettings()" class="btn" style="background:transparent; text-align:left; color:#94a3b8; margin:0;"><i class="fas fa-cog"></i> Settings</a>
                 <a onclick="logout()" class="btn" style="background:transparent; text-align:left; color:#ef4444; margin:0;">Logout</a>
             </div>
         </nav>
@@ -106,15 +113,17 @@
         <main class="main-content">
             <div class="top-bar">
                 <button onclick="document.getElementById('sidebar').classList.toggle('open')" style="background:none; border:none; color:white; font-size:1.5rem;"><i class="fas fa-bars"></i></button>
-                <div style="font-weight: bold; color: #22c55e;">● Online</div>
+                <div>
+                    <span id="role-display" class="badge role-client">Loading...</span>
+                </div>
                 <div id="user-initial" style="background: var(--primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">U</div>
             </div>
 
-            <div id="mod-dashboard" class="module-section active">
+            <div id="mod-dashboard" class="module-section">
                 <div class="card">
-                    <h3>Recent LRs</h3>
+                    <h3>All Shipments</h3>
                     <table class="data-table">
-                        <thead><tr><th>LR No</th><th>Date</th><th>Truck</th><th>Status</th></tr></thead>
+                        <thead><tr><th>LR No</th><th>Date</th><th>Truck</th><th>Status</th><th>Action</th></tr></thead>
                         <tbody id="dash-table-body"></tbody>
                     </table>
                 </div>
@@ -122,7 +131,8 @@
 
             <div id="mod-operations" class="module-section">
                 <div class="card">
-                    <h3>Operations</h3>
+                    <h3>Operations Manager</h3>
+                    <p style="color: #94a3b8;">Create new LRs and manage approvals.</p>
                     <button class="btn btn-primary" onclick="openLRModal()" style="width: auto;">+ New LR</button>
                 </div>
             </div>
@@ -130,8 +140,8 @@
             <div id="mod-fleet" class="module-section">
                 <div class="card">
                     <div style="display:flex; justify-content:space-between; align-items: center;">
-                        <h3>Fleet Management</h3>
-                        <button class="btn btn-primary" onclick="openFleetModal()" style="width: auto;">+ Add Vehicle</button>
+                        <h3>Fleet Status</h3>
+                        <button class="btn btn-primary admin-only" onclick="openFleetModal()" style="width: auto;">+ Add Vehicle</button>
                     </div>
                     <table class="data-table">
                         <thead><tr><th>Vehicle No</th><th>Driver</th><th>Mobile</th></tr></thead>
@@ -139,27 +149,27 @@
                     </table>
                 </div>
             </div>
-        </main>
-    </div>
 
-    <div id="settingsModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center;">
-        <div class="card" style="width:90%; max-width:400px;">
-            <h3>Change Password</h3>
-            <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:15px;">Enter your new password below.</p>
-            <input type="password" id="new-password" class="form-input" placeholder="New Password">
-            <button class="btn btn-primary" onclick="changePassword()">Update Password</button>
-            <button class="btn" onclick="document.getElementById('settingsModal').style.display='none'" style="background:transparent; border:1px solid #333; color:#ccc;">Close</button>
-        </div>
+            <div id="mod-users" class="module-section">
+                <div class="card">
+                    <h3>User Access Control</h3>
+                    <p style="color:#94a3b8;">Control who can access what.</p>
+                    <table class="data-table">
+                        <thead><tr><th>Name</th><th>Email</th><th>Current Role</th><th>Action</th></tr></thead>
+                        <tbody id="users-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
     </div>
 
     <div id="fleetModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center;">
         <div class="card" style="width:90%; max-width:400px;">
             <h3>Add Vehicle</h3>
-            <input id="v_no" class="form-input" placeholder="Vehicle No">
-            <input id="v_driver" class="form-input" placeholder="Driver Name">
-            <input id="v_mobile" class="form-input" placeholder="Driver Mobile">
-            <button class="btn btn-primary" onclick="saveFleet()">Save Vehicle</button>
-            <button class="btn" onclick="document.getElementById('fleetModal').style.display='none'" style="background:transparent; border:1px solid #333; color:#ccc;">Cancel</button>
+            <input id="v_no" class="form-input" placeholder="Vehicle No"><input id="v_driver" class="form-input" placeholder="Driver Name"><input id="v_mobile" class="form-input" placeholder="Driver Mobile">
+            <button class="btn btn-primary" onclick="saveFleet()">Save</button>
+            <button class="btn" onclick="document.getElementById('fleetModal').style.display='none'" style="color:#ccc;">Cancel</button>
         </div>
     </div>
     <div id="lrModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; overflow-y:auto; padding:20px;">
@@ -171,7 +181,7 @@
             <div class="form-grid"><input id="lr_from" class="form-input" placeholder="From"><input id="lr_to" class="form-input" placeholder="To"></div>
             <div class="form-grid"><input id="lr_goods" class="form-input" placeholder="Goods"><input id="lr_weight" class="form-input" placeholder="Weight"></div>
             <div class="form-grid"><input id="lr_total" class="form-input" placeholder="Total"><input id="lr_balance" class="form-input" placeholder="Balance"></div>
-            <button class="btn btn-primary" onclick="saveLR()">Save & Print LR</button>
+            <button class="btn btn-primary" onclick="saveLR()">Save & Print</button>
         </div>
     </div>
     <div id="print-container"></div>
@@ -192,7 +202,11 @@
         const db = firebase.firestore();
         try { db.settings({ experimentalForceLongPolling: true }); } catch(e) {}
 
-        // === AUTH UI SWITCHER ===
+        // === GLOBAL VARS ===
+        let currentUser = null;
+        let currentRole = 'user';
+
+        // === 1. AUTH LOGIC ===
         function switchAuth(mode) {
             document.getElementById('login-box').style.display = 'none';
             document.getElementById('register-box').style.display = 'none';
@@ -200,174 +214,195 @@
             document.getElementById(mode + '-box').style.display = 'block';
         }
 
-        // 1. REGISTER
         function handleRegister(btn) {
             const name = document.getElementById('reg-name').value.trim();
             const email = document.getElementById('reg-email').value.trim();
             const pass = document.getElementById('reg-password').value.trim();
-            const msg = document.getElementById('reg-msg');
-
-            if(!name || !email || !pass) { msg.innerText = "All fields required"; return; }
-            if(pass.length < 6) { msg.innerText = "Password must be 6+ chars"; return; }
-
-            btn.innerText = "Creating...";
+            if(!name || !email || !pass) return alert("Fill all fields");
             
-            auth.createUserWithEmailAndPassword(email, pass)
-                .then((cred) => {
-                    // Save Name to DB
-                    db.collection('users').doc(cred.user.uid).set({
-                        name: name,
-                        email: email,
-                        role: 'user',
-                        created: new Date().toString()
-                    }).then(() => {
-                        enterApp(name);
-                    });
-                })
-                .catch(e => {
-                    btn.innerText = "REGISTER";
-                    msg.innerText = e.message;
-                });
+            btn.innerText = "Creating...";
+            auth.createUserWithEmailAndPassword(email, pass).then((cred) => {
+                db.collection('users').doc(cred.user.uid).set({
+                    name: name, email: email, role: 'client', created: new Date().toString() // Default to Client
+                }).then(() => enterApp({name:name, role:'client', email:email}));
+            }).catch(e => { btn.innerText = "REGISTER"; alert(e.message); });
         }
 
-        // 2. LOGIN (ROBUST VERSION)
         function handleLogin(btn) {
             const email = document.getElementById('email').value.trim();
             const pass = document.getElementById('password').value.trim();
-            const msg = document.getElementById('login-msg');
-
-            if(!email || !pass) { msg.innerText = "Enter Email & Password"; return; }
-
-            btn.innerText = "Verifying...";
+            if(!email || !pass) return alert("Fill all fields");
             
-            auth.signInWithEmailAndPassword(email, pass)
-                .then((cred) => {
-                    // SUCCESS! Password is correct.
-                    // Now try to get the name, but DON'T WAIT FOREVER.
-                    const uid = cred.user.uid;
-                    
-                    let isLoaded = false;
-                    
-                    // 2-Second Safety Timer
-                    setTimeout(() => {
-                        if(!isLoaded) {
-                            console.log("Database slow. Forcing entry.");
-                            enterApp("Admin"); // Assume Admin if DB hangs
-                        }
-                    }, 2000);
-
-                    db.collection('users').doc(uid).get().then(doc => {
-                        isLoaded = true;
-                        const name = doc.exists ? doc.data().name : "User";
-                        enterApp(name);
-                    }).catch(e => {
-                         // Even if DB fails, let them in!
-                         isLoaded = true;
-                         enterApp("User");
-                    });
-                })
-                .catch(e => {
-                    btn.innerText = "LOGIN";
-                    msg.innerText = "Invalid Email or Password";
+            btn.innerText = "Verifying...";
+            auth.signInWithEmailAndPassword(email, pass).then((cred) => {
+                db.collection('users').doc(cred.user.uid).get().then(doc => {
+                    const data = doc.data();
+                    enterApp({ ...data, email: email });
                 });
+            }).catch(e => { btn.innerText = "LOGIN"; alert(e.message); });
         }
 
-        // 3. FORGOT PASSWORD
         function handleForgot(btn) {
             const email = document.getElementById('forgot-email').value.trim();
-            const msg = document.getElementById('forgot-msg');
-            
-            if(!email) { msg.innerText = "Enter email first"; return; }
-
-            btn.innerText = "Sending...";
-            
-            auth.sendPasswordResetEmail(email)
-                .then(() => {
-                    alert("Reset link sent! Check your inbox.");
-                    switchAuth('login');
-                    btn.innerText = "SEND LINK";
-                })
-                .catch(e => {
-                    btn.innerText = "SEND LINK";
-                    msg.innerText = e.message;
-                });
+            if(!email) return alert("Enter email");
+            auth.sendPasswordResetEmail(email).then(() => { alert("Link Sent!"); switchAuth('login'); });
         }
 
-        // 4. CHANGE PASSWORD
-        function openSettings() { document.getElementById('settingsModal').style.display='flex'; }
-        
-        function changePassword() {
-            const user = auth.currentUser;
-            const newPass = document.getElementById('new-password').value.trim();
+        // === 2. ACCESS CONTROL LOGIC ===
+        function enterApp(user) {
+            currentUser = user;
             
-            if(!newPass || newPass.length < 6) { alert("Password too short"); return; }
-            
-            user.updatePassword(newPass).then(() => {
-                alert("Password Updated Successfully!");
-                document.getElementById('settingsModal').style.display='none';
-            }).catch((error) => {
-                alert("Error: " + error.message + "\n(You may need to logout and login again)");
-            });
-        }
+            // SUPER ADMIN OVERRIDE (Hardcoded Safety)
+            if(user.email === "contact@rrpenterprises.co.in") {
+                user.role = "admin";
+            }
 
-        function enterApp(name) {
+            currentRole = user.role || 'client';
+            
             document.getElementById('auth-screen').style.display = 'none';
             document.getElementById('app-interface').classList.add('active');
-            document.getElementById('user-initial').innerText = name.charAt(0).toUpperCase();
-            loadDash();
+            document.getElementById('user-initial').innerText = user.name.charAt(0).toUpperCase();
+            
+            // DISPLAY ROLE
+            const badge = document.getElementById('role-display');
+            badge.innerText = currentRole.toUpperCase();
+            badge.className = "badge role-" + currentRole;
+
+            // APPLY PERMISSIONS
+            applyPermissions(currentRole);
         }
 
-        // PERSISTENCE
-        auth.onAuthStateChanged(user => {
-            if(user) {
-                // Auto-login logic with same safety timer
-                let isLoaded = false;
-                setTimeout(() => { if(!isLoaded) enterApp("User"); }, 2000);
-                
-                db.collection('users').doc(user.uid).get().then(doc => {
-                    isLoaded = true;
-                    const name = doc.exists ? doc.data().name : "User";
-                    enterApp(name);
-                });
+        function applyPermissions(role) {
+            // Reset UI
+            document.body.classList.remove('show-admin');
+            document.getElementById('nav-dash').style.display = 'block';
+            document.getElementById('nav-ops').style.display = 'none';
+            document.getElementById('nav-fleet').style.display = 'none';
+            document.getElementById('nav-users').style.display = 'none';
+
+            if(role === 'admin') {
+                document.body.classList.add('show-admin'); // Shows .admin-only elements
+                document.getElementById('nav-ops').style.display = 'block';
+                document.getElementById('nav-fleet').style.display = 'block';
+                document.getElementById('nav-users').style.display = 'block'; // Only Admin sees Users
+                showModule('dashboard');
+            } 
+            else if(role === 'driver') {
+                document.getElementById('nav-dash').style.display = 'none';
+                document.getElementById('nav-fleet').style.display = 'block';
+                showModule('fleet');
+            } 
+            else { // Client (Default)
+                showModule('dashboard');
             }
-        });
+        }
 
         function logout() { auth.signOut().then(() => location.reload()); }
 
-        // === APP LOGIC (Standard) ===
+        // === 3. MODULE LOGIC ===
         function showModule(id) {
             document.querySelectorAll('.module-section').forEach(el => el.classList.remove('active'));
             document.getElementById('mod-' + id).classList.add('active');
+            
             if(id === 'dashboard') loadDash();
             if(id === 'fleet') loadFleet();
+            if(id === 'users') loadUsers(); // Admin Only
         }
+
+        // --- DASHBOARD (Shared) ---
+        function loadDash() {
+            db.collection('lrs').orderBy('created','desc').limit(20).get().then(snap => {
+                let html = '';
+                snap.forEach(doc => { 
+                    const d = doc.data(); 
+                    const status = d.status || 'Pending';
+                    
+                    // Approval Button (Only shows for Admin due to CSS)
+                    const approveBtn = (status === 'Pending') 
+                        ? `<button onclick="approveLR('${doc.id}')" class="btn admin-only" style="padding:5px; font-size:0.7rem; width:auto; background:#22c55e;">Approve</button>` 
+                        : '';
+                    
+                    html += `<tr>
+                        <td>${d.no}</td>
+                        <td>${d.date}</td>
+                        <td>${d.truck}</td>
+                        <td class="status-${status}">${status}</td>
+                        <td>${approveBtn} <span class="admin-only" style="cursor:pointer; color:red; margin-left:10px;" onclick="deleteLR('${doc.id}')"><i class="fas fa-trash"></i></span></td>
+                    </tr>`; 
+                });
+                document.getElementById('dash-table-body').innerHTML = html;
+            });
+        }
+        
+        function approveLR(id) {
+            if(confirm("Approve this LR?")) {
+                db.collection('lrs').doc(id).update({ status: 'Approved' }).then(() => loadDash());
+            }
+        }
+        
+        function deleteLR(id) {
+            if(confirm("Delete this Record permanently?")) {
+                db.collection('lrs').doc(id).delete().then(() => loadDash());
+            }
+        }
+
+        // --- FLEET (Driver & Admin) ---
         function openFleetModal() { document.getElementById('fleetModal').style.display='flex'; }
         function saveFleet() {
             db.collection('fleet').add({
-                no: document.getElementById('v_no').value.toUpperCase().trim(),
+                no: document.getElementById('v_no').value.toUpperCase(),
                 driver: document.getElementById('v_driver').value,
                 mobile: document.getElementById('v_mobile').value,
                 status: 'Available'
-            }).then(() => { alert("Saved!"); document.getElementById('fleetModal').style.display='none'; loadFleet(); });
+            }).then(() => { document.getElementById('fleetModal').style.display='none'; loadFleet(); });
         }
         function loadFleet() {
             db.collection('fleet').get().then(snap => {
                 let html = '';
-                snap.forEach(doc => { const d = doc.data(); html += `<tr><td>${d.no}</td><td>${d.driver}</td><td>${d.mobile}</td></tr>`; });
+                snap.forEach(doc => { 
+                    const d = doc.data(); 
+                    html += `<tr><td>${d.no}</td><td>${d.driver}</td><td>${d.mobile}</td></tr>`; 
+                });
                 document.getElementById('fleet-table-body').innerHTML = html;
             });
         }
-        function openLRModal() {
-            document.getElementById('lrModal').style.display='flex';
-            document.getElementById('lr_no').value = 'RRP/26/' + Math.floor(1000 + Math.random() * 9000);
-            db.collection('fleet').where('status','==','Available').get().then(snap => {
-                let html = '<option>Select Truck</option>';
-                snap.forEach(doc => { html += `<option value="${doc.data().no}">${doc.data().no}</option>`; });
-                document.getElementById('lr_truck').innerHTML = html;
+
+        // --- USERS (Admin Only) ---
+        function loadUsers() {
+            db.collection('users').get().then(snap => {
+                let html = '';
+                snap.forEach(doc => {
+                    const u = doc.data();
+                    const isMe = (u.email === currentUser.email);
+                    
+                    // Role Dropdown
+                    const select = `
+                        <select onchange="changeRole('${doc.id}', this.value)" style="background:#1e293b; color:white; padding:5px; border-radius:4px; border:none;">
+                            <option value="client" ${u.role==='client'?'selected':''}>Client</option>
+                            <option value="driver" ${u.role==='driver'?'selected':''}>Driver</option>
+                            <option value="admin" ${u.role==='admin'?'selected':''}>Admin</option>
+                        </select>
+                    `;
+                    
+                    html += `<tr>
+                        <td>${u.name}</td>
+                        <td>${u.email}</td>
+                        <td>${isMe ? '<b>(You)</b>' : select}</td>
+                        <td>${isMe ? '' : `<button onclick="deleteUser('${doc.id}')" style="background:red; border:none; color:white; padding:5px; border-radius:4px; cursor:pointer;">Remove</button>`}</td>
+                    </tr>`;
+                });
+                document.getElementById('users-table-body').innerHTML = html;
             });
         }
+
+        function changeRole(uid, newRole) {
+            db.collection('users').doc(uid).update({ role: newRole }).then(() => alert("Role Updated!"));
+        }
+
+        // --- OPERATIONS (Admin Only) ---
+        function openLRModal() { document.getElementById('lrModal').style.display='flex'; }
         function saveLR() {
-            const data = {
+            db.collection('lrs').add({
                 no: document.getElementById('lr_no').value,
                 date: document.getElementById('lr_date').value,
                 truck: document.getElementById('lr_truck').value,
@@ -379,33 +414,24 @@
                 weight: document.getElementById('lr_weight').value,
                 total: document.getElementById('lr_total').value,
                 balance: document.getElementById('lr_balance').value,
+                status: 'Pending', // New LRs default to pending
                 created: new Date()
-            };
-            db.collection('lrs').add(data).then(() => {
-                alert("Saved!"); document.getElementById('lrModal').style.display='none';
-                printLR(data); loadDash();
+            }).then(() => { 
+                document.getElementById('lrModal').style.display='none'; 
+                alert("LR Created! Status: Pending Approval");
+                loadDash(); 
             });
         }
-        function loadDash() {
-            db.collection('lrs').orderBy('created','desc').limit(10).get().then(snap => {
-                let html = '';
-                snap.forEach(doc => { const d = doc.data(); html += `<tr><td>${d.no}</td><td>${d.date}</td><td>${d.truck}</td><td style="color:#22c55e;">Generated</td></tr>`; });
-                document.getElementById('dash-table-body').innerHTML = html;
-            });
-        }
-        function printLR(lr) {
-            const c = document.getElementById('print-container');
-            c.innerHTML = `
-            <div style="border:2px solid black; padding:20px; font-family:Arial; height:95vh;">
-                <h1>RRP ENTERPRISES</h1><p>LR: ${lr.no} | Date: ${lr.date}</p>
-                <table style="width:100%; border-collapse:collapse; margin-top:20px;">
-                    <tr><td style="border:1px solid black; padding:10px;">From: ${lr.from}</td><td style="border:1px solid black; padding:10px;">To: ${lr.to}</td></tr>
-                    <tr><td style="border:1px solid black; padding:10px;">Truck: ${lr.truck}</td><td style="border:1px solid black; padding:10px;">Goods: ${lr.goods}</td></tr>
-                </table>
-                <div style="margin-top:20px;">Total: ${lr.total} | Balance: ${lr.balance}</div>
-            </div>`;
-            window.print();
-        }
+
+        // PERSISTENCE
+        auth.onAuthStateChanged(user => {
+            if(user) {
+                db.collection('users').doc(user.uid).get().then(doc => {
+                    const data = doc.data() || { name: 'User', role: 'client' };
+                    enterApp({ ...data, email: user.email });
+                });
+            }
+        });
     </script>
 </body>
 </html>
