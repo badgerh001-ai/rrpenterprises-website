@@ -136,6 +136,113 @@
             white-space: nowrap;
         }
 
+        /* ----- PARTNER SECTION STYLES (NEW) ----- */
+        .partner-section {
+            padding: 80px 0;
+            background: #fff; /* Clean white background */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .partner-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #0f172a;
+        }
+
+        .partner-text .highlight {
+            color: #2563eb; /* Titan Blue */
+            position: relative;
+            display: inline-block;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .benefits-list i {
+            color: #2563eb;
+            font-size: 1.2rem;
+            background: rgba(37, 99, 235, 0.1);
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .partner-form-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .partner-form-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #0f172a;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #334155;
+        }
+
+        .form-control:focus {
+            border-color: #2563eb;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #0ea5e9, #2563eb);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-weight: 700;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+
         @media (max-width: 992px) {
             .rrp-transformation-badge {
                 width: 100%;
@@ -151,6 +258,19 @@
             }
             .btn-text-stack {
                 align-items: center;
+            }
+            
+            /* Partner Section Mobile */
+            .partner-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .partner-text {
+                text-align: center;
+            }
+            .benefits-list {
+                display: inline-block;
+                text-align: left;
             }
         }
     </style>
@@ -408,19 +528,74 @@
                 <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
                 <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
                 <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-
-                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
             </div>
         </div>
     </main>
+
+    <section class="partner-section">
+        <div class="container partner-grid">
+            <div class="partner-text">
+                <span class="badge" style="margin-bottom: 15px; display: inline-block;">Join Our Network</span>
+                <h2>You Have a Truck? <br> <span class="highlight">Become a Partner!</span></h2>
+                <p style="color: #64748b; font-size: 1.1rem; max-width: 500px; margin-bottom: 30px;">
+                    Join India's fastest-growing logistics network. We provide consistent loads, timely payments, and complete transparency for vehicle owners.
+                </p>
+                <ul class="benefits-list">
+                    <li><i class="fas fa-route"></i> Pan-India Return Loads Guaranteed</li>
+                    <li><i class="fas fa-wallet"></i> On-Time Payments & Advances</li>
+                    <li><i class="fas fa-headset"></i> 24/7 Dedicated Support Team</li>
+                    <li><i class="fas fa-chart-line"></i> Grow Your Fleet with RRP</li>
+                </ul>
+            </div>
+
+            <div class="partner-form-card">
+                <h3><i class="fas fa-truck-moving" style="color: #2563eb; margin-right: 10px;"></i> Attach Your Vehicle</h3>
+                
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    
+                    <input type="hidden" name="redirect" value="https://rrpenterprises.co.in/index.html">
+                    
+                    <input type="hidden" name="subject" value="New Truck Attachment Request - RRP Website">
+
+                    <div class="form-group">
+                        <input type="text" name="owner_name" class="form-control" placeholder="Owner Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="tel" name="mobile_number" class="form-control" placeholder="Mobile Number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="vehicle_number" class="form-control" placeholder="Vehicle Number (e.g., AP-02-X-1234)" required>
+                    </div>
+
+                    <div class="form-group">
+                        <select name="vehicle_type" class="form-control" required>
+                            <option value="" disabled selected>Select Vehicle Type</option>
+                            <option value="32ft Container">32ft Multi-Axle Container</option>
+                            <option value="32ft SXL">32ft Single Axle (SXL)</option>
+                            <option value="Open Body Truck">Open Body Truck</option>
+                            <option value="Trailer 40ft">40ft Trailer</option>
+                            <option value="10 Tyre / 12 Tyre">10 Tyre / 12 Tyre</option>
+                            <option value="LCV / Mini Truck">LCV / Mini Truck</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="gst_number" class="form-control" placeholder="GST Number (Optional)">
+                    </div>
+
+                    <button type="submit" class="submit-btn">SUBMIT DETAILS <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
+                    
+                    <p style="font-size: 0.8rem; color: #94a3b8; text-align: center; margin-top: 15px;">
+                        <i class="fas fa-lock"></i> Your details are secure with us.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <section class="reviews-section" style="padding: 80px 0; background: var(--bg-subtle);">
         <div class="container">
