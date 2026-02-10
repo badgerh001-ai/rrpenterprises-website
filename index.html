@@ -63,36 +63,76 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        .titan-login-btn {
-            background: #0ea5e9; /* Titan Blue */
-            color: white !important;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(14, 165, 233, 0.5);
-        }
-        
-        .titan-login-btn:hover {
-            background: #0284c7;
-            box-shadow: 0 0 25px rgba(14, 165, 233, 0.6);
-            transform: translateY(-2px);
-            border-color: #38bdf8;
+        /* Pulse Animation */
+        @keyframes pulse-blue {
+            0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
         }
 
-        /* Responsive Fix for Mobile Menu */
-        @media (max-width: 768px) {
-            .titan-login-btn {
-                justify-content: center;
-                margin-top: 10px;
+        /* New RRP Login Button Styles */
+        .rrp-login-btn {
+            background: linear-gradient(135deg, #0ea5e9, #2563eb);
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+            animation: pulse-blue 2s infinite; /* The catchy pulse effect */
+            transition: transform 0.3s ease;
+        }
+
+        .rrp-login-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #0284c7, #1d4ed8);
+        }
+
+        /* Icon Box */
+        .btn-icon-box {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Text Stack (Main + Subtext) */
+        .btn-text-stack {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .btn-main {
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .btn-sub {
+            font-size: 0.65rem;
+            font-weight: 400;
+            opacity: 0.95;
+            white-space: nowrap;
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 992px) {
+            .rrp-login-btn {
                 width: 100%;
-                background: linear-gradient(90deg, #0ea5e9, #2563eb);
+                justify-content: center;
+                margin-top: 15px;
+                padding: 12px;
+            }
+            
+            .btn-sub {
+                font-size: 0.7rem;
+                white-space: normal; /* Allow text to wrap on very small screens */
+                text-align: left;
             }
         }
     </style>
@@ -128,9 +168,7 @@
     </div>
 
     <div class="top-system-bar">
-        <div class="container">
-            <span class="led-light"></span> 
-            <span>SYSTEM UPDATE: DIGITAL TRANSFORMATION IN PROCESS</span>
+        <div class="container" style="justify-content: flex-end;">
             <img src="https://flagcdn.com/in.svg" alt="India Flag" style="height: 14px; border-radius: 2px;">
         </div>
     </div>
@@ -152,8 +190,14 @@
                 <li><a href="services.html" class="social-link">Services</a></li>
                 
                 <li>
-                    <a href="https://rrp-erp.m.frappe.cloud/" target="_blank" class="titan-login-btn">
-                        <i class="fas fa-rocket"></i> TITAN LOGIN
+                    <a href="https://rrp-erp.m.frappe.cloud/" target="_blank" class="rrp-login-btn">
+                        <div class="btn-icon-box">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="btn-text-stack">
+                            <span class="btn-main">RRP LOGIN</span>
+                            <span class="btn-sub">Working on Digital Fleet Transformation</span>
+                        </div>
                     </a>
                 </li>
 
