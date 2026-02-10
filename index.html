@@ -78,21 +78,20 @@
 
         /* New Transformation Badge Styles */
         .rrp-transformation-badge {
-            background: linear-gradient(135deg, #1e293b, #0f172a); /* Dark Tech Background */
-            color: #38bdf8 !important; /* Cyan Text */
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: #38bdf8 !important;
             padding: 8px 16px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 12px;
-            border: 1px solid rgba(56, 189, 248, 0.3); /* Cyan Border */
+            border: 1px solid rgba(56, 189, 248, 0.3);
             position: relative;
             overflow: hidden;
-            cursor: default; /* Non-clickable */
+            cursor: default;
             box-shadow: 0 4px 15px rgba(15, 23, 42, 0.5);
         }
 
-        /* The Scanning Light Overlay */
         .rrp-transformation-badge::after {
             content: '';
             position: absolute;
@@ -105,7 +104,6 @@
             animation: scan-light 3s infinite;
         }
 
-        /* Icon Box */
         .btn-icon-box {
             font-size: 1.4rem;
             display: flex;
@@ -117,7 +115,6 @@
             animation: spin-slow 4s linear infinite;
         }
 
-        /* Text Stack (Main + Subtext) */
         .btn-text-stack {
             display: flex;
             flex-direction: column;
@@ -135,11 +132,10 @@
         .btn-sub {
             font-size: 0.65rem;
             font-weight: 500;
-            color: #94a3b8; /* Muted text */
+            color: #94a3b8;
             white-space: nowrap;
         }
 
-        /* Mobile Responsive Adjustments */
         @media (max-width: 992px) {
             .rrp-transformation-badge {
                 width: 100%;
@@ -148,15 +144,17 @@
                 padding: 12px;
                 background: linear-gradient(135deg, #0f172a, #1e293b);
             }
-            
             .btn-sub {
                 font-size: 0.7rem;
-                white-space: normal; /* Allow text to wrap on very small screens */
+                white-space: normal;
                 text-align: center;
             }
-            
             .btn-text-stack {
                 align-items: center;
+            }
+            /* Fix for Top Bar on Mobile */
+            .top-system-bar .container {
+                padding-right: 15px !important;
             }
         }
     </style>
@@ -191,9 +189,10 @@
         </div>
     </div>
 
-    <div class="top-system-bar">
-        <div class="container" style="justify-content: flex-end;">
-            <img src="https://flagcdn.com/in.svg" alt="India Flag" style="height: 14px; border-radius: 2px;">
+    <div class="top-system-bar" style="display: flex; align-items: center; min-height: 32px;">
+        <div class="container" style="display: flex; justify-content: flex-end; align-items: center; width: 100%;">
+            <span style="color: #64748b; font-size: 10px; font-weight: 700; margin-right: 8px; letter-spacing: 0.5px;">IND</span>
+            <img src="https://flagcdn.com/in.svg" alt="India Flag" style="height: 18px; width: auto; border-radius: 2px; border: 1px solid rgba(255,255,255,0.2);">
         </div>
     </div>
 
@@ -406,16 +405,6 @@
 
         <div class="clients-marquee reverse">
             <div class="clients-track">
-                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-
                 <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
                 <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
                 <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
