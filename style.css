@@ -1,5 +1,5 @@
 /* ===================================================================
-   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v61.locked)
+   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v62.FIXED)
    Theme: "The Titan" (Absolute Transparent Hero & Vertical System Bar)
    =================================================================== */
 
@@ -37,11 +37,14 @@
 html { 
   scroll-behavior: smooth; 
   -webkit-text-size-adjust: 100%;
-  width: 100%;
+  width: 100% !important;
   height: 100%;
+  /* CRITICAL: Force remove default browser margins causing top gap */
+  margin: 0 !important;
+  padding: 0 !important;
   /* ensure no horizontal scroll on any device */
-  overflow-x: hidden; 
-  max-width: 100vw;
+  overflow-x: hidden !important; 
+  max-width: 100vw !important;
 }
 
 /* Scrollbar */
@@ -54,10 +57,12 @@ html {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  width: 100%;
-  max-width: 100vw; /* Double lock for mobile */
+  width: 100% !important;
+  max-width: 100vw !important; /* Double lock for mobile */
   min-height: 100dvh; 
-  overflow-x: hidden; /* Double lock for mobile */
+  margin: 0 !important; /* Force remove gap */
+  padding: 0 !important; /* Force remove gap */
+  overflow-x: hidden !important; /* Double lock for mobile */
   background-color: var(--bg-body);
   font-family: var(--font-main);
   color: #94a3b8; 
@@ -156,25 +161,25 @@ body {
 }
 .badge-center { display: flex; justify-content: center; width: 100%; }
 
-/* ---------------- 3. SYSTEM BAR (Radar Scan) ---------------- */
+/* ---------------- 3. SYSTEM BAR (FORCE DISABLED TO REMOVE GAP) ---------------- */
 .top-system-bar {
+    display: none !important; /* Force Hide */
+    height: 0 !important;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    /* Legacy styles kept below just in case, but display:none overrides them */
     background: #020617;
     color: var(--primary);
-    padding: 8px 0;
     font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
     border-bottom: 1px solid rgba(14, 165, 233, 0.2);
     text-transform: uppercase; text-align: center;
-    overflow: hidden;
     white-space: nowrap; 
     position: relative; 
 }
 .top-system-bar::after {
-    content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.3), transparent);
-    animation: radar-sweep 4s infinite linear;
-    pointer-events: none;
+    display: none !important;
 }
-@keyframes radar-sweep { 0% { left: -100%; } 100% { left: 200%; } }
 
 .led-light { 
     display: inline-block; width: 6px; height: 6px; 
@@ -435,6 +440,8 @@ body {
       overflow-x: hidden !important;
       width: 100%;
       position: relative;
+      margin: 0 !important;
+      padding: 0 !important;
   }
   
   /* Prevent container from causing overflow */
@@ -459,26 +466,13 @@ body {
   .nav-links.active { transform: translateY(0); }
   .desktop-only { display: none !important; }
 
-  /* V61: FORCE MOBILE SYSTEM BAR TO STACK */
+  /* V61: FORCE MOBILE SYSTEM BAR TO HIDE COMPLETELY */
   .top-system-bar { 
-      height: auto !important; 
-      white-space: normal !important; 
-      padding: 10px 0 !important;
-      overflow: visible !important;
+      display: none !important;
   }
   .top-system-bar .container {
-      display: flex !important;
-      flex-direction: column !important; /* VERTICAL STACK */
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 8px !important;
-      text-align: center !important;
-      white-space: normal !important;
+      display: none !important;
   }
-  .top-system-bar span, .top-system-bar img {
-      display: inline-block !important; /* Force items to be visible */
-  }
-  .top-system-bar::after { display: none !important; } /* Hide radar on mobile */
 
 
   /* V61 FIX: Glassmorphic Hero on Mobile (Transparent Text) */
