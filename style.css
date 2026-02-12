@@ -1,5 +1,5 @@
 /* ===================================================================
-   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v61)
+   RRP ENTERPRISES – TITAN INTERFACE THEME (v2026.v61.locked)
    Theme: "The Titan" (Absolute Transparent Hero & Vertical System Bar)
    =================================================================== */
 
@@ -33,13 +33,15 @@
   --z-nav: 5000;
 }
 
-/* ---------------- GLOBAL RESET & LOCK ---------------- */
+/* ---------------- GLOBAL RESET & LOCK (CRITICAL FIXES) ---------------- */
 html { 
   scroll-behavior: smooth; 
   -webkit-text-size-adjust: 100%;
   width: 100%;
   height: 100%;
-  overflow-x: hidden; /* CRITICAL: Locks Horizontal Scroll */
+  /* ensure no horizontal scroll on any device */
+  overflow-x: hidden; 
+  max-width: 100vw;
 }
 
 /* Scrollbar */
@@ -53,9 +55,9 @@ html {
 
 body {
   width: 100%;
-  max-width: 100%; 
+  max-width: 100vw; /* Double lock for mobile */
   min-height: 100dvh; 
-  overflow-x: hidden; 
+  overflow-x: hidden; /* Double lock for mobile */
   background-color: var(--bg-body);
   font-family: var(--font-main);
   color: #94a3b8; 
@@ -66,6 +68,7 @@ body {
   background-size: 100% 4px, 6px 100%;
   background-attachment: fixed;
   padding-bottom: 0; 
+  position: relative; /* Helps contain absolute elements */
 }
 
 /* ---------------- 2. UTILITIES ---------------- */
@@ -428,10 +431,14 @@ body {
       background-attachment: scroll !important; 
       height: auto;
       min-height: 100dvh;
-      overflow-x: hidden;
+      /* Ensure no side-scroll on mobile */
+      overflow-x: hidden !important;
+      width: 100%;
+      position: relative;
   }
   
-  .container { padding: 0 20px; }
+  /* Prevent container from causing overflow */
+  .container { padding: 0 20px; max-width: 100%; overflow: hidden; }
 
   .menu-btn { display: block; background: none; border: none; cursor: pointer; z-index: 5001; }
   .menu-btn span { display: block; width: 30px; height: 2px; background: #fff; margin: 6px 0; transition: 0.3s; }
@@ -445,6 +452,9 @@ body {
     flex-direction: column; justify-content: center; gap: 30px;
     transform: translateY(-100%); transition: 0.4s ease; z-index: 5000;
     backdrop-filter: blur(20px);
+    /* Ensure menu itself doesn't cause overflow */
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   .nav-links.active { transform: translateY(0); }
   .desktop-only { display: none !important; }
@@ -524,6 +534,8 @@ body {
     border: 1px solid rgba(255,255,255,0.1); border-radius: 50px;
     justify-content: space-between; padding: 15px 30px;
     z-index: 9999; box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    /* Ensure dock doesn't cause overflow */
+    overflow: hidden;
   }
   .dock-item {
     display: flex; flex-direction: column; align-items: center; gap: 5px;
@@ -598,3 +610,31 @@ body {
 .fa-truck-fast-custom { font-size: 1.5rem; color: #000; }
 .fa-gift-custom { font-size: 1rem; color: #000; position: absolute; top: 12px; left: 15px; }
 @keyframes truck-idle { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+/* ==================================================================
+   CRITICAL FIXES: HIDE ELEMENTS & LOCK LAYOUT
+   ================================================================== */
+
+/* 1. Hide 'Tracking' link in Navbar & Footer */
+.nav-links li a[href*="tracking"],
+.footer-links li a[href*="tracking"],
+/* Also hide based on text content if href doesn't match */
+.nav-links li a:contains('Tracking'),
+.footer-links li a:contains('Tracking') {
+    display: none !important;
+}
+
+/* 2. Hide 'Digital Fleet Transformation' Badge in Navbar */
+.nav-links li .rrp-transformation-badge {
+    display: none !important;
+}
+
+/* 3. Hide 'Tracking' icon in Mobile Dock */
+.mobile-app-dock .dock-item[href*="tracking"],
+.mobile-app-dock .dock-item:has(i.fa-map-marker-alt) {
+    display: none !important;
+}
+/* Adjust mobile dock item sizing since one is removed */
+.mobile-app-dock .dock-item {
+    flex: 1 1 auto; /* Allow remaining items to fill space evenly */
+}
