@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Partner | RRP Enterprises</title>
+    <meta name="description" content="Attach your truck with RRP Enterprises. Guaranteed loads, on-time payments, and pan-India network. Join today.">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    
+    <link rel="stylesheet" href="style.css?v=61">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Specific Styles for Partner Page to match Dark Theme */
+        body {
+            background-color: #000;
+            background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 6px 100%;
+        }
+
+        .partner-hero {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .partner-split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 40px 0 100px;
+        }
+
+        /* Glassmorphic Form Card */
+        .partner-form-card {
+            background: rgba(11, 17, 33, 0.85); /* Dark Glass */
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(14, 165, 233, 0.3); /* Titan Blue Border */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(14, 165, 233, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glowing corner effect */
+        .partner-form-card::before {
+            content: ''; position: absolute; top: 0; right: 0; width: 100px; height: 100px;
+            background: radial-gradient(circle, rgba(14,165,233,0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .form-control {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+        
+        .form-control:focus {
+            background: rgba(0, 0, 0, 0.8);
+            border-color: #0ea5e9;
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.2);
+        }
+
+        .form-control::placeholder {
+            color: #64748b;
+        }
+
+        .form-group label {
+            display: block;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .partner-benefits-list li {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
+        }
+
+        .partner-benefits-list li:hover {
+            border-color: #0ea5e9;
+            transform: translateX(10px);
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        .partner-benefits-list i {
+            color: #0ea5e9;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 992px) {
+            .partner-split-section { grid-template-columns: 1fr; gap: 40px; }
+            .partner-form-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-system-bar" style="display: flex; align-items: center; min-height: 32px; background: #020617;">
+        <div class="container" style="display: flex; justify-content: flex-end; align-items: center; width: 100%;">
+            <span style="color: #64748b; font-size: 10px; font-weight: 700; margin-right: 8px; letter-spacing: 0.5px;">IND</span>
+            <img src="https://flagcdn.com/in.svg" alt="India Flag" style="height: 18px; width: 26px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.2);">
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo-container">
+                <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
+                <div class="logo-text">RRP <span>ENTERPRISES</span></div>
+            </a>
+
+            <button class="menu-btn" id="mobile-toggle"><span></span><span></span><span></span></button>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="social-link">Home</a></li>
+                <li><a href="about.html" class="social-link">About Us</a></li>
+                <li><a href="services.html" class="social-link">Services</a></li>
+                
+                <li>
+                    <a href="partner.html" class="cta-btn" style="background: var(--primary); color: #000; border: none; box-shadow: 0 0 20px rgba(14,165,233,0.4);">
+                        BECOME A PARTNER
+                    </a>
+                </li>
+
+                <li><a href="contact.html" class="cta-btn">Contact Us <i class="fas fa-arrow-right"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="partner-hero">
+            <span class="badge">Join The Network</span>
+            <h1 class="section-title" style="margin-bottom: 10px; border: none; padding: 0;">Attach Your <span class="gradient-text">Vehicle</span></h1>
+            <p style="color: #94a3b8; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                Grow your fleet business with consistent loads, timely payments, and India's most trusted logistics partner.
+            </p>
+        </div>
+
+        <div class="partner-split-section">
+            
+            <div class="partner-content">
+                <h3 style="color: #fff; font-size: 1.8rem; margin-bottom: 30px;">Why Partner With RRP?</h3>
+                <ul class="partner-benefits-list" style="list-style: none; padding: 0;">
+                    <li>
+                        <i class="fas fa-route"></i>
+                        <div>
+                            <h4 style="color: #fff; margin-bottom: 5px;">Pan-India Loads</h4>
+                            <p style="color: #64748b; font-size: 0.9rem; margin: 0;">Guaranteed return loads from 50+ industrial hubs.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-wallet"></i>
+                        <div>
+                            <h4 style="color: #fff; margin-bottom: 5px;">On-Time Payments</h4>
+                            <p style="color: #64748b; font-size: 0.9rem; margin: 0;">Transparent billing with advances and fast settlement.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-headset"></i>
+                        <div>
+                            <h4 style="color: #fff; margin-bottom: 5px;">24/7 Driver Support</h4>
+                            <p style="color: #64748b; font-size: 0.9rem; margin: 0;">Dedicated team to assist your drivers on the road.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <h4 style="color: #fff; margin-bottom: 5px;">Business Growth</h4>
+                            <p style="color: #64748b; font-size: 0.9rem; margin: 0;">Consistent business helping you add more trucks.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="partner-form-card">
+                <h3 style="color: #fff; margin-bottom: 25px; text-align: center;">Vehicle Attachment Form</h3>
+                
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="hidden" name="subject" value="New Partner Request - RRP Website">
+                    <input type="hidden" name="redirect" value="https://rrpenterprises.co.in/partner.html">
+
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Owner Name *</label>
+                        <input type="text" name="owner_name" class="form-control" placeholder="Enter full name" required style="width: 100%; padding: 12px; border-radius: 8px;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Mobile Number *</label>
+                        <input type="tel" name="mobile" class="form-control" placeholder="Enter 10-digit number" required style="width: 100%; padding: 12px; border-radius: 8px;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Vehicle Number *</label>
+                        <input type="text" name="vehicle_no" class="form-control" placeholder="e.g. KA-01-AB-1234" required style="width: 100%; padding: 12px; border-radius: 8px;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Vehicle Type *</label>
+                        <select name="vehicle_type" class="form-control" required style="width: 100%; padding: 12px; border-radius: 8px;">
+                            <option value="" disabled selected>Select Type</option>
+                            <option value="32ft Container">32ft Multi-Axle Container</option>
+                            <option value="32ft SXL">32ft Single Axle</option>
+                            <option value="Open Body">Open Body Truck</option>
+                            <option value="Trailer">Trailer (40ft/50ft)</option>
+                            <option value="10/12 Tyre">10 Tyre / 12 Tyre</option>
+                            <option value="LCV">LCV / Mini Truck</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label>GST Number (Optional)</label>
+                        <input type="text" name="gst" class="form-control" placeholder="Enter GST Number" style="width: 100%; padding: 12px; border-radius: 8px;">
+                    </div>
+
+                    <button type="submit" class="cta-btn" style="width: 100%; justify-content: center; background: var(--primary); color: #000; border: none; font-size: 1rem; padding: 15px;">
+                        SUBMIT DETAILS <i class="fas fa-paper-plane"></i>
+                    </button>
+                    
+                    <p style="color: #64748b; font-size: 0.8rem; text-align: center; margin-top: 15px;">
+                        <i class="fas fa-lock"></i> Your data is secure. Our team will call you shortly.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-main">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="logo-container">
+                    <img src="assets/logo.png" class="main-logo" alt="Logo">
+                    <div class="logo-text" style="color: #fff;">RRP <span>ENTERPRISES</span></div>
+                </div>
+                <p style="color: #cbd5e1; margin-top: 20px;">Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="services.html">FTL Transport</a></li>
+                    <li><a href="services.html">Bulk Cargo</a></li>
+                    <li><a href="services.html">Project Logistics</a></li>
+                    <li><a href="services.html">Supply Chain</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="partner.html" style="color: var(--primary);">Become a Partner</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-contact-item" style="display: flex; gap: 15px; margin-bottom: 15px; color: #94a3b8;">
+                    <i class="fas fa-phone" style="color: var(--primary);"></i>
+                    <div>
+                        <div style="color: #fff; font-weight: 700;">+91 94948 31803</div>
+                        <div style="font-size: 0.9rem;">24/7 Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright-text">
+                &copy; 2026 RRP Enterprises. All Rights Reserved.
+            </div>
+            <div class="dev-badge-container">
+                <div class="dev-badge"><span>DESIGNED BY</span> <strong>RC'S ANANTHA</strong></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle Logic
+        const menuBtn = document.getElementById('mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                menuBtn.classList.toggle('open');
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
