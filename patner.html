@@ -20,7 +20,7 @@
         }
 
         .partner-hero {
-            padding: 120px 0 60px;
+            padding: 120px 0 40px;
             text-align: center;
         }
 
@@ -55,17 +55,24 @@
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: #fff;
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 1rem;
         }
         
         .form-control:focus {
             background: rgba(0, 0, 0, 0.8);
             border-color: #0ea5e9;
             box-shadow: 0 0 15px rgba(14, 165, 233, 0.2);
+            outline: none;
         }
 
         .form-control::placeholder {
             color: #64748b;
         }
+
+        .form-group { margin-bottom: 20px; }
 
         .form-group label {
             display: block;
@@ -74,6 +81,8 @@
             font-size: 0.9rem;
             font-weight: 600;
         }
+
+        .partner-benefits-list { list-style: none; padding: 0; }
 
         .partner-benefits-list li {
             background: rgba(255, 255, 255, 0.03);
@@ -101,18 +110,12 @@
         @media (max-width: 992px) {
             .partner-split-section { grid-template-columns: 1fr; gap: 40px; }
             .partner-form-card { padding: 30px 20px; }
+            .partner-hero { padding-top: 100px; }
         }
     </style>
 </head>
 
 <body>
-
-    <div class="top-system-bar" style="display: flex; align-items: center; min-height: 32px; background: #020617;">
-        <div class="container" style="display: flex; justify-content: flex-end; align-items: center; width: 100%;">
-            <span style="color: #64748b; font-size: 10px; font-weight: 700; margin-right: 8px; letter-spacing: 0.5px;">IND</span>
-            <img src="https://flagcdn.com/in.svg" alt="India Flag" style="height: 18px; width: 26px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.2);">
-        </div>
-    </div>
 
     <nav class="navbar">
         <div class="container">
@@ -129,7 +132,7 @@
                 <li><a href="services.html" class="social-link">Services</a></li>
                 
                 <li>
-                    <a href="partner.html" class="cta-btn" style="background: var(--primary); color: #000; border: none; box-shadow: 0 0 20px rgba(14,165,233,0.4);">
+                    <a href="partner.html" class="cta-btn" style="background: var(--primary); color: #000; border: none; box-shadow: 0 0 15px rgba(14,165,233,0.3);">
                         BECOME A PARTNER
                     </a>
                 </li>
@@ -152,7 +155,7 @@
             
             <div class="partner-content">
                 <h3 style="color: #fff; font-size: 1.8rem; margin-bottom: 30px;">Why Partner With RRP?</h3>
-                <ul class="partner-benefits-list" style="list-style: none; padding: 0;">
+                <ul class="partner-benefits-list">
                     <li>
                         <i class="fas fa-route"></i>
                         <div>
@@ -188,28 +191,28 @@
                 <h3 style="color: #fff; margin-bottom: 25px; text-align: center;">Vehicle Attachment Form</h3>
                 
                 <form action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="hidden" name="access_key" value="b1614ff6-f010-4e44-ac2f-845e732660d3">
                     <input type="hidden" name="subject" value="New Partner Request - RRP Website">
                     <input type="hidden" name="redirect" value="https://rrpenterprises.co.in/partner.html">
 
-                    <div class="form-group" style="margin-bottom: 20px;">
+                    <div class="form-group">
                         <label>Owner Name *</label>
-                        <input type="text" name="owner_name" class="form-control" placeholder="Enter full name" required style="width: 100%; padding: 12px; border-radius: 8px;">
+                        <input type="text" name="owner_name" class="form-control" placeholder="Enter full name" required>
                     </div>
 
-                    <div class="form-group" style="margin-bottom: 20px;">
+                    <div class="form-group">
                         <label>Mobile Number *</label>
-                        <input type="tel" name="mobile" class="form-control" placeholder="Enter 10-digit number" required style="width: 100%; padding: 12px; border-radius: 8px;">
+                        <input type="tel" name="mobile" class="form-control" placeholder="Enter 10-digit number" required>
                     </div>
 
-                    <div class="form-group" style="margin-bottom: 20px;">
+                    <div class="form-group">
                         <label>Vehicle Number *</label>
-                        <input type="text" name="vehicle_no" class="form-control" placeholder="e.g. KA-01-AB-1234" required style="width: 100%; padding: 12px; border-radius: 8px;">
+                        <input type="text" name="vehicle_no" class="form-control" placeholder="e.g. KA-01-AB-1234" required>
                     </div>
 
-                    <div class="form-group" style="margin-bottom: 20px;">
+                    <div class="form-group">
                         <label>Vehicle Type *</label>
-                        <select name="vehicle_type" class="form-control" required style="width: 100%; padding: 12px; border-radius: 8px;">
+                        <select name="vehicle_type" class="form-control" required>
                             <option value="" disabled selected>Select Type</option>
                             <option value="32ft Container">32ft Multi-Axle Container</option>
                             <option value="32ft SXL">32ft Single Axle</option>
@@ -220,9 +223,9 @@
                         </select>
                     </div>
 
-                    <div class="form-group" style="margin-bottom: 30px;">
+                    <div class="form-group">
                         <label>GST Number (Optional)</label>
-                        <input type="text" name="gst" class="form-control" placeholder="Enter GST Number" style="width: 100%; padding: 12px; border-radius: 8px;">
+                        <input type="text" name="gst" class="form-control" placeholder="Enter GST Number">
                     </div>
 
                     <button type="submit" class="cta-btn" style="width: 100%; justify-content: center; background: var(--primary); color: #000; border: none; font-size: 1rem; padding: 15px;">
@@ -284,6 +287,12 @@
             </div>
         </div>
     </footer>
+
+    <div class="mobile-app-dock">
+        <a href="tel:+919494831803" class="dock-item"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/919494831803" class="dock-item"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
+        <a href="contact.html" class="dock-item"><i class="fas fa-map-marker-alt"></i><span>Track</span></a>
+    </div>
 
     <script>
         // Mobile Menu Toggle Logic
