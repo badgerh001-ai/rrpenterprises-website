@@ -2,67 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>RRP ENTERPRISES | India's Leading Logistics Partner</title>
     <meta name="description" content="RRP Enterprises: Premium logistics solutions. FTL, Project Transport & Supply Chain Management across India. Reliable, Fast, and Secure.">
-    <meta name="keywords" content="RRP Enterprises, Logistics Company Anantapur, FTL Transport India, Bulk Cargo Movers, Supply Chain Solutions, Truck Transport Andhra Pradesh">
-    <meta name="author" content="RRP Enterprises">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://rrpenterprises.co.in/">
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rrpenterprises.co.in/">
-    <meta property="og:title" content="RRP Enterprises | Moving India's Future Today">
-    <meta property="og:description" content="Trusted Logistics Partner. 500+ Vehicles. Pan-India Network. Get a quote for FTL & Bulk Cargo today.">
-    <meta property="og:image" content="https://rrpenterprises.co.in/assets/logo.png">
-    <meta property="og:image:width" content="512">
-    <meta property="og:image:height" content="512">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RRP Enterprises | Premier Logistics Solutions">
-    <meta name="twitter:description" content="Seamless supply chain solutions across India. Book FTL & Bulk Cargo with RRP Enterprises.">
-    <meta name="twitter:image" content="https://rrpenterprises.co.in/assets/logo.png">
     <link rel="icon" href="assets/logo.png" type="image/png">
-    <link rel="apple-touch-icon" href="assets/logo.png">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "RRP Enterprises",
-      "url": "https://rrpenterprises.co.in/",
-      "logo": "https://rrpenterprises.co.in/assets/logo.png",
-      "image": "https://rrpenterprises.co.in/assets/logo.png",
-      "description": "India's Leading Logistics & Supply Chain Partner.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "# 6-4-994, Maruthi Nagar, 80ft Road",
-        "addressLocality": "Anantapuramu",
-        "addressRegion": "Andhra Pradesh",
-        "postalCode": "515001",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-9494831803",
-        "contactType": "customer service",
-        "areaServed": "IN",
-        "availableLanguage": "en"
-      },
-      "sameAs": [
-        "https://www.facebook.com/rrpenterprises", 
-        "https://www.linkedin.com/company/rrp-enterprises"
-      ]
-    }
-    </script>
-
-    <link rel="stylesheet" href="style.css?v=61">
+    <link rel="stylesheet" href="style.css?v=62">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
+        /* --- FORCE FIXES FOR MOBILE & GAP --- */
+        
+        /* 1. Remove Black Gap Forcefully */
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow-x: hidden !important; /* Stops side scrolling */
+            width: 100% !important;
+            max-width: 100vw !important;
+            background-color: #000 !important; /* Ensures seamless black background */
+        }
+
+        /* 2. Hide Top Bar (Failsafe) */
+        .top-system-bar { display: none !important; height: 0 !important; }
+
+        /* 3. Mobile Layout Adjustments */
+        @media (max-width: 768px) {
+            .hero-text-content {
+                padding: 20px !important;
+                margin-top: 0 !important;
+            }
+            .hero-text-content h1 {
+                font-size: 2rem !important; /* Smaller font for mobile */
+                line-height: 1.2 !important;
+            }
+            .badge {
+                font-size: 0.65rem !important; /* Smaller badge text */
+                white-space: normal !important; /* Allow wrapping if needed */
+            }
+            /* Fix Button Sizes on Mobile */
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-btns .cta-btn, .hero-btns .outline-btn {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
         /* Animation: Slow Spin for Gears */
         @keyframes spin-slow {
             0% { transform: rotate(0deg); }
@@ -226,7 +220,7 @@
                 </div>
                 
                 <h1>
-                    POWERING YOUR <br><br>
+                    POWERING YOUR <br>
                     <span class="gradient-text">SUPPLY CHAIN</span>
                 </h1>
                 
@@ -398,6 +392,10 @@
                 <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
                 <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
 
+                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
+                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
+                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
+                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
                 <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
                 <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
                 <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
