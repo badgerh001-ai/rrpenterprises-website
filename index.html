@@ -171,6 +171,150 @@
             transform: translateY(-3px);
             filter: brightness(1.2);
         }
+
+        /* --- NEW RRP I-DRIVE STYLES --- */
+        .idrive-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            padding: 8px 18px;
+            border-radius: 50px;
+            color: #38bdf8;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.2);
+            backdrop-filter: blur(5px);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .idrive-hero-badge i {
+            animation: pulse-glow 2s infinite;
+        }
+
+        .idrive-section {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            border-top: 1px solid #1e293b;
+            border-bottom: 1px solid #1e293b;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .idrive-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .idrive-content h2 {
+            font-size: 2.8rem;
+            color: white;
+            margin: 15px 0;
+            line-height: 1.1;
+            font-weight: 900;
+        }
+
+        .idrive-content p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .idrive-btn {
+            background: linear-gradient(90deg, #0ea5e9, #0284c7) !important;
+            border: none !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+        }
+
+        /* CSS Rendered App Icon */
+        .idrive-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .app-icon-mockup {
+            width: 180px;
+            height: 180px;
+            background: #ffffff;
+            border-radius: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6), inset 0 -5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-icon-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f172a;
+            font-size: 2.2rem;
+            font-weight: 900;
+            position: relative;
+        }
+
+        .app-icon-inner i {
+            color: #38bdf8;
+            font-size: 3rem;
+            position: absolute;
+            left: -40px;
+        }
+
+        .app-icon-inner span {
+            margin-left: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Radar Pulse Effect */
+        .pulse-ring {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 2px solid #0ea5e9;
+            border-radius: 50%;
+            animation: idrive-pulse 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+            z-index: 1;
+        }
+        
+        .pulse-ring:nth-child(2) { 
+            animation-delay: 1.5s; 
+        }
+
+        @keyframes idrive-pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; text-shadow: 0 0 12px #38bdf8; }
+            50% { opacity: 0.4; text-shadow: none; }
+        }
+
+        @media (max-width: 900px) {
+            .idrive-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .idrive-content h2 { font-size: 2.2rem; }
+            .idrive-visual { margin-top: 40px; padding-bottom: 30px; }
+            .idrive-btn { margin: 0 auto; }
+        }
     </style>
 </head>
 
@@ -240,6 +384,10 @@
         <div class="container hero-split-grid">
             <div class="hero-text-content">
                 <br>
+                <div class="idrive-hero-badge">
+                    <i class="fas fa-satellite-dish"></i> Live Tracking Powered By <strong>RRP i-Drive</strong>
+                </div>
+
                 <h1>
                     POWERING YOUR <br><br>
                     <span class="gradient-text">SUPPLY CHAIN</span>
@@ -282,6 +430,29 @@
             </div>
         </div>
     </div>
+
+    <section class="idrive-section">
+        <div class="idrive-grid">
+            <div class="idrive-content">
+                <div class="badge">Proprietary Technology</div>
+                <h2>Zero Guesswork.<br><span class="gradient-text">Total Visibility.</span></h2>
+                <p>Welcome to <strong>RRP i-Drive</strong>, our custom Transport Management System built for modern supply chains. Track your FTL and Project Cargo in real-time, generate instant Lorry Receipts (LRs), and manage all your shipments securely through our dedicated client portal.</p>
+                <a href="contact.html" class="cta-btn idrive-btn">
+                    <i class="fas fa-satellite"></i> Client Login
+                </a>
+            </div>
+            <div class="idrive-visual">
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring"></div>
+                <div class="app-icon-mockup">
+                    <div class="app-icon-inner">
+                        <i class="fas fa-circle-nodes"></i>
+                        <span>RRP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="bento-section">
         <div class="container">
@@ -527,7 +698,7 @@
     <div class="mobile-app-dock">
         <a href="tel:+919494831803" class="dock-item"><i class="fas fa-phone"></i><span>Call</span></a>
         <a href="https://wa.me/919494831803" class="dock-item"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
-        <a href="contact.html" class="dock-item"><i class="fas fa-map-marker-alt"></i><span>Track</span></a>
+        <a href="contact.html" class="dock-item"><i class="fas fa-satellite-dish"></i><span>i-Drive</span></a>
     </div>
 
     <script>
