@@ -18,34 +18,30 @@
     <style>
         /* --- FORCE FIXES FOR MOBILE & GAP --- */
         
-        /* 1. Remove Black Gap Forcefully */
         html, body {
             margin: 0 !important;
             padding: 0 !important;
-            overflow-x: hidden !important; /* Stops side scrolling */
+            overflow-x: hidden !important;
             width: 100% !important;
             max-width: 100vw !important;
-            background-color: #000 !important; /* Ensures seamless black background */
+            background-color: #000 !important;
         }
 
-        /* 2. Hide Top Bar (Failsafe) */
         .top-system-bar { display: none !important; height: 0 !important; }
 
-        /* 3. Mobile Layout Adjustments */
         @media (max-width: 768px) {
             .hero-text-content {
                 padding: 20px !important;
                 margin-top: 0 !important;
             }
             .hero-text-content h1 {
-                font-size: 2rem !important; /* Smaller font for mobile */
+                font-size: 2rem !important;
                 line-height: 1.2 !important;
             }
             .badge {
-                font-size: 0.65rem !important; /* Smaller badge text */
-                white-space: normal !important; /* Allow wrapping if needed */
+                font-size: 0.65rem !important;
+                white-space: normal !important;
             }
-            /* Fix Button Sizes on Mobile */
             .hero-btns {
                 flex-direction: column;
                 width: 100%;
@@ -57,20 +53,17 @@
             }
         }
 
-        /* Animation: Slow Spin for Gears */
         @keyframes spin-slow {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
-        /* Animation: Scanning Light Effect */
         @keyframes scan-light {
             0% { left: -100%; opacity: 0; }
             50% { opacity: 0.5; }
             100% { left: 200%; opacity: 0; }
         }
 
-        /* New Transformation Badge Styles */
         .rrp-transformation-badge {
             background: linear-gradient(135deg, #1e293b, #0f172a);
             color: #38bdf8 !important;
@@ -89,88 +82,37 @@
         .rrp-transformation-badge::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
+            top: 0; left: -100%; width: 50%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transform: skewX(-20deg);
             animation: scan-light 3s infinite;
         }
 
-        .btn-icon-box {
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            color: #38bdf8;
-        }
-
-        .spin-gear {
-            animation: spin-slow 4s linear infinite;
-        }
-
-        .btn-text-stack {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
-
-        .btn-main {
-            font-weight: 800;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: white;
-        }
-
-        .btn-sub {
-            font-size: 0.65rem;
-            font-weight: 500;
-            color: #94a3b8;
-            white-space: nowrap;
-        }
+        .btn-icon-box { font-size: 1.4rem; display: flex; align-items: center; color: #38bdf8; }
+        .spin-gear { animation: spin-slow 4s linear infinite; }
+        .btn-text-stack { display: flex; flex-direction: column; line-height: 1.1; }
+        .btn-main { font-weight: 800; font-size: 0.9rem; letter-spacing: 0.5px; text-transform: uppercase; color: white; }
+        .btn-sub { font-size: 0.65rem; font-weight: 500; color: #94a3b8; white-space: nowrap; }
 
         @media (max-width: 992px) {
             .rrp-transformation-badge {
-                width: 100%;
-                justify-content: center;
-                margin-top: 15px;
-                padding: 12px;
+                width: 100%; justify-content: center; margin-top: 15px; padding: 12px;
                 background: linear-gradient(135deg, #0f172a, #1e293b);
             }
-            .btn-sub {
-                font-size: 0.7rem;
-                white-space: normal;
-                text-align: center;
-            }
-            .btn-text-stack {
-                align-items: center;
-            }
+            .btn-sub { font-size: 0.7rem; white-space: normal; text-align: center; }
+            .btn-text-stack { align-items: center; }
         }
 
-        /* Updated Footer Social Icons CSS */
-        .footer-socials {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
+        .footer-socials { display: flex; gap: 15px; margin-top: 20px; }
         .footer-socials a {
-            font-size: 1.5rem; /* Increased size */
-            text-decoration: none;
-            transition: transform 0.3s ease, filter 0.3s ease;
-            display: inline-block;
+            font-size: 1.5rem; text-decoration: none;
+            transition: transform 0.3s ease, filter 0.3s ease; display: inline-block;
         }
-        /* Natural Colors for each icon */
         .footer-socials .linkedin { color: #0077b5; }
         .footer-socials .instagram { color: #E1306C; }
         .footer-socials .call { color: #28a745; }
         .footer-socials .whatsapp { color: #25D366; }
-
-        /* Hover effect - lift and brighten */
-        .footer-socials a:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.2);
-        }
+        .footer-socials a:hover { transform: translateY(-3px); filter: brightness(1.2); }
 
         /* --- NEW RRP I-DRIVE STYLES --- */
         .idrive-hero-badge {
@@ -190,9 +132,11 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
-        .idrive-hero-badge i {
-            animation: pulse-glow 2s infinite;
+
+        .idrive-hero-badge img {
+            height: 20px; 
+            width: auto;
+            border-radius: 4px;
         }
 
         .idrive-section {
@@ -214,103 +158,54 @@
         }
 
         .idrive-content h2 {
-            font-size: 2.8rem;
-            color: white;
-            margin: 15px 0;
-            line-height: 1.1;
-            font-weight: 900;
+            font-size: 2.8rem; color: white; margin: 15px 0; line-height: 1.1; font-weight: 900;
         }
 
         .idrive-content p {
-            color: #94a3b8;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-weight: 500;
+            color: #94a3b8; font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; font-weight: 500;
         }
 
         .idrive-btn {
             background: linear-gradient(90deg, #0ea5e9, #0284c7) !important;
-            border: none !important;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
+            border: none !important; display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px;
         }
 
-        /* CSS Rendered App Icon */
         .idrive-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+            display: flex; justify-content: center; align-items: center; position: relative;
         }
 
         .app-icon-mockup {
-            width: 180px;
-            height: 180px;
+            width: 180px; height: 180px;
             background: #ffffff;
-            border-radius: 45px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            border-radius: 40px;
+            display: flex; justify-content: center; align-items: center;
             box-shadow: 0 25px 50px rgba(0,0,0,0.6), inset 0 -5px 15px rgba(0,0,0,0.05);
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
+            overflow: hidden;
         }
 
-        .app-icon-inner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0f172a;
-            font-size: 2.2rem;
-            font-weight: 900;
-            position: relative;
+        /* Actual Live Icon styling */
+        .app-icon-mockup img {
+            width: 130px;
+            height: auto;
         }
 
-        .app-icon-inner i {
-            color: #38bdf8;
-            font-size: 3rem;
-            position: absolute;
-            left: -40px;
-        }
-
-        .app-icon-inner span {
-            margin-left: 20px;
-            letter-spacing: 1px;
-        }
-
-        /* Radar Pulse Effect */
         .pulse-ring {
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            border: 2px solid #0ea5e9;
-            border-radius: 50%;
+            position: absolute; width: 180px; height: 180px;
+            border: 2px solid #0ea5e9; border-radius: 50%;
             animation: idrive-pulse 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
             z-index: 1;
         }
         
-        .pulse-ring:nth-child(2) { 
-            animation-delay: 1.5s; 
-        }
+        .pulse-ring:nth-child(2) { animation-delay: 1.5s; }
 
         @keyframes idrive-pulse {
             0% { transform: scale(1); opacity: 0.8; }
             100% { transform: scale(3); opacity: 0; }
         }
 
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 1; text-shadow: 0 0 12px #38bdf8; }
-            50% { opacity: 0.4; text-shadow: none; }
-        }
-
         @media (max-width: 900px) {
-            .idrive-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
+            .idrive-grid { grid-template-columns: 1fr; text-align: center; }
             .idrive-content h2 { font-size: 2.2rem; }
             .idrive-visual { margin-top: 40px; padding-bottom: 30px; }
             .idrive-btn { margin: 0 auto; }
@@ -368,7 +263,6 @@
                         BECOME A PARTNER
                     </a>
                 </li>
-
                 <li><a href="contact.html" class="cta-btn">Contact Us <i class="fas fa-arrow-right"></i></a></li>
             </ul>
         </div>
@@ -385,7 +279,7 @@
             <div class="hero-text-content">
                 <br>
                 <div class="idrive-hero-badge">
-                    <i class="fas fa-satellite-dish"></i> Live Tracking Powered By <strong>RRP i-Drive</strong>
+                    <img src="assets/idrive-logo.png" alt="RRP i-Drive"> Live Tracking Powered By <strong>RRP i-Drive</strong>
                 </div>
 
                 <h1>
@@ -436,19 +330,16 @@
             <div class="idrive-content">
                 <div class="badge">Proprietary Technology</div>
                 <h2>Zero Guesswork.<br><span class="gradient-text">Total Visibility.</span></h2>
-                <p>Welcome to <strong>RRP i-Drive</strong>, our custom Transport Management System built for modern supply chains. Track your FTL and Project Cargo in real-time, generate instant Lorry Receipts (LRs), and manage all your shipments securely through our dedicated client portal.</p>
+                <p>Welcome to <strong>RRP i-Drive</strong>, our dedicated live fleet tracking system. Track your FTL and Project Cargo in real-time. Get 100% visibility over your shipments from loading to delivery, eliminating guesswork and transit delays.</p>
                 <a href="contact.html" class="cta-btn idrive-btn">
-                    <i class="fas fa-satellite"></i> Client Login
+                    <i class="fas fa-map-marker-alt"></i> Track Shipment
                 </a>
             </div>
             <div class="idrive-visual">
                 <div class="pulse-ring"></div>
                 <div class="pulse-ring"></div>
                 <div class="app-icon-mockup">
-                    <div class="app-icon-inner">
-                        <i class="fas fa-circle-nodes"></i>
-                        <span>RRP</span>
-                    </div>
+                    <img src="assets/idrive-logo.png" alt="RRP i-Drive Icon">
                 </div>
             </div>
         </div>
@@ -471,7 +362,6 @@
                         <p>From raw material handling to final mile delivery, we optimize every step of your logistics journey.</p>
                     </div>
                 </div>
-
                 <div class="bento-item">
                     <div class="bento-icon-box"><i class="fas fa-truck"></i></div>
                     <div>
@@ -479,7 +369,6 @@
                         <p>Full Truck Load services ensuring dedicated capacity and faster transit times.</p>
                     </div>
                 </div>
-
                 <div class="bento-item">
                     <div class="bento-icon-box"><i class="fas fa-cubes"></i></div>
                     <div>
@@ -487,7 +376,6 @@
                         <p>Specialized handling for coal, iron ore, and heavy industrial materials.</p>
                     </div>
                 </div>
-
                 <div class="bento-item">
                     <div class="bento-icon-box"><i class="fas fa-project-diagram"></i></div>
                     <div>
@@ -495,7 +383,6 @@
                         <p>Complex moves for heavy machinery and ODC consignments.</p>
                     </div>
                 </div>
-
                 <div class="bento-item">
                     <div class="bento-icon-box"><i class="fas fa-shield-alt"></i></div>
                     <div>
@@ -516,19 +403,16 @@
                     <h3>Book Load</h3>
                     <p>Get instant quotes and confirm your shipment details online.</p>
                 </div>
-                
                 <div class="roadmap-step">
                     <div class="step-icon" style="border-color: var(--accent); color: var(--accent);"><i class="fas fa-map-location-dot"></i><div class="step-number">02</div></div>
                     <h3>Live Track</h3>
                     <p>Monitor your cargo's real-time location and status 24/7.</p>
                 </div>
-
                 <div class="roadmap-step">
                     <div class="step-icon"><i class="fas fa-truck-fast"></i><div class="step-number">03</div></div>
                     <h3>Fast Transit</h3>
                     <p>Benefit from optimized routes and rapid, reliable transportation.</p>
                 </div>
-
                 <div class="roadmap-step">
                     <div class="step-icon"><i class="fas fa-box-open"></i><div class="step-number">04</div></div>
                     <h3>Delivery</h3>
@@ -553,7 +437,6 @@
                 <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
                 <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
                 <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
-                
                 <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
                 <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
                 <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
@@ -563,12 +446,6 @@
                 <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
                 <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
                 <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
-
-                <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
-                <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
-                <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
             </div>
         </div>
 
@@ -583,7 +460,6 @@
                 <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
                 <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
                 <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-
                 <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
                 <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
                 <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
