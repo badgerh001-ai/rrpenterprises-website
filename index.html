@@ -118,10 +118,10 @@
         .idrive-hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             background: rgba(14, 165, 233, 0.1);
             border: 1px solid rgba(14, 165, 233, 0.3);
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 50px;
             color: #38bdf8;
             font-size: 0.85rem;
@@ -133,10 +133,19 @@
             letter-spacing: 0.5px;
         }
 
-        .idrive-hero-badge img {
-            height: 20px; 
+        /* Uses your existing logo but styles it to look like the app icon */
+        .idrive-mini-icon {
+            background: #ffffff;
+            border-radius: 6px;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .idrive-mini-icon img {
+            height: 16px; 
             width: auto;
-            border-radius: 4px;
         }
 
         .idrive-section {
@@ -184,9 +193,9 @@
             overflow: hidden;
         }
 
-        /* Actual Live Icon styling */
+        /* Uses your existing logo file to recreate the app icon perfectly */
         .app-icon-mockup img {
-            width: 130px;
+            width: 110px;
             height: auto;
         }
 
@@ -279,7 +288,10 @@
             <div class="hero-text-content">
                 <br>
                 <div class="idrive-hero-badge">
-                    <img src="assets/idrive-logo.png" alt="RRP i-Drive"> Live Tracking Powered By <strong>RRP i-Drive</strong>
+                    <div class="idrive-mini-icon">
+                        <img src="assets/logo.png" alt="i-Drive Icon">
+                    </div> 
+                    Live Tracking Powered By <strong>RRP i-Drive</strong>
                 </div>
 
                 <h1>
@@ -339,7 +351,7 @@
                 <div class="pulse-ring"></div>
                 <div class="pulse-ring"></div>
                 <div class="app-icon-mockup">
-                    <img src="assets/idrive-logo.png" alt="RRP i-Drive Icon">
+                    <img src="assets/logo.png" alt="RRP i-Drive Icon">
                 </div>
             </div>
         </div>
