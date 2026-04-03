@@ -119,7 +119,7 @@
         .footer-socials .whatsapp { color: #25D366; }
         .footer-socials a:hover { transform: translateY(-3px); filter: brightness(1.2); }
 
-        /* --- NEW RRP I-DRIVE STYLES --- */
+        /* --- NEW RRP I-DRIVE & TMS STYLES --- */
         .idrive-hero-badge {
             display: inline-flex;
             align-items: center;
@@ -138,7 +138,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Uses your existing logo but styles it to look like the app icon */
         .idrive-mini-icon {
             background: #ffffff;
             border-radius: 6px;
@@ -198,7 +197,6 @@
             overflow: hidden;
         }
 
-        /* Uses your existing logo file to recreate the app icon perfectly */
         .app-icon-mockup img {
             width: 110px;
             height: auto;
@@ -223,6 +221,11 @@
             .idrive-content h2 { font-size: 2.2rem; }
             .idrive-visual { margin-top: 40px; padding-bottom: 30px; }
             .idrive-btn { margin: 0 auto; }
+            
+            .tms-reverse {
+                display: flex;
+                flex-direction: column-reverse;
+            }
         }
     </style>
 </head>
@@ -358,6 +361,23 @@
                 <div class="app-icon-mockup">
                     <img src="assets/logo.png" alt="RRP i-Drive Icon">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="idrive-section" style="background: linear-gradient(135deg, #0f172a, #020617); border-top: none;">
+        <div class="idrive-grid tms-reverse">
+            <div class="idrive-visual">
+                <div class="pulse-ring" style="border-color: #8b5cf6;"></div>
+                <div class="pulse-ring" style="border-color: #8b5cf6;"></div>
+                <div class="app-icon-mockup" style="border-radius: 25px; width: 220px; height: 160px; background: #ffffff;">
+                    <i class="fas fa-file-invoice-dollar" style="font-size: 4.5rem; color: #8b5cf6;"></i>
+                </div>
+            </div>
+            <div class="idrive-content">
+                <div class="badge" style="background: rgba(139, 92, 246, 0.1); color: #c4b5fd; border-color: rgba(139, 92, 246, 0.3);">Administrative Backbone</div>
+                <h2>Smart Operations.<br><span class="gradient-text" style="background: linear-gradient(90deg, #a78bfa, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">RRP Bilty TMS.</span></h2>
+                <p>Powered by our tailored AppSheet infrastructure, the <strong>RRP Bilty TMS</strong> drives our standard operations team. Centrally managed from our hubs in Anantapur and Tadipatri—strategically situated near the major industrial zones of Hyderabad and Bangalore—our system ensures rapid consignment generation, automatic balance calculations, and flawless logistics coordination across India.</p>
             </div>
         </div>
     </section>
