@@ -4,20 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>RRP ENTERPRISES | India's Leading Logistics Partner</title>
-    <meta name="description" content="RRP Enterprises: Premium logistics solutions. FTL, Project Transport & Supply Chain Management across India. Reliable, Fast, and Secure.">
+    <title>RRP Enterprises | India's Leading Logistics & Transport Company</title>
+    <meta name="description" content="RRP Enterprises: Premium pan-India logistics solutions. FTL Transport, Bulk Cargo (Coal, Iron Ore), Project Logistics & Supply Chain Management. Reliable, Fast, and Secure — based in Anantapur, Andhra Pradesh.">
+    <meta name="keywords" content="RRP Enterprises, FTL Transport India, Bulk Cargo Transport, Coal Transport Andhra Pradesh, Iron Ore Logistics, Pan India Freight, Logistics Company Anantapur, Supply Chain India, Truck Transport Tadipatri, Project Cargo India">
+    <meta name="author" content="RRP Enterprises">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://rrpenterprises.co.in/">
 
-    <link rel="icon" href="assets/logo.png" type="image/png">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rrpenterprises.co.in/">
+    <meta property="og:title" content="RRP Enterprises | India's Leading Logistics & Transport Company">
+    <meta property="og:description" content="Premium pan-India logistics: FTL, Bulk Cargo, Project Transport & Supply Chain. 500+ verified vehicles. 99.9% on-time delivery. Based in Anantapur, AP.">
+    <meta property="og:image" content="https://rrpenterprises.co.in/assets/logo.png">
+    <meta property="og:site_name" content="RRP Enterprises">
+    <meta property="og:locale" content="en_IN">
 
-    <link rel="stylesheet" href="style.css?v=62">
-    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RRP Enterprises | India's Leading Logistics Partner">
+    <meta name="twitter:description" content="FTL, Bulk Cargo & Project Logistics across India. 500+ vehicles. 24/7 support. Book a load today.">
+    <meta name="twitter:image" content="https://rrpenterprises.co.in/assets/logo.png">
+
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+
+    <link rel="stylesheet" href="style.css?v=63">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+    <!-- Schema.org: Organization + LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://rrpenterprises.co.in/#organization",
+          "name": "RRP Enterprises",
+          "url": "https://rrpenterprises.co.in/",
+          "logo": "https://rrpenterprises.co.in/assets/logo.png",
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+91-94948-31803",
+              "contactType": "customer service",
+              "availableLanguage": ["English", "Telugu", "Hindi"],
+              "hoursAvailable": "Mo-Su 00:00-23:59"
+            }
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/rrpenterprises/",
+            "https://www.instagram.com/officialrrpenterprises/"
+          ]
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://rrpenterprises.co.in/#localbusiness",
+          "name": "RRP Enterprises",
+          "image": "https://rrpenterprises.co.in/assets/logo.png",
+          "url": "https://rrpenterprises.co.in/",
+          "telephone": "+91-94948-31803",
+          "email": "contact@rrpenterprises.co.in",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "# 6-4-994, Maruthi Nagar, 80ft Road",
+            "addressLocality": "Anantapuramu",
+            "addressRegion": "Andhra Pradesh",
+            "postalCode": "515001",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 14.6819,
+            "longitude": 77.6006
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          },
+          "priceRange": "$$",
+          "description": "RRP Enterprises is a premier pan-India logistics provider offering FTL transport, bulk cargo handling (coal, iron ore), project logistics, and supply chain management.",
+          "areaServed": "IN",
+          "serviceType": ["FTL Transport","Bulk Cargo","Project Logistics","Freight Forwarding","Supply Chain Management"]
+        }
+      ]
+    }
+    </script>
+
     <style>
-        /* --- FORCE FIXES FOR MOBILE & GAP --- */
-        
         html, body {
             margin: 0 !important;
             padding: 0 !important;
@@ -29,7 +107,6 @@
 
         .top-system-bar { display: none !important; height: 0 !important; }
 
-        /* --- TIGHTEN HERO HEADING GAP --- */
         .hero-text-content h1 {
             line-height: 1.1 !important;
         }
@@ -119,7 +196,6 @@
         .footer-socials .whatsapp { color: #25D366; }
         .footer-socials a:hover { transform: translateY(-3px); filter: brightness(1.2); }
 
-        /* --- NEW RRP I-DRIVE & TMS STYLES --- */
         .idrive-hero-badge {
             display: inline-flex;
             align-items: center;
@@ -232,12 +308,12 @@
 
 <body>
 
-    <div class="gift-truck-trigger" onclick="openWelcome()">
-        <i class="fas fa-truck-fast fa-truck-fast-custom"></i>
-        <i class="fas fa-gift fa-gift-custom"></i>
+    <div class="gift-truck-trigger" onclick="openWelcome()" aria-label="Open welcome message" role="button" tabindex="0">
+        <i class="fas fa-truck-fast fa-truck-fast-custom" aria-hidden="true"></i>
+        <i class="fas fa-gift fa-gift-custom" aria-hidden="true"></i>
     </div>
 
-    <div id="welcomeModal" class="modal-overlay">
+    <div id="welcomeModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Welcome message">
         <div class="confetti-piece" style="left: 10%; background: #ef4444; animation-delay: 0s;"></div>
         <div class="confetti-piece" style="left: 30%; background: #3b82f6; animation-delay: 0.4s;"></div>
         <div class="confetti-piece" style="left: 70%; background: #8b5cf6; animation-delay: 0.3s;"></div>
@@ -245,14 +321,14 @@
 
         <div class="letter-modal-box">
             <div class="wax-seal">RRP</div>
-            <button class="close-letter" onclick="closeWelcome()">&times;</button>
+            <button class="close-letter" onclick="closeWelcome()" aria-label="Close welcome message">&times;</button>
             <div class="letter-content">
                 <h2>Welcome Partner</h2>
                 <p>Dear Valued Client,</p>
                 <p>We are honored to welcome you to <strong>RRP Enterprises</strong>. As India's trusted logistics partner, we pledge to handle your business with integrity, speed, and precision.</p>
                 <div class="signature">
                     <p>Sincerely,</p>
-                    <img src="assets/logo.png" style="height: 40px; opacity: 0.8; margin-top: 10px;" alt="Signature">
+                    <img src="assets/logo.png" style="height: 40px; opacity: 0.8; margin-top: 10px;" alt="RRP Enterprises Logo">
                     <p style="font-size: 0.9rem; color: #64748b; margin-top: 5px;">The Management Team</p>
                 </div>
             </div>
@@ -261,17 +337,17 @@
 
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo-container">
-                <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
+            <a href="index.html" class="logo-container" aria-label="RRP Enterprises Home">
+                <img src="assets/logo.png" alt="RRP Enterprises Logo" class="main-logo" width="45" height="45">
                 <div class="logo-text">RRP <span>ENTERPRISES</span></div>
             </a>
 
-            <button class="menu-btn" id="mobile-toggle" aria-label="Toggle menu">
+            <button class="menu-btn" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
                 <span></span><span></span><span></span>
             </button>
 
-            <ul class="nav-links">
-                <li><a href="index.html" class="social-link active">Home</a></li>
+            <ul class="nav-links" id="nav-links" role="navigation" aria-label="Main navigation">
+                <li><a href="index.html" class="social-link active" aria-current="page">Home</a></li>
                 <li><a href="about.html" class="social-link">About Us</a></li>
                 <li><a href="services.html" class="social-link">Services</a></li>
                 <br>
@@ -280,276 +356,280 @@
                         BECOME A PARTNER
                     </a>
                 </li>
-                <li><a href="contact.html" class="cta-btn">Contact Us <i class="fas fa-arrow-right"></i></a></li>
+                <li><a href="contact.html" class="cta-btn">Contact Us <i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="truck-banner-section">
-        <div class="hero-image-wrapper">
-            <div class="hero-img-mask">
-                <img src="assets/home-banner.jpg" alt="RRP Logistics Truck Fleet">
-            </div>
-        </div>
-
-        <div class="container hero-split-grid">
-            <div class="hero-text-content">
-                <br>
-                <div class="idrive-hero-badge">
-                    <div class="idrive-mini-icon">
-                        <img src="assets/logo.png" alt="i-Drive Icon">
-                    </div> 
-                    Live Tracking Powered By <strong>RRP i-Drive</strong>
-                </div>
-
-                <h1>
-                    POWERING YOUR <br>
-                    <span class="gradient-text">SUPPLY CHAIN</span>
-                </h1>
-                <br>
-                <p>
-                    Experience the future of logistics. Reliable, technology-driven, and ready to move your business forward with India's most trusted fleet.
-                </p>
-                <br>
-                <div class="hero-btns">
-                    <a href="contact.html" class="cta-btn">Book A Load <i class="fas fa-arrow-right"></i></a>
-                    <a href="services.html" class="outline-btn">Explore Fleet</a>
+    <main>
+        <section class="truck-banner-section" aria-label="Hero banner">
+            <div class="hero-image-wrapper">
+                <div class="hero-img-mask">
+                    <img src="assets/home-banner.jpg" alt="RRP Enterprises logistics truck fleet on highway" width="1920" height="1080" loading="eager">
                 </div>
             </div>
-        </div>
-    </section>
 
-    <div class="stats-bar-wrapper">
-        <div class="container stats-grid-cards">
-            <div class="stat-card">
-                <i class="fas fa-truck-fast"></i>
-                <div>
-                    <h4>500+</h4>
-                    <p>Verified Vehicles</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-map-location-dot"></i>
-                <div>
-                    <h4>Pan India</h4>
-                    <p>Network Coverage</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-clock"></i>
-                <div>
-                    <h4>99.9%</h4>
-                    <p>On-Time Delivery</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section class="idrive-section">
-        <div class="idrive-grid">
-            <div class="idrive-content">
-                <div class="badge">Proprietary Technology</div>
-                <h2>Zero Guesswork.<br><span class="gradient-text">Total Visibility.</span></h2>
-                <p>Welcome to <strong>RRP i-Drive</strong>, our dedicated live fleet tracking system. Track your FTL and Project Cargo in real-time. Get 100% visibility over your shipments from loading to delivery, eliminating guesswork and transit delays.</p>
-                <a href="contact.html" class="cta-btn idrive-btn">
-                    <i class="fas fa-map-marker-alt"></i> Track Shipment
-                </a>
-            </div>
-            <div class="idrive-visual">
-                <div class="pulse-ring"></div>
-                <div class="pulse-ring"></div>
-                <div class="app-icon-mockup">
-                    <img src="assets/logo.png" alt="RRP i-Drive Icon">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="idrive-section" style="background: linear-gradient(135deg, #0f172a, #020617); border-top: none;">
-        <div class="idrive-grid tms-reverse">
-            <div class="idrive-visual">
-                <div class="pulse-ring" style="border-color: #8b5cf6;"></div>
-                <div class="pulse-ring" style="border-color: #8b5cf6;"></div>
-                <div class="app-icon-mockup" style="border-radius: 25px; width: 220px; height: 160px; background: #ffffff;">
-                    <i class="fas fa-file-invoice-dollar" style="font-size: 4.5rem; color: #8b5cf6;"></i>
-                </div>
-            </div>
-            <div class="idrive-content">
-                <div class="badge" style="background: rgba(139, 92, 246, 0.1); color: #c4b5fd; border-color: rgba(139, 92, 246, 0.3);">Administrative Backbone</div>
-                <h2>Smart Operations.<br><span class="gradient-text" style="background: linear-gradient(90deg, #a78bfa, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">RRP-TMS.</span></h2>
-                <p>Powered by our tailored AppSheet infrastructure, the <strong>RRP-TMS</strong> drives our standard operations team. Centrally managed from our hubs in Anantapur and Tadipatri—strategically situated near the major industrial zones of Hyderabad and Bangalore—our system ensures rapid consignment generation, automatic balance calculations, and flawless logistics coordination across India.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="bento-section">
-        <div class="container">
-            <div class="badge-center"><span class="badge">Our Capabilities</span></div>
-            <h2 class="section-title" style="text-align: center;" data-text="CAPABILITIES">
-                Logistics <span class="gradient-text">Redefined</span>
-            </h2>
-
-            <div class="bento-grid">
-                <div class="bento-item bento-large">
-                    <div class="bento-icon-box">
-                        <i class="fas fa-network-wired"></i>
+            <div class="container hero-split-grid">
+                <div class="hero-text-content">
+                    <br>
+                    <div class="idrive-hero-badge" aria-label="Live tracking feature">
+                        <div class="idrive-mini-icon">
+                            <img src="assets/logo.png" alt="RRP i-Drive" width="16" height="16">
+                        </div> 
+                        Live Tracking Powered By <strong>RRP i-Drive</strong>
                     </div>
+
+                    <h1>
+                        POWERING YOUR <br>
+                        <span class="gradient-text">SUPPLY CHAIN</span>
+                    </h1>
+                    <br>
+                    <p>
+                        Experience the future of logistics. Reliable, technology-driven, and ready to move your business forward with India's most trusted fleet.
+                    </p>
+                    <br>
+                    <div class="hero-btns">
+                        <a href="contact.html" class="cta-btn">Book A Load <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        <a href="services.html" class="outline-btn">Explore Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="stats-bar-wrapper" aria-label="Key statistics">
+            <div class="container stats-grid-cards">
+                <div class="stat-card">
+                    <i class="fas fa-truck-fast" aria-hidden="true"></i>
                     <div>
-                        <h3>End-to-End Supply Chain</h3>
-                        <p>From raw material handling to final mile delivery, we optimize every step of your logistics journey.</p>
+                        <h4>500+</h4>
+                        <p>Empanelled Vehicles</p>
                     </div>
                 </div>
-                <div class="bento-item">
-                    <div class="bento-icon-box"><i class="fas fa-truck"></i></div>
+                <div class="stat-card">
+                    <i class="fas fa-map-location-dot" aria-hidden="true"></i>
                     <div>
-                        <h3>FTL Transport</h3>
-                        <p>Full Truck Load services ensuring dedicated capacity and faster transit times.</p>
+                        <h4>Pan India</h4>
+                        <p>Network Coverage</p>
                     </div>
                 </div>
-                <div class="bento-item">
-                    <div class="bento-icon-box"><i class="fas fa-cubes"></i></div>
+                <div class="stat-card">
+                    <i class="fas fa-clock" aria-hidden="true"></i>
                     <div>
-                        <h3>Bulk Cargo</h3>
-                        <p>Specialized handling for coal, iron ore, and heavy industrial materials.</p>
-                    </div>
-                </div>
-                <div class="bento-item">
-                    <div class="bento-icon-box"><i class="fas fa-project-diagram"></i></div>
-                    <div>
-                        <h3>Project Logistics</h3>
-                        <p>Complex moves for heavy machinery and ODC consignments.</p>
-                    </div>
-                </div>
-                <div class="bento-item">
-                    <div class="bento-icon-box"><i class="fas fa-shield-alt"></i></div>
-                    <div>
-                        <h3>Secure Transit</h3>
-                        <p>GPS-enabled fleet with 24/7 monitoring for high-value goods.</p>
+                        <h4>99.9%</h4>
+                        <p>On-Time Delivery*</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="roadmap-section">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center;" data-text="PROCESS">How It <span class="gradient-text">Works</span></h2>
-            <div class="roadmap-grid">
-                <div class="roadmap-step">
-                    <div class="step-icon"><i class="fas fa-file-signature"></i><div class="step-number">01</div></div>
-                    <h3>Book Load</h3>
-                    <p>Get instant quotes and confirm your shipment details online.</p>
+        <section class="idrive-section" aria-labelledby="idrive-heading">
+            <div class="idrive-grid">
+                <div class="idrive-content">
+                    <div class="badge">Proprietary Technology</div>
+                    <h2 id="idrive-heading">Zero Guesswork.<br><span class="gradient-text">Total Visibility.</span></h2>
+                    <p>Welcome to <strong>RRP i-Drive</strong>, our dedicated live fleet tracking system. Track your FTL and Project Cargo in real-time. Get 100% visibility over your shipments from loading to delivery, eliminating guesswork and transit delays.</p>
+                    <a href="contact.html" class="cta-btn idrive-btn">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Track My Shipment
+                    </a>
                 </div>
-                <div class="roadmap-step">
-                    <div class="step-icon" style="border-color: var(--accent); color: var(--accent);"><i class="fas fa-map-location-dot"></i><div class="step-number">02</div></div>
-                    <h3>Live Track</h3>
-                    <p>Monitor your cargo's real-time location and status 24/7.</p>
-                </div>
-                <div class="roadmap-step">
-                    <div class="step-icon"><i class="fas fa-truck-fast"></i><div class="step-number">03</div></div>
-                    <h3>Fast Transit</h3>
-                    <p>Benefit from optimized routes and rapid, reliable transportation.</p>
-                </div>
-                <div class="roadmap-step">
-                    <div class="step-icon"><i class="fas fa-box-open"></i><div class="step-number">04</div></div>
-                    <h3>Delivery</h3>
-                    <p>Receive your goods safely and on time at the final destination.</p>
+                <div class="idrive-visual" aria-hidden="true">
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring"></div>
+                    <div class="app-icon-mockup">
+                        <img src="assets/logo.png" alt="RRP i-Drive tracking system" width="110" height="110">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <main class="container" style="padding: 60px 24px;">
-        <div class="badge-center"><span class="badge">Trusted Partners</span></div>
-        <h2 class="section-title" style="text-align: center; margin-bottom: 40px;" data-text="TRUST">The Brands That <span class="gradient-text">Trust Us</span></h2>
-
-        <div class="clients-marquee">
-            <div class="clients-track">
-                <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
-                <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
-                <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-                <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
-                <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
-                <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
-                <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
-                <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-                <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL"></div>
-                <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna"></div>
+        <section class="idrive-section" style="background: linear-gradient(135deg, #0f172a, #020617); border-top: none;" aria-labelledby="tms-heading">
+            <div class="idrive-grid tms-reverse">
+                <div class="idrive-visual" aria-hidden="true">
+                    <div class="pulse-ring" style="border-color: #8b5cf6;"></div>
+                    <div class="pulse-ring" style="border-color: #8b5cf6;"></div>
+                    <div class="app-icon-mockup" style="border-radius: 25px; width: 220px; height: 160px; background: #ffffff;">
+                        <i class="fas fa-file-invoice-dollar" style="font-size: 4.5rem; color: #8b5cf6;" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="idrive-content">
+                    <div class="badge" style="background: rgba(139, 92, 246, 0.1); color: #c4b5fd; border-color: rgba(139, 92, 246, 0.3);">Administrative Backbone</div>
+                    <h2 id="tms-heading">Smart Operations.<br><span class="gradient-text" style="background: linear-gradient(90deg, #a78bfa, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">RRP-TMS.</span></h2>
+                    <p>Powered by our tailored AppSheet infrastructure, the <strong>RRP-TMS</strong> drives our standard operations team. Centrally managed from our hubs in Anantapur and Tadipatri — strategically situated near the major industrial zones of Hyderabad and Bangalore — our system ensures rapid consignment generation, automatic balance calculations, and flawless logistics coordination across India.</p>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="clients-marquee reverse">
-            <div class="clients-track">
-                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL"></div>
-                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
-                <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery"></div>
-                <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl"></div>
-                <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge"></div>
-                <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree"></div>
+        <section class="bento-section" aria-labelledby="capabilities-heading">
+            <div class="container">
+                <div class="badge-center"><span class="badge">Our Capabilities</span></div>
+                <h2 class="section-title" id="capabilities-heading" style="text-align: center;" data-text="CAPABILITIES">
+                    Logistics <span class="gradient-text">Redefined</span>
+                </h2>
+
+                <div class="bento-grid">
+                    <div class="bento-item bento-large">
+                        <div class="bento-icon-box" aria-hidden="true">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <h3>End-to-End Supply Chain</h3>
+                            <p>From raw material handling to final mile delivery, we optimize every step of your logistics journey.</p>
+                        </div>
+                    </div>
+                    <div class="bento-item">
+                        <div class="bento-icon-box" aria-hidden="true"><i class="fas fa-truck"></i></div>
+                        <div>
+                            <h3>FTL Transport</h3>
+                            <p>Full Truck Load services ensuring dedicated capacity and faster transit times across India.</p>
+                        </div>
+                    </div>
+                    <div class="bento-item">
+                        <div class="bento-icon-box" aria-hidden="true"><i class="fas fa-cubes"></i></div>
+                        <div>
+                            <h3>Bulk Cargo</h3>
+                            <p>Specialized handling for coal, iron ore, fly ash, and heavy industrial materials.</p>
+                        </div>
+                    </div>
+                    <div class="bento-item">
+                        <div class="bento-icon-box" aria-hidden="true"><i class="fas fa-project-diagram"></i></div>
+                        <div>
+                            <h3>Project Logistics</h3>
+                            <p>Complex moves for heavy machinery and ODC (Over-Dimensional Cargo) consignments.</p>
+                        </div>
+                    </div>
+                    <div class="bento-item">
+                        <div class="bento-icon-box" aria-hidden="true"><i class="fas fa-shield-alt"></i></div>
+                        <div>
+                            <h3>Secure Transit</h3>
+                            <p>GPS-enabled fleet with 24/7 monitoring for high-value and sensitive goods.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section class="roadmap-section" aria-labelledby="process-heading">
+            <div class="container">
+                <h2 class="section-title" id="process-heading" style="text-align: center;" data-text="PROCESS">How It <span class="gradient-text">Works</span></h2>
+                <div class="roadmap-grid">
+                    <div class="roadmap-step">
+                        <div class="step-icon" aria-hidden="true"><i class="fas fa-file-signature"></i><div class="step-number">01</div></div>
+                        <h3>Book Load</h3>
+                        <p>Get instant quotes and confirm your shipment details online or via WhatsApp.</p>
+                    </div>
+                    <div class="roadmap-step">
+                        <div class="step-icon" style="border-color: var(--accent); color: var(--accent);" aria-hidden="true"><i class="fas fa-map-location-dot"></i><div class="step-number">02</div></div>
+                        <h3>Live Track</h3>
+                        <p>Monitor your cargo's real-time location and status 24/7 via RRP i-Drive.</p>
+                    </div>
+                    <div class="roadmap-step">
+                        <div class="step-icon" aria-hidden="true"><i class="fas fa-truck-fast"></i><div class="step-number">03</div></div>
+                        <h3>Fast Transit</h3>
+                        <p>Benefit from optimized routes and rapid, reliable transportation across India.</p>
+                    </div>
+                    <div class="roadmap-step">
+                        <div class="step-icon" aria-hidden="true"><i class="fas fa-box-open"></i><div class="step-number">04</div></div>
+                        <h3>Safe Delivery</h3>
+                        <p>Receive your goods safely and on time at the final destination, every time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="padding: 60px 24px;" aria-labelledby="clients-heading">
+            <div class="badge-center"><span class="badge">Trusted Partners</span></div>
+            <h2 class="section-title" id="clients-heading" style="text-align: center; margin-bottom: 40px;" data-text="TRUST">The Brands That <span class="gradient-text">Trust Us</span></h2>
+
+            <div class="clients-marquee" aria-label="Our trusted client brands" role="region">
+                <div class="clients-track" aria-hidden="true">
+                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL Supply Chain" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna Metals" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL Buildtek" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL Supply Chain" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna Metals" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL Supply Chain" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna Metals" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL Buildtek" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/dhl-supply-chain.jpg" alt="DHL Supply Chain" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/binjusaria.png" alt="Binjusaria" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/sugna-metals.png" alt="Sugna Metals" width="120" height="60" loading="lazy"></div>
+                </div>
+            </div>
+
+            <div class="clients-marquee reverse" aria-hidden="true">
+                <div class="clients-track">
+                    <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/ncl-buildtek.png" alt="NCL Buildtek" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/delhivery.png" alt="Delhivery" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/cj-darcl.png" alt="CJ Darcl" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/sugna-sponge.png" alt="Sugna Sponge" width="120" height="60" loading="lazy"></div>
+                    <div class="client-logo"><img src="assets/brands/accpree.png" alt="Accpree" width="120" height="60" loading="lazy"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews-section" style="padding: 80px 0; background: var(--bg-subtle);" aria-labelledby="testimonials-heading">
+            <div class="container">
+                <div class="badge-center"><span class="badge">Testimonials</span></div>
+                <h2 class="section-title" id="testimonials-heading" style="text-align: center;" data-text="STORIES">Client <span class="gradient-text">Stories</span></h2>
+
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <i class="fas fa-quote-right quote-icon" aria-hidden="true"></i>
+                        <div class="stars" aria-label="5 out of 5 stars"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+                        <p class="review-text">"RRP has been our go-to for steel transport from Bellary. Their fleet is reliable and the drivers are very professional."</p>
+                        <div class="client-info"><h5>Rajesh Kumar</h5><span>Plant Manager, Steel Corp</span></div>
+                    </div>
+                    <div class="review-card">
+                        <i class="fas fa-quote-right quote-icon" aria-hidden="true"></i>
+                        <div class="stars" aria-label="5 out of 5 stars"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+                        <p class="review-text">"Zero breakage record so far! The best FTL service for FMCG goods to Bangalore."</p>
+                        <div class="client-info"><h5>Suresh Reddy</h5><span>Distributor, FMCG Logistics</span></div>
+                    </div>
+                    <div class="review-card">
+                        <i class="fas fa-quote-right quote-icon" aria-hidden="true"></i>
+                        <div class="stars" aria-label="4.5 out of 5 stars"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star-half-alt" aria-hidden="true"></i></div>
+                        <p class="review-text">"Arranged a heavy-duty vehicle in 30 minutes. Speed and responsiveness are impressive."</p>
+                        <div class="client-info"><h5>Anil Mehta</h5><span>Head of Procurement, Infra Ltd</span></div>
+                    </div>
+                </div>
+
+                <p style="text-align:center; color: #64748b; font-size: 0.8rem; margin-top: 30px;">* On-time delivery rate based on internal operational data, FY 2025. Empanelled vehicles include owned and partner fleet.</p>
+            </div>
+        </section>
     </main>
 
-    <section class="reviews-section" style="padding: 80px 0; background: var(--bg-subtle);">
-        <div class="container">
-            <div class="badge-center"><span class="badge">Testimonials</span></div>
-            <h2 class="section-title" style="text-align: center;" data-text="STORIES">Client <span class="gradient-text">Stories</span></h2>
-
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"RRP has been our go-to for steel transport from Bellary. Their fleet is reliable and the drivers are very professional."</p>
-                    <div class="client-info"><h5>Rajesh Kumar</h5><span>Plant Manager, Steel Corp</span></div>
-                </div>
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"Zero breakage record so far! The best FTL service for FMCG goods to Bangalore."</p>
-                    <div class="client-info"><h5>Suresh Reddy</h5><span>Distributor, FMCG Logistics</span></div>
-                </div>
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                    <p class="review-text">"Arranged a heavy-duty vehicle in 30 minutes. Speed and responsiveness are impressive."</p>
-                    <div class="client-info"><h5>Anil Mehta</h5><span>Head of Procurement, Infra Ltd</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer-main">
+    <footer class="footer-main" aria-label="Site footer">
         <div class="container footer-grid">
             <div class="footer-col">
                 <div class="logo-container">
-                    <img src="assets/logo.png" class="main-logo" alt="Logo">
+                    <img src="assets/logo.png" class="main-logo" alt="RRP Enterprises Logo" width="45" height="45">
                     <div class="logo-text" style="color: #fff;">RRP <span>ENTERPRISES</span></div>
                 </div>
                 <p style="color: #cbd5e1; margin-top: 20px;">Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.</p>
                 <div class="footer-socials">
-                    <a href="https://www.linkedin.com/in/rrpenterprises/" target="_blank" aria-label="LinkedIn" class="linkedin"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/officialrrpenterprises/?hl=en" target="_blank" aria-label="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="tel:+919494831803" aria-label="Call" class="call"><i class="fas fa-phone"></i></a>
-                    <a href="https://wa.me/919494831803" target="_blank" aria-label="WhatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/rrpenterprises/" target="_blank" rel="noopener noreferrer" aria-label="RRP Enterprises on LinkedIn" class="linkedin"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/officialrrpenterprises/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="RRP Enterprises on Instagram" class="instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="tel:+919494831803" aria-label="Call RRP Enterprises" class="call"><i class="fas fa-phone" aria-hidden="true"></i></a>
+                    <a href="https://wa.me/919494831803" target="_blank" rel="noopener noreferrer" aria-label="Chat with RRP Enterprises on WhatsApp" class="whatsapp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                 </div>
             </div>
 
@@ -570,24 +650,24 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="partner.html" style="color: var(--primary);">Become a Partner</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h4>Contact</h4>
                 <div class="footer-contact-item">
-                    <i class="fas fa-phone"></i>
+                    <i class="fas fa-phone" aria-hidden="true"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 700;">+91 94948 31803</div>
+                        <a href="tel:+919494831803" style="color: #fff; font-weight: 700; text-decoration: none;">+91 94948 31803</a>
                         <div style="font-size: 0.9rem; color: #94a3b8;">24/7 Support</div>
                     </div>
                 </div>
                 <div class="footer-contact-item">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 700;">contact@rrpenterprises.co.in</div>
+                        <a href="mailto:contact@rrpenterprises.co.in" style="color: #fff; font-weight: 700; text-decoration: none;">contact@rrpenterprises.co.in</a>
                         <div style="font-size: 0.9rem; color: #94a3b8;">Official Email</div>
                     </div>
                 </div>
@@ -596,9 +676,8 @@
 
         <div class="footer-bottom">
             <div class="copyright-text">
-                &copy; 2026 RRP Enterprises & Logistics. All Rights Reserved. <span style="opacity: 0.5;">|</span> Strategic Supply Chain Solutions.
+                &copy; 2026 RRP Enterprises &amp; Logistics. All Rights Reserved. <span style="opacity: 0.5;">|</span> Strategic Supply Chain Solutions.
             </div>
-            
             <div class="dev-badge-container">
                 <div class="dev-badge">
                     <span>DESIGNED BY</span>
@@ -608,10 +687,10 @@
         </div>
     </footer>
 
-    <div class="mobile-app-dock">
-        <a href="tel:+919494831803" class="dock-item"><i class="fas fa-phone"></i><span>Call</span></a>
-        <a href="https://wa.me/919494831803" class="dock-item"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
-        <a href="contact.html" class="dock-item"><i class="fas fa-satellite-dish"></i><span>i-Drive</span></a>
+    <div class="mobile-app-dock" role="navigation" aria-label="Quick actions">
+        <a href="tel:+919494831803" class="dock-item" aria-label="Call RRP Enterprises"><i class="fas fa-phone" aria-hidden="true"></i><span>Call</span></a>
+        <a href="https://wa.me/919494831803" class="dock-item" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i><span>Chat</span></a>
+        <a href="contact.html" class="dock-item" aria-label="Contact us"><i class="fas fa-satellite-dish" aria-hidden="true"></i><span>i-Drive</span></a>
     </div>
 
     <script>
@@ -619,8 +698,9 @@
         const navLinks = document.querySelector('.nav-links');
         if (menuBtn) {
             menuBtn.addEventListener('click', () => {
-                menuBtn.classList.toggle('open');
+                const isOpen = menuBtn.classList.toggle('open');
                 navLinks.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', isOpen);
             });
         }
         function openWelcome() {
