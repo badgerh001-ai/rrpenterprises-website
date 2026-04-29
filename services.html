@@ -3,35 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Our Services | FTL, Bulk Cargo & Freight Forwarding | RRP</title>
-    <meta name="description" content="Explore expert logistics services: Full Truck Load (FTL), Bulk Cargo (Coal, Iron), Freight Forwarding, and Contract Logistics. Reliable Pan-India coverage.">
-    <meta name="keywords" content="FTL Services, Coal Transport, Iron Ore Logistics, Freight Forwarding India, Contract Logistics, Heavy Transport, Supply Chain Solutions">
+
+    <title>Our Services | FTL Transport, Bulk Cargo & Freight Forwarding | RRP Enterprises</title>
+    <meta name="description" content="Explore RRP Enterprises' logistics services: Full Truck Load (FTL), Bulk Cargo (Coal, Iron Ore, Fly Ash), Freight Forwarding, and Contract Logistics. Reliable pan-India coverage from Anantapur, AP.">
+    <meta name="keywords" content="FTL Services India, Coal Transport Andhra Pradesh, Iron Ore Logistics, Freight Forwarding India, Contract Logistics, Bulk Cargo Transport, Heavy Transport Anantapur, Supply Chain Solutions AP">
     <meta name="author" content="RRP Enterprises">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://rrpenterprises.co.in/services.html">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rrpenterprises.co.in/services.html">
     <meta property="og:title" content="Logistics Services | RRP Enterprises">
-    <meta property="og:description" content="From raw materials to finished goods. We handle FTL, Bulk Cargo, and complex supply chains with precision.">
+    <meta property="og:description" content="From raw materials to finished goods — FTL, Bulk Cargo, and complex supply chains handled with precision across India.">
     <meta property="og:image" content="https://rrpenterprises.co.in/assets/logo.png">
+    <meta property="og:site_name" content="RRP Enterprises">
+    <meta property="og:locale" content="en_IN">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Our Services | RRP Enterprises">
-    <meta name="twitter:description" content="Explore our FTL, Bulk Cargo, and Freight Forwarding solutions.">
+    <meta name="twitter:description" content="FTL, Bulk Cargo & Freight Forwarding across India. Explore our full logistics portfolio.">
     <meta name="twitter:image" content="https://rrpenterprises.co.in/assets/logo.png">
+
     <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/logo.png">
 
     <link rel="stylesheet" href="style.css?v=63">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
+    <!-- Schema.org: Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "RRP Enterprises Logistics Services",
+      "url": "https://rrpenterprises.co.in/services.html",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Service",
+            "name": "Full Truck Load (FTL) Transport",
+            "description": "Dedicated full truck load transport services across India with real-time tracking and on-time delivery.",
+            "provider": { "@type": "Organization", "name": "RRP Enterprises" },
+            "areaServed": "IN"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Service",
+            "name": "Bulk Cargo Transport",
+            "description": "Specialized bulk cargo handling for coal, iron ore, fly ash, and heavy industrial materials across India.",
+            "provider": { "@type": "Organization", "name": "RRP Enterprises" },
+            "areaServed": "IN"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Service",
+            "name": "Freight Forwarding",
+            "description": "Expert road transport and freight forwarding with route optimization, documentation handling, and real-time tracking.",
+            "provider": { "@type": "Organization", "name": "RRP Enterprises" },
+            "areaServed": "IN"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Service",
+            "name": "Contract Logistics",
+            "description": "Long-term supply chain partnerships covering warehousing, inventory management, and final-mile distribution.",
+            "provider": { "@type": "Organization", "name": "RRP Enterprises" },
+            "areaServed": "IN"
+          }
+        }
+      ]
+    }
+    </script>
+
     <style>
-        /* PAGE SPECIFIC STYLES */
-        
-        /* Reference Grid (Slow Scroll) */
         .reference-grid-wrapper {
             height: 650px; overflow: hidden; position: relative;
             background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05);
@@ -41,13 +98,15 @@
         }
         .reference-track {
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
-            animation: verticalScroll 40s linear infinite; 
+            animation: verticalScroll 40s linear infinite;
         }
         .reference-track:hover { animation-play-state: paused; }
-        
+        @media (prefers-reduced-motion: reduce) {
+            .reference-track { animation: none; }
+        }
         .grid-cargo-card {
             background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s;
+            border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.3s, transform 0.3s;
         }
         .grid-cargo-card:hover { border-color: var(--primary); transform: scale(1.02); }
         .grid-cargo-card img {
@@ -55,21 +114,16 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .grid-cargo-card span {
-            padding: 12px; text-align: center; font-weight: 700; color: #fff; background: rgba(0,0,0,0.2);
-            text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.85rem;
+            padding: 12px; text-align: center; font-weight: 700; color: #fff;
+            background: rgba(0,0,0,0.2); text-transform: uppercase;
+            letter-spacing: 0.05em; font-size: 0.85rem;
         }
-
         @keyframes verticalScroll {
-            0% { transform: translateY(0); }
+            0%   { transform: translateY(0); }
             100% { transform: translateY(-50%); }
         }
-
         @media (max-width: 992px) {
-            .services-hero { 
-                height: auto !important; 
-                min-height: auto; 
-                padding-bottom: 40px; 
-            }
+            .services-hero { height: auto !important; min-height: auto; padding-bottom: 40px; }
             .hero-split-grid { display: block; }
             .reference-track { grid-template-columns: 1fr; }
             .reference-grid-wrapper { height: 400px; }
@@ -79,99 +133,101 @@
 
 <body>
 
-    <nav class="navbar">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
-            <a href="index.html" class="logo-container">
-                <img src="assets/logo.png" alt="RRP Logo" class="main-logo">
+            <a href="index.html" class="logo-container" aria-label="RRP Enterprises Home">
+                <img src="assets/logo.png" alt="RRP Enterprises Logo" class="main-logo" width="45" height="45">
                 <div class="logo-text">RRP <span>ENTERPRISES</span></div>
             </a>
-            <button class="menu-btn" id="mobile-toggle"><span></span><span></span><span></span></button>
-            <ul class="nav-links">
+            <button class="menu-btn" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html" class="social-link">Home</a></li>
                 <li><a href="about.html" class="social-link">About Us</a></li>
-                <li><a href="services.html" class="social-link active">Services</a></li>
-                
+                <li><a href="services.html" class="social-link active" aria-current="page">Services</a></li>
                 <li>
                     <a href="partner.html" class="cta-btn" style="background: var(--primary); color: #000; border: none; box-shadow: 0 0 15px rgba(14,165,233,0.3);">
                         BECOME A PARTNER
                     </a>
                 </li>
-
-                <li><a href="contact.html" class="cta-btn">Contact Us <i class="fas fa-arrow-right"></i></a></li>
+                <li><a href="contact.html" class="cta-btn">Contact Us <i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
             </ul>
         </div>
     </nav>
 
-    <main>
-        
-        <section class="truck-banner-section services-hero">
+    <main id="main-content">
+
+        <section class="truck-banner-section services-hero" aria-label="Services page banner">
             <div class="hero-image-wrapper">
                 <div class="hero-img-mask">
-                    <img src="assets/home-banner.jpg" alt="RRP Services">
+                    <img src="assets/home-banner.jpg" alt="RRP Enterprises cargo truck fleet on highway" width="1920" height="1080" loading="eager">
                 </div>
             </div>
-            
             <div class="container hero-split-grid">
                 <div class="hero-text-content">
                     <span class="badge">Our Expertise</span>
                     <h1 style="font-size: clamp(2rem, 5vw, 3.5rem);">Reliable Cargo <span class="gradient-text">Solutions</span></h1>
-                    <p style="font-size: 1.1rem; color: #cbd5e1; margin-bottom: 30px;">From heavy raw materials to delicate finished goods, we handle diverse cargo with precision.</p>
-                    
+                    <p style="font-size: 1.1rem; color: #cbd5e1; margin-bottom: 30px;">From heavy raw materials to delicate finished goods, we handle diverse cargo with precision across every route in India.</p>
                     <div class="hero-btns">
-                        <a href="contact.html" class="cta-btn">Book a Load <i class="fas fa-arrow-right"></i></a>
+                        <a href="contact.html" class="cta-btn">Book a Load <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="stats-bar-wrapper">
+        <div class="stats-bar-wrapper" aria-label="Service highlights">
             <div class="container stats-grid-cards">
                 <div class="stat-card">
-                    <i class="fas fa-truck-moving"></i>
+                    <i class="fas fa-truck-moving" aria-hidden="true"></i>
                     <div><h4>FTL Services</h4><p>Pan-India Transport</p></div>
                 </div>
                 <div class="stat-card">
-                    <i class="fas fa-boxes-packing"></i>
+                    <i class="fas fa-boxes-packing" aria-hidden="true"></i>
                     <div><h4>Bulk Cargo</h4><p>Coal, Iron, Minerals</p></div>
                 </div>
                 <div class="stat-card">
-                    <i class="fas fa-ship"></i>
+                    <i class="fas fa-ship" aria-hidden="true"></i>
                     <div><h4>Forwarding</h4><p>Multi-Modal Solutions</p></div>
                 </div>
             </div>
         </div>
 
-        <section class="bento-section">
+        <section class="bento-section" aria-labelledby="services-heading">
             <div class="container">
-                <h2 class="section-title" style="text-align: center;" data-text="SOLUTIONS">Specialized <span class="gradient-text">Logistics</span></h2>
-                
+                <h2 class="section-title" id="services-heading" style="text-align: center;" data-text="SOLUTIONS">
+                    Specialized <span class="gradient-text">Logistics</span>
+                </h2>
+
                 <div class="bento-grid">
                     <div class="bento-item">
-                        <div class="bento-icon-box"><i class="fas fa-road"></i></div>
-                        <div class="info-content">
+                        <div class="bento-icon-box" aria-hidden="true"><i class="fas fa-road"></i></div>
+                        <div>
                             <h3>Freight Forwarding</h3>
-                            <p style="color: #94a3b8; margin-bottom:15px;">
-                                We provide expert road transport solutions to ensure your goods move seamlessly across regions.
+                            <p style="color: #94a3b8; margin-bottom: 15px;">
+                                Expert road transport solutions ensuring your goods move seamlessly across regions with full documentation support and real-time visibility.
                             </p>
-                            <ul style="color: #64748b; padding-left: 20px; font-size: 0.9rem; list-style: square;">
+                            <ul style="color: #64748b; padding-left: 20px; font-size: 0.9rem; list-style: square;" aria-label="Freight forwarding features">
                                 <li>Route Optimization</li>
-                                <li>Documentation Handling</li>
-                                <li>Real-time Tracking</li>
+                                <li>Documentation Handling (E-Way Bills, Challans)</li>
+                                <li>Real-time GPS Tracking</li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="bento-item">
-                        <div class="bento-icon-box"><i class="fas fa-file-contract"></i></div>
-                        <div class="info-content">
+                        <div class="bento-icon-box" aria-hidden="true"><i class="fas fa-file-contract"></i></div>
+                        <div>
                             <h3>Contract Logistics</h3>
-                            <p style="color: #94a3b8; margin-bottom:15px;">
-                                Long-term supply chain partnerships. We manage your warehousing, inventory, and final-mile distribution.
+                            <p style="color: #94a3b8; margin-bottom: 15px;">
+                                Long-term supply chain partnerships. We manage your warehousing, inventory, and final-mile distribution with dedicated fleets and cost-effective planning.
                             </p>
-                            <ul style="color: #64748b; padding-left: 20px; font-size: 0.9rem; list-style: square;">
+                            <ul style="color: #64748b; padding-left: 20px; font-size: 0.9rem; list-style: square;" aria-label="Contract logistics features">
                                 <li>Dedicated Fleets</li>
                                 <li>Inventory Management</li>
-                                <li>Cost-Effective Planning</li>
+                                <li>Cost-Effective Long-Term Planning</li>
                             </ul>
                         </div>
                     </div>
@@ -179,53 +235,55 @@
             </div>
         </section>
 
-        <section class="clients-section" style="padding: 60px 0; background: var(--bg-subtle);">
+        <section class="clients-section" style="padding: 60px 0; background: var(--bg-subtle);" aria-labelledby="cargo-heading">
             <div class="container">
                 <div class="badge-center"><span class="badge">Reference Loads</span></div>
-                <h2 class="section-title" style="text-align: center; margin-bottom: 40px;" data-text="CARGO">
+                <h2 class="section-title" id="cargo-heading" style="text-align: center; margin-bottom: 40px;" data-text="CARGO">
                     Types of Cargo We <span class="gradient-text">Handle</span>
                 </h2>
 
-                <div class="reference-grid-wrapper">
+                <div class="reference-grid-wrapper" role="region" aria-label="Cargo types we transport">
                     <div class="reference-track">
-                        <div class="grid-cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/metalpipe.png.jpeg" alt="Pipes"><span>Metal Pipes</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire Mesh"><span>Wire Mesh</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood"><span>Plywood</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Drums"><span>Cable Drums</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/appolopipes.png.jpeg" alt="PVC"><span>PVC Pipes</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/plasticgranulesbags.png.jpeg" alt="Granules"><span>Granules</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Scrap"><span>Battery Scrap</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/books.png.jpeg" alt="Books"><span>Paper/Books</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartz"><span>Quartzite</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/daburproducts.png.jpeg" alt="FMCG"><span>FMCG</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/maricoproducts.png.jpeg" alt="Oil"><span>Edible Oil</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Metal"><span>Metal Scrap</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper"><span>Paper Reels</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Pellet"><span>Iron Pellets</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal"><span>Coal</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly Ash"><span>Fly Ash</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron Ore"><span>Iron Ore</span></div>
-                        <div class="grid-cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass"><span>Glass</span></div>
+                        <!-- First set -->
+                        <div class="grid-cargo-card"><img src="assets/services/coal.png.jpeg" alt="Coal bulk cargo transport across India" loading="lazy" width="400" height="225"><span>Coal</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/flyash.png.jpeg" alt="Fly ash logistics and transport" loading="lazy" width="400" height="225"><span>Fly Ash</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/ironore.png.jpeg" alt="Iron ore bulk cargo transport" loading="lazy" width="400" height="225"><span>Iron Ore</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/glass.png.jpeg" alt="Glass cargo transport with safety packaging" loading="lazy" width="400" height="225"><span>Glass</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/metalpipe.png.jpeg" alt="Metal pipes and tubes transport" loading="lazy" width="400" height="225"><span>Metal Pipes</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/wiremesh.png.jpeg" alt="Wire mesh rolls transport" loading="lazy" width="400" height="225"><span>Wire Mesh</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/plywoodbundles.png.jpeg" alt="Plywood bundles freight transport" loading="lazy" width="400" height="225"><span>Plywood</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/cabledrum.png.jpeg" alt="Cable drum transport and logistics" loading="lazy" width="400" height="225"><span>Cable Drums</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/appolopipes.png.jpeg" alt="PVC pipes transport logistics" loading="lazy" width="400" height="225"><span>PVC Pipes</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/plasticgranulesbags.png.jpeg" alt="Plastic granules bags freight" loading="lazy" width="400" height="225"><span>Granules</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/batteryscrap.png.jpeg" alt="Battery scrap transport" loading="lazy" width="400" height="225"><span>Battery Scrap</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/books.png.jpeg" alt="Paper and books cargo transport" loading="lazy" width="400" height="225"><span>Paper / Books</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/quartzitelumps.png.jpeg" alt="Quartzite lumps mineral transport" loading="lazy" width="400" height="225"><span>Quartzite</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/daburproducts.png.jpeg" alt="FMCG goods transport Dabur products" loading="lazy" width="400" height="225"><span>FMCG</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/maricoproducts.png.jpeg" alt="Edible oil and FMCG transport" loading="lazy" width="400" height="225"><span>Edible Oil</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/crushedmetalscrap.png.jpeg" alt="Crushed metal scrap freight" loading="lazy" width="400" height="225"><span>Metal Scrap</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/paperreals.png.jpeg" alt="Paper reels cargo transport" loading="lazy" width="400" height="225"><span>Paper Reels</span></div>
+                        <div class="grid-cargo-card"><img src="assets/services/ironpillet.png.jpeg" alt="Iron pellets bulk transport" loading="lazy" width="400" height="225"><span>Iron Pellets</span></div>
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="grid-cargo-card" aria-hidden="true"><img src="assets/services/coal.png.jpeg" alt="" loading="lazy" width="400" height="225"><span>Coal</span></div>
+                        <div class="grid-cargo-card" aria-hidden="true"><img src="assets/services/flyash.png.jpeg" alt="" loading="lazy" width="400" height="225"><span>Fly Ash</span></div>
+                        <div class="grid-cargo-card" aria-hidden="true"><img src="assets/services/ironore.png.jpeg" alt="" loading="lazy" width="400" height="225"><span>Iron Ore</span></div>
+                        <div class="grid-cargo-card" aria-hidden="true"><img src="assets/services/glass.png.jpeg" alt="" loading="lazy" width="400" height="225"><span>Glass</span></div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <footer class="footer-main">
+    <footer class="footer-main" aria-label="Site footer">
         <div class="container footer-grid">
             <div class="footer-col">
                 <div class="logo-container">
-                    <img src="assets/logo.png" class="main-logo" alt="Logo">
+                    <img src="assets/logo.png" class="main-logo" alt="RRP Enterprises Logo" width="45" height="45" loading="lazy">
                     <div class="logo-text" style="color: #fff;">RRP <span>ENTERPRISES</span></div>
                 </div>
                 <p style="color: #cbd5e1; margin-top: 20px;">Providing world-class logistics solutions across India. Reliable, Fast, and Secure transport for every industry.</p>
             </div>
-
             <div class="footer-col">
                 <h4>Services</h4>
                 <ul class="footer-links">
@@ -235,7 +293,6 @@
                     <li><a href="services.html">Supply Chain</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul class="footer-links">
@@ -243,33 +300,31 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="partner.html" style="color: var(--primary);">Become a Partner</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h4>Contact</h4>
                 <div class="footer-contact-item">
-                    <i class="fas fa-phone"></i>
+                    <i class="fas fa-phone" aria-hidden="true"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 700;">+91 94948 31803</div>
+                        <a href="tel:+919494831803" style="color: #fff; font-weight: 700; text-decoration: none;">+91 94948 31803</a>
                         <div style="font-size: 0.9rem; color: #94a3b8;">24/7 Support</div>
                     </div>
                 </div>
                 <div class="footer-contact-item">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
                     <div>
-                        <div style="color: #fff; font-weight: 700;">contact@rrpenterprises.co.in</div>
+                        <a href="mailto:contact@rrpenterprises.co.in" style="color: #fff; font-weight: 700; text-decoration: none;">contact@rrpenterprises.co.in</a>
                         <div style="font-size: 0.9rem; color: #94a3b8;">Official Email</div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <div class="copyright-text">
-                &copy; 2026 RRP Enterprises & Logistics. All Rights Reserved. <span style="opacity: 0.5;">|</span> Strategic Supply Chain Solutions.
+                &copy; 2026 RRP Enterprises &amp; Logistics. All Rights Reserved. <span style="opacity: 0.5;">|</span> Strategic Supply Chain Solutions.
             </div>
             <div class="dev-badge-container">
                 <div class="dev-badge">
@@ -280,10 +335,10 @@
         </div>
     </footer>
 
-    <div class="mobile-app-dock">
-        <a href="tel:+919494831803" class="dock-item"><i class="fas fa-phone"></i><span>Call</span></a>
-        <a href="https://wa.me/919494831803" class="dock-item"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
-        <a href="contact.html" class="dock-item"><i class="fas fa-map-marker-alt"></i><span>Track</span></a>
+    <div class="mobile-app-dock" role="navigation" aria-label="Quick actions">
+        <a href="tel:+919494831803" class="dock-item" aria-label="Call RRP Enterprises"><i class="fas fa-phone" aria-hidden="true"></i><span>Call</span></a>
+        <a href="https://wa.me/919494831803" class="dock-item" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i><span>Chat</span></a>
+        <a href="contact.html" class="dock-item" aria-label="Contact us"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>Contact</span></a>
     </div>
 
     <script>
@@ -291,8 +346,9 @@
         const navLinks = document.querySelector('.nav-links');
         if (menuBtn) {
             menuBtn.addEventListener('click', () => {
-                menuBtn.classList.toggle('open');
+                const isOpen = menuBtn.classList.toggle('open');
                 navLinks.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', isOpen);
             });
         }
     </script>
