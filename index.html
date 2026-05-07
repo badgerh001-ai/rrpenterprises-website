@@ -905,198 +905,558 @@
         }
     </script>
     <style>
+<!-- 
+  ============================================================
+  RRP ENTERPRISES — PURVANSH BOT
+  DROP-IN REPLACEMENT
+  
+  HOW TO USE:
+  1. In your index.html, find the entire <style> block that 
+     starts with: @import url('...Rajdhani...')
+     and the <div id="rrp-bot-trigger"> block and the 
+     <div id="rrp-bot-window"> block and the final <script>
+     with the (function(){ 'use strict'; var KB= ... })();
+     
+  2. DELETE all of that.
+  
+  3. PASTE everything below in its place.
+  ============================================================
+-->
+
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Share+Tech+Mono&display=swap');
 
 #rrp-bot-trigger{position:fixed;bottom:24px;right:24px;z-index:9999;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;animation:botFloat 3s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
 @keyframes botFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-#rrp-bot-trigger .robot-face{width:68px;height:68px;filter:drop-shadow(0 0 12px rgba(14,165,233,.7));transition:filter .3s}
-#rrp-bot-trigger:hover .robot-face{filter:drop-shadow(0 0 22px rgba(14,165,233,1))}
+
+.purvansh-avatar{width:68px;height:68px;border-radius:50%;overflow:hidden;border:2.5px solid #0ea5e9;box-shadow:0 0 0 3px rgba(14,165,233,0.25);transition:box-shadow .3s;background:#0b1827;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+#rrp-bot-trigger:hover .purvansh-avatar{box-shadow:0 0 0 5px rgba(14,165,233,0.4)}
+.purvansh-avatar svg{width:64px;height:64px}
+
+.purvansh-avatar-sm{width:36px;height:36px;border-radius:50%;overflow:hidden;border:2px solid rgba(14,165,233,0.5);background:#0b1827;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.purvansh-avatar-sm svg{width:34px;height:34px}
+
 #rrp-bot-trigger .try-label{font-family:'Rajdhani',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.18em;color:#ffb700;text-transform:uppercase;background:rgba(11,17,33,.9);border:1px solid #ffb700;padding:3px 10px;border-radius:30px;animation:tryPulse 2s ease-in-out infinite;white-space:nowrap}
 @keyframes tryPulse{0%,100%{opacity:1}50%{opacity:.75}}
 #rrp-bot-trigger .notif-dot{position:absolute;top:2px;right:2px;width:14px;height:14px;background:#ef4444;border-radius:50%;border:2px solid #000;animation:ndBlink 1.4s infinite}
 @keyframes ndBlink{0%,100%{opacity:1}50%{opacity:.3}}
-@keyframes eyeBlink{0%,94%,100%{transform:scaleY(1)}96%{transform:scaleY(0.05)}}
-.rrp-eye{animation:eyeBlink 3.5s infinite;transform-origin:center}
-@keyframes antennaGlow{0%,100%{fill:#0ea5e9}50%{fill:#fff}}
-.rrp-antenna-top{animation:antennaGlow 1.2s ease-in-out infinite}
-.rrp-nose{animation:antennaGlow 1.4s ease-in-out infinite alternate}
 
-#rrp-bot-window{position:fixed;bottom:110px;right:24px;width:340px;max-height:520px;background:#040d1a;border:1px solid rgba(14,165,233,.35);border-radius:16px;display:none;flex-direction:column;overflow:hidden;z-index:9998;box-shadow:0 20px 60px rgba(0,0,0,.7)}
+#rrp-bot-window{position:fixed;bottom:115px;right:24px;width:350px;max-height:540px;background:#040d1a;border:1px solid rgba(14,165,233,.3);border-radius:18px;display:none;flex-direction:column;overflow:hidden;z-index:9998;box-shadow:0 24px 70px rgba(0,0,0,.8)}
 #rrp-bot-window.open{display:flex;animation:windowIn .3s cubic-bezier(.16,1,.3,1)}
 @keyframes windowIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
 
 #rrp-bot-header{background:linear-gradient(90deg,#020b18,#0d1e38);border-bottom:1px solid rgba(14,165,233,.2);padding:12px 14px;display:flex;align-items:center;gap:10px;flex-shrink:0}
-#rrp-bot-header .hdr-robot{width:36px;height:36px;flex-shrink:0}
-#rrp-bot-header .hdr-name{font-family:'Rajdhani',sans-serif;font-size:.95rem;font-weight:700;color:#fff;letter-spacing:.04em}
-#rrp-bot-header .hdr-status{font-size:.65rem;color:#4ade80;display:flex;align-items:center;gap:4px;font-family:'Share Tech Mono',monospace}
-#rrp-bot-header .hdr-status span{width:6px;height:6px;background:#4ade80;border-radius:50%;display:inline-block;animation:ndBlink 1.4s infinite}
+.hdr-info{flex:1}
+.hdr-name{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;color:#fff;letter-spacing:.04em}
+.hdr-role{font-size:.65rem;color:#94a3b8;font-family:'Share Tech Mono',monospace;margin-top:1px}
+.hdr-status{font-size:.62rem;color:#4ade80;display:flex;align-items:center;gap:4px;font-family:'Share Tech Mono',monospace;margin-top:2px}
+.hdr-status span{width:6px;height:6px;background:#4ade80;border-radius:50%;display:inline-block;animation:ndBlink 1.4s infinite}
 #rrp-bot-close{background:none;border:none;color:rgba(255,255,255,.4);font-size:1.1rem;cursor:pointer;transition:color .2s;padding:4px;margin-left:auto}
 #rrp-bot-close:hover{color:#fff}
 
 #rrp-bot-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
-#rrp-bot-msgs::-webkit-scrollbar{width:4px}
-#rrp-bot-msgs::-webkit-scrollbar-thumb{background:rgba(14,165,233,.3);border-radius:4px}
-.rrp-bot-msg,.rrp-user-msg{max-width:88%;padding:9px 12px;border-radius:10px;font-size:.84rem;line-height:1.6;word-break:break-word;font-family:'Share Tech Mono',monospace}
-.rrp-bot-msg{background:rgba(14,165,233,.1);border:1px solid rgba(14,165,233,.25);color:#cbd5e1;align-self:flex-start;border-radius:4px 10px 10px 10px}
-.rrp-bot-msg strong{color:#0ea5e9}
-.rrp-user-msg{background:rgba(14,165,233,.2);border:1px solid rgba(14,165,233,.4);color:#fff;align-self:flex-end;border-radius:10px 4px 10px 10px}
-.rrp-typing-msg{background:rgba(14,165,233,.08);border:1px solid rgba(14,165,233,.2);border-radius:4px 10px 10px 10px;padding:10px 14px;align-self:flex-start;display:flex;gap:5px;align-items:center}
+#rrp-bot-msgs::-webkit-scrollbar{width:3px}
+#rrp-bot-msgs::-webkit-scrollbar-thumb{background:rgba(14,165,233,.25);border-radius:4px}
+
+.msg-row{display:flex;gap:8px;align-items:flex-end}
+.msg-row.bot-row{align-self:flex-start;max-width:90%}
+.msg-row.user-row{align-self:flex-end;max-width:88%;flex-direction:row-reverse}
+
+.rrp-bot-msg{padding:9px 12px;border-radius:4px 12px 12px 12px;font-size:.82rem;line-height:1.65;word-break:break-word;font-family:'Share Tech Mono',monospace;background:rgba(14,165,233,.08);border:1px solid rgba(14,165,233,.2);color:#cbd5e1}
+.rrp-bot-msg strong{color:#38bdf8}
+.rrp-bot-msg a{color:#0ea5e9;text-decoration:none}
+.rrp-user-msg{padding:9px 12px;border-radius:12px 4px 12px 12px;font-size:.82rem;line-height:1.65;word-break:break-word;font-family:'Share Tech Mono',monospace;background:rgba(14,165,233,.18);border:1px solid rgba(14,165,233,.35);color:#fff}
+
+.rrp-typing-msg{background:rgba(14,165,233,.06);border:1px solid rgba(14,165,233,.15);border-radius:4px 12px 12px 12px;padding:10px 14px;display:flex;gap:5px;align-items:center}
 .rrp-t-dot{width:7px;height:7px;border-radius:50%;background:#0ea5e9;opacity:.4;animation:tDot 1.2s ease-in-out infinite}
 .rrp-t-dot:nth-child(2){animation-delay:.2s}
 .rrp-t-dot:nth-child(3){animation-delay:.4s}
 @keyframes tDot{0%,100%{opacity:.4;transform:translateY(0)}50%{opacity:1;transform:translateY(-5px)}}
 
 #rrp-chips{padding:0 12px 10px;display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0}
-.rrp-chip{background:rgba(14,165,233,.08);border:1px solid rgba(14,165,233,.3);color:#0ea5e9;font-size:.68rem;font-weight:600;padding:5px 10px;border-radius:20px;cursor:pointer;transition:all .2s;font-family:'Rajdhani',sans-serif;letter-spacing:.05em;white-space:nowrap}
+.rrp-chip{background:rgba(14,165,233,.07);border:1px solid rgba(14,165,233,.25);color:#38bdf8;font-size:.68rem;font-weight:600;padding:5px 11px;border-radius:20px;cursor:pointer;transition:all .2s;font-family:'Rajdhani',sans-serif;letter-spacing:.04em;white-space:nowrap}
 .rrp-chip:hover{background:#0ea5e9;color:#000}
 
-#rrp-bot-input-row{padding:10px 12px;border-top:1px solid rgba(14,165,233,.15);display:flex;gap:8px;flex-shrink:0;background:#020b18}
-#rrp-bot-input{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(14,165,233,.25);border-radius:8px;padding:9px 12px;color:#fff;font-size:.82rem;font-family:'Share Tech Mono',monospace;outline:none;transition:border-color .2s}
+#rrp-bot-input-row{padding:10px 12px;border-top:1px solid rgba(14,165,233,.12);display:flex;gap:8px;flex-shrink:0;background:#020b18}
+#rrp-bot-input{flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(14,165,233,.2);border-radius:8px;padding:9px 12px;color:#fff;font-size:.82rem;font-family:'Share Tech Mono',monospace;outline:none;transition:border-color .2s}
 #rrp-bot-input:focus{border-color:#0ea5e9}
-#rrp-bot-input::placeholder{color:#4b5563}
+#rrp-bot-input::placeholder{color:#374151}
 #rrp-bot-send{width:36px;height:36px;background:#0ea5e9;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
 #rrp-bot-send:hover{background:#38bdf8}
 #rrp-bot-send svg{width:15px;height:15px;fill:#000}
-#rrp-bot-footer{text-align:center;padding:5px 12px 8px;font-size:.58rem;color:#334155;font-family:'Rajdhani',sans-serif;letter-spacing:.08em;text-transform:uppercase;background:#020b18;flex-shrink:0}
+#rrp-bot-footer{text-align:center;padding:5px 12px 8px;font-size:.57rem;color:#1e3a5f;font-family:'Rajdhani',sans-serif;letter-spacing:.08em;text-transform:uppercase;background:#020b18;flex-shrink:0}
 
-@media(max-width:480px){#rrp-bot-window{right:10px;left:10px;width:auto;bottom:115px}#rrp-bot-trigger{right:16px;bottom:20px}}
+@media(max-width:480px){#rrp-bot-window{right:10px;left:10px;width:auto;bottom:120px}#rrp-bot-trigger{right:16px;bottom:20px}}
 </style>
 
+<!-- TRIGGER BUTTON -->
 <div id="rrp-bot-trigger" onclick="rrpBotToggle()">
   <div style="position:relative;">
     <div class="notif-dot"></div>
-    <svg class="robot-face" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="34" y1="4" x2="34" y2="12" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"/>
-      <circle class="rrp-antenna-top" cx="34" cy="3" r="3" fill="#0ea5e9"/>
-      <rect x="10" y="12" width="48" height="44" rx="8" fill="#0b1121" stroke="#0ea5e9" stroke-width="1.5"/>
-      <rect x="12" y="14" width="44" height="10" rx="4" fill="white" opacity="0.07"/>
-      <rect x="16" y="22" width="14" height="12" rx="3" fill="#020b18" stroke="#0ea5e9" stroke-width="1"/>
-      <rect x="38" y="22" width="14" height="12" rx="3" fill="#020b18" stroke="#0ea5e9" stroke-width="1"/>
-      <g class="rrp-eye">
-        <circle cx="23" cy="28" r="4" fill="#0ea5e9"/>
-        <circle cx="24.5" cy="26.5" r="1.2" fill="white" opacity=".6"/>
-        <circle cx="23" cy="28" r="1.5" fill="black" opacity=".4"/>
-      </g>
-      <g class="rrp-eye">
-        <circle cx="45" cy="28" r="4" fill="#0ea5e9"/>
-        <circle cx="46.5" cy="26.5" r="1.2" fill="white" opacity=".6"/>
-        <circle cx="45" cy="28" r="1.5" fill="black" opacity=".4"/>
-      </g>
-      <circle class="rrp-nose" cx="34" cy="38" r="2" fill="#ffb700" opacity=".8"/>
-      <rect x="18" y="44" width="32" height="7" rx="3.5" fill="#020b18" stroke="#0ea5e9" stroke-width="1"/>
-      <line x1="23" y1="47.5" x2="45" y2="47.5" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/>
-      <circle cx="11" cy="28" r="1.5" fill="#0ea5e9" opacity=".5"/>
-      <circle cx="11" cy="38" r="1.5" fill="#0ea5e9" opacity=".5"/>
-      <circle cx="57" cy="28" r="1.5" fill="#0ea5e9" opacity=".5"/>
-      <circle cx="57" cy="38" r="1.5" fill="#0ea5e9" opacity=".5"/>
-    </svg>
+    <div class="purvansh-avatar">
+      <!-- Realistic human face SVG — Purvansh -->
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <!-- background -->
+        <rect width="64" height="64" rx="32" fill="#0b1827"/>
+        <!-- neck -->
+        <rect x="26" y="46" width="12" height="10" rx="2" fill="#c8956b"/>
+        <!-- shirt collar -->
+        <path d="M14 64 Q20 52 32 56 Q44 52 50 64Z" fill="#1a3a6b"/>
+        <!-- shirt -->
+        <path d="M10 64 Q16 50 32 56 Q48 50 54 64Z" fill="#0ea5e9"/>
+        <!-- tie hint -->
+        <path d="M30 56 L32 64 L34 56 L32 54Z" fill="#fff" opacity=".15"/>
+        <!-- head shape -->
+        <ellipse cx="32" cy="28" rx="15" ry="17" fill="#c8956b"/>
+        <!-- forehead shadow -->
+        <ellipse cx="32" cy="18" rx="13" ry="6" fill="#b8855b" opacity=".3"/>
+        <!-- hair — short professional -->
+        <path d="M17 26 Q17 10 32 10 Q47 10 47 26 Q45 16 32 15 Q19 16 17 26Z" fill="#1a1008"/>
+        <!-- hair sides -->
+        <path d="M17 26 Q16 20 19 16 Q17 22 17 28Z" fill="#1a1008"/>
+        <path d="M47 26 Q48 20 45 16 Q47 22 47 28Z" fill="#1a1008"/>
+        <!-- ear left -->
+        <ellipse cx="17" cy="30" rx="3" ry="4" fill="#b8855b"/>
+        <ellipse cx="17.5" cy="30" rx="1.5" ry="2.5" fill="#a07050"/>
+        <!-- ear right -->
+        <ellipse cx="47" cy="30" rx="3" ry="4" fill="#b8855b"/>
+        <ellipse cx="46.5" cy="30" rx="1.5" ry="2.5" fill="#a07050"/>
+        <!-- eyebrows -->
+        <path d="M22 22 Q26 20 28 22" stroke="#2d1800" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M36 22 Q38 20 42 22" stroke="#2d1800" stroke-width="1.8" stroke-linecap="round"/>
+        <!-- eyes white -->
+        <ellipse cx="25" cy="27" rx="4" ry="3" fill="#fff"/>
+        <ellipse cx="39" cy="27" rx="4" ry="3" fill="#fff"/>
+        <!-- iris -->
+        <circle cx="25" cy="27" r="2.2" fill="#3d2000"/>
+        <circle cx="39" cy="27" r="2.2" fill="#3d2000"/>
+        <!-- pupil -->
+        <circle cx="25.3" cy="27" r="1.2" fill="#0a0500"/>
+        <circle cx="39.3" cy="27" r="1.2" fill="#0a0500"/>
+        <!-- eye shine -->
+        <circle cx="26.2" cy="25.8" r=".7" fill="#fff" opacity=".8"/>
+        <circle cx="40.2" cy="25.8" r=".7" fill="#fff" opacity=".8"/>
+        <!-- nose -->
+        <path d="M32 28 L30 35 Q32 36.5 34 35 L32 28Z" fill="#b07850" opacity=".7"/>
+        <circle cx="30.2" cy="35" r="1.4" fill="#a07048"/>
+        <circle cx="33.8" cy="35" r="1.4" fill="#a07048"/>
+        <!-- smile -->
+        <path d="M26 39 Q32 44 38 39" stroke="#7a4520" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <!-- teeth hint -->
+        <path d="M27.5 39.5 Q32 43 36.5 39.5 Q32 41 27.5 39.5Z" fill="#fff" opacity=".6"/>
+        <!-- subtle beard shadow -->
+        <path d="M20 36 Q22 44 32 46 Q42 44 44 36 Q40 40 32 41 Q24 40 20 36Z" fill="#8b5e38" opacity=".18"/>
+        <!-- blue glow ring -->
+        <circle cx="32" cy="32" r="30" stroke="#0ea5e9" stroke-width="1" opacity=".3" fill="none"/>
+      </svg>
+    </div>
   </div>
-  <div class="try-label">⚡ TRY ME</div>
+  <div class="try-label">⚡ PURVANSH</div>
 </div>
 
+<!-- BOT WINDOW -->
 <div id="rrp-bot-window">
   <div id="rrp-bot-header">
-    <svg class="hdr-robot" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="18" y1="2" x2="18" y2="6" stroke="#0ea5e9" stroke-width="1.5" stroke-linecap="round"/>
-      <circle cx="18" cy="2" r="2" fill="#0ea5e9"/>
-      <rect x="5" y="6" width="26" height="24" rx="5" fill="#0b1121" stroke="#0ea5e9" stroke-width="1.2"/>
-      <rect x="8" y="11" width="8" height="7" rx="2" fill="#020b18" stroke="#0ea5e9" stroke-width=".8"/>
-      <rect x="20" y="11" width="8" height="7" rx="2" fill="#020b18" stroke="#0ea5e9" stroke-width=".8"/>
-      <circle cx="12" cy="14.5" r="2.5" fill="#0ea5e9"/>
-      <circle cx="24" cy="14.5" r="2.5" fill="#0ea5e9"/>
-      <rect x="9" y="23" width="18" height="4" rx="2" fill="#020b18" stroke="#0ea5e9" stroke-width=".8"/>
-      <line x1="12" y1="25" x2="24" y2="25" stroke="#0ea5e9" stroke-width=".8" stroke-dasharray="2 2"/>
-    </svg>
-    <div style="flex:1">
-      <div class="hdr-name">RRP ASSISTANT</div>
-      <div class="hdr-status"><span></span> ONLINE · LOGISTICS AI</div>
+    <div class="purvansh-avatar-sm">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <rect width="64" height="64" rx="32" fill="#0b1827"/>
+        <rect x="26" y="46" width="12" height="10" rx="2" fill="#c8956b"/>
+        <path d="M10 64 Q16 50 32 56 Q48 50 54 64Z" fill="#0ea5e9"/>
+        <ellipse cx="32" cy="28" rx="15" ry="17" fill="#c8956b"/>
+        <path d="M17 26 Q17 10 32 10 Q47 10 47 26 Q45 16 32 15 Q19 16 17 26Z" fill="#1a1008"/>
+        <path d="M17 26 Q16 20 19 16 Q17 22 17 28Z" fill="#1a1008"/>
+        <path d="M47 26 Q48 20 45 16 Q47 22 47 28Z" fill="#1a1008"/>
+        <ellipse cx="17" cy="30" rx="3" ry="4" fill="#b8855b"/>
+        <ellipse cx="47" cy="30" rx="3" ry="4" fill="#b8855b"/>
+        <path d="M22 22 Q26 20 28 22" stroke="#2d1800" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M36 22 Q38 20 42 22" stroke="#2d1800" stroke-width="1.8" stroke-linecap="round"/>
+        <ellipse cx="25" cy="27" rx="4" ry="3" fill="#fff"/>
+        <ellipse cx="39" cy="27" rx="4" ry="3" fill="#fff"/>
+        <circle cx="25" cy="27" r="2.2" fill="#3d2000"/>
+        <circle cx="39" cy="27" r="2.2" fill="#3d2000"/>
+        <circle cx="25.3" cy="27" r="1.2" fill="#0a0500"/>
+        <circle cx="39.3" cy="27" r="1.2" fill="#0a0500"/>
+        <circle cx="26.2" cy="25.8" r=".7" fill="#fff" opacity=".8"/>
+        <circle cx="40.2" cy="25.8" r=".7" fill="#fff" opacity=".8"/>
+        <path d="M32 28 L30 35 Q32 36.5 34 35 L32 28Z" fill="#b07850" opacity=".7"/>
+        <circle cx="30.2" cy="35" r="1.4" fill="#a07048"/>
+        <circle cx="33.8" cy="35" r="1.4" fill="#a07048"/>
+        <path d="M26 39 Q32 44 38 39" stroke="#7a4520" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M27.5 39.5 Q32 43 36.5 39.5 Q32 41 27.5 39.5Z" fill="#fff" opacity=".6"/>
+      </svg>
+    </div>
+    <div class="hdr-info">
+      <div class="hdr-name">PURVANSH</div>
+      <div class="hdr-role">RRP Enterprises · Logistics Executive</div>
+      <div class="hdr-status"><span></span> Available now</div>
     </div>
     <button id="rrp-bot-close" onclick="rrpBotToggle()">✕</button>
   </div>
   <div id="rrp-bot-msgs"></div>
   <div id="rrp-chips">
     <div class="rrp-chip" onclick="rrpChip(this)">Our Services</div>
+    <div class="rrp-chip" onclick="rrpChip(this)">Book a Load</div>
     <div class="rrp-chip" onclick="rrpChip(this)">Track Shipment</div>
-    <div class="rrp-chip" onclick="rrpChip(this)">Get a Quote</div>
     <div class="rrp-chip" onclick="rrpChip(this)">Fleet Info</div>
-    <div class="rrp-chip" onclick="rrpChip(this)">Contact Us</div>
-    <div class="rrp-chip" onclick="rrpChip(this)">About RRP</div>
+    <div class="rrp-chip" onclick="rrpChip(this)">Get a Quote</div>
+    <div class="rrp-chip" onclick="rrpChip(this)">Partner With Us</div>
   </div>
   <div id="rrp-bot-input-row">
-    <input id="rrp-bot-input" type="text" placeholder="Ask me anything…" autocomplete="off" onkeydown="if(event.key==='Enter')rrpSend()"/>
+    <input id="rrp-bot-input" type="text" placeholder="Type your message…" autocomplete="off" onkeydown="if(event.key==='Enter')rrpSend()"/>
     <button id="rrp-bot-send" onclick="rrpSend()">
       <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
     </button>
   </div>
-  <div id="rrp-bot-footer">RRP ENTERPRISES · LOGISTICS AI · NO API KEY · NO DATA SHARED</div>
+  <div id="rrp-bot-footer">RRP Enterprises · Purvansh · Logistics Executive · Available 24/7</div>
 </div>
 
 <script>
 (function(){
 'use strict';
-var KB={
-  greeting:{p:['hi','hello','hey','namaste','hii','good morning','good evening','sup'],r:function(){return'<strong>🚛 Welcome to RRP Enterprises!</strong><br><br>I\'m your 24/7 logistics assistant! I can help with shipment info, services, quotes, and more.<br><br>What can I do for you today?'}},
-  services:{p:['service','services','what do you do','offerings','solutions','provide','offer','capabilities','specialize'],r:function(){return'<strong>📦 RRP Enterprises Services:</strong><br><br>🔹 <strong>FTL Transport</strong> — Full Truck Load, pan-India<br>🔹 <strong>Bulk Cargo</strong> — Coal, Iron Ore, Minerals<br>🔹 <strong>Project Logistics</strong> — Heavy machinery & ODC<br>🔹 <strong>Supply Chain</strong> — End-to-end management<br>🔹 <strong>Freight Forwarding</strong> — Route optimization<br>🔹 <strong>Contract Logistics</strong> — Dedicated fleets<br><br>Need a quote? Just ask! 👇'}},
-  ftl:{p:['ftl','full truck','full truckload','dedicated truck'],r:function(){return'<strong>🚛 FTL (Full Truck Load)</strong><br><br>✅ Pan-India coverage<br>✅ GPS-tracked vehicles<br>✅ 99.9% on-time delivery<br>✅ 500+ verified vehicles<br><br>Call <strong>+91 94948 31803</strong> for instant booking!'}},
-  bulk:{p:['bulk','coal','iron ore','minerals','industrial','raw material','fly ash'],r:function(){return'<strong>⛏️ Bulk Cargo</strong><br><br>We transport:<br>• Coal & Fly Ash<br>• Iron Ore & Pellets<br>• Quartzite & Minerals<br>• Industrial materials<br><br>Hubs at <strong>Anantapur & Tadipatri</strong>.'}},
-  track:{p:['track','tracking','where is','shipment status','live location','idrive','i-drive','my load','consignment'],r:function(){return'<strong>📡 RRP i-Drive — Live Tracking</strong><br><br>Track in real-time via our proprietary system.<br><br>📞 <strong>+91 94948 31803</strong><br>📞 <strong>+91 90148 84668</strong><br>📧 contact@rrpenterprises.co.in<br><br>Or visit <strong>rrpenterprises.co.in/contact/</strong>'}},
-  quote:{p:['quote','rate','price','pricing','cost','how much','charge','freight rate','get quote','book','booking'],r:function(){return'<strong>💰 Get a Freight Quote</strong><br><br>📞 <strong>+91 94948 31803</strong><br>💬 WhatsApp: <strong>wa.me/919494831803</strong><br>📧 contact@rrpenterprises.co.in<br><br>Share: Origin & Destination, Cargo type & weight.<br>We respond within <strong>30 minutes!</strong> ⚡'}},
-  contact:{p:['contact','phone','number','call','email','whatsapp','reach','office','address','location','anantapur','tadipatri'],r:function(){return'<strong>📞 Contact RRP</strong><br><br>📱 <strong>+91 94948 31803</strong> (24/7)<br>📱 <strong>+91 90148 84668</strong><br>📧 contact@rrpenterprises.co.in<br><br>🏢 6-4-994, Maruthi Nagar,<br>80ft Road, Anantapuramu - 515001<br><br>📍 Branches: Anantapur & Tadipatri'}},
-  fleet:{p:['fleet','vehicle','truck','trailer','container','tyre','axle','how many'],r:function(){return'<strong>🚛 RRP Fleet</strong><br><br>✅ <strong>500+</strong> Verified Vehicles<br>✅ <strong>Pan-India</strong> Network<br>✅ GPS-enabled (RRP i-Drive)<br><br>Types: 32ft Containers • Open Body • Trailers • 10/12 Tyre • LCV<br><br>📞 <strong>+91 94948 31803</strong>'}},
-  about:{p:['about','who are you','who is rrp','company','history','founded','tell me about','rrp enterprises'],r:function(){return'<strong>🏭 About RRP Enterprises</strong><br><br>Premier diversified <strong>logistics provider</strong> in India.<br><br>🎯 Mission: Precision & Safety in every movement<br>🌐 Network: Pan-India<br>📍 Hubs: Anantapur & Tadipatri, AP<br>🤝 Clients: DHL, Delhivery, CJ Darcl, Sugna Metals & more'}},
-  partner:{p:['partner','attach truck','attach vehicle','driver','owner','join','become partner'],r:function(){return'<strong>🤝 Become an RRP Partner</strong><br><br>✅ Guaranteed pan-India loads<br>✅ On-time payments<br>✅ 24/7 driver support<br><br>Apply at: <strong>rrpenterprises.co.in/partner/</strong><br>📞 <strong>+91 94948 31803</strong>'}},
-  cargo:{p:['cargo','goods','what can you carry','what do you transport','material','item','product'],r:function(){return'<strong>📦 Cargo Types</strong><br><br>Coal • Fly Ash • Iron Ore • Glass • Metal Pipes • Wire Mesh • Plywood • Cable Drums • PVC Pipes • Plastic Granules • Battery Scrap • Paper Reels • Iron Pellets • FMCG • Edible Oil & more!<br><br>See full list: <strong>rrpenterprises.co.in/services/</strong>'}},
-  thanks:{p:['thank','thanks','thank you','great','awesome','perfect','helpful','nice','good'],r:function(){return'You\'re welcome! 🚛<br><br>Always here to keep your supply chain moving!<br>📞 <strong>+91 94948 31803</strong>'}},
-  bye:{p:['bye','goodbye','see you','exit','later'],r:function(){return'Thanks for connecting with <strong>RRP Enterprises!</strong> 🚛<br><br>Let us move your world! 🌐<br>📞 <strong>+91 94948 31803</strong>'}}
+
+/* ── CONTEXT MEMORY ─────────────────────────── */
+var ctx = {
+  lastTopic: null,
+  askedName: false,
+  userName: null,
+  awaitingFollowUp: null,
+  leadFrom: null,
+  leadTo: null,
+  leadCargo: null,
+  msgCount: 0
 };
-var FALL=['I\'m your <strong>RRP Logistics Assistant</strong>! 🤖<br><br>Ask me about:<br>• Services & fleet<br>• Tracking shipments<br>• Getting a quote<br>• Contact details','Not sure I caught that! Try: <strong>services, tracking, quote</strong>, or call us: <strong>+91 94948 31803</strong>','For direct help:<br>📞 <strong>+91 94948 31803</strong><br>💬 <strong>wa.me/919494831803</strong>'];
-var fi=0;
-function getReply(t){
-  t=t.toLowerCase().trim();
-  for(var k in KB){var e=KB[k];if(e.p.some(function(p){return t.indexOf(p)!==-1})){return e.r();}}
-  return FALL[fi++%FALL.length];
+
+/* ── INTENT SCORING ENGINE ──────────────────── */
+var INTENTS = [
+  {
+    id:'greeting',
+    signals:['hi','hello','hey','hii','helo','hola','namaste','namaskar','sup','yo','good morning','good evening','good afternoon','morning','evening','what up','whats up','howdy'],
+    score:function(t){ return INTENTS[0].signals.some(function(s){return t.indexOf(s)!==-1})?10:0; }
+  },
+  {
+    id:'how_are_you',
+    signals:['how are you','how r u','how ru','how are u','how r you','hru','how do you do','hows you','how is purvansh','are you fine','u ok','you ok','doing well'],
+    score:function(t){ return INTENTS[1].signals.some(function(s){return t.indexOf(s)!==-1})?10:0; }
+  },
+  {
+    id:'thanks',
+    signals:['thank','thanks','ty','thx','thank you','tq','dhanyawad','shukriya','appreciate','great help','helpful','awesome'],
+    score:function(t){ return INTENTS[2].signals.some(function(s){return t.indexOf(s)!==-1})?9:0; }
+  },
+  {
+    id:'services',
+    signals:['service','services','what do you do','offerings','solutions','provide','offer','capabilities','specialize','what can rrp','rrp do','business','work'],
+    score:function(t){ var c=0; INTENTS[3].signals.forEach(function(s){if(t.indexOf(s)!==-1)c+=2;}); return c; }
+  },
+  {
+    id:'ftl',
+    signals:['ftl','full truck','full truckload','dedicated truck','container truck','exclusive','single party'],
+    score:function(t){ return INTENTS[4].signals.some(function(s){return t.indexOf(s)!==-1})?9:0; }
+  },
+  {
+    id:'bulk',
+    signals:['bulk','coal','iron ore','iron','ore','fly ash','flyash','mineral','quartzite','industrial','raw material','heavy material','granite','limestone'],
+    score:function(t){ return INTENTS[5].signals.some(function(s){return t.indexOf(s)!==-1})?9:0; }
+  },
+  {
+    id:'project',
+    signals:['project','odc','over dimension','heavy machinery','machinery','crane','transformer','reactor','special cargo','abnormal load','wide load','heavy haul'],
+    score:function(t){ return INTENTS[6].signals.some(function(s){return t.indexOf(s)!==-1})?9:0; }
+  },
+  {
+    id:'track',
+    signals:['track','tracking','where is','shipment status','live location','idrive','i-drive','my load','consignment','my truck','real time','realtime','gps','location update'],
+    score:function(t){ return INTENTS[7].signals.some(function(s){return t.indexOf(s)!==-1})?10:0; }
+  },
+  {
+    id:'quote',
+    signals:['quote','rate','price','pricing','cost','how much','charge','freight rate','get quote','rate card','tariff','per km','per ton','per tonne','calculate','estimate'],
+    score:function(t){ return INTENTS[8].signals.some(function(s){return t.indexOf(s)!==-1})?9:0; }
+  },
+  {
+    id:'book',
+    signals:['book','booking','i need truck','need a truck','i want truck','arrange truck','load','dispatch','send truck','vehicle needed','i need vehicle','requirement'],
+    score:function(t){ return INTENTS[9].signals.some(function(s){return t.indexOf(s)!==-1})?9:0; }
+  },
+  {
+    id:'contact',
+    signals:['contact','phone','number','call','email','whatsapp','reach','office','address','location','where are you','how to reach','anantapur','tadipatri','headquarters'],
+    score:function(t){ return INTENTS[10].signals.some(function(s){return t.indexOf(s)!==-1})?8:0; }
+  },
+  {
+    id:'fleet',
+    signals:['fleet','vehicle','truck','trailer','how many','tyre','axle','container','6 tyre','10 tyre','12 tyre','22 tyre','open body','closed body','what vehicles'],
+    score:function(t){ return INTENTS[11].signals.some(function(s){return t.indexOf(s)!==-1})?8:0; }
+  },
+  {
+    id:'about',
+    signals:['about','who are you','who is rrp','company','history','founded','rrp enterprises','tell me about','background','established','since when','how old','experience'],
+    score:function(t){ return INTENTS[12].signals.some(function(s){return t.indexOf(s)!==-1})?8:0; }
+  },
+  {
+    id:'partner',
+    signals:['partner','attach truck','attach vehicle','driver','truck owner','owner','join rrp','become partner','empanel','register vehicle','tie up','collaborate','business with rrp'],
+    score:function(t){ return INTENTS[13].signals.some(function(s){return t.indexOf(s)!==-1})?9:0; }
+  },
+  {
+    id:'cargo_types',
+    signals:['cargo','goods','what can you carry','what do you transport','material','fmcg','steel','cement','chemicals','fertilizer','medicine','pharma','food','oil','paint','paper'],
+    score:function(t){ return INTENTS[14].signals.some(function(s){return t.indexOf(s)!==-1})?7:0; }
+  },
+  {
+    id:'idrive',
+    signals:['idrive','i-drive','tracking system','track app','gps system','live tracking','rrp tracking','app','technology','tech','software'],
+    score:function(t){ return INTENTS[15].signals.some(function(s){return t.indexOf(s)!==-1})?8:0; }
+  },
+  {
+    id:'tms',
+    signals:['tms','transport management','appsheet','operations','system','management system','dashboard','rrp tms'],
+    score:function(t){ return INTENTS[16].signals.some(function(s){return t.indexOf(s)!==-1})?8:0; }
+  },
+  {
+    id:'clients',
+    signals:['client','clients','customer','who do you work with','dhl','delhivery','cj darcl','sugna','ncl','portfolio','trusted by','partners'],
+    score:function(t){ return INTENTS[17].signals.some(function(s){return t.indexOf(s)!==-1})?8:0; }
+  },
+  {
+    id:'route',
+    signals:['route','from','to','hyderabad','bangalore','bengaluru','mumbai','pune','chennai','delhi','kolkata','anantapur','tadipatri','bellary','kurnool','nellore','vizag','visakhapatnam','guntur','vijayawada'],
+    score:function(t){ return INTENTS[18].signals.some(function(s){return t.indexOf(s)!==-1})?7:0; }
+  },
+  {
+    id:'bye',
+    signals:['bye','goodbye','see you','exit','later','ok thanks','ok bye','cya','take care','done','that is all','thats all'],
+    score:function(t){ return INTENTS[19].signals.some(function(s){return t.indexOf(s)!==-1})?9:0; }
+  }
+];
+
+function detectIntent(text){
+  var t = text.toLowerCase().trim();
+  var best = null, bestScore = 0;
+  INTENTS.forEach(function(intent){
+    var s = intent.score(t);
+    if(s > bestScore){ bestScore = s; best = intent.id; }
+  });
+  return bestScore > 0 ? best : 'unknown';
 }
-var isOpen=false,greeted=false;
-window.rrpBotToggle=function(){
-  isOpen=!isOpen;
-  var w=document.getElementById('rrp-bot-window');
+
+/* ── RESPONSE LIBRARY ───────────────────────── */
+function r(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+var REPLIES = {
+  greeting: function(){
+    ctx.lastTopic = 'greeting';
+    return r([
+      'Hey! 👋 Great to see you here — I\'m <strong>Purvansh</strong>, from RRP Enterprises. How are you doing today?',
+      'Hello! Welcome to RRP 🚛 — I\'m Purvansh, your logistics point of contact. How are you holding up?',
+      'Hi there! I\'m Purvansh from RRP Enterprises. Good to connect — how are you doing?'
+    ]);
+  },
+  how_are_you: function(){
+    ctx.lastTopic = 'how_are_you';
+    return r([
+      'Doing great, thanks for asking! 😄 Lots of loads moving today — busy but good. How about you?',
+      'All good on my end! Fleet\'s running smooth and loads are moving. How are you doing?',
+      'I\'m good! Thanks for checking in 😊 What can I help you with today?'
+    ]);
+  },
+  thanks: function(){
+    ctx.lastTopic = 'thanks';
+    return r([
+      'Happy to help! That\'s what I\'m here for 🤝 Anything else you need?',
+      'Anytime! Feel free to reach out whenever you need us 🚛',
+      'Glad that was useful! Don\'t hesitate if you have more questions — I\'m around.'
+    ]);
+  },
+  services: function(){
+    ctx.lastTopic = 'services';
+    return '📦 <strong>RRP Enterprises — What We Do:</strong><br><br>🔹 <strong>FTL Transport</strong> — Full Truck Load across India, dedicated capacity<br>🔹 <strong>Bulk Cargo</strong> — Coal, Iron Ore, Fly Ash, Minerals<br>🔹 <strong>Project Logistics</strong> — Heavy machinery & ODC moves<br>🔹 <strong>End-to-End Supply Chain</strong> — Raw material to final mile<br>🔹 <strong>Freight Forwarding</strong> — Route planning & optimisation<br><br>Which of these are you looking at?';
+  },
+  ftl: function(){
+    ctx.lastTopic = 'ftl';
+    return '🚛 <strong>FTL Transport</strong><br><br>Our full truck load service gives you a dedicated vehicle — no sharing, faster transit, zero handling damage.<br><br>✅ 500+ empanelled vehicles<br>✅ Pan-India coverage<br>✅ GPS-tracked via RRP i-Drive<br>✅ 99.9% on-time delivery<br><br>What route are you looking at? I can give you more specific info.';
+  },
+  bulk: function(){
+    ctx.lastTopic = 'bulk';
+    return '⛏️ <strong>Bulk Cargo</strong><br><br>This is a core strength of ours. We move:<br>• Coal & Fly Ash<br>• Iron Ore & Pellets<br>• Quartzite, Limestone, Minerals<br>• Any heavy industrial material<br><br>Our hubs in <strong>Anantapur & Tadipatri</strong> are right next to the major mining and industrial belts of AP & Karnataka. Dedicated fleet, pre-cleared routes.<br><br>How much material are you moving and on which route?';
+  },
+  project: function(){
+    ctx.lastTopic = 'project';
+    return '🏗️ <strong>Project & ODC Logistics</strong><br><br>Heavy machinery, transformers, reactors, plant equipment — we handle over-dimensional cargo (ODC) with the right multi-axle vehicles, route surveys, and escort arrangements.<br><br>Every project move is custom planned. Tell me more about your requirement — what cargo, origin and destination?';
+  },
+  track: function(){
+    ctx.lastTopic = 'track';
+    return '📡 <strong>RRP i-Drive — Live Tracking</strong><br><br>i-Drive is our in-house GPS tracking system. Your consignment location, ETA, and status — all real-time.<br><br>To get your shipment details, reach out directly:<br>📞 <strong>+91 94948 31803</strong><br>📞 <strong>+91 90148 84668</strong><br>💬 WhatsApp: <a href="https://wa.me/919494831803">wa.me/919494831803</a><br><br>Have your consignment ID ready and we\'ll pull it up in seconds.';
+  },
+  quote: function(){
+    ctx.lastTopic = 'quote';
+    ctx.awaitingFollowUp = 'quote_details';
+    return '💰 <strong>Freight Quote</strong><br><br>I can connect you with our ops team for a fast quote. Rates depend on:<br>• Route (origin → destination)<br>• Cargo type & weight<br>• Vehicle type needed<br>• Timeline<br><br>Quick question — what\'s your <strong>origin and destination</strong>? I\'ll make sure the right person gets back to you fast (usually within 30 mins ⚡)';
+  },
+  book: function(){
+    ctx.lastTopic = 'book';
+    ctx.awaitingFollowUp = 'booking_details';
+    return '🚛 Let\'s get that arranged! To set up your load, I just need a few quick details:<br><br>1️⃣ <strong>Origin & destination?</strong><br>2️⃣ <strong>Cargo type?</strong> (coal, steel, FMCG, etc.)<br>3️⃣ <strong>Approximate weight?</strong><br>4️⃣ <strong>When do you need it?</strong><br><br>Share these and I\'ll loop in our operations team right away.';
+  },
+  contact: function(){
+    ctx.lastTopic = 'contact';
+    return '📞 <strong>Reach Us Anytime</strong><br><br>📱 <strong>+91 94948 31803</strong> (24/7)<br>📱 <strong>+91 90148 84668</strong><br>📧 contact@rrpenterprises.co.in<br>💬 <a href="https://wa.me/919494831803">WhatsApp Direct</a><br><br>🏢 <strong>Head Office:</strong><br>6-4-994, Maruthi Nagar, 80ft Road<br>Anantapuramu, AP — 515001<br><br>Also have a branch in <strong>Tadipatri</strong> — close to the Bellary–Hyderabad industrial corridor.';
+  },
+  fleet: function(){
+    ctx.lastTopic = 'fleet';
+    return '🚛 <strong>RRP Fleet</strong><br><br><strong>500+</strong> empanelled vehicles, all GPS-tracked:<br><br>• <strong>6 Tyre</strong> — light commercial, short haul<br>• <strong>10 / 12 Tyre</strong> — standard full trucks<br>• <strong>14 / 16 Tyre</strong> — heavy loads<br>• <strong>18 / 22 Tyre</strong> — multi-axle, ODC<br>• Open body, closed container, flatbed, trailer<br><br>All vehicles are verified, insured, and monitored via RRP i-Drive. What type do you need?';
+  },
+  about: function(){
+    ctx.lastTopic = 'about';
+    return '🏭 <strong>About RRP Enterprises</strong><br><br>We\'re a premier pan-India logistics company headquartered in <strong>Anantapuramu, Andhra Pradesh</strong>, with a branch in Tadipatri — both strategically placed near Hyderabad and Bangalore industrial zones.<br><br>We specialise in FTL, bulk cargo, and project logistics with a fleet of 500+ vehicles, our own tracking tech (RRP i-Drive), and an in-house TMS for operations.<br><br>Clients include <strong>DHL, Delhivery, CJ Darcl, Sugna Metals, NCL Buildtek</strong> and many more across industries.';
+  },
+  partner: function(){
+    ctx.lastTopic = 'partner';
+    return '🤝 <strong>Partner With RRP</strong><br><br>If you own trucks and want steady, reliable loads across India — we\'d love to have you in our network.<br><br>✅ Guaranteed pan-India loads<br>✅ On-time payments, no delays<br>✅ 24/7 driver support from our ops team<br>✅ Transparent tracking via i-Drive<br><br>Apply at: <strong>rrpenterprises.co.in/partner/</strong><br>Or call directly: <strong>+91 94948 31803</strong>';
+  },
+  cargo_types: function(){
+    ctx.lastTopic = 'cargo_types';
+    return '📦 <strong>Cargo We Transport</strong><br><br>We handle a wide range:<br><br><strong>Industrial:</strong> Coal, Iron Ore, Fly Ash, Steel, Cement, Chemicals, Fertilizers, Cables, Pipes<br><br><strong>FMCG & Consumer:</strong> Packaged goods, Edible Oil, Beverages, Paper Reels<br><br><strong>Project:</strong> Machinery, Transformers, Plant Equipment, ODC<br><br><strong>Others:</strong> Glass, Tyres, Battery Scrap, Plastic Granules, Pharmaceuticals<br><br>Anything specific you\'re looking to move?';
+  },
+  idrive: function(){
+    ctx.lastTopic = 'idrive';
+    return '📡 <strong>RRP i-Drive</strong><br><br>Our proprietary live fleet tracking system — built specifically for Indian road conditions.<br><br>• Real-time GPS pings<br>• Dynamic ETA calculation<br>• WhatsApp alerts to your team<br>• Full visibility from loading to delivery<br>• 99.9% system uptime<br><br>No third-party apps needed — it\'s all ours. Want to request a demo or get tracking access for your consignment?';
+  },
+  tms: function(){
+    ctx.lastTopic = 'tms';
+    return '🖥️ <strong>RRP-TMS</strong><br><br>Our Transport Management System — built on AppSheet — runs our entire operations backbone from Anantapur and Tadipatri.<br><br>It handles:<br>• Consignment generation<br>• Automatic balance calculations<br>• Load assignment & vehicle tracking<br>• Document management<br>• Real-time ops coordination<br><br>It\'s what keeps 500+ vehicles running without chaos 😄';
+  },
+  clients: function(){
+    ctx.lastTopic = 'clients';
+    return '🏆 <strong>Who Trusts RRP?</strong><br><br>We work with some serious names:<br><br>• <strong>DHL Supply Chain</strong><br>• <strong>Delhivery</strong><br>• <strong>CJ Darcl</strong><br>• <strong>Sugna Metals</strong><br>• <strong>NCL Buildtek</strong><br>• <strong>Binjusaria</strong><br>• <strong>Accpree</strong><br>• <strong>Sugna Sponge</strong><br><br>Across steel, FMCG, construction, and heavy industry. That\'s the kind of company you\'d be in 🤝';
+  },
+  route: function(text){
+    ctx.lastTopic = 'route';
+    var cities = ['hyderabad','bangalore','bengaluru','mumbai','pune','chennai','delhi','vizag','vijayawada','anantapur','tadipatri','bellary','kurnool'];
+    var found = [];
+    cities.forEach(function(c){ if(text.indexOf(c)!==-1) found.push(c); });
+    if(found.length >= 2){
+      return '📍 <strong>' + found[0].charAt(0).toUpperCase()+found[0].slice(1) + ' → ' + found[1].charAt(0).toUpperCase()+found[1].slice(1) + '</strong><br><br>Yes, we cover that corridor regularly! We have active loads and verified vehicles on this route.<br><br>To get a rate and availability confirmation, I\'ll need:<br>• Cargo type & weight<br>• Vehicle type (open body / container)<br>• Preferred date<br><br>Call us: <strong>+91 94948 31803</strong> or drop a WhatsApp — we respond fast.';
+    }
+    return '📍 We cover routes across all major corridors — AP, Telangana, Karnataka, Maharashtra, Tamil Nadu, Gujarat, Delhi NCR and more.<br><br>Which specific route are you planning? Share origin & destination and I\'ll give you more specific info.';
+  },
+  bye: function(){
+    ctx.lastTopic = 'bye';
+    return r([
+      'Take care! 👋 Reach out anytime — RRP is always ready to move 🚛',
+      'Alright, goodbye! Feel free to come back whenever you need us. Safe travels! 🤝',
+      'Bye for now! If you ever need logistics help, you know where to find me 😄'
+    ]);
+  },
+  unknown: function(text){
+    if(ctx.awaitingFollowUp === 'quote_details' || ctx.awaitingFollowUp === 'booking_details'){
+      ctx.awaitingFollowUp = null;
+      return '👍 Got it! I\'ll pass this to our ops team right away.<br><br>For the fastest response, drop this directly on WhatsApp:<br>💬 <a href="https://wa.me/919494831803">wa.me/919494831803</a><br>📞 Or call: <strong>+91 94948 31803</strong><br><br>Someone will get back to you within 30 minutes ⚡';
+    }
+    if(ctx.lastTopic){
+      return 'I want to make sure I help you properly — could you tell me a bit more? Or if you\'d prefer to talk directly, just call <strong>+91 94948 31803</strong> and our team will sort it out straight away.';
+    }
+    return r([
+      'Hmm, let me make sure I understand correctly — could you give me a bit more detail? I\'m here to help with anything logistics-related 🚛',
+      'Good question! I want to give you the right answer. Could you rephrase or tell me more about what you need?',
+      'I didn\'t quite catch that — but I\'m here! Ask me about routes, rates, fleet, tracking, or anything else RRP-related.'
+    ]);
+  }
+};
+
+function getReply(text){
+  var intent = detectIntent(text);
+  ctx.msgCount++;
+  if(REPLIES[intent]){
+    if(intent === 'route') return REPLIES.route(text.toLowerCase());
+    return REPLIES[intent]();
+  }
+  return REPLIES.unknown(text);
+}
+
+/* ── UI ENGINE ──────────────────────────────── */
+var isOpen = false, greeted = false;
+
+window.rrpBotToggle = function(){
+  isOpen = !isOpen;
+  var w = document.getElementById('rrp-bot-window');
   if(isOpen){
     w.classList.add('open');
-    var d=document.querySelector('#rrp-bot-trigger .notif-dot');
-    if(d)d.style.display='none';
-    if(!greeted){greeted=true;setTimeout(function(){addM('bot','<strong>🚛 RRP ENTERPRISES — LOGISTICS AI</strong><br><br>Hello! I\'m your <strong>24/7 logistics assistant</strong>.<br>Ask me about services, fleet, tracking, rates, or anything else!');},350);}
-    setTimeout(function(){var i=document.getElementById('rrp-bot-input');if(i)i.focus();},400);
-  }else{w.classList.remove('open');}
+    var dot = document.querySelector('#rrp-bot-trigger .notif-dot');
+    if(dot) dot.style.display = 'none';
+    if(!greeted){
+      greeted = true;
+      setTimeout(function(){
+        addMsg('bot', 'Hey! 👋 I\'m <strong>Purvansh</strong> from RRP Enterprises — your logistics point of contact.<br><br>How are you doing today? What can I help you with?');
+      }, 350);
+    }
+    setTimeout(function(){ var i = document.getElementById('rrp-bot-input'); if(i) i.focus(); }, 400);
+  } else {
+    w.classList.remove('open');
+  }
 };
-window.rrpChip=function(el){
-  document.getElementById('rrp-bot-input').value=el.innerText;
-  document.getElementById('rrp-chips').style.display='none';
+
+window.rrpChip = function(el){
+  document.getElementById('rrp-bot-input').value = el.innerText;
+  var chips = document.getElementById('rrp-chips');
+  chips.style.opacity = '0.5';
+  chips.style.pointerEvents = 'none';
+  setTimeout(function(){ chips.style.display='none'; }, 300);
   rrpSend();
 };
-function addM(role,html){
-  var w=document.getElementById('rrp-bot-msgs');
-  var d=document.createElement('div');
-  d.className=role==='bot'?'rrp-bot-msg':'rrp-user-msg';
-  d.innerHTML=html;
-  w.appendChild(d);
-  w.scrollTop=w.scrollHeight;
+
+function addMsg(role, html){
+  var w = document.getElementById('rrp-bot-msgs');
+  var row = document.createElement('div');
+  row.className = 'msg-row ' + (role === 'bot' ? 'bot-row' : 'user-row');
+
+  if(role === 'bot'){
+    var av = document.createElement('div');
+    av.className = 'purvansh-avatar-sm';
+    av.style.cssText = 'width:28px;height:28px;flex-shrink:0;margin-bottom:2px';
+    av.innerHTML = '<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" style="width:28px;height:28px"><rect width="64" height="64" rx="32" fill="#0b1827"/><path d="M10 64 Q16 50 32 56 Q48 50 54 64Z" fill="#0ea5e9"/><ellipse cx="32" cy="28" rx="15" ry="17" fill="#c8956b"/><path d="M17 26 Q17 10 32 10 Q47 10 47 26 Q45 16 32 15 Q19 16 17 26Z" fill="#1a1008"/><ellipse cx="25" cy="27" rx="4" ry="3" fill="#fff"/><ellipse cx="39" cy="27" rx="4" ry="3" fill="#fff"/><circle cx="25" cy="27" r="2.2" fill="#3d2000"/><circle cx="39" cy="27" r="2.2" fill="#3d2000"/><circle cx="25.3" cy="27" r="1.2" fill="#0a0500"/><circle cx="39.3" cy="27" r="1.2" fill="#0a0500"/><circle cx="26.2" cy="25.8" r=".7" fill="#fff" opacity=".8"/><circle cx="40.2" cy="25.8" r=".7" fill="#fff" opacity=".8"/><path d="M26 39 Q32 44 38 39" stroke="#7a4520" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>';
+    row.appendChild(av);
+  }
+
+  var bubble = document.createElement('div');
+  bubble.className = role === 'bot' ? 'rrp-bot-msg' : 'rrp-user-msg';
+  bubble.innerHTML = html;
+  row.appendChild(bubble);
+  w.appendChild(row);
+  w.scrollTop = w.scrollHeight;
 }
-function showT(){
-  var w=document.getElementById('rrp-bot-msgs');
-  var d=document.createElement('div');
-  d.className='rrp-typing-msg';d.id='rrp-typing';
-  d.innerHTML='<div class="rrp-t-dot"></div><div class="rrp-t-dot"></div><div class="rrp-t-dot"></div>';
-  w.appendChild(d);w.scrollTop=w.scrollHeight;
+
+function showTyping(){
+  var w = document.getElementById('rrp-bot-msgs');
+  var row = document.createElement('div');
+  row.className = 'msg-row bot-row';
+  row.id = 'rrp-typing-row';
+  var d = document.createElement('div');
+  d.style.cssText = 'width:28px;height:28px;flex-shrink:0;margin-bottom:2px';
+  var td = document.createElement('div');
+  td.className = 'rrp-typing-msg';
+  td.innerHTML = '<div class="rrp-t-dot"></div><div class="rrp-t-dot"></div><div class="rrp-t-dot"></div>';
+  row.appendChild(d);
+  row.appendChild(td);
+  w.appendChild(row);
+  w.scrollTop = w.scrollHeight;
 }
-function hideT(){var t=document.getElementById('rrp-typing');if(t)t.remove();}
-window.rrpSend=function(){
-  var i=document.getElementById('rrp-bot-input');
-  var t=i.value.trim();if(!t)return;
-  i.value='';
-  document.getElementById('rrp-chips').style.display='none';
-  addM('user',t);showT();
-  setTimeout(function(){hideT();addM('bot',getReply(t));},600+Math.random()*500);
+function hideTyping(){ var t = document.getElementById('rrp-typing-row'); if(t) t.remove(); }
+
+window.rrpSend = function(){
+  var i = document.getElementById('rrp-bot-input');
+  var t = i.value.trim();
+  if(!t) return;
+  i.value = '';
+  addMsg('user', t);
+  showTyping();
+  var delay = 700 + Math.random() * 600;
+  setTimeout(function(){
+    hideTyping();
+    addMsg('bot', getReply(t));
+  }, delay);
 };
+
 })();
 </script>
 
