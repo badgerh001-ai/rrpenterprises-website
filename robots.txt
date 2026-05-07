@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rrpenterprises.co.in/sitemap.xml
+Sitemap: https://rrpenterprises.co.in/sitemap-index.xml
